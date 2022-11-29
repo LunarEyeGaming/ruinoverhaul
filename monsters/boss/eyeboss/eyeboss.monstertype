@@ -1,0 +1,374 @@
+{
+  "type" : "eyeboss",
+  "shortdescription" : "Heart of Ruin",
+  "categories" : [ "eyeboss" ],
+  "parts" : [ "back", "biome", "eye", "eyelit", "heartleft", "heartmiddle", "heartright", "eyelid", "backleft", "backright", "middleleft", "middleright", "tentaclespacing", "frontright", "frontleft", "beam", "elementalshield" ],
+
+  "animation" : "eyeboss.animation",
+  "dropPools" : [ ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua"
+    ],
+    "initialScriptDelta" : 1,
+    "behaviorUpdateDelta" : 1,
+
+    "behavior" : "eyeboss",
+    "behaviorConfig" : {
+      "deathMovementParameters" : {
+        "gravityEnabled" : true,
+        "bounceFactor" : 0.1
+      }
+    },
+
+    "musicStagehands" : [
+      "bossmusicleft",
+      "bossmusicright"
+    ],
+
+    "monsterQueryRange" : 150,
+    "monsterSpawnGroups" : [
+      /*{ "monsters" : ["gleap", "nutmidge", "poptop"], "biome" : "garden" }, X
+      { "monsters" : ["snaunt", "snaunt"], "biome" : "forest" }, X
+      { "monsters" : ["pulpin", "skimbus", "skimbus"], "biome" : "snow" }, X
+      { "monsters" : ["wisper", "wisper", "pulpin"], "biome" : "ice" }, X
+      { "monsters" : ["capricoat", "monopus", "monopus"], "biome" : "arctic" }, X
+      { "monsters" : ["smoglin", "peblit", "peblit"], "biome" : "savannah" }, X
+      { "monsters" : ["lilodon", "lilodon", "lilodon"], "biome" : "ocean" }, X
+      { "monsters" : ["oculob", "oculob", "pteropod"], "biome" : "toxic" }, X
+      { "monsters" : ["scaveran", "crutter", "crutter"], "biome" : "jungle" }, X
+      { "monsters" : ["voltip", "voltip", "iguarmor"], "biome" : "desert" }, X
+      { "monsters" : ["petricub", "oculob", "scandroid"], "biome" : "alien" },
+      { "monsters" : ["spookit", "spookit", "smoglin"], "biome" : "midnight" }, X
+      { "monsters" : ["ringram", "ringram", "capricoat"], "biome" : "alpine" },
+      { "monsters" : ["mandraflora", "bulbop", "bulbop", "bulbop"], "biome" : "giantflower" }, X
+      { "monsters" : ["squeem", "squeem", "oculob"], "biome" : "geode" },
+      { "monsters" : ["narfin", "narfin", "narfin"], "biome" : "prism" },
+      { "monsters" : ["pipkin", "pipkin", "lumoth"], "biome" : "steamspring" }, X
+      { "monsters" : ["anglure"], "biome" : "bioluminescence" }, X
+      { "monsters" : ["trictus", "trictus"], "biome" : "colourful" },
+      { "monsters" : ["taroni", "taroni"], "biome" : "tar" },
+      { "monsters" : ["toumingo", "toumingo"], "biome" : "oasis" },
+      { "monsters" : ["hemogoblin", "hemogoblin"], "biome" : "flesh" }, X
+      { "monsters" : ["sporgus", "sporgus"], "biome" : "mushroompatch" },
+      { "monsters" : ["oogler"], "biome" : "bones" },
+      { "monsters" : ["fennix", "fennix", "scandroid"], "biome" : "scorchedcity" },
+      { "monsters" : ["skimbus", "skimbus", "bobot"], "biome" : "tundra" },
+      { "monsters" : ["pyromantle", "pyromantle", "crabcano"], "biome" : "volcanic" }, X
+      { "monsters" : ["quagmutt", "quagmutt", "pteropod"], "biome" : "swamp" },
+      { "monsters" : ["bobot", "scandroid"], "biome" : "rust" },
+      { "monsters" : ["orbide"], "biome" : "hive" }, X
+      { "monsters" : ["yokat", "yokat"], "biome" : "eyepatch" }, X
+      { "monsters" : ["bobfae", "bobfae", "bobfae", "bobfae", "bobfae"], "biome" : "hellscape" }*/
+      {
+        "monsters" : [
+          {"type" : "gleap", "count" : 3, "offsetRegion" : [-50, -29, 50, -29], "onGround" : true},
+          {"type" : "nutmidge", "count" : 2, "offsetRegion" : [-50, -29, 50, -29], "onGround" : true},
+          {"type" : "poptop", "count" : 3, "offsetRegion" : [-50, -29, 50, -29], "onGround" : true}
+        ],
+        "biome" : "garden"
+      },
+      {
+        "monsters" : [
+          {"type" : "snaunt", "count" : 3, "offsetRegion" : [-50, -29, -30, -29], "onGround" : true},
+          {"type" : "snaunt", "count" : 3, "offsetRegion" : [30, -29, 50, -29], "onGround" : true}
+        ],
+        "biome" : "forest"
+      },
+      {
+        "monsters" : [
+          {"type" : "pulpin", "count" : 5, "offsetRegion" : [-50, -29, 50, -29], "onGround" : true},
+          {"type" : "skimbus", "count" : 3, "offsetRegion" : [-40, -20, 40, -10]}
+        ],
+        "biome" : "snow"
+      },
+      {
+        "monsters" : [
+          {"type" : "pulpin", "count" : 5, "offsetRegion" : [-50, -29, 50, -29], "onGround" : true},
+          {"type" : "wisper", "count" : 3, "offsetRegion" : [-40, -20, 40, 10]}
+        ],
+        "biome" : "ice"
+      },
+      {
+        "monsters" : [
+          {"type" : "capricoat", "count" : 3, "offsetRegion" : [-50, -29, 50, -29], "onGround" : true},
+          {"type" : "monopus", "count" : 3, "offsetRegion" : [-40, -20, 40, -10]}
+        ],
+        "biome" : "arctic"
+      },
+      {
+        "monsters" : [
+          {"type" : "peblit", "count" : 2, "offsetRegion" : [-50, -29, 50, -29], "onGround" : true},
+          {"type" : "smoglin", "count" : 3, "offsetRegion" : [-50, -29, 50, -29], "onGround" : true}
+        ],
+        "biome" : "savannah"
+      },
+      {
+        "monsters" : [
+          {"type" : "lilodon", "count" : 8, "offsetRegion" : [-50, -29, 50, -29], "onGround" : true}
+        ],
+        "biome" : "ocean"
+      },
+      {
+        "monsters" : [
+          {"type" : "oculob", "count" : 5, "offsetRegion" : [-50, -29, 50, -29], "onGround" : true},
+          {"type" : "pteropod", "count" : 3, "offsetRegion" : [-40, -20, 40, 10]}
+        ],
+        "biome" : "toxic"
+      },
+      {
+        "monsters" : [
+          {"type" : "scaveran", "count" : 3, "offsetRegion" : [-30, -29, 30, -29], "onGround" : true},
+          {"type" : "crutter", "count" : 2, "offsetRegion" : [-50, -29, -30, -29], "onGround" : true},
+          {"type" : "crutter", "count" : 2, "offsetRegion" : [30, -29, 50, -29], "onGround" : true}
+        ],
+        "biome" : "jungle"
+      },
+      {
+        "monsters" : [
+          {"type" : "voltip", "count" : 5, "offsetRegion" : [-30, -29, 30, -29], "onGround" : true},
+          {"type" : "iguarmor", "count" : 3, "offsetRegion" : [-30, -29, 30, -29], "onGround" : true}
+        ],
+        "biome" : "desert"
+      },
+      {
+        "monsters" : [
+          {"type" : "spookit", "count" : 2, "offsetRegion" : [-40, -20, 40, -10]},
+          {"type" : "smoglin", "count" : 3, "offsetRegion" : [-50, -29, 50, -29], "onGround" : true}
+        ],
+        "biome" : "midnight"
+      },
+      {
+        "monsters" : [
+          {"type" : "bulbop", "count" : 10, "offsetRegion" : [-50, -29, 50, -29], "onGround" : true},
+          {"type" : "mandraflora", "count" : 3, "offsetRegion" : [-50, -29, 50, -29], "onGround" : true}
+        ],
+        "biome" : "giantflower"
+      },
+      {
+        "monsters" : [
+          {"type" : "pipkin", "count" : 5, "offsetRegion" : [-50, -29, 50, -29], "onGround" : true},
+          {"type" : "lumoth", "count" : 8, "offsetRegion" : [-40, -20, 40, -10]}
+        ],
+        "biome" : "steamspring"
+      },
+      {
+        "monsters" : [
+          {"type" : "anglure", "count" : 3, "offsetRegion" : [-50, -29, -30, -29], "onGround" : true},
+          {"type" : "anglure", "count" : 3, "offsetRegion" : [-30, -29, 30, -29], "onGround" : true},
+          {"type" : "anglure", "count" : 3, "offsetRegion" : [30, -29, 50, -29], "onGround" : true}
+        ],
+        "biome" : "bioluminescence"
+      },
+      {
+        "monsters" : [
+          {"type" : "pyromantle", "count" : 3, "offsetRegion" : [-40, -20, 40, -10]},
+          {"type" : "crabcano", "count" : 3, "offsetRegion" : [-50, -29, 50, -29], "onGround" : true}
+        ],
+        "biome" : "volcanic"
+      },
+      {
+        "monsters" : [
+          {"type" : "hemogoblin", "count" : 4, "offsetRegion" : [-50, -29, 50, -29], "onGround" : true}
+        ],
+        "biome" : "flesh"
+      },
+      {
+        "monsters" : [
+          {"type" : "oogler", "count" : 2, "offsetRegion" : [-50, -29, -30, -29], "onGround" : true},
+          {"type" : "oogler", "count" : 2, "offsetRegion" : [-30, -29, 30, -29], "onGround" : true},
+          {"type" : "oogler", "count" : 2, "offsetRegion" : [30, -29, 50, -29], "onGround" : true}
+        ],
+        "biome" : "bones"
+      },
+      {
+        "monsters" : [
+          {"type" : "orbide", "count" : 2, "offsetRegion" : [-50, -29, -30, -29], "onGround" : true},
+          {"type" : "orbide", "count" : 2, "offsetRegion" : [-30, -29, 30, -29], "onGround" : true},
+          {"type" : "orbide", "count" : 2, "offsetRegion" : [30, -29, 50, -29], "onGround" : true}
+        ],
+        "biome" : "hive"
+      },
+      {
+        "monsters" : [
+          {"type" : "yokat", "count" : 4, "offsetRegion" : [-50, -29, 50, -29], "onGround" : true}
+        ],
+        "biome" : "eyepatch"
+      }
+    ],
+    "eyeCenterOffset" : [-0.3125, -8.3125],
+
+    "damageBar" : "None",
+
+    "damageParts" : {
+      "beam" : {
+        "damage" : 25,
+
+        "teamType" : "enemy",
+        "damageSourceKind" : "plasma",
+        "knockback" : 0,
+        "damageRepeatTimeout" : 1.0,
+
+        "damageTeam" : 0,
+
+        "statusEffects" : [
+          { "effect" : "beamburning", "duration" : 2.0 }
+        ]
+      }
+    },
+    
+    "damageSources" : {
+      "windswept" : {
+        "poly" : [ [-54, -30], [-54, 36], [54, 36], [54, -30] ],
+        "damage" : 0.0,
+
+        "teamType" : "enemy",
+        "damageSourceKind" : "hidden",
+        "statusEffects" : [ "windswept" ],
+
+        "damageRepeatTimeout" : 0.5
+      }
+    },
+
+    "forceRegions" : {
+      "left" : {
+        "type" : "DirectionalForceRegion",
+        "rectRegion" : [-54, -30, -10, 36],
+        "xTargetVelocity" : 100,
+        "controlForce" : 80,
+        "categoryWhitelist" : [ "player" ]
+      },
+      "right" : {
+        "type" : "DirectionalForceRegion",
+        "rectRegion" : [10, -30, 54, 36],
+        "xTargetVelocity" : -100,
+        "controlForce" : 80,
+        "categoryWhitelist" : [ "player" ]
+      },
+      "top" : {
+        "type" : "DirectionalForceRegion",
+        "rectRegion" : [-54, 10, 54, 36],
+        "yTargetVelocity" : -100,
+        "controlForce" : 500,
+        "categoryWhitelist" : [ "player" ]
+      },
+      "bottom" : {
+        "type" : "DirectionalForceRegion",
+        "rectRegion" : [-10, -30, 10, -10],
+        "yTargetVelocity" : 100,
+        "controlForce" : 500,
+        "categoryWhitelist" : [ "player" ]
+      }
+    },
+
+    "renderLayer" : "Projectile-20",
+
+    "knockoutTime" : 0,
+    "knockoutEffect" : "blink",
+    "deathParticles" : "deathPoof",
+
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "gravityEnabled" : false,
+      "collisionPoly" : [ [-8, -20], [-19, -13], [-20, -3], [-13, 4], [-6, 7], [6, 7], [13, 4], [20, -3], [19, -13], [8, -20] ],
+
+      "mass" : 4.0,
+      "walkSpeed" : 5,
+      "runSpeed" : 13,
+      "flySpeed" : 15,
+      "airFriction" : 0.5,
+      "airForce" : 400.0,
+      "airJumpProfile" : {
+        "jumpControlForce" : 0,
+        "jumpInitialPercentage" : 0
+      },
+      "physicsEffectCategories" : ["boss"]
+    },
+    "metaBoundBox" : [-54, -30, 54, 36],
+
+    "touchDamage" : {
+      "poly" : [ [-4, -3], [0, -3], [0, 0], [-4, 0] ],
+      "damage" : 37.5,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "default",
+      "statusEffects" : [ ]
+    },
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic",
+        "damageFlashColor" : "ff0000=0.15"
+      },
+
+      "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : false,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "grit" : {
+          "baseValue" : 1.0
+        },
+        "maxHealth" : {
+          "baseValue" : 3000
+        },
+        "protection" : {
+          "baseValue" : 0.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "fireStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "iceStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "electricStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "poisonStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "specialStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "healingStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "stunImmunity" : {
+          "baseValue" : 1.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0,
+          "maxValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 1.0
+        }
+      }
+    },
+
+    "mouthOffset" : [1.0, -1.5],
+    "feetOffset" : [0, -20]
+  }
+}

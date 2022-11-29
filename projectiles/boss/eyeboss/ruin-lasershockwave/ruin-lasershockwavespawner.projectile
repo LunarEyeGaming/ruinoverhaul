@@ -1,0 +1,37 @@
+{
+  "projectileName" : "ruin-lasershockwavespawner",
+  "image" : "/projectiles/invisibleprojectile/invisibleprojectile.png",
+  "timeToLive" : 5.0,
+  "animationCycle" : 1,
+  "frameNumber" : 1,
+  "speed" : 100,
+  "onlyHitTerrain" : true,
+  "piercing" : true,
+  "bounces" : 0,
+  "power" : 2,
+  "damageKind" : "plasma",
+  "physics" : "laser",
+  
+  "periodicActions" : [
+    {
+      "time" : 0.01,
+      "action" : "projectile",
+      "type" : "orbitalup",
+      "inheritDamageFactor" : 1,
+      "direction" : [0, -1],
+      "config" : {
+        "onlyHitTerrain" : true,
+        "speed" : 500,
+        "actionOnReap" : [
+          {
+            "action" : "projectile",
+            "type" : "ruin-lasershockwave",
+            "direction" : [1, 0],
+            "offset" : [0, 1.0],
+            "inheritDamageFactor" : 1
+          }
+        ]
+      }
+    }
+  ]
+}

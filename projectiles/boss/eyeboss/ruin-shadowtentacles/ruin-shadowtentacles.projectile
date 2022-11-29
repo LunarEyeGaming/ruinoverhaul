@@ -1,0 +1,21 @@
+{
+  "projectileName" : "ruin-shadowtentacles",
+  "image" : "shadowtentacles.png",
+  "fullbright" : true,
+  "animationCycle" : 1,
+  "frameNumber" : 1,
+  "power" : 0,
+  "lightColor" : [17, 17, 74],
+  "damageType" : "NoDamage",
+  "piercing" : true,
+  "speed" : 0,
+  "timeToLive" : 2.0,
+  "knockback" : 150,
+  "extension" : {
+    "type" : "ruin-shadowtentaclewindup",
+    "offset" : [10, 0],
+    "count" : 8
+  },
+  "scripts" : ["ruin-shadowtentacles.lua"],
+  "scriptDelta" : 1
+}

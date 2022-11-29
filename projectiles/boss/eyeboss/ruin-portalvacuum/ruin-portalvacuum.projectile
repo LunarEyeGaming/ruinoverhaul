@@ -1,0 +1,30 @@
+{
+  "projectileName" : "ruin-portalvacuum",
+  "image" : "/projectiles/invisibleprojectile/invisibleprojectile.png",
+  "physics" : "illusion",
+  "animationCycle" : 1,
+  "frameNumber" : 1,
+  "speed" : 0,
+  "power" : 0.0,
+  "onlyHitTerrain" : true,
+
+  "bounces" : -1,
+
+  "timeToLive" : 20,
+
+  "orientationLocked" : true,
+
+  "boundBox" : [-30, -30, 30, 30],
+  "physicsForces" : {
+    "vacuum" : {
+      "type" : "RadialForceRegion",
+      "outerRadius" : 30,
+      "innerRadius" : 0,
+      "targetRadialVelocity" : -25,
+      "controlForce" : 1000,
+      "categoryWhitelist" : ["player"]
+    }
+  },
+
+  "clientEntityMode" : "ClientSlaveOnly"
+}

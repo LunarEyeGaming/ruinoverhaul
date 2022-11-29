@@ -1,0 +1,34 @@
+{
+  "projectileName" : "ruin-laserhazard",
+  "image" : "/projectiles/invisibleprojectile/invisibleprojectile.png",
+  "timeToLive" : 15,
+  "animationCycle" : 1,
+  "frameNumber" : 1,
+  "speed" : 0,
+  "piercing" : true,
+  "bounces" : -1,
+  "power" : 2,
+  "damageKind" : "plasma",
+  "physics" : "illusion",
+  
+  "damagePoly" : [[-125, 4], [125, 4], [125, 0], [-125, 0]],
+  
+  "periodicActions" : [
+    {
+      "time" : 0.02,
+      "action" : "particle",
+      "specification" : {
+        "type" : "animated",
+        "animation" : "/animations/eyebeam/eyebeamflame.animation",
+        "position" : [0, 0],
+        "initialVelocity" : [0.0, 2.0],
+        "layer" : "front",
+        "timeToLive" : 0.8,
+        "fullbright" : true,
+        "variance" : {
+          "position" : [15, 0]
+        }
+      }
+    }
+  ]
+}

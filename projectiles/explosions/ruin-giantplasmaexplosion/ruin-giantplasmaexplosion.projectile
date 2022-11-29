@@ -1,0 +1,20 @@
+{
+  "projectileName" : "ruin-giantplasmaexplosion",
+  "image" : "giantplasmaexplosion.png",
+  "animationCycle" : 0.4,
+  "frameNumber" : 6,
+  "speed" : 0,
+  "lightColor" : [255, 150, 150],
+  "statusEffects" : [ ],
+  "animationLoops" : false,
+  "piercing" : true,
+  "bounces" : -1,
+  "flippable" : true,
+  "damageKind" : "plasma",
+  // Circle of radius 195 pixels made of 20 points.
+  "damagePoly" : [[288.0, 0.0], [273.9043, 88.9969], [232.9969, 169.2822], [169.2822, 232.9969], [88.9969, 273.9043],
+  [0.0, 288.0], [-88.9969, 273.9043], [-169.2822, 232.9969], [-232.9969, 169.2822], [-273.9043, 88.9969], [-288.0, 0.0],
+  [-273.9043, -88.9969], [-232.9969, -169.2822], [-169.2822, -232.9969], [-88.9969, -273.9043], [-0.0, -288.0],
+  [88.9969, -273.9043], [169.2822, -232.9969], [232.9969, -169.2822], [273.9043, -88.9969]],
+  "fullbright" : true
+}

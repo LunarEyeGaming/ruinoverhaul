@@ -1,0 +1,412 @@
+{
+  "name": "eyeboss-tentacle",
+  "description": "",
+  "scripts": [
+    "/scripts/actions/world.lua",
+    "/scripts/actions/time.lua",
+    "/scripts/actions/status.lua"
+  ],
+  "parameters": {
+    "phase1": 0.875,
+    "phase2": 0.75,
+    "phase3": 0.5
+  },
+  "root": {
+    "title": "randomize",
+    "type": "composite",
+    "name": "randomize",
+    "parameters": {},
+    "children": [
+      {
+        "title": "selector",
+        "type": "composite",
+        "name": "selector",
+        "parameters": {},
+        "children": [
+          {
+            "title": "sequence",
+            "type": "composite",
+            "name": "sequence",
+            "parameters": {},
+            "children": [
+              {
+                "title": "inverter",
+                "type": "decorator",
+                "name": "inverter",
+                "parameters": {},
+                "child": {
+                  "title": "resourcePercentage",
+                  "type": "action",
+                  "name": "resourcePercentage",
+                  "parameters": {
+                    "percentage": {"key": "<phase1>"},
+                    "resource": {"value": "health"}
+                  }
+                }
+              },
+              {
+                "title": "sendEntityMessage",
+                "type": "action",
+                "name": "sendEntityMessage",
+                "parameters": {
+                  "entity": {"key": "tentacleright"},
+                  "message": {"value": "attack"},
+                  "arguments": {"value": [4.0, 5.75, 1.0, -1440]}
+                }
+              },
+              {
+                "title": "eyeboss-talltentacles",
+                "type": "module",
+                "name": "eyeboss-talltentacles",
+                "parameters": {
+                  "attackTime": {"value": 4.75}
+                }
+              },
+              {
+                "title": "sendEntityMessage",
+                "type": "action",
+                "name": "sendEntityMessage",
+                "parameters": {
+                  "entity": {"key": "tentacleright2"},
+                  "message": {"value": "attack"}
+                }
+              },
+              {
+                "title": "succeeder",
+                "type": "decorator",
+                "name": "succeeder",
+                "parameters": {},
+                "child": {
+                  "title": "sequence",
+                  "type": "composite",
+                  "name": "sequence",
+                  "parameters": {},
+                  "children": [
+                    {
+                      "title": "inverter",
+                      "type": "decorator",
+                      "name": "inverter",
+                      "parameters": {},
+                      "child": {
+                        "title": "resourcePercentage",
+                        "type": "action",
+                        "name": "resourcePercentage",
+                        "parameters": {
+                          "percentage": {"key": "<phase2>"},
+                          "resource": {"value": "health"}
+                        }
+                      }
+                    },
+                    {
+                      "title": "eyeboss-talltentacles",
+                      "type": "module",
+                      "name": "eyeboss-talltentacles",
+                      "parameters": {
+                        "attackTime": {"value": 5}
+                      }
+                    },
+                    {
+                      "title": "selector",
+                      "type": "composite",
+                      "name": "selector",
+                      "parameters": {},
+                      "children": [
+                        {
+                          "title": "sequence",
+                          "type": "composite",
+                          "name": "sequence",
+                          "parameters": {},
+                          "children": [
+                            {
+                              "title": "inverter",
+                              "type": "decorator",
+                              "name": "inverter",
+                              "parameters": {},
+                              "child": {
+                                "title": "resourcePercentage",
+                                "type": "action",
+                                "name": "resourcePercentage",
+                                "parameters": {
+                                  "percentage": {"key": "<phase3>"},
+                                  "resource": {"value": "health"}
+                                }
+                              }
+                            },
+                            {
+                              "title": "sendEntityMessage",
+                              "type": "action",
+                              "name": "sendEntityMessage",
+                              "parameters": {
+                                "entity": {"key": "tentacleleft"},
+                                "message": {"value": "attack"},
+                                "arguments": {"value": [4.0, 5.75, 1.0, -1440]}
+                              }
+                            },
+                            {
+                              "title": "eyeboss-talltentacles",
+                              "type": "module",
+                              "name": "eyeboss-talltentacles",
+                              "parameters": {
+                                "attackTime": {"value": 4.75}
+                              }
+                            },
+                            {
+                              "title": "sendEntityMessage",
+                              "type": "action",
+                              "name": "sendEntityMessage",
+                              "parameters": {
+                                "entity": {"key": "tentacleleft2"},
+                                "message": {"value": "attack"}
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "title": "sendEntityMessage",
+                          "type": "action",
+                          "name": "sendEntityMessage",
+                          "parameters": {
+                            "entity": {"key": "tentacleleft"},
+                            "message": {"value": "attack"}
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "title": "eyeboss-talltentacles",
+                "type": "module",
+                "name": "eyeboss-talltentacles",
+                "parameters": {
+                  "attackTime": {"value": 12}
+                }
+              }
+            ]
+          },
+          {
+            "title": "sequence",
+            "type": "composite",
+            "name": "sequence",
+            "parameters": {},
+            "children": [
+              {
+                "title": "sendEntityMessage",
+                "type": "action",
+                "name": "sendEntityMessage",
+                "parameters": {
+                  "entity": {"key": "tentacleright"},
+                  "message": {"value": "attack"}
+                }
+              },
+              {
+                "title": "eyeboss-talltentacles",
+                "type": "module",
+                "name": "eyeboss-talltentacles",
+                "parameters": {
+                  "attackTime": {"value": 12}
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "selector",
+        "type": "composite",
+        "name": "selector",
+        "parameters": {},
+        "children": [
+          {
+            "title": "sequence",
+            "type": "composite",
+            "name": "sequence",
+            "parameters": {},
+            "children": [
+              {
+                "title": "inverter",
+                "type": "decorator",
+                "name": "inverter",
+                "parameters": {},
+                "child": {
+                  "title": "resourcePercentage",
+                  "type": "action",
+                  "name": "resourcePercentage",
+                  "parameters": {
+                    "percentage": {"key": "<phase1>"},
+                    "resource": {"value": "health"}
+                  }
+                }
+              },
+              {
+                "title": "sendEntityMessage",
+                "type": "action",
+                "name": "sendEntityMessage",
+                "parameters": {
+                  "entity": {"key": "tentacleleft"},
+                  "message": {"value": "attack"},
+                  "arguments": {"value": [4.0, 5.75, 1.0, -1440]}
+                }
+              },
+              {
+                "title": "eyeboss-talltentacles",
+                "type": "module",
+                "name": "eyeboss-talltentacles",
+                "parameters": {
+                  "attackTime": {"value": 4.75}
+                }
+              },
+              {
+                "title": "sendEntityMessage",
+                "type": "action",
+                "name": "sendEntityMessage",
+                "parameters": {
+                  "entity": {"key": "tentacleleft2"},
+                  "message": {"value": "attack"}
+                }
+              },
+              {
+                "title": "succeeder",
+                "type": "decorator",
+                "name": "succeeder",
+                "parameters": {},
+                "child": {
+                  "title": "sequence",
+                  "type": "composite",
+                  "name": "sequence",
+                  "parameters": {},
+                  "children": [
+                    {
+                      "title": "inverter",
+                      "type": "decorator",
+                      "name": "inverter",
+                      "parameters": {},
+                      "child": {
+                        "title": "resourcePercentage",
+                        "type": "action",
+                        "name": "resourcePercentage",
+                        "parameters": {
+                          "percentage": {"key": "<phase2>"},
+                          "resource": {"value": "health"}
+                        }
+                      }
+                    },
+                    {
+                      "title": "eyeboss-talltentacles",
+                      "type": "module",
+                      "name": "eyeboss-talltentacles",
+                      "parameters": {
+                        "attackTime": {"value": 5}
+                      }
+                    },
+                    {
+                      "title": "selector",
+                      "type": "composite",
+                      "name": "selector",
+                      "parameters": {},
+                      "children": [
+                        {
+                          "title": "sequence",
+                          "type": "composite",
+                          "name": "sequence",
+                          "parameters": {},
+                          "children": [
+                            {
+                              "title": "inverter",
+                              "type": "decorator",
+                              "name": "inverter",
+                              "parameters": {},
+                              "child": {
+                                "title": "resourcePercentage",
+                                "type": "action",
+                                "name": "resourcePercentage",
+                                "parameters": {
+                                  "percentage": {"key": "<phase3>"},
+                                  "resource": {"value": "health"}
+                                }
+                              }
+                            },
+                            {
+                              "title": "sendEntityMessage",
+                              "type": "action",
+                              "name": "sendEntityMessage",
+                              "parameters": {
+                                "entity": {"key": "tentacleright"},
+                                "message": {"value": "attack"},
+                                "arguments": {"value": [4.0, 5.75, 1.0, -1440]}
+                              }
+                            },
+                            {
+                              "title": "eyeboss-talltentacles",
+                              "type": "module",
+                              "name": "eyeboss-talltentacles",
+                              "parameters": {
+                                "attackTime": {"value": 4.75}
+                              }
+                            },
+                            {
+                              "title": "sendEntityMessage",
+                              "type": "action",
+                              "name": "sendEntityMessage",
+                              "parameters": {
+                                "entity": {"key": "tentacleright2"},
+                                "message": {"value": "attack"}
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "title": "sendEntityMessage",
+                          "type": "action",
+                          "name": "sendEntityMessage",
+                          "parameters": {
+                            "entity": {"key": "tentacleright"},
+                            "message": {"value": "attack"}
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "title": "eyeboss-talltentacles",
+                "type": "module",
+                "name": "eyeboss-talltentacles",
+                "parameters": {
+                  "attackTime": {"value": 12}
+                }
+              }
+            ]
+          },
+          {
+            "title": "sequence",
+            "type": "composite",
+            "name": "sequence",
+            "parameters": {},
+            "children": [
+              {
+                "title": "sendEntityMessage",
+                "type": "action",
+                "name": "sendEntityMessage",
+                "parameters": {
+                  "entity": {"key": "tentacleleft"},
+                  "message": {"value": "attack"}
+                }
+              },
+              {
+                "title": "eyeboss-talltentacles",
+                "type": "module",
+                "name": "eyeboss-talltentacles",
+                "parameters": {
+                  "attackTime": {"value": 12}
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,355 @@
+{
+  "name": "eyeboss-portal3",
+  "description": "",
+  "scripts": [
+    "/scripts/actions/animator.lua",
+    "/scripts/actions/math.lua",
+    "/scripts/actions/monster.lua",
+    "/scripts/actions/position.lua",
+    "/scripts/actions/projectiles.lua",
+    "/scripts/actions/query.lua",
+    "/scripts/actions/time.lua",
+    "/scripts/actions/world.lua"
+  ],
+  "parameters": {
+    "floorAltitude": -30,
+    "portalRadius": 3,
+    "portalCenterOffset": [-0.3125, -8.375],
+    "startTentacleInterval": 1.0,
+    "minTentacleInterval": 0.2,
+    "tentacleIntervalDelta": 0.08,
+    "tentacleMinX": -54,
+    "tentacleMaxX": 54,
+    "attackTime": 20,
+    "radialVacuumConfig": {"timeToLive": 20},
+    "rotateRate": 0.5
+  },
+  "root": {
+    "title": "sequence",
+    "type": "composite",
+    "name": "sequence",
+    "parameters": {},
+    "children": [
+      {
+        "title": "resetTransformationGroup",
+        "type": "action",
+        "name": "resetTransformationGroup",
+        "parameters": {
+          "transformationGroup": {"value": "biome"}
+        }
+      },
+      {
+        "title": "offsetPosition",
+        "type": "action",
+        "name": "offsetPosition",
+        "parameters": {
+          "offset": {"value": "<portalCenterOffset>"},
+          "position": {"key": "self"}
+        },
+        "output": {
+          "position": "portalCenter"
+        }
+      },
+      {
+        "title": "burstParticleEmitter",
+        "type": "action",
+        "name": "burstParticleEmitter",
+        "parameters": {
+          "emitter": {"value": "vacuumTelegraph"}
+        }
+      },
+      {
+        "title": "playSound",
+        "type": "action",
+        "name": "playSound",
+        "parameters": {
+          "sound": {"value": "vacuumwindup"}
+        }
+      },
+      {
+        "title": "timer",
+        "type": "action",
+        "name": "timer",
+        "parameters": {
+          "time": {"value": 2.5}
+        }
+      },
+      {
+        "title": "parallel",
+        "type": "composite",
+        "name": "parallel",
+        "parameters": {
+          "fail": {"value": -1},
+          "success": {"value": 1}
+        },
+        "children": [
+          {
+            "title": "animate",
+            "type": "action",
+            "name": "animate",
+            "parameters": {
+              "state": {"value": "spawnwindup"},
+              "type": {"value": "eye"},
+              "fallback": {"value": "spawnwinddown"}
+            }
+          },
+          {
+            "title": "loopSound",
+            "type": "action",
+            "name": "loopSound",
+            "parameters": {
+              "sound": {"value": "vacuum"}
+            }
+          },
+          {
+            "title": "sequence",
+            "type": "composite",
+            "name": "sequence",
+            "parameters": {},
+            "children": [
+              {
+                "title": "setGlobalTag",
+                "type": "action",
+                "name": "setGlobalTag",
+                "parameters": {
+                  "tag": {"value": "vacuum"},
+                  "type": {"value": "biome"}
+                }
+              },
+              {
+                "title": "setNumber",
+                "type": "action",
+                "name": "setNumber",
+                "parameters": {
+                  "number": {"value": "<startTentacleInterval>"}
+                },
+                "output": {
+                  "number": "interval"
+                }
+              },
+              {
+                "title": "spawnProjectile",
+                "type": "action",
+                "name": "spawnProjectile",
+                "parameters": {
+                  "aimVector": {"value": [0, 0]},
+                  "offset": {"value": "<portalCenterOffset>"},
+                  "position": {"key": "self"},
+                  "projectileConfig": {"value": "<radialVacuumConfig>"},
+                  "projectileType": {"value": "ruin-portalvacuum"},
+                  "sourceEntity": {"key": "self"},
+                  "trackSource": {"value": false}
+                }
+              },
+              {
+                "title": "parallel",
+                "type": "composite",
+                "name": "parallel",
+                "parameters": {
+                  "fail": {"value": -1},
+                  "success": {"value": 1}
+                },
+                "children": [
+                  {
+                    "title": "timer",
+                    "type": "action",
+                    "name": "timer",
+                    "parameters": {
+                      "time": {"value": "<attackTime>"}
+                    }
+                  },
+                  {
+                    "title": "emitParticles",
+                    "type": "action",
+                    "name": "emitParticles",
+                    "parameters": {
+                      "emitter": {"value": "wind"}
+                    }
+                  },
+                  {
+                    "title": "failer",
+                    "type": "decorator",
+                    "name": "failer",
+                    "parameters": {},
+                    "child": {
+                      "title": "sequence",
+                      "type": "composite",
+                      "name": "sequence",
+                      "parameters": {},
+                      "children": [
+                        {
+                          "title": "queryEntity",
+                          "type": "action",
+                          "name": "queryEntity",
+                          "parameters": {
+                            "position": {"key": "portalCenter"},
+                            "range": {"value": "<portalRadius>"},
+                            "entityTypes": {"value": ["player"]}
+                          },
+                          "output": {
+                            "list": "caughtPlayers"
+                          }
+                        },
+                        {
+                          "title": "each",
+                          "type": "decorator",
+                          "name": "each",
+                          "parameters": {
+                            "type": {"value": "entity"},
+                            "list": {"key": "caughtPlayers"}
+                          },
+                          "child": {
+                            "title": "sendEntityMessage",
+                            "type": "action",
+                            "name": "sendEntityMessage",
+                            "parameters": {
+                              "entity": {"key": "eachItem"},
+                              "message": {"value": "applyStatusEffect"},
+                              "arguments": {"value": ["ruin-portaldamage"]}
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "title": "failer",
+                    "type": "decorator",
+                    "name": "failer",
+                    "parameters": {},
+                    "child": {
+                      "title": "sequence",
+                      "type": "composite",
+                      "name": "sequence",
+                      "parameters": {},
+                      "children": [
+                        {
+                          "title": "setForceRegionActive",
+                          "type": "action",
+                          "name": "setForceRegionActive",
+                          "parameters": {
+                            "name": {"value": "left"}
+                          }
+                        },
+                        {
+                          "title": "setForceRegionActive",
+                          "type": "action",
+                          "name": "setForceRegionActive",
+                          "parameters": {
+                            "name": {"value": "right"}
+                          }
+                        },
+                        {
+                          "title": "setForceRegionActive",
+                          "type": "action",
+                          "name": "setForceRegionActive",
+                          "parameters": {
+                            "name": {"value": "top"}
+                          }
+                        },
+                        {
+                          "title": "setForceRegionActive",
+                          "type": "action",
+                          "name": "setForceRegionActive",
+                          "parameters": {
+                            "name": {"value": "bottom"}
+                          }
+                        },
+                        {
+                          "title": "setDamageSourceActive",
+                          "type": "action",
+                          "name": "setDamageSourceActive",
+                          "parameters": {
+                            "name": {"value": "windswept"}
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "title": "failer",
+                    "type": "decorator",
+                    "name": "failer",
+                    "parameters": {},
+                    "child": {
+                      "title": "sequence",
+                      "type": "composite",
+                      "name": "sequence",
+                      "parameters": {},
+                      "children": [
+                        {
+                          "title": "random",
+                          "type": "action",
+                          "name": "random",
+                          "parameters": {
+                            "min": {"value": "<tentacleMinX>"},
+                            "max": {"value": "<tentacleMaxX>"}
+                          },
+                          "output": {
+                            "number": "xOffset"
+                          }
+                        },
+                        {
+                          "title": "spawnProjectile",
+                          "type": "action",
+                          "name": "spawnProjectile",
+                          "parameters": {
+                            "aimVector": {"value": [0, 0]},
+                            "offset": {"value": ["xOffset", -30]},
+                            "position": {"key": "self"},
+                            "projectileConfig": {"value": {"power": 20}},
+                            "projectileType": {"value": "ruin-talltentacletele"},
+                            "scalePower": {"value": true},
+                            "sourceEntity": {"key": "self"},
+                            "trackSource": {"value": false}
+                          }
+                        },
+                        {
+                          "title": "timer",
+                          "type": "action",
+                          "name": "timer",
+                          "parameters": {
+                            "time": {"key": "interval"}
+                          }
+                        },
+                        {
+                          "title": "greaterThan",
+                          "type": "action",
+                          "name": "greaterThan",
+                          "parameters": {
+                            "first": {"key": "interval"},
+                            "second": {"value": "<minTentacleInterval>"}
+                          }
+                        },
+                        {
+                          "title": "sub",
+                          "type": "action",
+                          "name": "sub",
+                          "parameters": {
+                            "first": {"key": "interval"},
+                            "second": {"value": "<tentacleIntervalDelta>"}
+                          },
+                          "output": {
+                            "result": "interval"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "timer",
+        "type": "action",
+        "name": "timer",
+        "parameters": {
+          "time": {"value": 1.5}
+        }
+      }
+    ]
+  }
+}

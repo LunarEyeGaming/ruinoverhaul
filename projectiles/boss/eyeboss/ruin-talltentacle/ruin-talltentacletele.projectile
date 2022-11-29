@@ -1,0 +1,57 @@
+{
+  "projectileName" : "ruin-talltentacletele",
+  "image" : "ruin-talltentacletele.png",
+  "animationCycle" : 2.0,
+  "timeToLive" : 2.0,
+  "animationLoops" : false,
+  "frameNumber" : 1,
+  "lightColor" : [0, 0, 0],
+  "power" : 0.0,
+  "speed" : 0,
+  "orientationLocked" : true,
+  "piercing" : true,
+  "flippable" : true,
+  "damagePoly" : [ [-32, 5], [32, 5], [32, -5], [-32, -5] ],
+  "damageKind" : "ice",
+  "physics" : "illusion",
+  "bounces" : -1,
+  "periodicActions" : [
+    {
+      "time" : 0,
+      "repeat" : false,
+      "action" : "sound",
+      "options" : [ "/sfx/npc/boss/ruin-tentacleboss_talltentacle_windup.ogg" ]
+    },
+    {
+      "time" : 0.01,
+      "action" : "loop",
+      "count" : 1,
+      "body" : [
+        {
+          "action" : "particle",
+          "specification" : "jellyshard"
+        }
+      ]
+    }
+  ],
+
+  "onlyHitTerrain" : true,
+
+  "explosionAction" : {
+    "action" : "projectile",
+    "type" : "invisibleprojectile",
+    "inheritDamageFactor" : 0.0,
+    "config" : {
+      "onlyHitTerrain" : true,
+      "timeToLive" : 0
+    }
+  },
+  
+  "nextProjectile" : {
+    "type" : "ruin-talltentacle",
+    "offset" : [ 0, 5.375 ]
+  },
+
+  "scripts" : [ "ruin-talltentacletele.lua" ],
+  "scriptDelta" : 1
+}

@@ -1,0 +1,22 @@
+{
+  "projectileName" : "ruin-shadowtentaclewindup",
+  "image" : "shadowtentaclewindup.png",
+  "fullbright" : true,
+  "animationCycle" : 0.5,
+  "frameNumber" : 1,
+  "power" : 0,
+  "damageKind" : "lash",
+  "onlyHitTerrain" : true,
+  "speed" : 0,
+  "bounces" : -1,
+  "physics" : "illusion",
+  "timeToLive" : 1.5,
+  "damageType" : "NoDamage",
+  "actionOnReap" : [
+    {
+      "action" : "projectile",
+      "type" : "ruin-shadowtentacle",
+      "inheritDamageFactor" : 1
+    }
+  ]
+}

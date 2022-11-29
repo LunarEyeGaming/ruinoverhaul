@@ -1,0 +1,16 @@
+[
+  {
+    "op" : "add",
+    "path" : "/ruin-bosstest",
+    "value" : {
+      "primaryDungeon" : "tentacleboss",
+      "threatLevel" : 6,
+      "gravity" : 80,
+      "worldSize" : [2000, 2000],
+      "dungeonBaseHeight" : 1000,
+      "ambientLightLevel" : [200, 200, 200],
+      "biome" : "undergroundbrains",
+      "musicTrack" : "/music/crystal-battle1-loop.ogg"
+    }
+  }
+]

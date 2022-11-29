@@ -1,0 +1,86 @@
+{
+  "tentacleMovement": {
+    "type": "action",
+    "name": "tentacleMovement",
+    "title": "tentacleMovement",
+    "properties": {
+      "timeRange": {"type": "vec2", "value": [0.5, 1]},
+      "angleRange": {"type": "vec2", "value": [-1.71, 1.71]},
+      "scaleRange": {"type": "vec2", "value": [0.98, 1.02]},
+      "tentaclePivots": {"type": "list", "value": [[-19, 15.125], [-10, 18.5], [-1, 14.5],
+                                                   [7, 13], [12.625, 15.875], [6.75, 14.375]]},
+      "tentacleCount": {"type": "number", "value": 6}
+    },
+    "category": "eyeboss",
+    "script": "/scripts/actions/boss/eyeboss.lua",
+    "output": {}
+  },
+  "heartBeat": {
+    "type": "action",
+    "name": "heartBeat",
+    "title": "heartBeat",
+    "properties": {
+      "moveDelays": {"type": "json", "value": {"left": 0, "middle": 0.075, "right": 0.15}},
+      "moveTime": {"type": "number", "value": 0.2}
+    },
+    "category": "eyeboss",
+    "script": "/scripts/actions/boss/eyeboss.lua",
+    "output": {}
+  },
+  "eyeWiggle": {
+    "type": "action",
+    "name": "eyeWiggle",
+    "title": "",
+    "properties": {
+      "rotation": {"type": "number", "value": 0.05},
+      "time": {"type": "number", "value": 0.075}
+    },
+    "category": "eyeboss",
+    "script": "/scripts/actions/boss/eyeboss.lua",
+    "output": {}
+  },
+  "spawnMonsterGroup": {
+    "type": "action",
+    "name": "spawnMonsterGroup",
+    "title": "spawnMonsterGroup",
+    "properties": {
+      "offsetRegion": {"type": "json", "value": [-4, -14, 4, -4]},
+      "windup": {"type": "number", "value": 1.5}
+    },
+    "category": "eyeboss",
+    "script": "/scripts/actions/boss/eyeboss.lua",
+    "output": {
+      "monsters": {"type": "json", "key": null}
+    }
+  },
+  "spawnLightShaft": {
+    "type": "action",
+    "name": "spawnLightShaft",
+    "title": "spawnLightShaft",
+    "properties": {},
+    "category": "eyeboss",
+    "script": "/scripts/actions/boss/eyeboss.lua",
+    "output": {}
+  },
+  "ruin_spawnFloorProjectiles": {
+    "type": "action",
+    "name": "spawnFloorProjectiles",
+    "title": "spawnFloorProjectiles",
+    "properties": {
+      "areaWidth": {"type": "number", "value": 64},
+      "center": {"type": "position", "key": "self"},
+      "power": {"type": "number", "value": 10},
+      "projectileCount": {"type": "number", "value": 3},
+      "projectileType": {"type": "string", "value": "iceeruptiontele"},
+      "segmentWidth": {"type": "number", "value": 4},
+      "spawnHeight": {"type": "number", "value": 0},
+      "teleDuration": {"type": "number", "value": null},
+      "postTeleDelay": {"type": "number", "value": null}
+    },
+    "category": "kluexboss",
+    "script": "/scripts/actions/boss/kluexboss.lua",
+    "output": {
+      "projectiles": {"type": "list", "key": null}
+    }
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "projectileName" : "ruin-voidprojectile2",
+  "image" : "voidprojectile2.png",
+  "animationCycle" : 0.3,
+  "lightColor" : [128, 0, 0],
+  "frameNumber" : 4,
+  "flippable" : false,
+  "fullbright" : true,
+  "damageKindImage" : "icon.png",
+  "physics" : "bullet",
+  "emitters" : [ ],
+  /*"actionOnReap" : [
+    {
+      "action": "config",
+      "file": "/projectiles/boss/eyeboss/ruin-voidprojectileactive/ruin-voidprojectileactive.config"
+    }
+  ],*/
+  "periodicActions" : [
+    {
+      "time" : 0.02,
+      "repeat" : true,
+      "action" : "particle",
+      "rotate" : true,
+      "specification" : {
+          "type" : "ember",
+          "size" : 2,
+          "color" : [0, 0, 0],
+          "position" : [0, 0],
+          "destructionAction" : "fade",
+          "destructionTime" : 0.2,
+          "fade" : 1,
+          "layer" : "middle",
+          "timeToLive" : 0.2,
+          "variance" : {
+            "initialVelocity" : [2.0, 2.0],
+            "position" : [1.5, 1.5]
+          }
+      }
+    }
+  ],
+  "piercing" : true,
+  "damagePoly" : [ [-9, 0], [-6, -6], [0, -9], [6, -6], [9, 0], [6, 6], [0, 9], [-6, 6] ],
+
+  "speed" : 15,
+  "timeToLive" : 10,
+
+  "scripts" : [ "/scripts/projectiles/sinewaveprojectile.lua" ],
+  "scriptDelta" : 1,
+  
+  "wavePeriod" : 2,
+  "waveAmplitude" : 1.25
+}

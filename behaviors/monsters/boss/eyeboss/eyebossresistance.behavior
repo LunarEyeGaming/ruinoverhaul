@@ -1,0 +1,238 @@
+{
+  "name": "eyeboss-resistance",
+  "description": "",
+  "scripts": [
+    "/scripts/actions/world.lua",
+    "/scripts/actions/time.lua",
+    "/scripts/actions/status.lua"
+  ],
+  "parameters": {
+    "switchPeriod": 10
+  },
+  "root": {
+    "title": "repeater",
+    "type": "decorator",
+    "name": "repeater",
+    "parameters": {},  // Infinite loop
+    "child": {
+      "title": "sequence",
+      "type": "composite",
+      "name": "sequence",
+      "parameters": {},
+      "children": [
+        {
+          "title": "clearPersistentEffects",
+          "type": "action",
+          "name": "clearPersistentEffects",
+          "parameters": {
+            "category": {"value": "ruinResistance"}
+          }
+        },
+        {
+          "title": "randomize",
+          "type": "composite",
+          "name": "randomize",
+          "parameters": {},
+          "children": [
+            {
+              "title": "electricResistance",
+              "type": "composite",
+              "name": "sequence",
+              "parameters": {},
+              "children": [
+                {
+                  "title": "setAnimationState",
+                  "type": "action",
+                  "name": "setAnimationState",
+                  "parameters": {
+                    "state": {"value": "electric"},
+                    "type": {"value": "shield"}
+                  }
+                },
+                {
+                  "title": "addStatModifier",
+                  "type": "action",
+                  "name": "addStatModifier",
+                  "parameters": {
+                    "category": {"value": "ruinResistance"},
+                    "stat": {"value": "physicalResistance"},
+                    "amount": {"value": 1.0}
+                  }
+                },
+                {
+                  "title": "addStatModifier",
+                  "type": "action",
+                  "name": "addStatModifier",
+                  "parameters": {
+                    "category": {"value": "ruinResistance"},
+                    "stat": {"value": "electricResistance"},
+                    "amount": {"value": 0.5}
+                  }
+                },
+                {
+                  "title": "addStatModifier",
+                  "type": "action",
+                  "name": "addStatModifier",
+                  "parameters": {
+                    "category": {"value": "ruinResistance"},
+                    "stat": {"value": "poisonResistance"},
+                    "amount": {"value": -0.5}
+                  }
+                }
+              ]
+            },
+            {
+              "title": "fireResistance",
+              "type": "composite",
+              "name": "sequence",
+              "parameters": {},
+              "children": [
+                {
+                  "title": "setAnimationState",
+                  "type": "action",
+                  "name": "setAnimationState",
+                  "parameters": {
+                    "state": {"value": "fire"},
+                    "type": {"value": "shield"}
+                  }
+                },
+                {
+                  "title": "addStatModifier",
+                  "type": "action",
+                  "name": "addStatModifier",
+                  "parameters": {
+                    "category": {"value": "ruinResistance"},
+                    "stat": {"value": "physicalResistance"},
+                    "amount": {"value": 1.0}
+                  }
+                },
+                {
+                  "title": "addStatModifier",
+                  "type": "action",
+                  "name": "addStatModifier",
+                  "parameters": {
+                    "category": {"value": "ruinResistance"},
+                    "stat": {"value": "fireResistance"},
+                    "amount": {"value": 0.5}
+                  }
+                },
+                {
+                  "title": "addStatModifier",
+                  "type": "action",
+                  "name": "addStatModifier",
+                  "parameters": {
+                    "category": {"value": "ruinResistance"},
+                    "stat": {"value": "iceResistance"},
+                    "amount": {"value": -0.5}
+                  }
+                }
+              ]
+            },
+            {
+              "title": "iceResistance",
+              "type": "composite",
+              "name": "sequence",
+              "parameters": {},
+              "children": [
+                {
+                  "title": "setAnimationState",
+                  "type": "action",
+                  "name": "setAnimationState",
+                  "parameters": {
+                    "state": {"value": "ice"},
+                    "type": {"value": "shield"}
+                  }
+                },
+                {
+                  "title": "addStatModifier",
+                  "type": "action",
+                  "name": "addStatModifier",
+                  "parameters": {
+                    "category": {"value": "ruinResistance"},
+                    "stat": {"value": "physicalResistance"},
+                    "amount": {"value": 1.0}
+                  }
+                },
+                {
+                  "title": "addStatModifier",
+                  "type": "action",
+                  "name": "addStatModifier",
+                  "parameters": {
+                    "category": {"value": "ruinResistance"},
+                    "stat": {"value": "iceResistance"},
+                    "amount": {"value": 0.5}
+                  }
+                },
+                {
+                  "title": "addStatModifier",
+                  "type": "action",
+                  "name": "addStatModifier",
+                  "parameters": {
+                    "category": {"value": "ruinResistance"},
+                    "stat": {"value": "fireResistance"},
+                    "amount": {"value": -0.5}
+                  }
+                }
+              ]
+            },
+            {
+              "title": "poisonResistance",
+              "type": "composite",
+              "name": "sequence",
+              "parameters": {},
+              "children": [
+                {
+                  "title": "setAnimationState",
+                  "type": "action",
+                  "name": "setAnimationState",
+                  "parameters": {
+                    "state": {"value": "poison"},
+                    "type": {"value": "shield"}
+                  }
+                },
+                {
+                  "title": "addStatModifier",
+                  "type": "action",
+                  "name": "addStatModifier",
+                  "parameters": {
+                    "category": {"value": "ruinResistance"},
+                    "stat": {"value": "physicalResistance"},
+                    "amount": {"value": 1.0}
+                  }
+                },
+                {
+                  "title": "addStatModifier",
+                  "type": "action",
+                  "name": "addStatModifier",
+                  "parameters": {
+                    "category": {"value": "ruinResistance"},
+                    "stat": {"value": "poisonResistance"},
+                    "amount": {"value": 0.5}
+                  }
+                },
+                {
+                  "title": "addStatModifier",
+                  "type": "action",
+                  "name": "addStatModifier",
+                  "parameters": {
+                    "category": {"value": "ruinResistance"},
+                    "stat": {"value": "electricResistance"},
+                    "amount": {"value": -0.5}
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "timer",
+          "type": "action",
+          "name": "timer",
+          "parameters": {
+            "time": {"value": "<switchPeriod>"}
+          }
+        }
+      ]
+    }
+  }
+}

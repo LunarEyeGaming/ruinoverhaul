@@ -1,0 +1,50 @@
+{
+  "projectileName" : "ruin-voidprojectile",
+  "image" : "voidprojectile.png",
+  "animationCycle" : 0.3,
+  "lightColor" : [128, 0, 0],
+  "frameNumber" : 4,
+  "flippable" : false,
+  "fullbright" : true,
+  "damageKindImage" : "icon.png",
+  "physics" : "illusion",
+  "emitters" : [ ],
+  "actionOnReap" : [
+    {
+      "action": "config",
+      "file": "/projectiles/boss/eyeboss/ruin-voidprojectileactive/ruin-voidprojectileactive.config"
+    }
+  ],
+  "periodicActions" : [
+    {
+      "time" : 0.02,
+      "repeat" : true,
+      "action" : "particle",
+      "rotate" : true,
+      "specification" : {
+          "type" : "ember",
+          "size" : 2,
+          "color" : [0, 0, 0],
+          "position" : [0, 0],
+          "destructionAction" : "fade",
+          "destructionTime" : 0.2,
+          "fade" : 1,
+          "layer" : "middle",
+          "timeToLive" : 0.2,
+          "variance" : {
+            "initialVelocity" : [2.0, 2.0],
+            "position" : [1.5, 1.5]
+          }
+      }
+    }
+  ],
+  "damageType" : "NoDamage",
+  "piercing" : true,
+
+  "speed" : 0,
+  "timeToLive" : 3.0,
+
+  "scripts" : [ "/projectiles/boss/eyeboss/ruin-voidprojectile/ruin-voidprojectile.lua" ],
+  "scriptDelta" : 1,
+  "travelTime" : 1.5
+}

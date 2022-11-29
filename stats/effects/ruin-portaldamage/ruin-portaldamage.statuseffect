@@ -1,0 +1,25 @@
+{
+  "name" : "ruin-portaldamage",
+  "effectConfig" : {
+    "colorFadeTime" : 0.25,
+    "disappearTime" : 0.25,
+    "fadeMax" : 0.8,
+    "fadeColor" : "11114a",
+    
+    "damageAmount" : 100,
+    
+    "targetStagehandQueryRange" : 250,
+    "targetStagehand" : "ruin-portaldamageteleportposition",
+    "reappearDelay" : 0.1
+  },
+  "defaultDuration" : 13,
+
+  "scripts" : [
+    "ruin-portaldamage.lua"
+  ],
+  
+  "animationConfig" : "ruin-portaldamage.animation",
+
+  "label" : "Spontaneous relocation imminent!",
+  "icon" : "/interface/statuses/stop.png"
+}

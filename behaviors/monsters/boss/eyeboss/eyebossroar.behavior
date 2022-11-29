@@ -1,0 +1,69 @@
+{
+  "name": "eyeboss-roar",
+  "description": "",
+  "scripts": [
+    "/scripts/actions/animator.lua",
+    "/scripts/actions/time.lua",
+    "/scripts/actions/boss/eyeboss.lua"
+  ],
+  "parameters": {},
+  "root": {
+    "title": "sequence",
+    "type": "composite",
+    "name": "sequence",
+    "parameters": {},
+    "children": [
+      {
+        "title": "playSound",
+        "type": "action",
+        "name": "playSound",
+        "parameters": {
+          "sound": {"value": "roar"}
+        }
+      },
+      {
+        "title": "parallel",
+        "type": "composite",
+        "name": "parallel",
+        "parameters": {
+          "fail": {"value": -1},
+          "success": {"value": 1}
+        },
+        "children": [
+          {
+            "title": "tentacleMovement",
+            "type": "action",
+            "name": "tentacleMovement",
+            "parameters": {
+              "timeRange": {"value": [0.1, 0.15]},
+              "angleRange": {"value": [-2.5, 2.5]},
+              "scaleRange": {"value": [0.975, 1.015]}
+            }
+          },
+          {
+            "title": "eyeWiggle",
+            "type": "action",
+            "name": "eyeWiggle",
+            "parameters": {}
+          },
+          {
+            "title": "timer",
+            "type": "action",
+            "name": "timer",
+            "parameters": {
+              "time": {"value": 2.0}
+            }
+          }
+        ]
+      },
+      {
+        "title": "resetTransformationGroup",
+        "type": "action",
+        "name": "resetTransformationGroup",
+        "parameters": {
+          "transformationGroup": {"value": "eye"}
+        }
+      }
+    ]
+  }
+}

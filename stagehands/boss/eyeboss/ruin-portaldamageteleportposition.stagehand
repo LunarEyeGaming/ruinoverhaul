@@ -1,0 +1,8 @@
+{
+  "type" : "ruin-portaldamageteleportposition",
+
+  "scripts" : [
+  ],
+
+  "broadcastArea" : [-1, -1, 1, 1]
+}

@@ -1,0 +1,285 @@
+{
+  "name": "eyeboss-portal2",
+  "description": "",
+  "scripts": [
+    "/scripts/actions/time.lua",
+    "/scripts/actions/animator.lua",
+    "/scripts/actions/math.lua",
+    "/scripts/actions/projectiles.lua"
+  ],
+  "parameters": {
+    "attackTime": 6,
+    "rotateRate": 0.5
+  },
+  "root": {
+    "title": "sequence",
+    "type": "composite",
+    "name": "sequence",
+    "parameters": {},
+    "children": [
+      {
+        "title": "multiply",
+        "type": "action",
+        "name": "multiply",
+        "parameters": {
+          "factor": {"value": "<rotateRate>"},
+          "number": {"value": 6.2831853}  // 2 * pi
+        },
+        "output": {
+          "result": "radianRotateRate"
+        }
+      },
+      {
+        "title": "multiply",
+        "type": "action",
+        "name": "multiply",
+        "parameters": {
+          "factor": {"value": "<attackTime>"},
+          "number": {"key": "radianRotateRate"}
+        },
+        "output": {
+          "result": "endAngle"
+        }
+      },
+      {
+        "title": "timer",
+        "type": "action",
+        "name": "timer",
+        "parameters": {
+          "time": {"value": 1.5}
+        }
+      },
+      {
+        "title": "parallel",
+        "type": "composite",
+        "name": "parallel",
+        "parameters": {
+          "fail": {"value": -1},
+          "success": {"value": 1}
+        },
+        "children": [
+          {
+            "title": "timer",
+            "type": "action",
+            "name": "timer",
+            "parameters": {
+              "time": {"value": "<attackTime>"}
+            },
+            "output": {
+              "ratio": "rotateRatio"
+            }
+          },
+          {
+            "title": "failer",
+            "type": "decorator",
+            "name": "failer",
+            "parameters": {},
+            "child": {
+              "title": "sequence",
+              "type": "composite",
+              "name": "sequence",
+              "parameters": {},
+              "children": [
+                {
+                  "title": "resetTransformationGroup",
+                  "type": "action",
+                  "name": "resetTransformationGroup",
+                  "parameters": {
+                    "transformationGroup": {"value": "biome"}
+                  }
+                },
+                {
+                  "title": "multiply",
+                  "type": "action",
+                  "name": "multiply",
+                  "parameters": {
+                    "factor": {"key": "endAngle"},
+                    "number": {"key": "rotateRatio"}
+                  },
+                  "output": {
+                    "result": "rotateAngle"
+                  }
+                },
+                {
+                  "title": "rotateTransformationGroup",
+                  "type": "action",
+                  "name": "rotateTransformationGroup",
+                  "parameters": {
+                    "angle": {"key": "rotateAngle"},
+                    "transformationGroup": {"value": "biome"},
+                    "rotationCenter": {"value": [-0.3125, -8.375]}
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "title": "animate",
+            "type": "action",
+            "name": "animate",
+            "parameters": {
+              "state": {"value": "spawnwindup"},
+              "type": {"value": "eye"},
+              "fallback": {"value": "spawnwinddown"}
+            }
+          },
+          {
+            "title": "sequence",
+            "type": "composite",
+            "name": "sequence",
+            "parameters": {},
+            "children": [
+              {
+                "title": "setGlobalTag",
+                "type": "action",
+                "name": "setGlobalTag",
+                "parameters": {
+                  "tag": {"value": "void"},
+                  "type": {"value": "biome"}
+                }
+              },
+              {
+                "title": "timer",
+                "type": "action",
+                "name": "timer",
+                "parameters": {
+                  "time": {"value": 1.5}
+                }
+              },
+              {
+                "title": "repeater",
+                "type": "decorator",
+                "name": "repeater",
+                "parameters": {
+                  "maxLoops": {"value": -1}
+                },
+                "child": {
+                  "title": "sequence",
+                  "type": "composite",
+                  "name": "sequence",
+                  "parameters": {},
+                  "children": [
+                    {
+                      "title": "repeater",
+                      "type": "decorator",
+                      "name": "repeater",
+                      "parameters": {
+                        "maxLoops": {"value": 5}
+                      },
+                      "child": {
+                        "title": "sequence",
+                        "type": "composite",
+                        "name": "sequence",
+                        "parameters": {},
+                        "children": [
+                          {
+                            "title": "entityDirection",
+                            "type": "action",
+                            "name": "entityDirection",
+                            "parameters": {
+                              "target": {"key": "target"}
+                            },
+                            "output": {
+                              "vector": "toTarget"
+                            }
+                          },
+                          {
+                            "title": "random",
+                            "type": "action",
+                            "name": "random",
+                            "parameters": {
+                              "min": {"value": -1},
+                              "max": {"value": 1}
+                            },
+                            "output": {
+                              "number": "fireAngle"
+                            }
+                          },
+                          {
+                            "title": "random",
+                            "type": "action",
+                            "name": "random",
+                            "parameters": {
+                              "min": {"value": -4},
+                              "max": {"value": 4}
+                            },
+                            "output": {
+                              "number": "xOffset"
+                            }
+                          },
+                          {
+                            "title": "random",
+                            "type": "action",
+                            "name": "random",
+                            "parameters": {
+                              "min": {"value": -14},
+                              "max": {"value": -4}
+                            },
+                            "output": {
+                              "number": "yOffset"
+                            }
+                          },
+                          {
+                            "title": "vecRotate",
+                            "type": "action",
+                            "name": "vecRotate",
+                            "parameters": {
+                              "angle": {"key": "fireAngle"},
+                              "vector": {"key": "toTarget"}
+                            },
+                            "output": {
+                              "vector": "aimVector"
+                            }
+                          },
+                          {
+                            "title": "spawnProjectile",
+                            "type": "action",
+                            "name": "spawnProjectile",
+                            "parameters": {
+                              "aimVector": {"key": "aimVector"},
+                              "offset": {"value": ["xOffset", "yOffset"]},
+                              "position": {"key": "self"},
+                              "projectileConfig": {"value": {"power": 20}},
+                              "projectileType": {"value": "ruin-voidprojectile2"},
+                              "scalePower": {"value": true},
+                              "sourceEntity": {"key": "self"},
+                              "trackSource": {"value": false}
+                            }
+                          },
+                          {
+                            "title": "timer",
+                            "type": "action",
+                            "name": "timer",
+                            "parameters": {
+                              "time": {"value": 0.1}
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "title": "timer",
+                      "type": "action",
+                      "name": "timer",
+                      "parameters": {
+                        "time": {"value": 1.0}
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "timer",
+        "type": "action",
+        "name": "timer",
+        "parameters": {
+          "time": {"value": 1.5}
+        }
+      }
+    ]
+  }
+}

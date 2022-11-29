@@ -1,0 +1,96 @@
+{
+  "name": "eyeboss-spawnsequence",
+  "description": "",
+  "scripts": [
+    "/scripts/actions/animator.lua",
+    "/scripts/actions/time.lua"
+  ],
+  "parameters": {},
+  "root": {
+    "title": "sequence",
+    "type": "composite",
+    "name": "sequence",
+    "parameters": {},
+    "children": [
+      {
+        "title": "eyeboss-spawn",
+        "type": "module",
+        "name": "eyeboss-spawn",
+        "parameters": {}
+      },
+      {
+        "title": "timer",
+        "type": "action",
+        "name": "timer",
+        "parameters": {
+          "time": {"value": 6}  // TODO: Decrease after reworking the portal attack
+        }
+      },
+      {
+        "title": "succeeder",
+        "type": "decorator",
+        "name": "succeeder",
+        "parameters": {},
+        "child": {
+          "title": "parallel",
+          "type": "composite",
+          "name": "parallel",
+          "parameters": {
+            "fail": {"value": 1},
+            "success": {"value": -1}
+          },
+          "children": [
+            {
+              "title": "listGet",
+              "type": "action",
+              "name": "listGet",
+              "parameters": {
+                "list": {"key": "monsters"}
+              }
+            },
+            {
+              "title": "eyeboss-spawntentaclecreatures",
+              "type": "module",
+              "name": "eyeboss-spawntentaclecreatures",
+              "parameters": {}
+            },
+            {
+              "title": "eyeboss-idle",
+              "type": "module",
+              "name": "eyeboss-idle",
+              "parameters": {
+                "idleTime": {"value": 99999}
+              }
+            }
+          ]
+        }
+      },
+      {
+        "title": "timer",
+        "type": "action",
+        "name": "timer",
+        "parameters": {
+          "time": {"value": 0.5}
+        }
+      },
+      {
+        "title": "sendEntityMessage",
+        "type": "action",
+        "name": "sendEntityMessage",
+        "parameters": {
+          "entity": {"key": "rightspawner"},
+          "message": {"value": "reset"}
+        }
+      },
+      {
+        "title": "sendEntityMessage",
+        "type": "action",
+        "name": "sendEntityMessage",
+        "parameters": {
+          "entity": {"key": "leftspawner"},
+          "message": {"value": "reset"}
+        }
+      }
+    ]
+  }
+}

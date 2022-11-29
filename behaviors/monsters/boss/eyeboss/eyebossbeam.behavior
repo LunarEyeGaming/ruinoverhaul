@@ -1,0 +1,223 @@
+{
+  "name": "eyeboss-beam",
+  "description": "",
+  "scripts": [
+    "/scripts/actions/animator.lua",
+    "/scripts/actions/time.lua",
+    "/scripts/actions/projectiles.lua"
+  ],
+  "parameters": {},
+  "root": {
+    "title": "sequence",
+    "type": "composite",
+    "name": "sequence",
+    "parameters": {},
+    "children": [
+      {
+        "title": "parallel",
+        "type": "composite",
+        "name": "parallel",
+        "parameters": {
+          "fail": {"value": 1},
+          "success": {"value": 1}
+        },
+        "children": [
+          {
+            "title": "animate",
+            "type": "action",
+            "name": "animate",
+            "parameters": {
+              "fallback": {"value": "winddown"},
+              "state": {"value": "windup"},
+              "type": {"value": "eye"}
+            }
+          },
+          {
+            "title": "sequence",
+            "type": "composite",
+            "name": "sequence",
+            "parameters": {},
+            "children": [
+              {
+                "title": "parallel",
+                "type": "composite",
+                "name": "parallel",
+                "parameters": {
+                  "fail": {"value": 1},
+                  "success": {"value": 1}
+                },
+                "children": [
+                  {
+                    "title": "emitParticles",
+                    "type": "action",
+                    "name": "emitParticles",
+                    "parameters": {
+                      "emitter": {"value": "beamtelegraph"}
+                    }
+                  },
+                  {
+                    "title": "timer",
+                    "type": "action",
+                    "name": "timer",
+                    "parameters": {
+                      "time": {"value": 2}
+                    }
+                  }
+                ]
+              },
+              {
+                "title": "parallel",
+                "type": "composite",
+                "name": "parallel",
+                "parameters": {
+                  "fail": {"value": 1},
+                  "success": {"value": 1}
+                },
+                "children": [
+                  {
+                    "title": "animate",
+                    "type": "action",
+                    "name": "animate",
+                    "parameters": {
+                      "fallback": {"value": "winddown"},
+                      "state": {"value": "windup"},
+                      "type": {"value": "beam"}
+                    }
+                  },
+                  {
+                    "title": "sequence",
+                    "type": "composite",
+                    "name": "sequence",
+                    "parameters": {},
+                    "children": [
+                      {
+                        "title": "timer",
+                        "type": "action",
+                        "name": "timer",
+                        "parameters": {
+                          "time": {"value": 0.2}
+                        }
+                      },
+                      {
+                        "title": "parallel",
+                        "type": "composite",
+                        "name": "parallel",
+                        "parameters": {
+                          "fail": {"value": 1},
+                          "success": {"value": 1}
+                        },
+                        "children": [
+                          {
+                            "title": "emitParticles",
+                            "type": "action",
+                            "name": "emitParticles",
+                            "parameters": {
+                              "emitter": {"value": "beamflames"}
+                            }
+                          },
+                          {
+                            "title": "repeater",
+                            "type": "decorator",
+                            "name": "repeater",
+                            "parameters": {
+                              "maxLoops": {"value": -1}
+                            },
+                            "child": {
+                              "title": "sequence",
+                              "type": "composite",
+                              "name": "sequence",
+                              "parameters": {},
+                              "children": [
+                                {
+                                  "title": "spawnProjectile",
+                                  "type": "action",
+                                  "name": "spawnProjectile",
+                                  "parameters": {
+                                    "aimVector": {"value": [1, 0]},
+                                    "offset": {"value": [0, -25]},
+                                    "position": {"key": "self"},
+                                    "projectileConfig": {"value": {"power": 20}},
+                                    "projectileType": {"value": "ruin-lasershockwavespawner"},
+                                    "scalePower": {"value": true},
+                                    "sourceEntity": {"key": "self"},
+                                    "trackSource": {"value": false}
+                                  }
+                                },
+                                {
+                                  "title": "spawnProjectile",
+                                  "type": "action",
+                                  "name": "spawnProjectile",
+                                  "parameters": {
+                                    "aimVector": {"value": [-1, 0]},
+                                    "offset": {"value": [0, -25]},
+                                    "position": {"key": "self"},
+                                    "projectileConfig": {"value": {"power": 20}},
+                                    "projectileType": {"value": "ruin-lasershockwavespawner"},
+                                    "scalePower": {"value": true},
+                                    "sourceEntity": {"key": "self"},
+                                    "trackSource": {"value": false}
+                                  }
+                                },
+                                {
+                                  "title": "timer",
+                                  "type": "action",
+                                  "name": "timer",
+                                  "parameters": {
+                                    "time": {"value": 1.0}
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          {
+                            "title": "timer",
+                            "type": "action",
+                            "name": "timer",
+                            "parameters": {
+                              "time": {"value": 3.0}
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "title": "spawnProjectile",
+                "type": "action",
+                "name": "spawnProjectile",
+                "parameters": {
+                  "aimVector": {"value": [0, 0]},
+                  "offset": {"value": [0, -30]},
+                  "position": {"key": "self"},
+                  "projectileConfig": {"value": {"power": 20}},
+                  "projectileType": {"value": "ruin-laserhazard"},
+                  "scalePower": {"value": true},
+                  "sourceEntity": {"key": "self"},
+                  "trackSource": {"value": false}
+                }
+              },
+              {
+                "title": "timer",
+                "type": "action",
+                "name": "timer",
+                "parameters": {
+                  "time": {"value": 0.3}
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "timer",
+        "type": "action",
+        "name": "timer",
+        "parameters": {
+          "time": {"value": 0.3}
+        }
+      }
+    ]
+  }
+}

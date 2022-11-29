@@ -1,0 +1,18 @@
+{
+  "projectileName" : "ruin-voidprojectileactive",
+  "bounces" : -1,
+  "timeToLive" : 3,
+  "image" : "voidprojectileactive.png",
+  "damageKindImage" : "icon.png",
+  "speed" : 0,
+  "fullbright" : true,
+  "piercing" : true,
+  "animationCycle" : 0.375,
+  "lightColor" : [175, 0, 0],
+  "frameNumber" : 4,
+  "power" : 50,
+  "damagePoly" : [ [-37, 0], [-28, -28], [0, -37], [28, -28], [37, 0], [28, 28], [0, 37], [-28, 28] ],
+  "persistentAudio" : "/sfx/npc/boss/tentacleboss_portal_loop.ogg",
+  "damageKind" : "plasma",
+  "actionOnReap" : [ ]
+}

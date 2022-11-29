@@ -1,0 +1,17 @@
+{
+  "projectileName" : "ruin-talltentacle",
+  "image" : "ruin-talltentacle.png",
+  "animationCycle" : 0.3,
+  "frameNumber" : 8,
+  "power" : 300,
+  "movementSettings" : {
+    "collisionEnabled" : false
+  },
+  "damageKind" : "lash",
+  "knockback" : 35,
+  "piercing" : true,
+  "speed" : 0,
+  "timeToLive" : 0.3,
+  "animationLoop" : false,
+  "damagePoly" : [ [13, -43], [0, 7], [-13, -43] ]
+}

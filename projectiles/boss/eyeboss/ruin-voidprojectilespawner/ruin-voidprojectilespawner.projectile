@@ -1,0 +1,22 @@
+{
+  "projectileName" : "ruin-voidprojectilespawner",
+  "image" : "/projectiles/invisibleprojectile/invisibleprojectile.png",
+  "timeToLive" : 0.1,
+  "animationCycle" : 1,
+  "frameNumber" : 1,
+  "fullbright" : true,
+  "speed" : 0,
+  "onlyHitTerrain" : true,
+  "animationLoops" : false,
+  "piercing" : true,
+  "bounces" : -1,
+  "power" : 2,
+  "damageKind" : "plasma",
+  "physics" : "illusion",
+  
+  "scripts" : [ "/projectiles/boss/eyeboss/ruin-voidprojectilespawner/ruin-voidprojectilespawner.lua" ],
+  "scriptDelta" : 1,
+  
+  "targetOffsetRange" : [-4, -14, 4, -4],
+  "spawnOffsetRange" : [-4, -14, 4, -4]
+}

@@ -1,0 +1,20 @@
+{  
+  "randomFromList": {
+    "type": "action",
+    "name": "randomFromList",
+    "title": "randomFromList",
+    "properties": {
+      "list": {"type": "list", "value": null}
+    },
+    "category": "ruin-util",
+    "script": "/scripts/actions/ruin-util.lua",
+    "output": {
+      "entity": {"type": "entity", "key": null},
+      "number": {"type": "number", "key": null},
+      "position": {"type": "position", "key": null},
+      "vec2": {"type": "vec2", "key": null},
+      "bool": {"type": "bool", "key": null},
+      "string": {"type": "string", "key": null}
+    }
+  }
+}

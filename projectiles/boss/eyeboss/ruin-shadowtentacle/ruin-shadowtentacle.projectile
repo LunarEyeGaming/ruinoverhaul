@@ -1,0 +1,17 @@
+{
+  "projectileName" : "ruin-shadowtentacle",
+  "image" : "shadowtentacle.png",
+  "fullbright" : true,
+  "animationCycle" : 0.5,
+  "frameNumber" : 1,
+  "power" : 0,
+  "lightColor" : [17, 17, 74],
+  "damageKind" : "lash",
+  "piercing" : true,
+  "speed" : 0,
+  "bounces" : -1,
+  "physics" : "illusion",
+  "timeToLive" : 0.5,
+  "knockback" : 25,
+  "damagePoly" : [ [ 72, 10 ], [ -72, 10 ], [ -72, -10 ], [ 72, -10 ] ]
+}

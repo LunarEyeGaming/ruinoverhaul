@@ -1,0 +1,9 @@
+{
+  "name" : "ruin-eyebosselementalshield",
+  "category" : "eyeboss",
+  "type" : "elementalshield",
+
+  "frames" : {
+    "shield" : "elementalshield.png"
+  }
+}
