@@ -35,9 +35,15 @@
             "type": "action",
             "name": "tentacleMovement",
             "parameters": {
+              "initialScales": {"key": "tentacleScales"},
+              "initialAngles": {"key": "tentacleAngles"},
               "timeRange": {"value": [0.1, 0.15]},
               "angleRange": {"value": [-2.5, 2.5]},
               "scaleRange": {"value": [0.975, 1.015]}
+            },
+            "output": {
+              "scales": "tentacleScales",
+              "angles": "tentacleAngles"
             }
           },
           {

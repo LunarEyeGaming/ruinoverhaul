@@ -1,9 +1,10 @@
 {
   "projectileName" : "ruin-voidprojectile2",
   "image" : "voidprojectile2.png",
-  "animationCycle" : 0.3,
-  "lightColor" : [128, 0, 0],
-  "frameNumber" : 4,
+  "animationCycle" : 0.6,
+  "lightColor" : [28, 8, 39],
+  "windupFrames" : 16,
+  "frameNumber" : 16,
   "flippable" : false,
   "fullbright" : true,
   "damageKindImage" : "icon.png",
@@ -22,24 +23,24 @@
       "action" : "particle",
       "rotate" : true,
       "specification" : {
-          "type" : "ember",
-          "size" : 2,
-          "color" : [0, 0, 0],
-          "position" : [0, 0],
-          "destructionAction" : "fade",
-          "destructionTime" : 0.2,
-          "fade" : 1,
-          "layer" : "middle",
-          "timeToLive" : 0.2,
-          "variance" : {
-            "initialVelocity" : [2.0, 2.0],
-            "position" : [1.5, 1.5]
-          }
+        "type" : "ember",
+        "size" : 2,
+        "color" : [0, 0, 0],
+        "position" : [0, 0],
+        "destructionAction" : "fade",
+        "destructionTime" : 0.2,
+        "fade" : 1,
+        "layer" : "middle",
+        "timeToLive" : 0.2,
+        "variance" : {
+          "initialVelocity" : [2.0, 2.0],
+          "position" : [1.5, 1.5]
+        }
       }
     }
   ],
   "piercing" : true,
-  "damagePoly" : [ [-9, 0], [-6, -6], [0, -9], [6, -6], [9, 0], [6, 6], [0, 9], [-6, 6] ],
+  "damagePoly" : [ [-9, 0], [0, -3], [9, 0], [0, 3] ],
 
   "speed" : 15,
   "timeToLive" : 10,

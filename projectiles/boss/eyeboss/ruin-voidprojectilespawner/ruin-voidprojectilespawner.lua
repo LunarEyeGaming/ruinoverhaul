@@ -20,7 +20,7 @@ function init()
     "ruin-voidprojectile",
     spawnPosition,
     projectile.sourceEntity(),
-    world.distance(targetPosition, spawnPosition),
+    vec2.withAngle(math.random() * 2 * math.pi),  -- Completely random angle
     true,
     {targetPosition = targetPosition, power = projectile.power(), powerMultiplier = projectile.powerMultiplier()}
   )

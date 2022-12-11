@@ -159,7 +159,7 @@
   "sounds" : {
     "spawn" : [],
     "windupstart" : {
-      "pool" : [ "/sfx/npc/boss/ruin-tentacleboss_tentacle_windup2.ogg" ],
+      "pool" : [ "/sfx/npc/boss/tentacleboss_tentacle_windup.ogg" ],
       "rangeMultiplier" : 2.0
     },
     "winduploop" : {

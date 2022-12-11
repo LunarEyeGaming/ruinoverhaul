@@ -1,0 +1,8 @@
+{
+  "frames" : "vacuumtelegraph2.png",
+  "variants" : 1,
+  "frameNumber" : 10,
+  "animationCycle" : 1.0,
+  "mode" : "stop",
+  "offset" : [0, 0]
+}

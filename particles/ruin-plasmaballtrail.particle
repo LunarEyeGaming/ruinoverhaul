@@ -1,0 +1,12 @@
+{
+  "kind" : "ruin-plasmaballtrail",
+  "definition" : {
+    "type" : "textured",
+    "image" : "/particles/images/ruin-plasmaballtrail.png",
+    "layer" : "back",
+    "timeToLive" : 0.0,
+    "destructionAction" : "fade",
+    "destructionTime" : 0.5,
+    "fullbright" : true
+  }
+}

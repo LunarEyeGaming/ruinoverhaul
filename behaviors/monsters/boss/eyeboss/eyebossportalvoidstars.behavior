@@ -1,0 +1,268 @@
+{
+  "name": "eyeboss-portalvoidstars",
+  "description": "",
+  "scripts": [
+    "/scripts/actions/time.lua",
+    "/scripts/actions/math.lua",
+    "/scripts/actions/projectiles.lua"
+  ],
+  "parameters": {},
+  "root": {
+    "title": "randomize",
+    "type": "composite",
+    "name": "randomize",
+    "parameters": {},
+    "children": [
+      {
+        "title": "sequence",
+        "type": "composite",
+        "name": "sequence",
+        "parameters": {},
+        "children": [
+          {
+            "title": "repeater",
+            "type": "decorator",
+            "name": "repeater",
+            "parameters": {
+              "maxLoops": {"value": 10}
+            },
+            "child": {
+              "title": "sequence",
+              "type": "composite",
+              "name": "sequence",
+              "parameters": {},
+              "children": [
+                {
+                  "title": "spawnProjectile",
+                  "type": "action",
+                  "name": "spawnProjectile",
+                  "parameters": {
+                    "aimVector": {"value": [1, -1]},
+                    "offset": {"value": [0, 0]},
+                    "position": {"key": "self"},
+                    "projectileConfig": {"value": {"targetOffsetRange" : [20, -30, 54, -10], "power": 20}},
+                    "projectileType": {"value": "ruin-voidprojectilespawner"},
+                    "scalePower": {"value": true},
+                    "sourceEntity": {"key": "self"},
+                    "trackSource": {"value": false}
+                  }
+                },
+                {
+                  "title": "timer",
+                  "type": "action",
+                  "name": "timer",
+                  "parameters": {
+                    "time": {"value": 0.05}
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "title": "repeater",
+            "type": "decorator",
+            "name": "repeater",
+            "parameters": {
+              "maxLoops": {"value": 10}
+            },
+            "child": {
+              "title": "sequence",
+              "type": "composite",
+              "name": "sequence",
+              "parameters": {},
+              "children": [
+                {
+                  "title": "spawnProjectile",
+                  "type": "action",
+                  "name": "spawnProjectile",
+                  "parameters": {
+                    "aimVector": {"value": [0, -1]},
+                    "offset": {"value": [0, 0]},
+                    "position": {"key": "self"},
+                    "projectileConfig": {"value": {"targetOffsetRange" : [-20, -30, 20, -10], "power": 20}},
+                    "projectileType": {"value": "ruin-voidprojectilespawner"},
+                    "scalePower": {"value": true},
+                    "sourceEntity": {"key": "self"},
+                    "trackSource": {"value": false}
+                  }
+                },
+                {
+                  "title": "timer",
+                  "type": "action",
+                  "name": "timer",
+                  "parameters": {
+                    "time": {"value": 0.05}
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "title": "repeater",
+            "type": "decorator",
+            "name": "repeater",
+            "parameters": {
+              "maxLoops": {"value": 10}
+            },
+            "child": {
+              "title": "sequence",
+              "type": "composite",
+              "name": "sequence",
+              "parameters": {},
+              "children": [
+                {
+                  "title": "spawnProjectile",
+                  "type": "action",
+                  "name": "spawnProjectile",
+                  "parameters": {
+                    "aimVector": {"value": [-1, -1]},
+                    "offset": {"value": [0, 0]},
+                    "position": {"key": "self"},
+                    "projectileConfig": {"value": {"targetOffsetRange" : [-54, -30, -20, -10], "power": 20}},
+                    "projectileType": {"value": "ruin-voidprojectilespawner"},
+                    "scalePower": {"value": true},
+                    "sourceEntity": {"key": "self"},
+                    "trackSource": {"value": false}
+                  }
+                },
+                {
+                  "title": "timer",
+                  "type": "action",
+                  "name": "timer",
+                  "parameters": {
+                    "time": {"value": 0.05}
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "title": "sequence",
+        "type": "composite",
+        "name": "sequence",
+        "parameters": {},
+        "children": [
+          {
+            "title": "repeater",
+            "type": "decorator",
+            "name": "repeater",
+            "parameters": {
+              "maxLoops": {"value": 10}
+            },
+            "child": {
+              "title": "sequence",
+              "type": "composite",
+              "name": "sequence",
+              "parameters": {},
+              "children": [
+                {
+                  "title": "spawnProjectile",
+                  "type": "action",
+                  "name": "spawnProjectile",
+                  "parameters": {
+                    "aimVector": {"value": [-1, -1]},
+                    "offset": {"value": [0, 0]},
+                    "position": {"key": "self"},
+                    "projectileConfig": {"value": {"targetOffsetRange" : [-54, -30, -20, -10], "power": 20}},
+                    "projectileType": {"value": "ruin-voidprojectilespawner"},
+                    "scalePower": {"value": true},
+                    "sourceEntity": {"key": "self"},
+                    "trackSource": {"value": false}
+                  }
+                },
+                {
+                  "title": "timer",
+                  "type": "action",
+                  "name": "timer",
+                  "parameters": {
+                    "time": {"value": 0.05}
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "title": "repeater",
+            "type": "decorator",
+            "name": "repeater",
+            "parameters": {
+              "maxLoops": {"value": 10}
+            },
+            "child": {
+              "title": "sequence",
+              "type": "composite",
+              "name": "sequence",
+              "parameters": {},
+              "children": [
+                {
+                  "title": "spawnProjectile",
+                  "type": "action",
+                  "name": "spawnProjectile",
+                  "parameters": {
+                    "aimVector": {"value": [0, -1]},
+                    "offset": {"value": [0, 0]},
+                    "position": {"key": "self"},
+                    "projectileConfig": {"value": {"targetOffsetRange" : [-20, -30, 20, -10], "power": 20}},
+                    "projectileType": {"value": "ruin-voidprojectilespawner"},
+                    "scalePower": {"value": true},
+                    "sourceEntity": {"key": "self"},
+                    "trackSource": {"value": false}
+                  }
+                },
+                {
+                  "title": "timer",
+                  "type": "action",
+                  "name": "timer",
+                  "parameters": {
+                    "time": {"value": 0.05}
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "title": "repeater",
+            "type": "decorator",
+            "name": "repeater",
+            "parameters": {
+              "maxLoops": {"value": 10}
+            },
+            "child": {
+              "title": "sequence",
+              "type": "composite",
+              "name": "sequence",
+              "parameters": {},
+              "children": [
+                {
+                  "title": "spawnProjectile",
+                  "type": "action",
+                  "name": "spawnProjectile",
+                  "parameters": {
+                    "aimVector": {"value": [1, -1]},
+                    "offset": {"value": [0, 0]},
+                    "position": {"key": "self"},
+                    "projectileConfig": {"value": {"targetOffsetRange" : [20, -30, 54, -10], "power": 20}},
+                    "projectileType": {"value": "ruin-voidprojectilespawner"},
+                    "scalePower": {"value": true},
+                    "sourceEntity": {"key": "self"},
+                    "trackSource": {"value": false}
+                  }
+                },
+                {
+                  "title": "timer",
+                  "type": "action",
+                  "name": "timer",
+                  "parameters": {
+                    "time": {"value": 0.05}
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

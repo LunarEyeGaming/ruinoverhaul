@@ -41,23 +41,23 @@
       { "monsters" : ["voltip", "voltip", "iguarmor"], "biome" : "desert" }, X
       { "monsters" : ["petricub", "oculob", "scandroid"], "biome" : "alien" },
       { "monsters" : ["spookit", "spookit", "smoglin"], "biome" : "midnight" }, X
-      { "monsters" : ["ringram", "ringram", "capricoat"], "biome" : "alpine" },
+      { "monsters" : ["ringram", "ringram", "capricoat"], "biome" : "alpine" }, X
       { "monsters" : ["mandraflora", "bulbop", "bulbop", "bulbop"], "biome" : "giantflower" }, X
-      { "monsters" : ["squeem", "squeem", "oculob"], "biome" : "geode" },
-      { "monsters" : ["narfin", "narfin", "narfin"], "biome" : "prism" },
+      { "monsters" : ["squeem", "squeem", "oculob"], "biome" : "geode" }, X
+      { "monsters" : ["narfin", "narfin", "narfin"], "biome" : "prism" }, X
       { "monsters" : ["pipkin", "pipkin", "lumoth"], "biome" : "steamspring" }, X
       { "monsters" : ["anglure"], "biome" : "bioluminescence" }, X
-      { "monsters" : ["trictus", "trictus"], "biome" : "colourful" },
-      { "monsters" : ["taroni", "taroni"], "biome" : "tar" },
-      { "monsters" : ["toumingo", "toumingo"], "biome" : "oasis" },
+      { "monsters" : ["trictus", "trictus"], "biome" : "colourful" }, X
+      { "monsters" : ["taroni", "taroni"], "biome" : "tar" }, X
+      { "monsters" : ["toumingo", "toumingo"], "biome" : "oasis" }, X
       { "monsters" : ["hemogoblin", "hemogoblin"], "biome" : "flesh" }, X
-      { "monsters" : ["sporgus", "sporgus"], "biome" : "mushroompatch" },
-      { "monsters" : ["oogler"], "biome" : "bones" },
-      { "monsters" : ["fennix", "fennix", "scandroid"], "biome" : "scorchedcity" },
-      { "monsters" : ["skimbus", "skimbus", "bobot"], "biome" : "tundra" },
+      { "monsters" : ["sporgus", "sporgus"], "biome" : "mushroompatch" }, X
+      { "monsters" : ["oogler"], "biome" : "bones" }, X
+      { "monsters" : ["fennix", "fennix", "scandroid"], "biome" : "scorchedcity" }, X
+      { "monsters" : ["skimbus", "skimbus", "bobot"], "biome" : "tundra" }, X
       { "monsters" : ["pyromantle", "pyromantle", "crabcano"], "biome" : "volcanic" }, X
-      { "monsters" : ["quagmutt", "quagmutt", "pteropod"], "biome" : "swamp" },
-      { "monsters" : ["bobot", "scandroid"], "biome" : "rust" },
+      { "monsters" : ["quagmutt", "quagmutt", "pteropod"], "biome" : "swamp" }, X
+      { "monsters" : ["bobot", "scandroid"], "biome" : "rust" }, X
       { "monsters" : ["orbide"], "biome" : "hive" }, X
       { "monsters" : ["yokat", "yokat"], "biome" : "eyepatch" }, X
       { "monsters" : ["bobfae", "bobfae", "bobfae", "bobfae", "bobfae"], "biome" : "hellscape" }*/
@@ -141,10 +141,32 @@
       },
       {
         "monsters" : [
+          {"type" : "ringram", "count" : 3, "offsetRegion" : [-40, -29, 40, -29], "onGround" : true},
+          {"type" : "capricoat", "count" : 3, "offsetRegion" : [-50, -29, 50, -29], "onGround" : true}
+        ],
+        "biome" : "alpine"
+      },
+      {
+        "monsters" : [
           {"type" : "bulbop", "count" : 10, "offsetRegion" : [-50, -29, 50, -29], "onGround" : true},
           {"type" : "mandraflora", "count" : 3, "offsetRegion" : [-50, -29, 50, -29], "onGround" : true}
         ],
         "biome" : "giantflower"
+      },
+      {
+        "monsters" : [
+          {"type" : "squeem", "count" : 5, "offsetRegion" : [-40, -20, 40, -10]},
+          {"type" : "oculob", "count" : 5, "offsetRegion" : [-50, -29, 50, -29], "onGround" : true}
+        ],
+        "biome" : "geode"
+      },
+      {
+        "monsters" : [
+          {"type" : "narfin", "count" : 2, "offsetRegion" : [-50, -29, -30, -29], "onGround" : true},
+          {"type" : "narfin", "count" : 2, "offsetRegion" : [-30, -29, 30, -29], "onGround" : true},
+          {"type" : "narfin", "count" : 2, "offsetRegion" : [30, -29, 50, -29], "onGround" : true}
+        ],
+        "biome" : "prism"
       },
       {
         "monsters" : [
@@ -155,24 +177,49 @@
       },
       {
         "monsters" : [
-          {"type" : "anglure", "count" : 3, "offsetRegion" : [-50, -29, -30, -29], "onGround" : true},
-          {"type" : "anglure", "count" : 3, "offsetRegion" : [-30, -29, 30, -29], "onGround" : true},
-          {"type" : "anglure", "count" : 3, "offsetRegion" : [30, -29, 50, -29], "onGround" : true}
+          {"type" : "anglure", "count" : 2, "offsetRegion" : [-50, -29, -30, -29], "onGround" : true},
+          {"type" : "anglure", "count" : 2, "offsetRegion" : [-30, -29, 30, -29], "onGround" : true},
+          {"type" : "anglure", "count" : 2, "offsetRegion" : [30, -29, 50, -29], "onGround" : true}
         ],
         "biome" : "bioluminescence"
       },
       {
         "monsters" : [
-          {"type" : "pyromantle", "count" : 3, "offsetRegion" : [-40, -20, 40, -10]},
-          {"type" : "crabcano", "count" : 3, "offsetRegion" : [-50, -29, 50, -29], "onGround" : true}
+          {"type" : "trictus", "count" : 2, "offsetRegion" : [-50, -29, -30, -29], "onGround" : true},
+          {"type" : "trictus", "count" : 2, "offsetRegion" : [-30, -29, 30, -29], "onGround" : true},
+          {"type" : "trictus", "count" : 2, "offsetRegion" : [30, -29, 50, -29], "onGround" : true}
         ],
-        "biome" : "volcanic"
+        "biome" : "colourful"
+      },
+      {
+        "monsters" : [
+          {"type" : "taroni", "count" : 2, "offsetRegion" : [-50, -29, -30, -29], "onGround" : true},
+          {"type" : "taroni", "count" : 2, "offsetRegion" : [-30, -29, 30, -29], "onGround" : true},
+          {"type" : "taroni", "count" : 2, "offsetRegion" : [30, -29, 50, -29], "onGround" : true}
+        ],
+        "biome" : "tar"
+      },
+      {
+        "monsters" : [
+          {"type" : "toumingo", "count" : 2, "offsetRegion" : [-50, -29, -30, -29], "onGround" : true},
+          {"type" : "toumingo", "count" : 2, "offsetRegion" : [-30, -29, 30, -29], "onGround" : true},
+          {"type" : "toumingo", "count" : 2, "offsetRegion" : [30, -29, 50, -29], "onGround" : true}
+        ],
+        "biome" : "oasis"
       },
       {
         "monsters" : [
           {"type" : "hemogoblin", "count" : 4, "offsetRegion" : [-50, -29, 50, -29], "onGround" : true}
         ],
         "biome" : "flesh"
+      },
+      {
+        "monsters" : [
+          {"type" : "sporgus", "count" : 2, "offsetRegion" : [-50, -29, -30, -29], "onGround" : true},
+          {"type" : "sporgus", "count" : 2, "offsetRegion" : [-30, -29, 30, -29], "onGround" : true},
+          {"type" : "sporgus", "count" : 2, "offsetRegion" : [30, -29, 50, -29], "onGround" : true}
+        ],
+        "biome" : "mushroompatch"
       },
       {
         "monsters" : [
@@ -184,6 +231,45 @@
       },
       {
         "monsters" : [
+          {"type" : "scandroid", "count" : 3, "offsetRegion" : [-40, -20, 40, -10]},
+          {"type" : "fennix", "count" : 5, "offsetRegion" : [-50, -29, 50, -29], "onGround" : true}
+        ],
+        "biome" : "scorchedcity"
+      },
+      {
+        "monsters" : [
+          {"type" : "bobot", "count" : 2, "offsetRegion" : [-50, -29, -30, -29], "onGround" : true},
+          {"type" : "bobot", "count" : 2, "offsetRegion" : [-30, -29, 30, -29], "onGround" : true},
+          {"type" : "bobot", "count" : 2, "offsetRegion" : [30, -29, 50, -29], "onGround" : true},
+          {"type" : "skimbus", "count" : 3, "offsetRegion" : [-40, -20, 40, -10]}
+        ],
+        "biome" : "tundra"
+      },
+      {
+        "monsters" : [
+          {"type" : "pyromantle", "count" : 3, "offsetRegion" : [-40, -20, 40, -10]},
+          {"type" : "crabcano", "count" : 3, "offsetRegion" : [-50, -29, 50, -29], "onGround" : true}
+        ],
+        "biome" : "volcanic"
+      },
+      {
+        "monsters" : [
+          {"type" : "quagmutt", "count" : 5, "offsetRegion" : [-50, -29, 50, -29], "onGround" : true},
+          {"type" : "pteropod", "count" : 3, "offsetRegion" : [-40, -20, 40, 10]}
+        ],
+        "biome" : "swamp"
+      },
+      {
+        "monsters" : [
+          {"type" : "scandroid", "count" : 3, "offsetRegion" : [-40, -20, 40, -10]},
+          {"type" : "bobot", "count" : 1, "offsetRegion" : [-50, -29, -30, -29], "onGround" : true},
+          {"type" : "bobot", "count" : 1, "offsetRegion" : [-30, -29, 30, -29], "onGround" : true},
+          {"type" : "bobot", "count" : 1, "offsetRegion" : [30, -29, 50, -29], "onGround" : true}
+        ],
+        "biome" : "rust"
+      },
+      {
+        "monsters" : [
           {"type" : "orbide", "count" : 2, "offsetRegion" : [-50, -29, -30, -29], "onGround" : true},
           {"type" : "orbide", "count" : 2, "offsetRegion" : [-30, -29, 30, -29], "onGround" : true},
           {"type" : "orbide", "count" : 2, "offsetRegion" : [30, -29, 50, -29], "onGround" : true}
@@ -192,9 +278,15 @@
       },
       {
         "monsters" : [
-          {"type" : "yokat", "count" : 4, "offsetRegion" : [-50, -29, 50, -29], "onGround" : true}
+          {"type" : "yokat", "count" : 9, "offsetRegion" : [-50, -29, 50, -29], "onGround" : true}
         ],
         "biome" : "eyepatch"
+      },
+      {
+        "monsters" : [
+          {"type" : "bobfae", "count" : 6, "offsetRegion" : [-50, -29, 50, -29], "onGround" : true}
+        ],
+        "biome" : "hellscape"
       }
     ],
     "eyeCenterOffset" : [-0.3125, -8.3125],

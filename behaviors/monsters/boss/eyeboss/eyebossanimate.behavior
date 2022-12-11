@@ -74,9 +74,15 @@
             "type": "action",
             "name": "tentacleMovement",
             "parameters": {
+              "initialScales": {"key": "tentacleScales"},
+              "initialAngles": {"key": "tentacleAngles"},
               "timeRange": {"value": [1, 2]},
               "angleRange": {"value": [-0.4, 0.4]},
               "scaleRange": {"value": [0.985, 1.015]}
+            },
+            "output": {
+              "scales": "tentacleScales",
+              "angles": "tentacleAngles"
             }
           }
         ]
@@ -135,9 +141,15 @@
             "type": "action",
             "name": "tentacleMovement",
             "parameters": {
+              "initialScales": {"key": "tentacleScales"},
+              "initialAngles": {"key": "tentacleAngles"},
               "timeRange": {"value": [0.75, 1.5]},
               "angleRange": {"value": [-1.71, 1.71]},
               "scaleRange": {"value": [0.98, 1.02]}
+            },
+            "output": {
+              "scales": "tentacleScales",
+              "angles": "tentacleAngles"
             }
           }
         ]
@@ -199,9 +211,15 @@
             "type": "action",
             "name": "tentacleMovement",
             "parameters": {
+              "initialScales": {"key": "tentacleScales"},
+              "initialAngles": {"key": "tentacleAngles"},
               "timeRange": {"value": [0.6, 1.2]},
               "angleRange": {"value": [-2.2, 2.2]},
               "scaleRange": {"value": [0.98, 1.02]}
+            },
+            "output": {
+              "scales": "tentacleScales",
+              "angles": "tentacleAngles"
             }
           }
         ]
@@ -263,9 +281,15 @@
             "type": "action",
             "name": "tentacleMovement",
             "parameters": {
+              "initialScales": {"key": "tentacleScales"},
+              "initialAngles": {"key": "tentacleAngles"},
               "timeRange": {"value": [0.5, 1.0]},
               "angleRange": {"value": [-2.5, 2.5]},
               "scaleRange": {"value": [0.975, 1.015]}
+            },
+            "output": {
+              "scales": "tentacleScales",
+              "angles": "tentacleAngles"
             }
           }
         ]

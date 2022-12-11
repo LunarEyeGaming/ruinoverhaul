@@ -1,6 +1,6 @@
 {
   "projectileName" : "ruin-talltentacletele",
-  "image" : "ruin-talltentacletele.png",
+  "image" : "/projectiles/invisibleprojectile/invisibleprojectile.png",
   "animationCycle" : 2.0,
   "timeToLive" : 2.0,
   "animationLoops" : false,
@@ -23,15 +23,31 @@
       "options" : [ "/sfx/npc/boss/ruin-tentacleboss_talltentacle_windup.ogg" ]
     },
     {
-      "time" : 0.01,
-      "action" : "loop",
-      "count" : 1,
-      "body" : [
-        {
-          "action" : "particle",
-          "specification" : "jellyshard"
-        }
-      ]
+      "time" : 0.1,
+      "action" : "particle",
+      "specification" : "jellyshard"
+    },
+    {
+      "time" : 1.5,
+      "repeat" : false,
+      "action" : "projectile",
+      "type" : "invisibleprojectile",
+      "inheritDamageFactor" : 0.0,
+      "config" : {
+        "onlyHitTerrain" : true,
+        "movementSettings" : {
+          "collisionEnabled" : false
+        },
+        "bounces" : -1,
+        "timeToLive" : 0.5,
+        "periodicActions" : [
+          {
+            "time" : 0.01,
+            "action" : "particle",
+            "specification" : "jellyshard"
+          }
+        ]
+      }
     }
   ],
 
@@ -43,7 +59,35 @@
     "inheritDamageFactor" : 0.0,
     "config" : {
       "onlyHitTerrain" : true,
-      "timeToLive" : 0
+      "timeToLive" : 0,
+      "actionOnReap" : [
+        {
+          "action" : "loop",
+          "count" : 30,
+          "body" : [
+            {
+              "action" : "particle",
+              "specification" : {
+                "type" : "animated",
+                "animation" : "/animations/shards/jellyshard.animation",
+                "initialVelocity" : [0.0, 25],
+                "finalVelocity" : [0.0, -80],
+                "approach" : [0.0, 80],
+                "timeToLive" : 0.5,
+                "layer" : "middle",
+                "collidesForeground" : false,
+                "variance" : {
+                  "position" : [0.5, 0.5],
+                  "initialVelocity" : [5, 10],
+                  "finalVelocity" : [0, 0],
+                  "rotation" : 180,
+                  "angularVelocity" : 180
+                }
+              }
+            }
+          ]
+        }
+      ]
     }
   },
   

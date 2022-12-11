@@ -4,6 +4,8 @@
     "name": "tentacleMovement",
     "title": "tentacleMovement",
     "properties": {
+      "initialScales": {"type": "list", "value": null},
+      "initialAngles": {"type": "list", "value": null},
       "timeRange": {"type": "vec2", "value": [0.5, 1]},
       "angleRange": {"type": "vec2", "value": [-1.71, 1.71]},
       "scaleRange": {"type": "vec2", "value": [0.98, 1.02]},
@@ -13,7 +15,10 @@
     },
     "category": "eyeboss",
     "script": "/scripts/actions/boss/eyeboss.lua",
-    "output": {}
+    "output": {
+      "scales": {"type": "list", "key": null},
+      "angles": {"type": "list", "key": null}
+    }
   },
   "heartBeat": {
     "type": "action",

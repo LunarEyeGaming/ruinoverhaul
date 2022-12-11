@@ -1,0 +1,52 @@
+{
+  "projectileName" : "ruin-plasmaballfragment",
+  "image" : "plasmaballfragment.png",
+  "animationCycle" : 0.2,
+  "lightColor" : [150, 100, 100],
+  "frameNumber" : 2,
+  "flippable" : false,
+  "fullbright" : true,
+  "damageKindImage" : "icon.png",
+  "physics" : "boomerang",
+  "emitters" : [ ],
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/plasmabulletexplosion/plasmabulletexplosion.config"
+    }
+  ],
+  "periodicActions" : [
+    {
+      "time" : 0.066,
+      "repeat" : true,
+      "action" : "particle",
+      "rotate" : true,
+      "specification" : {
+        "type" : "ember",
+        "color" : [255, 112, 89, 255],
+        "initialVelocity" : [0.0, 0.0],
+        "finalVelocity" : [0.0, 0.0],
+        "approach" : [40, 40],
+        "timeToLive" : 0.5,
+        "fullbright" : true,
+        "destructionAction" : "fade",
+        "destructionTime" : 0.5,
+        "size" : 2,
+        "layer" : "middle",
+        "collidesForeground" : false,
+        "variance" : {
+          "position" : [0.5, 0.5],
+          "initialVelocity" : [15, 15],
+          "finalVelocity" : [0, 0]
+        }
+      }
+    }
+  ],
+  "damagePoly" : [ [-8, 0], [2, 3], [8, 0], [2, -3] ],
+  "damageKind" : "plasma",
+
+  "speed" : 25,
+
+  "scripts" : [ "/projectiles/tracksourcestatus.lua" ],
+  "scriptDelta" : 1
+}

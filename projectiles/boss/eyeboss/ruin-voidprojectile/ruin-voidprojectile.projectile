@@ -4,6 +4,7 @@
   "animationCycle" : 0.3,
   "lightColor" : [128, 0, 0],
   "frameNumber" : 4,
+  "winddownFrames" : 4,
   "flippable" : false,
   "fullbright" : true,
   "damageKindImage" : "icon.png",
@@ -22,22 +23,25 @@
       "action" : "particle",
       "rotate" : true,
       "specification" : {
-          "type" : "ember",
-          "size" : 2,
-          "color" : [0, 0, 0],
-          "position" : [0, 0],
-          "destructionAction" : "fade",
-          "destructionTime" : 0.2,
-          "fade" : 1,
-          "layer" : "middle",
-          "timeToLive" : 0.2,
-          "variance" : {
-            "initialVelocity" : [2.0, 2.0],
-            "position" : [1.5, 1.5]
-          }
+        "type" : "ember",
+        "size" : 2,
+        "color" : [0, 0, 0],
+        "position" : [0, 0],
+        "destructionAction" : "fade",
+        "destructionTime" : 0.2,
+        "fade" : 1,
+        "layer" : "middle",
+        "timeToLive" : 0.2,
+        "variance" : {
+          "initialVelocity" : [2.0, 2.0],
+          "position" : [1.5, 1.5]
+        }
       }
     }
   ],
+  
+  "persistentAudio" : "/sfx/projectiles/ruin-voidstar_windup.ogg",  // Make the sound move with the projectile
+  
   "damageType" : "NoDamage",
   "piercing" : true,
 

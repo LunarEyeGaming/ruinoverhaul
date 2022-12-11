@@ -40,6 +40,18 @@
           "parameters": {},
           "children": [
             {
+              "title": "offsetPosition",
+              "type": "action",
+              "name": "offsetPosition",
+              "parameters": {
+                "position": {"key": "self"},
+                "offset": {"value": [-36, 0]}
+              },
+              "output": {
+                "position": "tentacleCenter"
+              }
+            },
+            {
               "title": "repeater",
               "type": "decorator",
               "name": "repeater",
@@ -57,8 +69,8 @@
                     "type": "action",
                     "name": "random",
                     "parameters": {
-                      "min": {"value": -50},
-                      "max": {"value": 50}
+                      "min": {"value": -18},
+                      "max": {"value": 18}
                     },
                     "output": {
                       "number": "xOffset"
@@ -83,12 +95,24 @@
                     "parameters": {
                       "aimVector": {"value": [1, 0]},
                       "offset": {"value": ["xOffset", "yOffset"]},
-                      "position": {"key": "self"},
+                      "position": {"key": "tentacleCenter"},
                       "projectileConfig": {"value": {"power": 20}},
                       "projectileType": {"value": "ruin-shadowtentacles"},
                       "scalePower": {"value": true},
                       "sourceEntity": {"key": "self"},
                       "trackSource": {"value": false}
+                    }
+                  },
+                  {
+                    "title": "offsetPosition",
+                    "type": "action",
+                    "name": "offsetPosition",
+                    "parameters": {
+                      "position": {"key": "tentacleCenter"},
+                      "offset": {"value": [36, 0]}
+                    },
+                    "output": {
+                      "position": "tentacleCenter"
                     }
                   }
                 ]

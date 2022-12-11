@@ -87,6 +87,15 @@
   -22.7127], [-59.4627, -43.2022], [-43.2022, -59.4627], [-22.7127, -69.9027], [-0.0, -73.5], [22.7127, -69.9027],
   [43.2022, -59.4627], [59.4627, -43.2022], [69.9027, -22.7127]],
   
+  "periodicActions" : [
+    {
+      "time" : 0.1,
+      "action" : "particle",
+      "rotate" : true,
+      "specification" : "ruin-plasmaballtrail"
+    }
+  ],
+  
   "actionOnReap" : [
     {
       "action" : "projectile",
@@ -113,7 +122,77 @@
     "actionOnReap" : [
       {
         "action" : "sound",
-        "options" : ["/sfx/projectiles/ruin_plasmaball_bounce.ogg"]
+        "options" : ["/sfx/projectiles/ruin-plasmaball_bounce.ogg"]
+      },
+      {
+        "action" : "loop",
+        "count" : 30,
+        "body" : [
+          {
+            "action" : "particle",
+            "specification" : {
+              "type" : "animated",
+              "animation" : "/animations/shards/jellyshard.animation",
+              "initialVelocity" : [0.0, 15],
+              "finalVelocity" : [0.0, -80],
+              "approach" : [0.0, 80],
+              "timeToLive" : 0.5,
+              "layer" : "middle",
+              "collidesForeground" : false,
+              "variance" : {
+                "position" : [2, 0.5],
+                "initialVelocity" : [20, 10],
+                "finalVelocity" : [0, 0],
+                "rotation" : 180,
+                "angularVelocity" : 180
+              }
+            }
+          },
+          {
+            "action" : "particle",
+            "specification" : {
+              "type" : "ember",
+              "color" : [255, 112, 89, 255],
+              "initialVelocity" : [0.0, 15],
+              "finalVelocity" : [0.0, 0.0],
+              "approach" : [40, 40],
+              "timeToLive" : 0.5,
+              "fullbright" : true,
+              "destructionAction" : "fade",
+              "destructionTime" : 0.5,
+              "size" : 2,
+              "layer" : "middle",
+              "collidesForeground" : false,
+              "variance" : {
+                "position" : [2, 0.5],
+                "initialVelocity" : [25, 10],
+                "finalVelocity" : [0, 0]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "action" : "loop",
+        "count" : 5,
+        "body" : [
+          {
+            "action" : "particle",
+            "specification" : {
+              "type" : "animated",
+              "animation" : "/animations/eyebeam/eyebeamflame.animation",
+              "position" : [0, 0],
+              "initialVelocity" : [0.0, 2.0],
+              "layer" : "front",
+              "timeToLive" : 0.8,
+              "fullbright" : true,
+              "variance" : {
+                "position" : [2, 0],
+                "initialVelocity" : [2, 2]
+              }
+            }
+          }
+        ]
       }
     ]
   },

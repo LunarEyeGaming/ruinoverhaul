@@ -24,11 +24,25 @@
               "immediateSoundRangeMultiplier" : 5.0
             }
           },
+          "opennoroar" : {
+            "frames" : 1,
+            "cycle" : 0.1,
+            "mode" : "transition",
+            "transition" : "idle",
+            "properties" : {
+              "immediateSound" : "/sfx/npc/boss/tentacleboss_wakeup1.ogg",
+              "immediateSoundRangeMultiplier" : 5.0
+            }
+          },
           "close" : {
             "frames" : 1,
             "cycle" : 0.1,
             "mode" : "transition",
-            "transition" : "idle"
+            "transition" : "closed",
+            "properties" : {
+              "immediateSound" : "/sfx/npc/boss/tentacleboss_wakeup1.ogg",
+              "immediateSoundRangeMultiplier" : 5.0
+            }
           },
           "closed" : {
             "frames" : 1
@@ -395,6 +409,11 @@
                 "image" : "<partImage>:open.<frame>"
               }
             },
+            "opennoroar" : {
+              "properties" : {
+                "image" : "<partImage>:open.<frame>"
+              }
+            },
             "close" : {
               "properties" : {
                 "image" : "<partImage>:close.<frame>"
@@ -637,7 +656,7 @@
           "particle" : {
             "type" : "textured",
             "image" : "/particles/images/ruin-vacuumtelegraph.png",
-            "size" : 1.0,
+            "size" : 1.2,
             "position" : [-0.3125, -8.3125],
             "timeToLive" : 0.0,
             "destructionAction" : "shrink",
@@ -645,6 +664,117 @@
             "layer" : "middle",
             "fullbright" : true
           }
+        },
+        // Need to set sizes individually because of a bug where the "shrink" destruction action uses the base size
+        // rather than the size picked due to variance.
+        // I just wanted some wedges of varying sizes shrinking into one point.
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/ruin-vacuumtelegraph2/ruin-vacuumtelegraph2.animation",
+            "size" : 0.16,
+            "position" : [-0.3125, -8.3125],
+            "timeToLive" : 0.0,
+            "destructionAction" : "shrink",
+            "destructionTime" : 2.5,
+            "layer" : "middle",
+            "fullbright" : true,
+            "variance" : {
+              "rotation" : 180,
+              "angularVelocity" : 180
+            }
+          },
+          "count" : 16
+        },
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/ruin-vacuumtelegraph2/ruin-vacuumtelegraph2.animation",
+            "size" : 0.32,
+            "position" : [-0.3125, -8.3125],
+            "timeToLive" : 0.0,
+            "destructionAction" : "shrink",
+            "destructionTime" : 2.5,
+            "layer" : "middle",
+            "fullbright" : true,
+            "variance" : {
+              "rotation" : 180,
+              "angularVelocity" : 180
+            }
+          },
+          "count" : 16
+        },
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/ruin-vacuumtelegraph2/ruin-vacuumtelegraph2.animation",
+            "size" : 0.48,
+            "position" : [-0.3125, -8.3125],
+            "timeToLive" : 0.0,
+            "destructionAction" : "shrink",
+            "destructionTime" : 2.5,
+            "layer" : "middle",
+            "fullbright" : true,
+            "variance" : {
+              "rotation" : 180,
+              "angularVelocity" : 180
+            }
+          },
+          "count" : 16
+        },
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/ruin-vacuumtelegraph2/ruin-vacuumtelegraph2.animation",
+            "size" : 0.64,
+            "position" : [-0.3125, -8.3125],
+            "timeToLive" : 0.0,
+            "destructionAction" : "shrink",
+            "destructionTime" : 2.5,
+            "layer" : "middle",
+            "fullbright" : true,
+            "variance" : {
+              "rotation" : 180,
+              "angularVelocity" : 180
+            }
+          },
+          "count" : 16
+        },
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/ruin-vacuumtelegraph2/ruin-vacuumtelegraph2.animation",
+            "size" : 0.8,
+            "position" : [-0.3125, -8.3125],
+            "timeToLive" : 0.0,
+            "destructionAction" : "shrink",
+            "destructionTime" : 2.5,
+            "layer" : "middle",
+            "fullbright" : true,
+            "variance" : {
+              "rotation" : 180,
+              "angularVelocity" : 180
+            }
+          },
+          "count" : 16
+        },
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/ruin-vacuumtelegraph2/ruin-vacuumtelegraph2.animation",
+            "size" : 0.96,
+            "position" : [-0.3125, -8.3125],
+            "timeToLive" : 0.0,
+            "destructionAction" : "shrink",
+            "destructionTime" : 2.5,
+            "layer" : "middle",
+            "fullbright" : true,
+            "variance" : {
+              "rotation" : 180,
+              "angularVelocity" : 180
+            }
+          },
+          "count" : 16
         }
       ]
     }

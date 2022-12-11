@@ -5,22 +5,41 @@ require "/scripts/interp.lua"
 -- The tentacleMovement node has been overridden to make the Ruin's tentacles move more organically, utilizing rotations
 -- and scales in lieu of pure vertical translations. It also applies sine easing to the transformations. The tentacles
 -- move independently of each other.
+-- param initialScales - The initial scales to use for the tentacles
+-- param initialAngles - The initial angles to use for the tentacles in degrees
 -- param timeRange - The range of time to complete each movement of each tentacle
--- param angleRange - The range of angles to use for each tentacle
+-- param angleRange - The range of angles to use for each tentacle in degrees
 -- param scaleRange - The range of scaling to use for each tentacle
 -- param tentaclePivots - The relative positions to use for rotation and scaling for each tentacle
+-- output scales - A list of the scales used for each tentacle as of the current tick. Use in conjunction with the
+--    initialScales parameter to prevent sudden changes in movement between calls of this function (e.g. when changing 
+--    phases).
+-- output angles - A list of the angles used for each tentacle as of the current tick (in degrees). Use in conjunction
+--    with the initialAngles parameter for the aforementioned reason.
 function tentacleMovement(args, board, _, dt)
-  local angleRange = util.map(args.angleRange, function(x) return util.toRadians(x) end)  -- Convert angles to radians.
+  -- Convert angles to radians.
+  local angleRange = util.map(args.angleRange, function(angle) return util.toRadians(angle) end)
 
-  -- Times to complete movements
+  -- Amount of time it should take to complete movements for each tentacle
   local times = util.rep(function() return util.randomInRange(args.timeRange) end, args.tentacleCount)
 
   local timers = util.rep(function() return 0 end, args.tentacleCount)  -- Timers to track movement progress
+
+  sb.logInfo("initialAngles: %s", args.initialAngles)
+  sb.logInfo("initialScales: %s", args.initialScales)
   
-  local oldAngles = util.rep(function() return 0 end, args.tentacleCount)  -- Angles from previous movement
+  local oldAngles  -- Angles from previous movement
+  if args.initialAngles then
+    -- Convert angles to radians.
+    oldAngles = util.map(args.initialAngles, function(angle) return util.toRadians(angle) end)
+  else
+    oldAngles = util.rep(function() return 0 end, args.tentacleCount)
+  end
+
   local angles = util.rep(function() return util.randomInRange(angleRange) end, 6)  -- Target angles
 
-  local oldScales = util.rep(function() return 1 end, args.tentacleCount)  -- Scales from previous movement
+  -- Scales from previous movement
+  local oldScales = args.initialScales or util.rep(function() return 1 end, args.tentacleCount)
   local scales = util.rep(function() return util.randomInRange(args.scaleRange) end, 6)  -- Target scales
   
   while true do
@@ -52,7 +71,8 @@ function tentacleMovement(args, board, _, dt)
       )
     end
     
-    dt = coroutine.yield()
+    dt = coroutine.yield(nil, {scales = scales,
+                               angles = util.map(angles, function(angle) return util.toDegrees(angle) end)})
   end
 end
 
