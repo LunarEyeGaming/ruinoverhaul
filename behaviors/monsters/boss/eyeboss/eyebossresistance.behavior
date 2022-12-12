@@ -55,16 +55,6 @@
                   "name": "addStatModifier",
                   "parameters": {
                     "category": {"value": "ruinResistance"},
-                    "stat": {"value": "physicalResistance"},
-                    "amount": {"value": 1.0}
-                  }
-                },
-                {
-                  "title": "addStatModifier",
-                  "type": "action",
-                  "name": "addStatModifier",
-                  "parameters": {
-                    "category": {"value": "ruinResistance"},
                     "stat": {"value": "electricResistance"},
                     "amount": {"value": 0.5}
                   }
@@ -94,16 +84,6 @@
                   "parameters": {
                     "state": {"value": "fire"},
                     "type": {"value": "shield"}
-                  }
-                },
-                {
-                  "title": "addStatModifier",
-                  "type": "action",
-                  "name": "addStatModifier",
-                  "parameters": {
-                    "category": {"value": "ruinResistance"},
-                    "stat": {"value": "physicalResistance"},
-                    "amount": {"value": 1.0}
                   }
                 },
                 {
@@ -149,16 +129,6 @@
                   "name": "addStatModifier",
                   "parameters": {
                     "category": {"value": "ruinResistance"},
-                    "stat": {"value": "physicalResistance"},
-                    "amount": {"value": 1.0}
-                  }
-                },
-                {
-                  "title": "addStatModifier",
-                  "type": "action",
-                  "name": "addStatModifier",
-                  "parameters": {
-                    "category": {"value": "ruinResistance"},
                     "stat": {"value": "iceResistance"},
                     "amount": {"value": 0.5}
                   }
@@ -196,16 +166,6 @@
                   "name": "addStatModifier",
                   "parameters": {
                     "category": {"value": "ruinResistance"},
-                    "stat": {"value": "physicalResistance"},
-                    "amount": {"value": 1.0}
-                  }
-                },
-                {
-                  "title": "addStatModifier",
-                  "type": "action",
-                  "name": "addStatModifier",
-                  "parameters": {
-                    "category": {"value": "ruinResistance"},
                     "stat": {"value": "poisonResistance"},
                     "amount": {"value": 0.5}
                   }
@@ -223,6 +183,16 @@
               ]
             }
           ]
+        },
+        {
+          "title": "physicalResistance",
+          "type": "action",
+          "name": "addStatModifier",
+          "parameters": {
+            "category": {"value": "ruinResistance"},
+            "stat": {"value": "physicalResistance"},
+            "amount": {"value": 0.75}
+          }
         },
         {
           "title": "timer",

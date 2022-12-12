@@ -1693,6 +1693,15 @@
                             }
                           },
                           {
+                            "title": "setLightActive",
+                            "type": "action",
+                            "name": "setLightActive",
+                            "parameters": {
+                              "active": {"value": true},
+                              "light": {"value": "glow"}
+                            }
+                          },
+                          {
                             "title": "setAggressive",
                             "type": "action",
                             "name": "setAggressive",

@@ -87,6 +87,16 @@
               "parameters": {
                 "name": {"value": "invulnerable"}
               }
+            },
+            {
+              "title": "animate",
+              "type": "action",
+              "name": "animate",
+              "parameters": {
+                "state": {"value": "closed"},
+                "type": {"value": "blink"},
+                "fallback": {"value": "opennoroar"}
+              }
             }
             /* {
               "title": "eyeboss-idle",
@@ -100,29 +110,20 @@
         }
       },
       {
-        "title": "timer",
-        "type": "action",
-        "name": "timer",
-        "parameters": {
-          "time": {"value": 1.0}
-        }
-      },
-      {
-        "title": "setAnimationState",
-        "type": "action",
-        "name": "setAnimationState",
-        "parameters": {
-          "state": {"value": "opennoroar"},
-          "type": {"value": "blink"}
-        }
-      },
-      {
         "title": "setLightActive",
         "type": "action",
         "name": "setLightActive",
         "parameters": {
           "active": {"value": true},
           "light": {"value": "glow"}
+        }
+      },
+      {
+        "title": "timer",
+        "type": "action",
+        "name": "timer",
+        "parameters": {
+          "time": {"value": 1.0}
         }
       },
       {
