@@ -459,7 +459,7 @@
                  "name":"",
                  "properties":
                     {
-                     "object":"ruin-bosstentacle2",
+                     "object":"bosstentacle",
                      "parameters":"{\"uniqueId\" : \"tentacleright2\"}"
                     },
                  "propertytypes":
@@ -481,7 +481,7 @@
                  "name":"",
                  "properties":
                     {
-                     "object":"ruin-bosstentacle2",
+                     "object":"bosstentacle",
                      "parameters":"{\"uniqueId\" : \"tentacleleft2\"}"
                     },
                  "propertytypes":
@@ -841,18 +841,6 @@
                  "width":8,
                  "x":3144,
                  "y":288
-                }, 
-                {
-                 "gid":201,
-                 "height":8,
-                 "id":1222,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":8,
-                 "x":976,
-                 "y":888
                 }],
          "opacity":1,
          "type":"objectgroup",

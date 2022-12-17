@@ -7,7 +7,10 @@ function init()
   self.width = config.getParameter("objectWidth")
   self.monsters = {}
 
-  message.setHandler("triggerSpawner", function(arg1, arg2, spawnerName) triggerSpawner(spawnerName) end)
+  message.setHandler("triggerSpawner", function(_, _, spawnerName) triggerSpawner(spawnerName) end)
+  message.setHandler("activateSpawner", function(_, _, spawnerName) 
+    animator.setAnimationState(spawnerName, "pulse")
+  end)
   message.setHandler("reset", reset)
 end
 
@@ -15,7 +18,6 @@ function update(dt)
   for spawnerName, spawn in pairs(self.spawners) do
     if spawn ~= nil and coroutine.status(spawn) == "dead" then
       self.spawners[spawnerName] = nil
-      animator.setAnimationState(spawnerName, "idle")
     else
       local status, result = coroutine.resume(spawn)
       if not status then error(result) end
@@ -46,7 +48,6 @@ end
 function triggerSpawner(spawnerName)
   local spawner = self.spawnerConfig[spawnerName]
   local position = absolutePosition(spawner.offset, self.width)
-  animator.setAnimationState(spawnerName, "pulse")
 
   local parameters = {
     aggressive = true,

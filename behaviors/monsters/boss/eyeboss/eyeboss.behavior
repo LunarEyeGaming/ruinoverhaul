@@ -863,52 +863,10 @@
                                     "parameters": {},
                                     "children": [
                                       {
-                                        "title": "succeeder",
-                                        "type": "decorator",
-                                        "name": "succeeder",
-                                        "parameters": {},
-                                        "child": {
-                                          "title": "each",
-                                          "type": "decorator",
-                                          "name": "each",
-                                          "parameters": {
-                                            "list": {"key": "monsters"},
-                                            "type": {"value": "entity"}
-                                          },
-                                          "child": {
-                                            "title": "succeeder",
-                                            "type": "decorator",
-                                            "name": "succeeder",
-                                            "parameters": {},
-                                            "child": {
-                                              "title": "sendEntityMessage",
-                                              "type": "action",
-                                              "name": "sendEntityMessage",
-                                              "parameters": {
-                                                "entity": {"key": "eachItem"},
-                                                "message": {"value": "despawn"}
-                                              }
-                                            }
-                                          }
-                                        }
-                                      },
-                                      {
-                                        "title": "sendEntityMessage",
-                                        "type": "action",
-                                        "name": "sendEntityMessage",
-                                        "parameters": {
-                                          "entity": {"key": "rightspawner"},
-                                          "message": {"value": "reset"}
-                                        }
-                                      },
-                                      {
-                                        "title": "sendEntityMessage",
-                                        "type": "action",
-                                        "name": "sendEntityMessage",
-                                        "parameters": {
-                                          "entity": {"key": "leftspawner"},
-                                          "message": {"value": "reset"}
-                                        }
+                                        "title": "eyeboss-reset",
+                                        "type": "module",
+                                        "name": "eyeboss-reset",
+                                        "parameters": { }
                                       },
                                       {
                                         "title": "eyeboss-roar",
@@ -1055,52 +1013,10 @@
                                     "parameters": {},
                                     "children": [
                                       {
-                                        "title": "succeeder",
-                                        "type": "decorator",
-                                        "name": "succeeder",
-                                        "parameters": {},
-                                        "child": {
-                                          "title": "each",
-                                          "type": "decorator",
-                                          "name": "each",
-                                          "parameters": {
-                                            "list": {"key": "monsters"},
-                                            "type": {"value": "entity"}
-                                          },
-                                          "child": {
-                                            "title": "succeeder",
-                                            "type": "decorator",
-                                            "name": "succeeder",
-                                            "parameters": {},
-                                            "child": {
-                                              "title": "sendEntityMessage",
-                                              "type": "action",
-                                              "name": "sendEntityMessage",
-                                              "parameters": {
-                                                "entity": {"key": "eachItem"},
-                                                "message": {"value": "despawn"}
-                                              }
-                                            }
-                                          }
-                                        }
-                                      },
-                                      {
-                                        "title": "sendEntityMessage",
-                                        "type": "action",
-                                        "name": "sendEntityMessage",
-                                        "parameters": {
-                                          "entity": {"key": "rightspawner"},
-                                          "message": {"value": "reset"}
-                                        }
-                                      },
-                                      {
-                                        "title": "sendEntityMessage",
-                                        "type": "action",
-                                        "name": "sendEntityMessage",
-                                        "parameters": {
-                                          "entity": {"key": "leftspawner"},
-                                          "message": {"value": "reset"}
-                                        }
+                                        "title": "eyeboss-reset",
+                                        "type": "module",
+                                        "name": "eyeboss-reset",
+                                        "parameters": { }
                                       },
                                       {
                                         "title": "eyeboss-roar",
@@ -1127,7 +1043,7 @@
                                               "type": "module",
                                               "name": "eyeboss-portal3",
                                               "parameters": {
-                                                "attackTime": {"value": 20}
+                                                "attackTime": {"value": 13}
                                               }
                                             },
                                             {
@@ -1142,7 +1058,9 @@
                                                   "name": "sendEntityMessage",
                                                   "parameters": {
                                                     "entity": {"key": "tentacleleft"},
-                                                    "message": {"value": "attack"}
+                                                    "message": {"value": "attack"},
+                                                    "arguments": {"value": [3.0, 3.0, 1.0, -720,
+                                                        ["/sfx/npc/boss/ruin-tentacleboss_tentacle_windup3.ogg"]]}
                                                   }
                                                 },
                                                 {
@@ -1151,7 +1069,9 @@
                                                   "name": "sendEntityMessage",
                                                   "parameters": {
                                                     "entity": {"key": "tentacleright"},
-                                                    "message": {"value": "attack"}
+                                                    "message": {"value": "attack"},
+                                                    "arguments": {"value": [3.0, 3.0, 1.0, -720,
+                                                        ["/sfx/npc/boss/ruin-tentacleboss_tentacle_windup3.ogg"]]}
                                                   }
                                                 }
                                               ]
@@ -1161,7 +1081,9 @@
                                               "type": "module",
                                               "name": "eyeboss-talltentacles",
                                               "parameters": {
-                                                "attackTime": {"value": 10}
+                                                "attackTime": {"value": 9},
+                                                "volleyWaitTime": {"value": 1.5},
+                                                "volleyInterval": {"value": 0.5}
                                               }
                                             },
                                             {
@@ -1258,30 +1180,10 @@
                     }
                   },
                   {
-                    "title": "sequence",
-                    "type": "composite",
-                    "name": "sequence",
-                    "parameters": {},
-                    "children": [
-                      {
-                        "title": "sendEntityMessage",
-                        "type": "action",
-                        "name": "sendEntityMessage",
-                        "parameters": {
-                          "entity": {"key": "rightspawner"},
-                          "message": {"value": "reset"}
-                        }
-                      },
-                      {
-                        "title": "sendEntityMessage",
-                        "type": "action",
-                        "name": "sendEntityMessage",
-                        "parameters": {
-                          "entity": {"key": "leftspawner"},
-                          "message": {"value": "reset"}
-                        }
-                      }
-                    ]
+                    "title": "eyeboss-reset",
+                    "type": "module",
+                    "name": "eyeboss-reset",
+                    "parameters": { }
                   },
                   {
                     "title": "clearPersistentEffects",
@@ -1333,36 +1235,6 @@
                     "name": "battleMusic",
                     "parameters": {
                       "enable": {"value": false}
-                    }
-                  },
-                  {
-                    "title": "succeeder",
-                    "type": "decorator",
-                    "name": "succeeder",
-                    "parameters": {},
-                    "child": {
-                      "title": "each",
-                      "type": "decorator",
-                      "name": "each",
-                      "parameters": {
-                        "list": {"key": "monsters"},
-                        "type": {"value": "entity"}
-                      },
-                      "child": {
-                        "title": "succeeder",
-                        "type": "decorator",
-                        "name": "succeeder",
-                        "parameters": {},
-                        "child": {
-                          "title": "sendEntityMessage",
-                          "type": "action",
-                          "name": "sendEntityMessage",
-                          "parameters": {
-                            "entity": {"key": "eachItem"},
-                            "message": {"value": "despawn"}
-                          }
-                        }
-                      }
                     }
                   },
                   {
@@ -1674,7 +1546,7 @@
                         "type": "module",
                         "name": "eyeboss-idle",
                         "parameters": {
-                          "idleTime": {"value": 2147483648}
+                          "idleTime": {"value": 2147483647}
                         }
                       },
                       {
@@ -1710,60 +1582,10 @@
                             }
                           },
                           {
-                            "title": "succeeder",
-                            "type": "decorator",
-                            "name": "succeeder",
-                            "parameters": {},
-                            "child": {
-                              "title": "each",
-                              "type": "decorator",
-                              "name": "each",
-                              "parameters": {
-                                "list": {"key": "monsters"},
-                                "type": {"value": "entity"}
-                              },
-                              "child": {
-                                "title": "succeeder",
-                                "type": "decorator",
-                                "name": "succeeder",
-                                "parameters": {},
-                                "child": {
-                                  "title": "sendEntityMessage",
-                                  "type": "action",
-                                  "name": "sendEntityMessage",
-                                  "parameters": {
-                                    "entity": {"key": "eachItem"},
-                                    "message": {"value": "despawn"}
-                                  }
-                                }
-                              }
-                            }
-                          },
-                          {
-                            "title": "sequence",
-                            "type": "composite",
-                            "name": "sequence",
-                            "parameters": {},
-                            "children": [
-                              {
-                                "title": "sendEntityMessage",
-                                "type": "action",
-                                "name": "sendEntityMessage",
-                                "parameters": {
-                                  "entity": {"key": "rightspawner"},
-                                  "message": {"value": "reset"}
-                                }
-                              },
-                              {
-                                "title": "sendEntityMessage",
-                                "type": "action",
-                                "name": "sendEntityMessage",
-                                "parameters": {
-                                  "entity": {"key": "leftspawner"},
-                                  "message": {"value": "reset"}
-                                }
-                              }
-                            ]
+                            "title": "eyeboss-reset",
+                            "type": "module",
+                            "name": "eyeboss-reset",
+                            "parameters": { }
                           },
                           {
                             "title": "clearPersistentEffects",

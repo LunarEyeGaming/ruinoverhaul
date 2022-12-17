@@ -1,0 +1,200 @@
+{
+  "name": "eyeboss-spawnertelegraphs",
+  "description": "",
+  "scripts": [
+    "/scripts/actions/status.lua",
+    "/scripts/actions/world.lua"
+  ],
+  "parameters": {
+    "phase3": 0.5
+  },
+  "root": {
+    "title": "succeeder",
+    "type": "decorator",
+    "name": "succeeder",
+    "parameters": {},
+    "child": {
+      "title": "sequence",
+      "type": "composite",
+      "name": "sequence",
+      "parameters": {},
+      "children": [
+        {
+          "title": "sendEntityMessage",
+          "type": "action",
+          "name": "sendEntityMessage",
+          "parameters": {
+            "arguments": {"value": ["blob1"]},
+            "entity": {"key": "rightspawner"},
+            "message": {"value": "activateSpawner"}
+          }
+        },
+        {
+          "title": "sendEntityMessage",
+          "type": "action",
+          "name": "sendEntityMessage",
+          "parameters": {
+            "arguments": {"value": ["blob2"]},
+            "entity": {"key": "rightspawner"},
+            "message": {"value": "activateSpawner"}
+          }
+        },
+        {
+          "title": "sendEntityMessage",
+          "type": "action",
+          "name": "sendEntityMessage",
+          "parameters": {
+            "arguments": {"value": ["blob3"]},
+            "entity": {"key": "rightspawner"},
+            "message": {"value": "activateSpawner"}
+          }
+        },
+        {
+          "title": "sendEntityMessage",
+          "type": "action",
+          "name": "sendEntityMessage",
+          "parameters": {
+            "arguments": {"value": ["blob1"]},
+            "entity": {"key": "leftspawner"},
+            "message": {"value": "activateSpawner"}
+          }
+        },
+        {
+          "title": "sendEntityMessage",
+          "type": "action",
+          "name": "sendEntityMessage",
+          "parameters": {
+            "arguments": {"value": ["blob2"]},
+            "entity": {"key": "leftspawner"},
+            "message": {"value": "activateSpawner"}
+          }
+        },
+        {
+          "title": "sendEntityMessage",
+          "type": "action",
+          "name": "sendEntityMessage",
+          "parameters": {
+            "arguments": {"value": ["blob3"]},
+            "entity": {"key": "leftspawner"},
+            "message": {"value": "activateSpawner"}
+          }
+        },
+        {
+          "title": "sendEntityMessage",
+          "type": "action",
+          "name": "sendEntityMessage",
+          "parameters": {
+            "arguments": {"value": ["blob4"]},
+            "entity": {"key": "rightspawner"},
+            "message": {"value": "activateSpawner"}
+          }
+        },
+        {
+          "title": "sendEntityMessage",
+          "type": "action",
+          "name": "sendEntityMessage",
+          "parameters": {
+            "arguments": {"value": ["blob5"]},
+            "entity": {"key": "rightspawner"},
+            "message": {"value": "activateSpawner"}
+          }
+        },
+        {
+          "title": "sendEntityMessage",
+          "type": "action",
+          "name": "sendEntityMessage",
+          "parameters": {
+            "arguments": {"value": ["blob4"]},
+            "entity": {"key": "leftspawner"},
+            "message": {"value": "activateSpawner"}
+          }
+        },
+        {
+          "title": "sendEntityMessage",
+          "type": "action",
+          "name": "sendEntityMessage",
+          "parameters": {
+            "arguments": {"value": ["blob5"]},
+            "entity": {"key": "leftspawner"},
+            "message": {"value": "activateSpawner"}
+          }
+        },
+        {
+          "title": "inverter",
+          "type": "decorator",
+          "name": "inverter",
+          "parameters": {},
+          "child": {
+            "title": "resourcePercentage",
+            "type": "action",
+            "name": "resourcePercentage",
+            "parameters": {
+              "percentage": {"key": "<phase3>"},
+              "resource": {"value": "health"}
+            }
+          }
+        },
+        {
+          "title": "sendEntityMessage",
+          "type": "action",
+          "name": "sendEntityMessage",
+          "parameters": {
+            "arguments": {"value": ["blob6"]},
+            "entity": {"key": "rightspawner"},
+            "message": {"value": "activateSpawner"}
+          }
+        },
+        {
+          "title": "sendEntityMessage",
+          "type": "action",
+          "name": "sendEntityMessage",
+          "parameters": {
+            "arguments": {"value": ["blob7"]},
+            "entity": {"key": "rightspawner"},
+            "message": {"value": "activateSpawner"}
+          }
+        },
+        {
+          "title": "sendEntityMessage",
+          "type": "action",
+          "name": "sendEntityMessage",
+          "parameters": {
+            "arguments": {"value": ["blob8"]},
+            "entity": {"key": "rightspawner"},
+            "message": {"value": "activateSpawner"}
+          }
+        },
+        {
+          "title": "sendEntityMessage",
+          "type": "action",
+          "name": "sendEntityMessage",
+          "parameters": {
+            "arguments": {"value": ["blob6"]},
+            "entity": {"key": "leftspawner"},
+            "message": {"value": "activateSpawner"}
+          }
+        },
+        {
+          "title": "sendEntityMessage",
+          "type": "action",
+          "name": "sendEntityMessage",
+          "parameters": {
+            "arguments": {"value": ["blob7"]},
+            "entity": {"key": "leftspawner"},
+            "message": {"value": "activateSpawner"}
+          }
+        },
+        {
+          "title": "sendEntityMessage",
+          "type": "action",
+          "name": "sendEntityMessage",
+          "parameters": {
+            "arguments": {"value": ["blob8"]},
+            "entity": {"key": "leftspawner"},
+            "message": {"value": "activateSpawner"}
+          }
+        }
+      ]
+    }
+  }
+}

@@ -20,7 +20,8 @@
     "tentacleIntervalDelta": 0.08,
     "tentacleMinX": -54,
     "tentacleMaxX": 54,
-    "attackTime": 20,
+    "attackTime": 13,
+    "portalCloseDelay": 2,
     "radialVacuumConfig": {"timeToLive": 20},
     "rotateRate": 0.5
   },
@@ -151,14 +152,6 @@
                 },
                 "children": [
                   {
-                    "title": "timer",
-                    "type": "action",
-                    "name": "timer",
-                    "parameters": {
-                      "time": {"value": "<attackTime>"}
-                    }
-                  },
-                  {
                     "title": "emitParticles",
                     "type": "action",
                     "name": "emitParticles",
@@ -267,74 +260,109 @@
                     }
                   },
                   {
-                    "title": "failer",
-                    "type": "decorator",
-                    "name": "failer",
+                    "title": "sequence",
+                    "type": "composite",
+                    "name": "sequence",
                     "parameters": {},
-                    "child": {
-                      "title": "sequence",
-                      "type": "composite",
-                      "name": "sequence",
-                      "parameters": {},
-                      "children": [
-                        {
-                          "title": "random",
-                          "type": "action",
-                          "name": "random",
-                          "parameters": {
-                            "min": {"value": "<tentacleMinX>"},
-                            "max": {"value": "<tentacleMaxX>"}
+                    "children": [
+                      {
+                        "title": "parallel",
+                        "type": "composite",
+                        "name": "parallel",
+                        "parameters": {
+                          "fail": {"value": -1},
+                          "success": {"value": 1}
+                        },
+                        "children": [
+                          {
+                            "title": "failer",
+                            "type": "decorator",
+                            "name": "failer",
+                            "parameters": {},
+                            "child": {
+                              "title": "sequence",
+                              "type": "composite",
+                              "name": "sequence",
+                              "parameters": {},
+                              "children": [
+                                {
+                                  "title": "random",
+                                  "type": "action",
+                                  "name": "random",
+                                  "parameters": {
+                                    "min": {"value": "<tentacleMinX>"},
+                                    "max": {"value": "<tentacleMaxX>"}
+                                  },
+                                  "output": {
+                                    "number": "xOffset"
+                                  }
+                                },
+                                {
+                                  "title": "spawnProjectile",
+                                  "type": "action",
+                                  "name": "spawnProjectile",
+                                  "parameters": {
+                                    "aimVector": {"value": [0, 0]},
+                                    "offset": {"value": ["xOffset", -30]},
+                                    "position": {"key": "self"},
+                                    "projectileConfig": {"value": {"power": 20}},
+                                    "projectileType": {"value": "ruin-talltentacletele"},
+                                    "scalePower": {"value": true},
+                                    "sourceEntity": {"key": "self"},
+                                    "trackSource": {"value": false}
+                                  }
+                                },
+                                {
+                                  "title": "timer",
+                                  "type": "action",
+                                  "name": "timer",
+                                  "parameters": {
+                                    "time": {"key": "interval"}
+                                  }
+                                },
+                                {
+                                  "title": "greaterThan",
+                                  "type": "action",
+                                  "name": "greaterThan",
+                                  "parameters": {
+                                    "first": {"key": "interval"},
+                                    "second": {"value": "<minTentacleInterval>"}
+                                  }
+                                },
+                                {
+                                  "title": "sub",
+                                  "type": "action",
+                                  "name": "sub",
+                                  "parameters": {
+                                    "first": {"key": "interval"},
+                                    "second": {"value": "<tentacleIntervalDelta>"}
+                                  },
+                                  "output": {
+                                    "result": "interval"
+                                  }
+                                }
+                              ]
+                            }
                           },
-                          "output": {
-                            "number": "xOffset"
+                          {
+                            "title": "timer",
+                            "type": "action",
+                            "name": "timer",
+                            "parameters": {
+                              "time": {"value": "<attackTime>"}
+                            }
                           }
-                        },
-                        {
-                          "title": "spawnProjectile",
-                          "type": "action",
-                          "name": "spawnProjectile",
-                          "parameters": {
-                            "aimVector": {"value": [0, 0]},
-                            "offset": {"value": ["xOffset", -30]},
-                            "position": {"key": "self"},
-                            "projectileConfig": {"value": {"power": 20}},
-                            "projectileType": {"value": "ruin-talltentacletele"},
-                            "scalePower": {"value": true},
-                            "sourceEntity": {"key": "self"},
-                            "trackSource": {"value": false}
-                          }
-                        },
-                        {
-                          "title": "timer",
-                          "type": "action",
-                          "name": "timer",
-                          "parameters": {
-                            "time": {"key": "interval"}
-                          }
-                        },
-                        {
-                          "title": "greaterThan",
-                          "type": "action",
-                          "name": "greaterThan",
-                          "parameters": {
-                            "first": {"key": "interval"},
-                            "second": {"value": "<minTentacleInterval>"}
-                          }
-                        },
-                        {
-                          "title": "sub",
-                          "type": "action",
-                          "name": "sub",
-                          "parameters": {
-                            "first": {"key": "interval"},
-                            "second": {"value": "<tentacleIntervalDelta>"}
-                          },
-                          "output": {
-                            "result": "interval"
-                          }
+                        ]
+                      },
+                      {
+                        "title": "timer",
+                        "type": "action",
+                        "name": "timer",
+                        "parameters": {
+                          "time": {"value": "<portalCloseDelay>"}
                         }
-                      ]
-                    }
+                      }
+                    ]
                   }
                 ]
               }

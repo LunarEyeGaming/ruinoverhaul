@@ -46,7 +46,6 @@
   "damageKind" : "plasma",
 
   "speed" : 25,
-
-  "scripts" : [ "/projectiles/tracksourcestatus.lua" ],
-  "scriptDelta" : 1
+  
+  "scripts" : ["/projectiles/killable.lua"]
 }

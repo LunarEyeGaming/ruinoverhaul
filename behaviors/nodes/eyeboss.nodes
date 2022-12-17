@@ -49,7 +49,7 @@
     "name": "spawnMonsterGroup",
     "title": "spawnMonsterGroup",
     "properties": {
-      "offsetRegion": {"type": "json", "value": [-4, -14, 4, -4]},
+      "offsetRegion": {"type": "list", "value": [-4, -14, 4, -4]},
       "windup": {"type": "number", "value": 1.5}
     },
     "category": "eyeboss",
@@ -81,6 +81,33 @@
       "spawnHeight": {"type": "number", "value": 0},
       "teleDuration": {"type": "number", "value": null},
       "postTeleDelay": {"type": "number", "value": null}
+    },
+    "category": "eyeboss",
+    "script": "/scripts/actions/boss/eyeboss.lua",
+    "output": {
+      "projectiles": {"type": "list", "key": null}
+    }
+  },
+  "ruin_tentacleAttack": {
+    "type": "action",
+    "name": "spawnFloorProjectiles",
+    "title": "spawnFloorProjectiles",
+    "properties": {
+      "phase1": {"type": "number", "value": 0.875},
+      "phase2": {"type": "number", "value": 0.75},
+      "phase3": {"type": "number", "value": 0.5},
+      "tentacle1": {"type": "string", "value": null},
+      "tentacle2": {"type": "string", "value": null},
+      "otherTentacle1": {"type": "string", "value": null},
+      "otherTentacle2": {"type": "string", "value": null},
+      "windupTime": {"type": "number", "value": 4.0},
+      "attackTime": {"type": "number", "value": 3.0},
+      "windupSoundPool": {"type": "list", "value": ["/sfx/npc/boss/tentacleboss_tentacle_windup.ogg"]},
+      "reEmergeWindupTime": {"type": "number", "value": 2.0},
+      "reEmergeDelay": {"type": "number", "value": 0.75},
+      "reEmergeWindupSoundPool": {"type": "list", "value": ["/sfx/npc/boss/ruin-tentacleboss_tentacle_windup2.ogg"]},
+      "retractDelay": {"type": "number", "value": 1.0},
+      "otherTentacleDelay": {"type": "number", "value": 5.0}
     },
     "category": "kluexboss",
     "script": "/scripts/actions/boss/kluexboss.lua",

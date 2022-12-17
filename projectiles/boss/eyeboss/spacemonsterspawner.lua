@@ -2,12 +2,20 @@ require "/scripts/interp.lua"
 require "/scripts/util.lua"
 require "/scripts/vec2.lua"
 
+local shouldSpawn
+
 function init()
   self.travelTime = config.getParameter("travelTime")
   self.travelTimer = self.travelTime
 
   self.initialPosition = mcontroller.position()
   self.targetPosition = config.getParameter("targetPosition")
+  shouldSpawn = true
+  
+  message.setHandler("kill", function()
+    projectile.die()
+    shouldSpawn = false
+  end)
 end
 
 function sourceEntityAlive()
@@ -34,7 +42,7 @@ function update(dt)
 end
 
 function destroy()
-  if not sourceEntityAlive() then
+  if not sourceEntityAlive() or not shouldSpawn then
     return
   end
 

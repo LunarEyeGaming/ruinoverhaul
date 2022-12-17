@@ -27,7 +27,7 @@
           "type": "action",
           "name": "timer",
           "parameters": {
-            "time": {"value": 8.0}
+            "time": {"value": 12.0}
           }
         },
         {

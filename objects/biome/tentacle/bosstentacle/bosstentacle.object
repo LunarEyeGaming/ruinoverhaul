@@ -51,6 +51,8 @@
   },
   "floorDebrisAngle" : 270,
   "windupDebrisAngle" : 135,
+  
+  "windupSoundPool" : [ "/sfx/npc/boss/tentacleboss_tentacle_windup.ogg" ],
 
   "damageAngle" : 270,
   "damageConfig" : {

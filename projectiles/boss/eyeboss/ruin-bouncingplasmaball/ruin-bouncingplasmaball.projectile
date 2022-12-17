@@ -96,7 +96,7 @@
     }
   ],
   
-  "actionOnReap" : [
+  "actionOnTimeout" : [
     {
       "action" : "projectile",
       "type" : "ruin-explodingplasmaball",

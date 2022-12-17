@@ -53,6 +53,12 @@
         }
       },
       {
+        "title": "eyeboss-spawnertelegraphs",
+        "type": "module",
+        "name": "eyeboss-spawnertelegraphs",
+        "parameters": {}
+      },
+      {
         "title": "succeeder",
         "type": "decorator",
         "name": "succeeder",

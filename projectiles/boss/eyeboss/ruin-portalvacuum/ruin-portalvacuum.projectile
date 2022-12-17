@@ -26,5 +26,7 @@
     }
   },
 
-  "clientEntityMode" : "ClientSlaveOnly"
+  "clientEntityMode" : "ClientSlaveOnly",
+  
+  "scripts" : ["/projectiles/killable.lua"]
 }

@@ -625,7 +625,7 @@
       "emissionRate" : 2,
       "transformationGroups" : [ "shaftemitter" ],
       "particles" : [
-        { "count" : 1, "offset" : [35.4375, 0], "particle" : "shaft" }
+        { "count" : 1, "particle" : "shaft" }
       ]
     },
     "wind" : {

@@ -24,9 +24,6 @@ function tentacleMovement(args, board, _, dt)
   local times = util.rep(function() return util.randomInRange(args.timeRange) end, args.tentacleCount)
 
   local timers = util.rep(function() return 0 end, args.tentacleCount)  -- Timers to track movement progress
-
-  sb.logInfo("initialAngles: %s", args.initialAngles)
-  sb.logInfo("initialScales: %s", args.initialScales)
   
   local oldAngles  -- Angles from previous movement
   if args.initialAngles then
@@ -43,6 +40,9 @@ function tentacleMovement(args, board, _, dt)
   local scales = util.rep(function() return util.randomInRange(args.scaleRange) end, 6)  -- Target scales
   
   while true do
+    local intermediateScales = {}
+    local intermediateAngles = {}
+  
     for i = 1, args.tentacleCount do
       if timers[i] >= times[i] then
         -- Reset timers, randomize times and angles, and save old angles.
@@ -58,21 +58,27 @@ function tentacleMovement(args, board, _, dt)
 
       timers[i] = timers[i] + dt
       
+      local scale = util.easeInOutSin(timers[i] / times[i], oldScales[i], scales[i] - oldScales[i])
+      local angle = util.easeInOutSin(timers[i] / times[i], oldAngles[i], angles[i] - oldAngles[i])
+      
       animator.resetTransformationGroup("tentacle"..i)
       animator.scaleTransformationGroup(
         "tentacle"..i,
-        {1, util.easeInOutSin(timers[i] / times[i], oldScales[i], scales[i] - oldScales[i])},
+        {1, scale},
         args.tentaclePivots[i]
       )
       animator.rotateTransformationGroup(
         "tentacle"..i,
-        util.easeInOutSin(timers[i] / times[i], oldAngles[i], angles[i] - oldAngles[i]),
+        angle,
         args.tentaclePivots[i]
       )
+      
+      table.insert(intermediateScales, scale)
+      table.insert(intermediateAngles, angle)
     end
     
-    dt = coroutine.yield(nil, {scales = scales,
-                               angles = util.map(angles, function(angle) return util.toDegrees(angle) end)})
+    dt = coroutine.yield(nil, {scales = intermediateScales,
+                               angles = util.map(intermediateAngles, function(angle) return util.toDegrees(angle) end)})
   end
 end
 
@@ -132,13 +138,15 @@ function spawnMonsterGroup(args, board, _, dt)
       local spawnPosition = vec2.add(mcontroller.position(), spawnOffset)
       local targetPosition = vec2.add(mcontroller.position(), targetOffset)
 
-      world.spawnProjectile("spacemonsterspawner", spawnPosition, entity.id(), world.distance(targetPosition, spawnPosition), false, {
+      world.spawnProjectile("spacemonsterspawner", spawnPosition, entity.id(), world.distance(targetPosition,
+            spawnPosition), false, {
         monsterType = monsterGroup.type,
         monsterLevel = monster.level(),
         targetPosition = targetPosition,
         onGround = monsterGroup.onGround
       })
-      coroutine.yield()
+
+      coroutine.yield()  -- So that the spawners burst one by one
     end
   end
 
@@ -226,4 +234,70 @@ function ruin_spawnFloorProjectiles(args, board)
   end
 
   return true, {projectiles = projectiles}
+end
+
+-- An attack that makes giant tentacles drill through sectors of the arena. In phase 1, one tentacle drills. In phase 2,
+-- the tentacle re-emerges to drill a larger sector. In phase 3, another tentacle appears on the other side. In phase 4,
+-- the other tentacle re-emerges in the same manner as previously described. In addition, the tentacles will complete
+-- their attacks faster. All time-based parameters are measured in seconds.
+-- param phase1 - The minimum health percentage of phase 1
+-- param phase2 - The minimum health percentage of phase 2
+-- param phase3 - The minimum health percentage of phase 3
+-- param tentacle1 - The unique ID of the tentacle
+-- param tentacle2 - The unique ID of the re-emerging component of the tentacle
+-- param otherTentacle1 - The unique ID of the tentacle on the other side
+-- param otherTentacle2 - The unique ID of the re-emerging component of the tentacle on the other side
+-- param windupTime - The windup time of the tentacle
+-- param attackTime - The attack time of the tentacle and the re-emerging segment of it
+-- param windupSoundPool - The windup sound pool of the tentacle
+-- param reEmergeWindupTime - The windup time of the re-emerging segment of the tentacle
+-- param reEmergeDelay - The amount of time to wait after emerging the first segment of the tentacle to activate the 
+--                       second segment of the tentacle
+-- param reEmergeWindupSoundPool - The windup sound pool of the re-emerging segment of the tentacle
+-- param retractDelay - The amount of time to wait after drilling before retracting the tentacle
+-- param otherTentacleDelay - The amount of time to wait before activating the other tentacle
+function ruin_tentacleAttack(args, board)
+  -- TODO: Make this not hardcoded
+  local windupTime = 4.0
+  local attackTime = 3.0
+  local windupSoundPool = {"/sfx/npc/boss/tentacleboss_tentacle_windup.ogg"}
+  
+  local reEmergeWindupTime = 2.0
+  local reEmergeDelay = 0.75
+  local reEmergeWindupSoundPool = {"/sfx/npc/boss/ruin-tentacleboss_tentacle_windup2.ogg"}
+  local retractDelay = 1.0
+
+  if status.resourcePercentage("health") >= args.phase1 then
+    world.sendEntityMessage(args.tentacle1, "attack")
+  else
+    -- -1440 = 2 * -720 (b/c it attacks for about two times longer)
+    world.sendEntityMessage(args.tentacle1, "attack", args.windupTime, args.attackTime + args.reEmergeWindupTime 
+        + args.reEmergeDelay, args.retractDelay, -1440, args.windupSoundPool)
+
+    util.run(args.windupTime + args.reEmergeDelay, function() end)
+    
+    world.sendEntityMessage(args.tentacle2, "attack", args.reEmergeWindupTime, args.attackTime, args.retractDelay, nil,
+        args.reEmergeWindupSoundPool)
+
+    util.run(args.otherTentacleDelay, function() end)
+    
+    if status.resourcePercentage("health") < args.phase2 then
+      if status.resourcePercentage("health") >= args.phase3 then
+        world.sendEntityMessage(args.otherTentacle1, "attack")
+      else
+        -- -1440 = 2 * -720 (b/c it attacks for about two times longer)
+        world.sendEntityMessage(args.otherTentacle1, "attack", args.windupTime, args.attackTime 
+            + args.reEmergeWindupTime + args.reEmergeDelay, nil, -1440, args.windupSoundPool)
+
+        util.run(args.windupTime + args.reEmergeDelay, function() end)
+        
+        world.sendEntityMessage(args.otherTentacle2, "attack", args.reEmergeWindupTime, args.attackTime,
+            args.retractDelay, nil, args.reEmergeWindupSoundPool)
+      end
+    end
+  end
+  
+  util.run(windupTime + attackTime * 2 + retractDelay)
+  
+  return true
 end

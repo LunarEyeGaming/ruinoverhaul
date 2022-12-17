@@ -9,7 +9,10 @@
     "/scripts/actions/world.lua"
   ],
   "parameters": {
-    "attackTime": 4
+    "attackTime": 4,  // The duration for which the attack lasts
+    "volleyWaitTime": 2.0,  // The amount of time to wait between volleys
+    "volleyCount": 5,  // The number of tentacles in a volley
+    "volleyInterval": 0.66  // The interval at which tentacles spawn within a volley
   },
   "root": {
     "title": "parallel",
@@ -21,11 +24,11 @@
     },
     "children": [
       {
-        "title": "timer",
-        "type": "action",
-        "name": "timer",
+        "title": "eyeboss-idle",
+        "type": "module",
+        "name": "eyeboss-idle",
         "parameters": {
-          "time": {"value": "<attackTime>"}
+          "idleTime": {"value": "<attackTime>"}
         }
       },
       {
@@ -44,7 +47,7 @@
               "type": "decorator",
               "name": "repeater",
               "parameters": {
-                "maxLoops": {"value": 5}
+                "maxLoops": {"value": "<volleyCount>"}
               },
               "child": {
                 "title": "sequence",
@@ -128,7 +131,7 @@
                     "type": "action",
                     "name": "timer",
                     "parameters": {
-                      "time": {"value": 0.66}
+                      "time": {"value": "<volleyInterval>"}
                     }
                   }
                 ]
@@ -139,18 +142,10 @@
               "type": "action",
               "name": "timer",
               "parameters": {
-                "time": {"value": 2.0}
+                "time": {"value": "<volleyWaitTime>"}
               }
             }
           ]
-        }
-      },
-      {
-        "title": "eyeboss-idle",
-        "type": "module",
-        "name": "eyeboss-idle",
-        "parameters": {
-          "idleTime": {"value": 99999}
         }
       }
     ]

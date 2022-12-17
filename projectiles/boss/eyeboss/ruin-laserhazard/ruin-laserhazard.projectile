@@ -1,7 +1,7 @@
 {
   "projectileName" : "ruin-laserhazard",
   "image" : "/projectiles/invisibleprojectile/invisibleprojectile.png",
-  "timeToLive" : 15,
+  "timeToLive" : 13,
   "animationCycle" : 1,
   "frameNumber" : 1,
   "speed" : 0,
@@ -30,5 +30,7 @@
         }
       }
     }
-  ]
+  ],
+  
+  "scripts" : ["/projectiles/killable.lua"]
 }

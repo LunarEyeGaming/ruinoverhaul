@@ -41,6 +41,8 @@ function init()
   
   hasTriggeredBounce = false
   hasBounced = false
+  
+  message.setHandler("kill", projectile.die)
 end
 
 --[[

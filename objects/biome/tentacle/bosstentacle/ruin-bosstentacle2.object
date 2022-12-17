@@ -24,7 +24,7 @@
     }
   ],
 
-  "animation" : "ruin-bosstentacle2.animation",
+  "animation" : "bosstentacle.animation",
   "animationPosition" : [0, -24],
   "animationParts" : {
     "tip" : "tip.png",
@@ -51,6 +51,8 @@
   },
   "floorDebrisAngle" : 270,
   "windupDebrisAngle" : 135,
+  
+  "windupSoundPool" : [ "/sfx/npc/boss/ruin-tentacleboss_tentacle_windup2.ogg" ],
 
   "damageAngle" : 270,
   "damageConfig" : {

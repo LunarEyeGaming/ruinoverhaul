@@ -8,7 +8,7 @@
   "fullbright" : true,
   "piercing" : true,
   "animationCycle" : 0.375,
-  "lightColor" : [54, 17, 74],
+  "lightColor" : [96, 33, 131],
   "frameNumber" : 4,
   "power" : 50,
   "damagePoly" : [ [-37, 0], [-5, -5], [0, -37], [5, -5], [37, 0], [5, 5], [0, 37], [-5, 5] ],
@@ -51,5 +51,7 @@
         "destructionTime" : 0.1
       }
     }
-  ]
+  ],
+  
+  "scripts" : ["/projectiles/killable.lua"]
 }
