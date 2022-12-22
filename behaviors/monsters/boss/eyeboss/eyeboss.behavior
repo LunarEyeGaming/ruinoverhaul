@@ -1123,12 +1123,6 @@
                                         }
                                       }
                                     ]
-                                  },
-                                  {
-                                    "title": "eyeboss-resistance",
-                                    "type": "module",
-                                    "name": "eyeboss-resistance",
-                                    "parameters": {}
                                   }
                                 ]
                               }

@@ -725,7 +725,8 @@
             "destructionAction" : "shrink",
             "destructionTime" : 2.5,
             "layer" : "middle",
-            "fullbright" : true
+            "fullbright" : true,
+            "angularVelocity" : 720
           }
         },
         // Need to set sizes individually because of a bug where the "shrink" destruction action uses the base size
