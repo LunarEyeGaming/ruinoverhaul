@@ -10,12 +10,6 @@
   "damageKindImage" : "icon.png",
   "physics" : "illusion",
   "emitters" : [ ],
-  "actionOnReap" : [
-    {
-      "action": "config",
-      "file": "/projectiles/boss/eyeboss/ruin-voidprojectileactive/ruin-voidprojectileactive.config"
-    }
-  ],
   "periodicActions" : [
     {
       "time" : 0.02,
@@ -48,7 +42,26 @@
   "speed" : 0,
   "timeToLive" : 3.0,
 
-  "scripts" : [ "/projectiles/boss/eyeboss/ruin-voidprojectile/ruin-voidprojectile.lua" ],
+  "scripts" : [ "ruin-voidprojectile.lua", "/projectiles/ruin-killableextension2.lua" ],
   "scriptDelta" : 1,
-  "travelTime" : 1.5
+
+  "travelTime" : 1.5,
+  
+  "actionOnExpire" : {
+    // Doing the action directly will cause some actions not to work properly.
+    "action" : "projectile",
+    "type" : "orbitalup",
+    "inheritDamageFactor" : 1,
+    "config" : {
+      "timeToLive" : 0,
+      "speed" : 0,
+      "onlyHitTerrain" : true,
+      "actionOnReap" : [
+        {
+          "action" : "config",
+          "file" : "/projectiles/boss/eyeboss/ruin-voidprojectileactive/ruin-voidprojectileactive.config"
+        }
+      ]
+    }
+  }
 }

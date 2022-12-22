@@ -1,6 +1,7 @@
 require "/scripts/vec2.lua"
 require "/scripts/util.lua"
 require "/scripts/interp.lua"
+require "/scripts/status.lua"
 
 -- The tentacleMovement node has been overridden to make the Ruin's tentacles move more organically, utilizing rotations
 -- and scales in lieu of pure vertical translations. It also applies sine easing to the transformations. The tentacles
@@ -143,7 +144,9 @@ function spawnMonsterGroup(args, board, _, dt)
         monsterType = monsterGroup.type,
         monsterLevel = monster.level(),
         targetPosition = targetPosition,
-        onGround = monsterGroup.onGround
+        onGround = monsterGroup.onGround,
+        instantAggro = monsterGroup.instantAggro,
+        keepTargetInSight = monsterGroup.keepTargetInSight
       })
 
       coroutine.yield()  -- So that the spawners burst one by one
@@ -258,14 +261,14 @@ end
 -- param otherTentacleDelay - The amount of time to wait before activating the other tentacle
 function ruin_tentacleAttack(args, board)
   -- TODO: Make this not hardcoded
-  local windupTime = 4.0
-  local attackTime = 3.0
-  local windupSoundPool = {"/sfx/npc/boss/tentacleboss_tentacle_windup.ogg"}
+  -- local windupTime = 4.0
+  -- local attackTime = 3.0
+  -- local windupSoundPool = {"/sfx/npc/boss/tentacleboss_tentacle_windup.ogg"}
   
-  local reEmergeWindupTime = 2.0
-  local reEmergeDelay = 0.75
-  local reEmergeWindupSoundPool = {"/sfx/npc/boss/ruin-tentacleboss_tentacle_windup2.ogg"}
-  local retractDelay = 1.0
+  -- local reEmergeWindupTime = 2.0
+  -- local reEmergeDelay = 0.75
+  -- local reEmergeWindupSoundPool = {"/sfx/npc/boss/ruin-tentacleboss_tentacle_windup2.ogg"}
+  -- local retractDelay = 1.0
 
   if status.resourcePercentage("health") >= args.phase1 then
     world.sendEntityMessage(args.tentacle1, "attack")
@@ -278,10 +281,10 @@ function ruin_tentacleAttack(args, board)
     
     world.sendEntityMessage(args.tentacle2, "attack", args.reEmergeWindupTime, args.attackTime, args.retractDelay, nil,
         args.reEmergeWindupSoundPool)
-
-    util.run(args.otherTentacleDelay, function() end)
     
     if status.resourcePercentage("health") < args.phase2 then
+      util.run(args.otherTentacleDelay, function() end)
+
       if status.resourcePercentage("health") >= args.phase3 then
         world.sendEntityMessage(args.otherTentacle1, "attack")
       else
@@ -297,7 +300,28 @@ function ruin_tentacleAttack(args, board)
     end
   end
   
-  util.run(windupTime + attackTime * 2 + retractDelay)
+  util.run(args.windupTime + args.attackTime * 2 + args.retractDelay)
   
   return true
+end
+
+--[[
+  Makes the shield flash upon taking a weak hit (in other words damage of the element to which the Ruin is resistant).
+  This node is an infinite loop.
+  param shieldState - the state to which to set the shield upon taking a weak hit
+]]
+function ruin_elementalShieldEffect(args, board)
+  local listener = damageListener("damageTaken", function(notifications)
+    for _, notification in ipairs(notifications) do
+      if notification.hitType == "WeakHit" then  -- WeakHit = resistant
+        animator.setAnimationState("shield", args.shieldState)  -- startNew being true hurts my eyes
+        animator.playSound("shieldblock")
+      end
+    end
+  end)
+  
+  while true do
+    listener:update()
+    coroutine.yield()
+  end
 end

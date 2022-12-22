@@ -42,14 +42,6 @@
         }
       },
       {
-        "title": "timer",
-        "type": "action",
-        "name": "timer",
-        "parameters": {
-          "time": {"value": 1.5}
-        }
-      },
-      {
         "title": "parallel",
         "type": "composite",
         "name": "parallel",

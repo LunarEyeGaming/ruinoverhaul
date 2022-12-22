@@ -92,13 +92,54 @@
       "action" : "particle",
       "rotate" : true,
       "specification" : "ruin-plasmaballtrail"
+    },
+    {
+      "time" : 0.01,
+      "action" : "loop",
+      "count" : 5,
+      "body" : [
+        {
+          "action" : "particle",
+          "specification" : {
+            "type" : "ember",
+            "color" : [255, 112, 89, 255],
+            "initialVelocity" : [0.0, 0.0],
+            "finalVelocity" : [0.0, 0.0],
+            "approach" : [15, 15],
+            "timeToLive" : 0.5,
+            "fullbright" : true,
+            "destructionAction" : "fade",
+            "destructionTime" : 0.5,
+            "size" : 2,
+            "layer" : "back",
+            "collidesForeground" : false,
+            "variance" : {
+              "position" : [6.5, 6.5],  // 9.1875 / sqrt(2)
+              "initialVelocity" : [10, 10],
+              "finalVelocity" : [0, 0]
+            }
+          }
+        }
+      ]
     }
   ],
   
-  "actionOnReap" : [
-    {
-      "action" : "config",
-      "file" : "/projectiles/explosions/ruin-giantplasmaexplosion/ruin-giantplasmaexplosion.config"
+  "scripts" : ["/projectiles/ruin-killableextension2.lua"],
+  
+  "actionOnExpire" : {
+    "action" : "projectile",
+    "type" : "orbitalup",
+    "inheritDamageFactor" : 1,
+    "config" : {
+      "timeToLive" : 0,
+      "speed" : 0,
+      "onlyHitTerrain" : true,
+      "actionOnReap" : [
+        {
+          "action" : "config",
+          "file" : "/projectiles/explosions/ruin-giantplasmaexplosion/ruin-giantplasmaexplosion.config"
+        }
+      ]
     }
-  ]
+  }
 }

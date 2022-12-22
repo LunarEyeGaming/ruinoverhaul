@@ -27,32 +27,6 @@
         }
       },
       {
-        "title": "setAnimationState",
-        "type": "action",
-        "name": "setAnimationState",
-        "parameters": {
-          "state": {"value": "close"},
-          "type": {"value": "blink"}
-        }
-      },
-      {
-        "title": "timer",
-        "type": "action",
-        "name": "timer",
-        "parameters": {
-          "time": {"value": 0.1}
-        }
-      },
-      {
-        "title": "setLightActive",
-        "type": "action",
-        "name": "setLightActive",
-        "parameters": {
-          "active": {"value": false},
-          "light": {"value": "glow"}
-        }
-      },
-      {
         "title": "eyeboss-spawnertelegraphs",
         "type": "module",
         "name": "eyeboss-spawnertelegraphs",
@@ -99,7 +73,7 @@
               "type": "action",
               "name": "animate",
               "parameters": {
-                "state": {"value": "closed"},
+                "state": {"value": "close"},
                 "type": {"value": "blink"},
                 "fallback": {"value": "opennoroar"}
               }
@@ -113,15 +87,6 @@
               }
             } */
           ]
-        }
-      },
-      {
-        "title": "setLightActive",
-        "type": "action",
-        "name": "setLightActive",
-        "parameters": {
-          "active": {"value": true},
-          "light": {"value": "glow"}
         }
       },
       {

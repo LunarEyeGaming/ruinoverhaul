@@ -1,0 +1,15 @@
+{
+  "projectileName" : "ruin-shadowtentaclewinddown",
+  "image" : "shadowtentaclewinddown.png",
+  "fullbright" : true,
+  "animationCycle" : 0.4,
+  "frameNumber" : 4,
+  "power" : 0,
+  "damageKind" : "lash",
+  "onlyHitTerrain" : true,
+  "speed" : 0,
+  "bounces" : -1,
+  "physics" : "illusion",
+  "timeToLive" : 0.4,
+  "damageType" : "NoDamage"
+}

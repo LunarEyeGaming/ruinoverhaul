@@ -28,15 +28,6 @@
     "parameters": {},
     "children": [
       {
-        "title": "setLightActive",
-        "type": "action",
-        "name": "setLightActive",
-        "parameters": {
-          "active": {"value": false},
-          "light": {"value": "glow"}
-        }
-      },
-      {
         "title": "setDying",
         "type": "action",
         "name": "setDying",
@@ -269,15 +260,6 @@
                         "parameters": {
                           "state": {"value": "open"},
                           "type": {"value": "blink"}
-                        }
-                      },
-                      {
-                        "title": "setLightActive",
-                        "type": "action",
-                        "name": "setLightActive",
-                        "parameters": {
-                          "active": {"value": true},
-                          "light": {"value": "glow"}
                         }
                       },
                       {
@@ -893,7 +875,7 @@
                                               "type": "module",
                                               "name": "eyeboss-portal2",
                                               "parameters": {
-                                                "attackTime": {"value": 6}
+                                                "attackTime": {"value": 12}
                                               }
                                             },
                                             {
@@ -1097,7 +1079,7 @@
                                               "type": "module",
                                               "name": "eyeboss-shadowtentacles",
                                               "parameters": {
-                                                "attackTime": {"value": 10}
+                                                "attackTime": {"value": 15}
                                               }
                                             },
                                             {
@@ -1119,7 +1101,7 @@
                                               "type": "module",
                                               "name": "eyeboss-shadowtentacles",
                                               "parameters": {
-                                                "attackTime": {"value": 10}
+                                                "attackTime": {"value": 15}
                                               }
                                             },
                                             {
@@ -1562,15 +1544,6 @@
                             "parameters": {
                               "percentage": {"value": 1},
                               "resource": {"value": "health"}
-                            }
-                          },
-                          {
-                            "title": "setLightActive",
-                            "type": "action",
-                            "name": "setLightActive",
-                            "parameters": {
-                              "active": {"value": true},
-                              "light": {"value": "glow"}
                             }
                           },
                           {

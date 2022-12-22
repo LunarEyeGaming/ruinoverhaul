@@ -39,7 +39,7 @@
       { "monsters" : ["oculob", "oculob", "pteropod"], "biome" : "toxic" }, X
       { "monsters" : ["scaveran", "crutter", "crutter"], "biome" : "jungle" }, X
       { "monsters" : ["voltip", "voltip", "iguarmor"], "biome" : "desert" }, X
-      { "monsters" : ["petricub", "oculob", "scandroid"], "biome" : "alien" },
+      { "monsters" : ["petricub", "oculob", "scandroid"], "biome" : "alien" }, X
       { "monsters" : ["spookit", "spookit", "smoglin"], "biome" : "midnight" }, X
       { "monsters" : ["ringram", "ringram", "capricoat"], "biome" : "alpine" }, X
       { "monsters" : ["mandraflora", "bulbop", "bulbop", "bulbop"], "biome" : "giantflower" }, X
@@ -60,7 +60,7 @@
       { "monsters" : ["bobot", "scandroid"], "biome" : "rust" }, X
       { "monsters" : ["orbide"], "biome" : "hive" }, X
       { "monsters" : ["yokat", "yokat"], "biome" : "eyepatch" }, X
-      { "monsters" : ["bobfae", "bobfae", "bobfae", "bobfae", "bobfae"], "biome" : "hellscape" }*/
+      { "monsters" : ["bobfae", "bobfae", "bobfae", "bobfae", "bobfae"], "biome" : "hellscape" } X*/
       {
         "monsters" : [
           {"type" : "gleap", "count" : 3, "offsetRegion" : [-50, -29, 50, -29], "onGround" : true},
@@ -134,6 +134,13 @@
       },
       {
         "monsters" : [
+          {"type" : "paratail", "count" : 8, "offsetRegion" : [-40, -20, 40, -10]},
+          {"type" : "petricub", "count" : 3, "offsetRegion" : [-30, -29, 30, -29], "onGround" : true}
+        ],
+        "biome" : "alien"
+      },
+      {
+        "monsters" : [
           {"type" : "spookit", "count" : 2, "offsetRegion" : [-40, -20, 40, -10]},
           {"type" : "smoglin", "count" : 3, "offsetRegion" : [-50, -29, 50, -29], "onGround" : true}
         ],
@@ -148,7 +155,7 @@
       },
       {
         "monsters" : [
-          {"type" : "bulbop", "count" : 10, "offsetRegion" : [-50, -29, 50, -29], "onGround" : true},
+          {"type" : "bulbop", "count" : 7, "offsetRegion" : [-50, -29, 50, -29], "onGround" : true},
           {"type" : "mandraflora", "count" : 3, "offsetRegion" : [-50, -29, 50, -29], "onGround" : true}
         ],
         "biome" : "giantflower"
@@ -171,7 +178,8 @@
       {
         "monsters" : [
           {"type" : "pipkin", "count" : 5, "offsetRegion" : [-50, -29, 50, -29], "onGround" : true},
-          {"type" : "lumoth", "count" : 8, "offsetRegion" : [-40, -20, 40, -10]}
+          // keepTargetInSight is true to prevent a softlock because of lumoths stuck in the ground.
+          {"type" : "lumoth", "count" : 8, "offsetRegion" : [-40, -20, 40, -10], "keepTargetInSight" : true}
         ],
         "biome" : "steamspring"
       },
@@ -185,9 +193,12 @@
       },
       {
         "monsters" : [
-          {"type" : "trictus", "count" : 2, "offsetRegion" : [-50, -29, -30, -29], "onGround" : true},
-          {"type" : "trictus", "count" : 2, "offsetRegion" : [-30, -29, 30, -29], "onGround" : true},
-          {"type" : "trictus", "count" : 2, "offsetRegion" : [30, -29, 50, -29], "onGround" : true}
+          {"type" : "trictus", "count" : 2, "offsetRegion" : [-50, -29, -30, -29], "onGround" : true,
+              "instantAggro" : false},
+          {"type" : "trictus", "count" : 2, "offsetRegion" : [-30, -29, 30, -29], "onGround" : true,
+              "instantAggro" : false},
+          {"type" : "trictus", "count" : 2, "offsetRegion" : [30, -29, 50, -29], "onGround" : true,
+              "instantAggro" : false}
         ],
         "biome" : "colourful"
       },
@@ -270,9 +281,12 @@
       },
       {
         "monsters" : [
-          {"type" : "orbide", "count" : 2, "offsetRegion" : [-50, -29, -30, -29], "onGround" : true},
-          {"type" : "orbide", "count" : 2, "offsetRegion" : [-30, -29, 30, -29], "onGround" : true},
-          {"type" : "orbide", "count" : 2, "offsetRegion" : [30, -29, 50, -29], "onGround" : true}
+          {"type" : "orbide", "count" : 2, "offsetRegion" : [-50, -29, -30, -29], "onGround" : true,
+              "instantAggro" : false},
+          {"type" : "orbide", "count" : 2, "offsetRegion" : [-30, -29, 30, -29], "onGround" : true,
+              "instantAggro" : false},
+          {"type" : "orbide", "count" : 2, "offsetRegion" : [30, -29, 50, -29], "onGround" : true,
+              "instantAggro" : false}
         ],
         "biome" : "hive"
       },
@@ -295,7 +309,7 @@
 
     "damageParts" : {
       "beam" : {
-        "damage" : 25,
+        "damage" : 40,
 
         "teamType" : "enemy",
         "damageSourceKind" : "plasma",
@@ -412,7 +426,7 @@
           "baseValue" : 1.0
         },
         "maxHealth" : {
-          "baseValue" : 3000
+          "baseValue" : 4000
         },
         "protection" : {
           "baseValue" : 0.0

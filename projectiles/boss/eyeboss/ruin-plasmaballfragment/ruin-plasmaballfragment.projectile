@@ -26,7 +26,7 @@
         "color" : [255, 112, 89, 255],
         "initialVelocity" : [0.0, 0.0],
         "finalVelocity" : [0.0, 0.0],
-        "approach" : [40, 40],
+        "approach" : [4, 4],
         "timeToLive" : 0.5,
         "fullbright" : true,
         "destructionAction" : "fade",
@@ -36,7 +36,7 @@
         "collidesForeground" : false,
         "variance" : {
           "position" : [0.5, 0.5],
-          "initialVelocity" : [15, 15],
+          "initialVelocity" : [5, 5],
           "finalVelocity" : [0, 0]
         }
       }

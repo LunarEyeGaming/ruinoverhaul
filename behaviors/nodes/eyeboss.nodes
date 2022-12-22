@@ -90,8 +90,8 @@
   },
   "ruin_tentacleAttack": {
     "type": "action",
-    "name": "spawnFloorProjectiles",
-    "title": "spawnFloorProjectiles",
+    "name": "ruin_tentacleAttack",
+    "title": "ruin_tentacleAttack",
     "properties": {
       "phase1": {"type": "number", "value": 0.875},
       "phase2": {"type": "number", "value": 0.75},
@@ -109,10 +109,21 @@
       "retractDelay": {"type": "number", "value": 1.0},
       "otherTentacleDelay": {"type": "number", "value": 5.0}
     },
-    "category": "kluexboss",
-    "script": "/scripts/actions/boss/kluexboss.lua",
+    "category": "eyeboss",
+    "script": "/scripts/actions/boss/eyeboss.lua",
     "output": {
       "projectiles": {"type": "list", "key": null}
     }
+  },
+  "ruin_elementalShieldEffect": {
+    "type": "action",
+    "name": "ruin_elementalShieldEffect",
+    "title": "ruin_elementalShieldEffect",
+    "properties": {
+      "shieldState": {"type": "string", "value": null}
+    },
+    "category": "eyeboss",
+    "script": "/scripts/actions/boss/eyeboss.lua",
+    "output": {}
   }
 }

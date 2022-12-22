@@ -55,12 +55,15 @@ function destroy()
     damageTeam = damageTeam.team,
     damageTeamType = damageTeam.type,
     initialStatus = "blackmonsterrelease",
-    behaviorConfig = {
-      targetQueryRange = 150,
-      keepTargetInSight = false,
-      keepTargetInRange = 200
-    }
+    behaviorConfig = {}
   }
+  if config.getParameter("instantAggro", true) then
+    parameters.behaviorConfig.targetQueryRange = 150
+    parameters.behaviorConfig.keepTargetInRange = 200
+  end
+  
+  parameters.behaviorConfig.keepTargetInSight = config.getParameter("keepTargetInSight", false)
+
   parameters = sb.jsonMerge(parameters, config.getParameter("monsterParameters", {}))
   local entityId = world.spawnMonster(monsterType, mcontroller.position(), parameters)
   world.callScriptedEntity(entityId, "status.addEphemeralEffect", "blackmonsterrelease")

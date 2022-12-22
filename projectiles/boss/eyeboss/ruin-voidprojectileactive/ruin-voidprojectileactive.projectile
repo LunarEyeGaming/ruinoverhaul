@@ -50,6 +50,10 @@
         "destructionAction" : "shrink",
         "destructionTime" : 0.1
       }
+    },
+    {
+      "action" : "sound",
+      "options" : ["/sfx/projectiles/astraltear_stop3.ogg"]
     }
   ],
   

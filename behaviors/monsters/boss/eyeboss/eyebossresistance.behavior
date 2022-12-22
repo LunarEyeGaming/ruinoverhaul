@@ -29,6 +29,16 @@
           }
         },
         {
+          "title": "physicalResistance",
+          "type": "action",
+          "name": "addStatModifier",
+          "parameters": {
+            "category": {"value": "ruinResistance"},
+            "stat": {"value": "physicalResistance"},
+            "amount": {"value": 0.75}
+          }
+        },
+        {
           "title": "randomize",
           "type": "composite",
           "name": "randomize",
@@ -68,6 +78,33 @@
                     "stat": {"value": "poisonResistance"},
                     "amount": {"value": -0.5}
                   }
+                },
+                {
+                  "title": "parallel",
+                  "type": "composite",
+                  "name": "parallel",
+                  "parameters": {
+                    "fail": {"value": -1},
+                    "success": {"value": 1}
+                  },
+                  "children": [
+                    {
+                      "title": "ruin_elementalShieldEffect",
+                      "type": "action",
+                      "name": "ruin_elementalShieldEffect",
+                      "parameters": {
+                        "shieldState": {"value": "electricFlash"}
+                      }
+                    },
+                    {
+                      "title": "timer",
+                      "type": "action",
+                      "name": "timer",
+                      "parameters": {
+                        "time": {"value": "<switchPeriod>"}
+                      }
+                    }
+                  ]
                 }
               ]
             },
@@ -105,6 +142,33 @@
                     "stat": {"value": "iceResistance"},
                     "amount": {"value": -0.5}
                   }
+                },
+                {
+                  "title": "parallel",
+                  "type": "composite",
+                  "name": "parallel",
+                  "parameters": {
+                    "fail": {"value": -1},
+                    "success": {"value": 1}
+                  },
+                  "children": [
+                    {
+                      "title": "ruin_elementalShieldEffect",
+                      "type": "action",
+                      "name": "ruin_elementalShieldEffect",
+                      "parameters": {
+                        "shieldState": {"value": "fireFlash"}
+                      }
+                    },
+                    {
+                      "title": "timer",
+                      "type": "action",
+                      "name": "timer",
+                      "parameters": {
+                        "time": {"value": "<switchPeriod>"}
+                      }
+                    }
+                  ]
                 }
               ]
             },
@@ -142,6 +206,33 @@
                     "stat": {"value": "fireResistance"},
                     "amount": {"value": -0.5}
                   }
+                },
+                {
+                  "title": "parallel",
+                  "type": "composite",
+                  "name": "parallel",
+                  "parameters": {
+                    "fail": {"value": -1},
+                    "success": {"value": 1}
+                  },
+                  "children": [
+                    {
+                      "title": "ruin_elementalShieldEffect",
+                      "type": "action",
+                      "name": "ruin_elementalShieldEffect",
+                      "parameters": {
+                        "shieldState": {"value": "iceFlash"}
+                      }
+                    },
+                    {
+                      "title": "timer",
+                      "type": "action",
+                      "name": "timer",
+                      "parameters": {
+                        "time": {"value": "<switchPeriod>"}
+                      }
+                    }
+                  ]
                 }
               ]
             },
@@ -179,28 +270,37 @@
                     "stat": {"value": "electricResistance"},
                     "amount": {"value": -0.5}
                   }
+                },
+                {
+                  "title": "parallel",
+                  "type": "composite",
+                  "name": "parallel",
+                  "parameters": {
+                    "fail": {"value": -1},
+                    "success": {"value": 1}
+                  },
+                  "children": [
+                    {
+                      "title": "ruin_elementalShieldEffect",
+                      "type": "action",
+                      "name": "ruin_elementalShieldEffect",
+                      "parameters": {
+                        "shieldState": {"value": "poisonFlash"}
+                      }
+                    },
+                    {
+                      "title": "timer",
+                      "type": "action",
+                      "name": "timer",
+                      "parameters": {
+                        "time": {"value": "<switchPeriod>"}
+                      }
+                    }
+                  ]
                 }
               ]
             }
           ]
-        },
-        {
-          "title": "physicalResistance",
-          "type": "action",
-          "name": "addStatModifier",
-          "parameters": {
-            "category": {"value": "ruinResistance"},
-            "stat": {"value": "physicalResistance"},
-            "amount": {"value": 0.75}
-          }
-        },
-        {
-          "title": "timer",
-          "type": "action",
-          "name": "timer",
-          "parameters": {
-            "time": {"value": "<switchPeriod>"}
-          }
         }
       ]
     }

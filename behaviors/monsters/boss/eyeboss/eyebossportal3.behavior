@@ -16,13 +16,13 @@
     "portalRadius": 3,
     "portalCenterOffset": [-0.3125, -8.375],
     "startTentacleInterval": 1.0,
-    "minTentacleInterval": 0.2,
-    "tentacleIntervalDelta": 0.08,
+    "minTentacleInterval": 0.15,
+    "tentacleIntervalDelta": 0.12,
     "tentacleMinX": -54,
     "tentacleMaxX": 54,
     "attackTime": 13,
     "portalCloseDelay": 2,
-    "radialVacuumConfig": {"timeToLive": 20},
+    "radialVacuumConfig": {"timeToLive": 15},
     "rotateRate": 0.5
   },
   "root": {
@@ -249,11 +249,22 @@
                           }
                         },
                         {
-                          "title": "setDamageSourceActive",
-                          "type": "action",
-                          "name": "setDamageSourceActive",
+                          "title": "each",
+                          "type": "decorator",
+                          "name": "each",
                           "parameters": {
-                            "name": {"value": "windswept"}
+                            "type": {"value": "entity"},
+                            "list": {"key": "targets"}
+                          },
+                          "child": {
+                            "title": "sendEntityMessage",
+                            "type": "action",
+                            "name": "sendEntityMessage",
+                            "parameters": {
+                              "entity": {"key": "eachItem"},
+                              "message": {"value": "applyStatusEffect"},
+                              "arguments": {"value": ["windswept"]}
+                            }
                           }
                         }
                       ]
@@ -321,25 +332,52 @@
                                   }
                                 },
                                 {
-                                  "title": "greaterThan",
-                                  "type": "action",
-                                  "name": "greaterThan",
-                                  "parameters": {
-                                    "first": {"key": "interval"},
-                                    "second": {"value": "<minTentacleInterval>"}
-                                  }
-                                },
-                                {
-                                  "title": "sub",
-                                  "type": "action",
-                                  "name": "sub",
-                                  "parameters": {
-                                    "first": {"key": "interval"},
-                                    "second": {"value": "<tentacleIntervalDelta>"}
-                                  },
-                                  "output": {
-                                    "result": "interval"
-                                  }
+                                  "title": "selector",
+                                  "type": "composite",
+                                  "name": "selector",
+                                  "parameters": {},
+                                  "children": [
+                                    {
+                                      "title": "sequence",
+                                      "type": "composite",
+                                      "name": "sequence",
+                                      "parameters": {},
+                                      "children": [
+                                        {
+                                          "title": "greaterThan",
+                                          "type": "action",
+                                          "name": "greaterThan",
+                                          "parameters": {
+                                            "first": {"key": "interval"},
+                                            "second": {"value": "<minTentacleInterval>"}
+                                          }
+                                        },
+                                        {
+                                          "title": "sub",
+                                          "type": "action",
+                                          "name": "sub",
+                                          "parameters": {
+                                            "first": {"key": "interval"},
+                                            "second": {"value": "<tentacleIntervalDelta>"}
+                                          },
+                                          "output": {
+                                            "result": "interval"
+                                          }
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "title": "setNumber",
+                                      "type": "action",
+                                      "name": "setNumber",
+                                      "parameters": {
+                                        "number": {"value": "<minTentacleInterval>"}
+                                      },
+                                      "output": {
+                                        "number": "interval"
+                                      }
+                                    }
+                                  ]
                                 }
                               ]
                             }
@@ -375,7 +413,7 @@
         "type": "action",
         "name": "timer",
         "parameters": {
-          "time": {"value": 1.5}
+          "time": {"value": 0.5}
         }
       }
     ]

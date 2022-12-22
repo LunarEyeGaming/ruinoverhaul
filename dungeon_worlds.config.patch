@@ -3,7 +3,7 @@
     "op" : "add",
     "path" : "/ruin-bosstest",
     "value" : {
-      "primaryDungeon" : "tentacleboss",
+      "primaryDungeon" : "tentaclebosstest",
       "threatLevel" : 6,
       "gravity" : 80,
       "worldSize" : [2000, 2000],

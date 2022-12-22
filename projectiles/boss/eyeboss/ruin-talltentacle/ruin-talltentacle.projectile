@@ -13,5 +13,14 @@
   "speed" : 0,
   "timeToLive" : 0.3,
   "animationLoop" : false,
-  "damagePoly" : [ [13, -43], [0, 7], [-13, -43] ]
+  "damagePoly" : [ [13, -43], [0, 7], [-13, -43] ],
+  
+  "periodicActions" : [
+    {
+      "time" : 0,
+      "repeat" : false,
+      "action" : "sound",
+      "options" : [ "/sfx/gun/wormgun1.ogg", "/sfx/gun/wormgun2.ogg", "/sfx/gun/wormgun3.ogg" ]
+    }
+  ]
 }

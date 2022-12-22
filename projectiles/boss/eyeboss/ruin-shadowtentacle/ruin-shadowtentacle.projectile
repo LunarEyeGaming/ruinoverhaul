@@ -2,8 +2,8 @@
   "projectileName" : "ruin-shadowtentacle",
   "image" : "shadowtentacle.png",
   "fullbright" : true,
-  "animationCycle" : 0.5,
-  "frameNumber" : 1,
+  "animationCycle" : 0.4,
+  "frameNumber" : 4,
   "power" : 0,
   "lightColor" : [17, 17, 74],
   "damageKind" : "lash",
@@ -13,5 +13,11 @@
   "physics" : "illusion",
   "timeToLive" : 0.5,
   "knockback" : 25,
-  "damagePoly" : [ [ 72, 10 ], [ -72, 10 ], [ -72, -10 ], [ 72, -10 ] ]
+  "damagePoly" : [ [ 72, 10 ], [ -72, 10 ], [ -72, -10 ], [ 72, -10 ] ],
+  "actionOnReap" : [
+    {
+      "action" : "projectile",
+      "type" : "ruin-shadowtentaclewinddown"
+    }
+  ]
 }

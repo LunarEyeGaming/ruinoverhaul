@@ -21,7 +21,8 @@
             "transition" : "idle",
             "properties" : {
               "immediateSound" : "/sfx/npc/boss/tentacleboss_wakeup2.ogg",
-              "immediateSoundRangeMultiplier" : 5.0
+              "immediateSoundRangeMultiplier" : 5.0,
+              "lightsOn" : ["glow"]
             }
           },
           "opennoroar" : {
@@ -31,7 +32,8 @@
             "transition" : "idle",
             "properties" : {
               "immediateSound" : "/sfx/npc/boss/tentacleboss_wakeup1.ogg",
-              "immediateSoundRangeMultiplier" : 5.0
+              "immediateSoundRangeMultiplier" : 5.0,
+              "lightsOn" : ["glow"]
             }
           },
           "close" : {
@@ -45,7 +47,10 @@
             }
           },
           "closed" : {
-            "frames" : 1
+            "frames" : 1,
+            "properties" : {
+              "lightsOff" : ["glow"]
+            }
           }
         }
       },
@@ -63,7 +68,9 @@
             "transition" : "dyingloop",
             "properties" : {
               "immediateSound" : "/sfx/npc/boss/tentacleboss_death.ogg",
-              "immediateSoundRangeMultiplier" : 5.0
+              "immediateSoundRangeMultiplier" : 5.0,
+              "lightsOn" : ["redglow"],
+              "lightsOff" : ["glow"]
             }
           },
           "dyingloop" : {
@@ -88,7 +95,9 @@
             "transition" : "fire",
             "properties" : {
               "immediateSound" : "/sfx/npc/boss/ruin-tentacleboss_beam_charge_fast.ogg",
-              "immediateSoundRangeMultiplier" : 5.0
+              "immediateSoundRangeMultiplier" : 5.0,
+              "lightsOn" : ["redglow"],
+              "lightsOff" : ["glow"]
             }
           },
           "fire" : {
@@ -100,7 +109,11 @@
             "frames" : 5,
             "cycle" : 0.5,
             "mode" : "transition",
-            "transition" : "idle"
+            "transition" : "idle",
+            "properties" : {
+              "lightsOn" : ["glow"],
+              "lightsOff" : ["redglow"]
+            }
           },
           "spawnwindup" : {
             "frames" : 7,
@@ -108,7 +121,7 @@
             "mode" : "transition",
             "transition" : "spawn",
             "properties" : {
-              "immediateSound" : "/sfx/npc/boss/tentacleboss_portal_open.ogg",
+              "immediateSound" : "/sfx/npc/boss/ruin-tentacleboss_portal_open.ogg",
               "immediateSoundRangeMultiplier" : 5.0
             }
           },
@@ -127,7 +140,7 @@
             "mode" : "transition",
             "transition" : "idle",
             "properties" : {
-              "immediateSound" : "/sfx/npc/boss/tentacleboss_portal_close.ogg",
+              "immediateSound" : "/sfx/npc/boss/ruin-tentacleboss_portal_close.ogg",
               "immediateSoundRangeMultiplier" : 5.0
             }
           },
@@ -138,7 +151,9 @@
             "transition" : "fire2",
             "properties" : {
               "immediateSound" : "/sfx/npc/boss/ruin-tentacleboss_beam_charge_fast.ogg",
-              "immediateSoundRangeMultiplier" : 5.0
+              "immediateSoundRangeMultiplier" : 5.0,
+              "lightsOn" : ["redglow"],
+              "lightsOff" : ["glow"]
             }
           },
           "fire2" : {
@@ -150,7 +165,11 @@
             "frames" : 4,
             "cycle" : 0.4,
             "mode" : "transition",
-            "transition" : "idle"
+            "transition" : "idle",
+            "properties" : {
+              "lightsOn" : ["glow"],
+              "lightsOff" : ["redglow"]
+            }
           }
         }
       },
@@ -199,7 +218,31 @@
           "electric" : {},
           "fire" : {},
           "ice" : {},
-          "poison" : {}
+          "poison" : {},
+          "electricFlash" : {
+            "frames" : 4,
+            "cycle" : 0.2,
+            "mode" : "transition",
+            "transition" : "electric"
+          },
+          "fireFlash" : {
+            "frames" : 4,
+            "cycle" : 0.2,
+            "mode" : "transition",
+            "transition" : "fire"
+          },
+          "iceFlash" : {
+            "frames" : 4,
+            "cycle" : 0.2,
+            "mode" : "transition",
+            "transition" : "ice"
+          },
+          "poisonFlash" : {
+            "frames" : 4,
+            "cycle" : 0.2,
+            "mode" : "transition",
+            "transition" : "poison"
+          }
         }
       },
       "damage" : {
@@ -522,9 +565,19 @@
                 "image" : "<partImage>:electric.<frame>"
               }
             },
+            "electricFlash" : {
+              "properties" : {
+                "image" : "<partImage>:electricFlash.<frame>"
+              }
+            },
             "fire" : {
               "properties" : {
                 "image" : "<partImage>:fire.<frame>"
+              }
+            },
+            "fireFlash" : {
+              "properties" : {
+                "image" : "<partImage>:fireFlash.<frame>"
               }
             },
             "ice" : {
@@ -532,9 +585,19 @@
                 "image" : "<partImage>:ice.<frame>"
               }
             },
+            "iceFlash" : {
+              "properties" : {
+                "image" : "<partImage>:iceFlash.<frame>"
+              }
+            },
             "poison" : {
               "properties" : {
                 "image" : "<partImage>:poison.<frame>"
+              }
+            },
+            "poisonFlash" : {
+              "properties" : {
+                "image" : "<partImage>:poisonFlash.<frame>"
               }
             }
           }
@@ -633,8 +696,8 @@
       "particles" : [
         {
           "particle" : {
-            "type" : "textured",
-            "image" : "/particles/images/ruin-windstreak.png",
+            "type" : "animated",
+            "animation" : "/animations/ruin-windstreak/ruin-windstreak.animation",
             "size" : 1.0,
             "position" : [-0.3125, -8.3125],
             "timeToLive" : 0.0,
@@ -786,6 +849,12 @@
       "position" : [0, -10],
       "color" : [255, 255, 180],
       "pointLight" : false
+    },
+    "redglow" : {
+      "active" : false,
+      "position" : [0, -10],
+      "color" : [255, 220, 220],
+      "pointLight" : false
     }
   },
 
@@ -822,6 +891,10 @@
     },
     "vacuum" : {
       "pool" : [ "/sfx/npc/boss/ruin-tentacleboss_vacuum_loop.ogg" ],
+      "rangeMultiplier" : 5.0
+    },
+    "shieldblock" : {
+      "pool" : ["/sfx/npc/boss/cultistboss_shield.ogg"],
       "rangeMultiplier" : 5.0
     }
   },

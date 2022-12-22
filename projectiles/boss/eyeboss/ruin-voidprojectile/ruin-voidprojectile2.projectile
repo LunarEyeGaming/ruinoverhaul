@@ -10,12 +10,36 @@
   "damageKindImage" : "icon.png",
   "physics" : "bullet",
   "emitters" : [ ],
-  /*"actionOnReap" : [
+  "actionOnReap" : [
     {
-      "action": "config",
-      "file": "/projectiles/boss/eyeboss/ruin-voidprojectileactive/ruin-voidprojectileactive.config"
+      "action" : "sound",
+      "options" : ["/sfx/projectiles/astraltear_stop3.ogg"]
+    },
+    {
+      "action" : "loop",
+      "count" : 15,
+      "body" : [
+        {
+          "action" : "particle",
+          "specification" : {
+            "type" : "ember",
+            "size" : 2,
+            "color" : [0, 0, 0],
+            "position" : [0, 0],
+            "destructionAction" : "fade",
+            "destructionTime" : 0.2,
+            "fade" : 1,
+            "layer" : "middle",
+            "timeToLive" : 0.2,
+            "variance" : {
+              "initialVelocity" : [7.0, 7.0],
+              "position" : [1.5, 1.5]
+            }
+          }
+        }
+      ]
     }
-  ],*/
+  ],
   "periodicActions" : [
     {
       "time" : 0.02,
@@ -45,7 +69,7 @@
   "speed" : 15,
   "timeToLive" : 10,
 
-  "scripts" : [ "/scripts/projectiles/sinewaveprojectile.lua" ],
+  "scripts" : [ "/scripts/projectiles/sinewaveprojectile.lua", "/projectiles/ruin-killableextension.lua" ],
   "scriptDelta" : 1,
   
   "wavePeriod" : 2,

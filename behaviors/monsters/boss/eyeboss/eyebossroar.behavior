@@ -22,6 +22,15 @@
         }
       },
       {
+        "title": "setAnimationState",
+        "type": "action",
+        "name": "setAnimationState",
+        "parameters": {
+          "state": {"value": "idle"},
+          "type": {"value": "blink"}
+        }
+      },
+      {
         "title": "parallel",
         "type": "composite",
         "name": "parallel",

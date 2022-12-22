@@ -10,7 +10,7 @@
 
   "bounces" : -1,
 
-  "timeToLive" : 20,
+  "timeToLive" : 15,
 
   "orientationLocked" : true,
 
