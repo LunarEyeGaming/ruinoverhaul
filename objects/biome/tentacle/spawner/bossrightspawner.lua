@@ -5,6 +5,7 @@ function init()
   self.spawners = {}
   self.spawnerConfig = config.getParameter("spawnPoints")
   self.width = config.getParameter("objectWidth")
+  self.minionCap = config.getParameter("minionCap")
   self.monsters = {}
 
   message.setHandler("triggerSpawner", function(_, _, spawnerName) triggerSpawner(spawnerName) end)
@@ -46,6 +47,10 @@ function absolutePosition(offset, width)
 end
 
 function triggerSpawner(spawnerName)
+  if #self.monsters > self.minionCap then
+    return
+  end
+
   local spawner = self.spawnerConfig[spawnerName]
   local position = absolutePosition(spawner.offset, self.width)
 

@@ -129,8 +129,8 @@
   "scriptDelta" : 1,
   
   "bounceMargin" : 1,
-  "shockwaveSpawnHeight" : 2,
-  "shockwaveType" : "ruin-lasershockwavespawner",
+  "shockwaveSpawnHeight" : 1.5,
+  "shockwaveType" : "ruin-lasershockwavenew",
   "shockwaveParams" : {
     "speed" : 1,
     "acceleration" : 50
@@ -211,6 +211,47 @@
                 "initialVelocity" : [2, 2]
               }
             }
+          }
+        ]
+      },
+      {
+        "action" : "loop",
+        "count" : 10,
+        "body" : [
+          {
+            "action" : "option",
+            "options" : [
+              {
+                "action" : "projectile",
+                "type" : "ruin-plasmashot",
+                "angle" : 90,
+                "inheritDamageFactor" : 0.5,
+                "fuzzAngle" : 15,
+                "config" : {
+                  "speed" : 45
+                }
+              },
+              {
+                "action" : "projectile",
+                "type" : "ruin-plasmashot",
+                "angle" : 90,
+                "inheritDamageFactor" : 0.5,
+                "fuzzAngle" : 15,
+                "config" : {
+                  "speed" : 90
+                }
+              },
+              {
+                "action" : "projectile",
+                "type" : "ruin-plasmashot",
+                "angle" : 90,
+                "inheritDamageFactor" : 0.5,
+                "fuzzAngle" : 15,
+                "config" : {
+                  "speed" : 135
+                }
+              }
+            ]
           }
         ]
       }

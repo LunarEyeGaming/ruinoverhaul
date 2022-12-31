@@ -1,0 +1,472 @@
+{
+  "name": "ruin-cultistbossend-dashattack",
+  "description": "",
+  "scripts": [
+    "/scripts/actions/position.lua",
+    "/scripts/behavior/bdata.lua",
+    "/scripts/actions/movement.lua",
+    "/scripts/actions/time.lua",
+    "/scripts/actions/animator.lua",
+    "/scripts/actions/math.lua",
+    "/scripts/actions/monster.lua",
+    "/scripts/actions/sensor.lua",
+    "/scripts/actions/boss/ruin-cultistbossend.lua"
+  ],
+  "parameters": {
+    "dashSpeed": 50,
+    "dashTime": 0.65,
+    "beaminTime": 0.5,
+    "teleportOffset": [10, 0],
+    "dashControlForce": 5000
+  },
+  "root": {
+    "title": "Reset",
+    "type": "composite",
+    "name": "sequence",
+    "parameters": {},
+    "children": [
+      {
+        "title": "randomize",
+        "type": "composite",
+        "name": "randomize",
+        "parameters": {},
+        "children": [
+          {
+            "title": "setNumber",
+            "type": "action",
+            "name": "setNumber",
+            "parameters": {
+              "number": {"value": -1}
+            },
+            "output": {
+              "number": "attackDirection"
+            }
+          },
+          {
+            "title": "setNumber",
+            "type": "action",
+            "name": "setNumber",
+            "parameters": {
+              "number": {"value": 1}
+            },
+            "output": {
+              "number": "attackDirection"
+            }
+          }
+        ]
+      },
+      {
+        "title": "vecMultiply",
+        "type": "action",
+        "name": "vecMultiply",
+        "parameters": {
+          "first": {"value": "<teleportOffset>"},
+          "second": {"value": ["attackDirection", 1]}
+        },
+        "output": {
+          "vector": "targetOffset"
+        }
+      },
+      {
+        "title": "parallel",
+        "type": "composite",
+        "name": "parallel",
+        "parameters": {
+          "fail": {"value": -1},
+          "success": {"value": -1}
+        },
+        "children": [
+          {
+            "title": "controlApproachVelocity",
+            "type": "action",
+            "name": "controlApproachVelocity",
+            "parameters": {
+              "force": {"value": 500},
+              "velocity": {"value": [0, 0]}
+            }
+          },
+          {
+            "title": "sequence",
+            "type": "composite",
+            "name": "sequence",
+            "parameters": {},
+            "children": [
+              {
+                "title": "selector",
+                "type": "composite",
+                "name": "selector",
+                "parameters": {},
+                "children": [
+                  {
+                    "title": "optional",
+                    "type": "decorator",
+                    "name": "optional",
+                    "parameters": {
+                      "shouldRun": {"key": "intro"}
+                    },
+                    "child": {
+                      "title": "setAnimationState",
+                      "type": "action",
+                      "name": "setAnimationState",
+                      "parameters": {
+                        "state": {"value": "introbeam"},
+                        "type": {"value": "body"}
+                      }
+                    }
+                  },
+                  {
+                    "title": "setAnimationState",
+                    "type": "action",
+                    "name": "setAnimationState",
+                    "parameters": {
+                      "state": {"value": "beamout"},
+                      "type": {"value": "body"}
+                    }
+                  }
+                ]
+              },
+              {
+                "title": "timer",
+                "type": "action",
+                "name": "timer",
+                "parameters": {
+                  "time": {"value": 0.85}
+                }
+              },
+              {
+                "title": "entityPosition",
+                "type": "action",
+                "name": "entityPosition",
+                "parameters": {
+                  "entity": {"key": "target"}
+                },
+                "output": {
+                  "position": "targetPosition"
+                }
+              },
+              {
+                "title": "offsetPosition",
+                "type": "action",
+                "name": "offsetPosition",
+                "parameters": {
+                  "offset": {"key": "targetOffset"},
+                  "position": {"key": "targetPosition"}
+                },
+                "output": {
+                  "position": "teleportPosition"
+                }
+              },
+              {
+                "title": "ruin_correctPosition",
+                "type": "action",
+                "name": "ruin_correctPosition",
+                "parameters": {
+                  "fromPos": {"key": "targetPosition"},
+                  "toPos": {"key": "teleportPosition"}
+                },
+                "output": {
+                  "position": "teleportPosition"
+                }
+              },
+              {
+                "title": "setPosition",
+                "type": "action",
+                "name": "setPosition",
+                "parameters": {
+                  "footPosition": {"value": false},
+                  "position": {"key": "teleportPosition"}
+                }
+              },
+              {
+                "title": "timer",
+                "type": "action",
+                "name": "timer",
+                "parameters": {
+                  "time": {"value": 0.1}
+                }
+              },
+              {
+                "title": "setAnimationState",
+                "type": "action",
+                "name": "setAnimationState",
+                "parameters": {
+                  "state": {"value": "beamin"},
+                  "type": {"value": "body"}
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "distance",
+        "type": "action",
+        "name": "distance",
+        "parameters": {
+          "from": {"key": "self"},
+          "to": {"key": "targetPosition"}
+        },
+        "output": {
+          "vector": "toSpawn"
+        }
+      },
+      {
+        "title": "breakVector",
+        "type": "action",
+        "name": "breakVector",
+        "parameters": {
+          "vector": {"key": "toSpawn"}
+        },
+        "output": {
+          "x": "spawnX"
+        }
+      },
+      {
+        "title": "setDirection",
+        "type": "action",
+        "name": "setDirection",
+        "parameters": {
+          "direction": {"key": "spawnX"}
+        },
+        "output": {
+          "direction": "dashDirection"
+        }
+      },
+      {
+        "title": "faceDirection",
+        "type": "action",
+        "name": "faceDirection",
+        "parameters": {
+          "direction": {"key": "dashDirection"}
+        }
+      },
+      {
+        "title": "parallel",
+        "type": "composite",
+        "name": "parallel",
+        "parameters": {
+          "fail": {"value": -1},
+          "success": {"value": 1}
+        },
+        "children": [
+          {
+            "title": "sequence",
+            "type": "composite",
+            "name": "sequence",
+            "parameters": {},
+            "children": [
+              {
+                "title": "timer",
+                "type": "action",
+                "name": "timer",
+                "parameters": {
+                  "time": {"value": "<beaminTime>"}
+                }
+              },
+              {
+                "title": "setAnimationState",
+                "type": "action",
+                "name": "setAnimationState",
+                "parameters": {
+                  "state": {"value": "dashwindup"},
+                  "type": {"value": "body"}
+                }
+              },
+              {
+                "title": "timer",
+                "type": "action",
+                "name": "timer",
+                "parameters": {
+                  "time": {"value": 0.4}
+                }
+              }
+            ]
+          },
+          {
+            "title": "failer",
+            "type": "decorator",
+            "name": "failer",
+            "child": {
+              "type": "composite",
+              "name": "sequence",
+              "children": [
+                {
+                  "title": "entityPosition",
+                  "type": "action",
+                  "name": "entityPosition",
+                  "parameters": {
+                    "entity": {"key": "target"}
+                  },
+                  "output": {
+                    "position": "targetPosition"
+                  }
+                },
+                {
+                  "title": "offsetPosition",
+                  "type": "action",
+                  "name": "offsetPosition",
+                  "parameters": {
+                    "offset": {"key": "targetOffset"},
+                    "position": {"key": "targetPosition"}
+                  },
+                  "output": {
+                    "position": "teleportPosition"
+                  }
+                },
+                {
+                  "title": "ruin_correctPosition",
+                  "type": "action",
+                  "name": "ruin_correctPosition",
+                  "parameters": {
+                    "fromPos": {"key": "targetPosition"},
+                    "toPos": {"key": "teleportPosition"}
+                  },
+                  "output": {
+                    "position": "teleportPosition"
+                  }
+                },
+                {
+                  "title": "setPosition",
+                  "type": "action",
+                  "name": "setPosition",
+                  "parameters": {
+                    "footPosition": {"value": false},
+                    "position": {"key": "teleportPosition"}
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "title": "multiply",
+        "type": "action",
+        "name": "multiply",
+        "parameters": {
+          "factor": {"key": "<dashSpeed>"},
+          "number": {"key": "dashDirection"}
+        },
+        "output": {
+          "result": "dashVelocity"
+        }
+      },
+      {
+        "title": "setParticleEmitterActive",
+        "type": "action",
+        "name": "setParticleEmitterActive",
+        "parameters": {
+          "active": {"value": true},
+          "emitter": {"value": "dash"}
+        }
+      },
+      {
+        "title": "parallel",
+        "type": "composite",
+        "name": "parallel",
+        "parameters": {
+          "fail": {"value": -1},
+          "success": {"value": -1}
+        },
+        "children": [
+          {
+            "title": "controlApproachVelocity",
+            "type": "action",
+            "name": "controlApproachVelocity",
+            "parameters": {
+              "force": {"key": "<dashControlForce>"},
+              "velocity": {"value": ["dashVelocity", 0]}
+            }
+          },
+          {
+            "title": "setDamageSourceActive",
+            "type": "action",
+            "name": "setDamageSourceActive",
+            "parameters": {
+              "name": {"value": "dash"}
+            }
+          },
+          {
+            "title": "dynamic",
+            "type": "composite",
+            "name": "dynamic",
+            "parameters": {},
+            "children": [
+              {
+                "title": "wallCollision",
+                "type": "action",
+                "name": "wallCollision",
+                "parameters": {
+                  "direction": {"key": "facingDirection"}
+                }
+              },
+              {
+                "title": "timer",
+                "type": "action",
+                "name": "timer",
+                "parameters": {
+                  "time": {"value": "<dashTime>"}
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "multiply",
+        "type": "action",
+        "name": "multiply",
+        "parameters": {
+          "factor": {"value": -1},
+          "number": {"key": "facingDirection"}
+        },
+        "output": {
+          "result": "newFacing"
+        }
+      },
+      {
+        "title": "faceDirection",
+        "type": "action",
+        "name": "faceDirection",
+        "parameters": {
+          "direction": {"key": "newFacing"}
+        }
+      },
+      {
+        "title": "setParticleEmitterActive",
+        "type": "action",
+        "name": "setParticleEmitterActive",
+        "parameters": {
+          "active": {"value": false},
+          "emitter": {"value": "dash"}
+        }
+      },
+      {
+        "title": "setAnimationState",
+        "type": "action",
+        "name": "setAnimationState",
+        "parameters": {
+          "state": {"value": "idle"},
+          "type": {"value": "body"}
+        }
+      },
+      {
+        "title": "controlApproachVelocity",
+        "type": "action",
+        "name": "controlApproachVelocity",
+        "parameters": {
+          "force": {"key": "<dashControlForce>"},
+          "velocity": {"value": [0, 0]}
+        }
+      },
+      {
+        "title": "setVelocity",
+        "type": "action",
+        "name": "setVelocity",
+        "parameters": {
+          "velocity": {"value": [0, 0]}
+        }
+      }
+    ]
+  }
+}

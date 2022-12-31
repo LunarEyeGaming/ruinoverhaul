@@ -7,7 +7,7 @@
     "/scripts/actions/world.lua"
   ],
   "parameters": {
-    "phase3": 0.5
+    "phase2": 0.75
   },
   "root": {
     "title": "repeater",
@@ -180,7 +180,7 @@
             "type": "action",
             "name": "resourcePercentage",
             "parameters": {
-              "percentage": {"key": "<phase3>"},
+              "percentage": {"key": "<phase2>"},
               "resource": {"value": "health"}
             }
           }

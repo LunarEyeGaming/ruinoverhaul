@@ -7,6 +7,7 @@
 ]]
 
 local oldInit = init  -- The old init() function. Called in the new init() to extend rather than override the old init()
+local oldDestroy = destroy  -- Used to extend the old destroy() function
 
 local shouldSpawn  -- True by default, set to false if forcibly killed via entity message.
 local actionOnExpire  -- The action to use on expiring naturally. Leave undefined to have no action.
@@ -34,6 +35,9 @@ end
   message).
 ]]
 function destroy()
+  if oldDestroy then
+    oldDestroy()
+  end
   if shouldSpawn and actionOnExpire then
     projectile.processAction(actionOnExpire)
   end

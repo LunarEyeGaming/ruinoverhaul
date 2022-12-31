@@ -141,7 +141,7 @@
         "type": "module",
         "name": "eyeboss-idle",
         "parameters": {
-          "idleTime": {"value": 14.5}
+          "idleTime": {"value": 15.5}
         }
       }
     ]

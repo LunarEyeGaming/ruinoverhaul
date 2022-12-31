@@ -1,0 +1,78 @@
+{
+  "projectileName" : "ruin-ceilingtentacletele",
+  "image" : "/projectiles/invisibleprojectile/invisibleprojectile.png",
+  "animationCycle" : 2.0,
+  "timeToLive" : 2.0,
+  "animationLoops" : false,
+  "frameNumber" : 1,
+  "lightColor" : [0, 0, 0],
+  "power" : 0.0,
+  "speed" : 0,
+  "orientationLocked" : true,
+  "piercing" : true,
+  "flippable" : true,
+  "physics" : "illusion",
+  "bounces" : -1,
+  "periodicActions" : [
+    {
+      "time" : 0,
+      "repeat" : false,
+      "action" : "sound",
+      "options" : [ "/sfx/npc/boss/ruin-tentacleboss_talltentacle_windup.ogg" ]
+    },
+    {
+      "time" : 0.01,
+      "action" : "particle",
+      "specification" : "tentacleshard"
+    }
+  ],
+
+  "onlyHitTerrain" : true,
+
+  "explosionAction" : {
+    "action" : "projectile",
+    "type" : "orbitalup",
+    "inheritDamageFactor" : 1.0,
+    "config" : {
+      "onlyHitTerrain" : true,
+      "speed" : 0,
+      "timeToLive" : 0,
+      "actionOnReap" : [
+        {
+          "action" : "loop",
+          "count" : 15,
+          "body" : [
+            {
+              "action" : "particle",
+              "specification" : {
+                "type" : "animated",
+                "animation" : "/animations/shards/tentacleshard.animation",
+                "initialVelocity" : [0.0, -25],
+                "finalVelocity" : [0.0, -160],
+                "approach" : [0.0, 80],
+                "timeToLive" : 0.5,
+                "layer" : "front",
+                "collidesForeground" : false,
+                "variance" : {
+                  "position" : [0.5, 0.5],
+                  "initialVelocity" : [5, 10],
+                  "finalVelocity" : [0, 0],
+                  "rotation" : 180,
+                  "angularVelocity" : 180
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  
+  "nextProjectile" : {
+    "type" : "ruin-ceilingtentacle",
+    "offset" : [0, -3]
+  },
+
+  "scripts" : [ "/projectiles/boss/eyeboss/ruin-talltentacle/ruin-talltentacletele.lua" ],
+  "scriptDelta" : 1
+}

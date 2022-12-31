@@ -1,0 +1,176 @@
+{
+  "projectileName" : "ruin-slimywalltentacleteleright",
+  "image" : "/projectiles/invisibleprojectile/invisibleprojectile.png",
+  "animationCycle" : 2.0,
+  "timeToLive" : 2.0,
+  "animationLoops" : false,
+  "frameNumber" : 1,
+  "lightColor" : [0, 0, 0],
+  "power" : 0.0,
+  "speed" : 0,
+  "orientationLocked" : true,
+  "piercing" : true,
+  "flippable" : true,
+  "physics" : "illusion",
+  "bounces" : -1,
+  "periodicActions" : [
+    {
+      "time" : 0,
+      "repeat" : false,
+      "action" : "sound",
+      "options" : [ "/sfx/npc/boss/ruin-tentacleboss_talltentacle_windup.ogg" ]
+    },
+    {
+      "time" : 0.1,
+      "action" : "particle",
+      "specification" : "jellyshard"
+    },
+    {
+      "time" : 1.5,
+      "repeat" : false,
+      "action" : "projectile",
+      "type" : "invisibleprojectile",
+      "inheritDamageFactor" : 0.0,
+      "config" : {
+        "onlyHitTerrain" : true,
+        "movementSettings" : {
+          "collisionEnabled" : false
+        },
+        "bounces" : -1,
+        "timeToLive" : 0.5,
+        "periodicActions" : [
+          {
+            "time" : 0.01,
+            "action" : "particle",
+            "specification" : "jellyshard"
+          }
+        ]
+      }
+    }
+  ],
+
+  "onlyHitTerrain" : true,
+
+  "explosionAction" : {
+    "action" : "projectile",
+    "type" : "orbitalup",
+    "inheritDamageFactor" : 1.0,
+    "config" : {
+      "onlyHitTerrain" : true,
+      "speed" : 0,
+      "timeToLive" : 0,
+      "actionOnReap" : [
+        {
+          "action" : "loop",
+          "count" : 30,
+          "body" : [
+            {
+              "action" : "particle",
+              "specification" : {
+                "type" : "animated",
+                "animation" : "/animations/shards/jellyshard.animation",
+                "initialVelocity" : [0.0, 25],
+                "finalVelocity" : [0.0, -80],
+                "approach" : [0.0, 80],
+                "timeToLive" : 0.5,
+                "layer" : "middle",
+                "collidesForeground" : false,
+                "variance" : {
+                  "position" : [0.5, 0.5],
+                  "initialVelocity" : [5, 10],
+                  "finalVelocity" : [0, 0],
+                  "rotation" : 180,
+                  "angularVelocity" : 180
+                }
+              }
+            }
+          ]
+        },
+        {
+          "action" : "projectile",
+          "type" : "ruin-jellyblob",
+          "inheritDamageFactor" : 1,
+          "angle" : 3,
+          "offset" : [0, 2],
+          "config" : {
+            "speed" : 100
+          }
+        },
+        {
+          "action" : "projectile",
+          "type" : "ruin-jellyblob",
+          "inheritDamageFactor" : 1,
+          "angle" : 27,
+          "offset" : [0, 2],
+          "config" : {
+            "speed" : 100
+          }
+        },
+        {
+          "action" : "projectile",
+          "type" : "ruin-jellyblob",
+          "inheritDamageFactor" : 1,
+          "angle" : 47,
+          "offset" : [0, 2],
+          "config" : {
+            "speed" : 100
+          }
+        },
+        {
+          "action" : "projectile",
+          "type" : "ruin-jellyblob",
+          "inheritDamageFactor" : 1,
+          "angle" : 63,
+          "offset" : [0, 2],
+          "config" : {
+            "speed" : 100
+          }
+        },
+        {
+          "action" : "projectile",
+          "type" : "ruin-jellyblob",
+          "inheritDamageFactor" : 1,
+          "angle" : 75,
+          "offset" : [0, 2],
+          "config" : {
+            "speed" : 100
+          }
+        },
+        {
+          "action" : "projectile",
+          "type" : "ruin-jellyblob",
+          "inheritDamageFactor" : 1,
+          "angle" : 83,
+          "offset" : [0, 2],
+          "config" : {
+            "speed" : 100
+          }
+        },
+        {
+          "action" : "projectile",
+          "type" : "ruin-jellyblob",
+          "inheritDamageFactor" : 1,
+          "angle" : 87,
+          "offset" : [0, 2],
+          "config" : {
+            "speed" : 100
+          }
+        },
+        {
+          "action" : "projectile",
+          "type" : "ruin-slimywallappear",
+          "offset" : [4, 20],
+          "direction" : [-1, 0]
+        }
+      ]
+    }
+  },
+  
+  "nextProjectile" : {
+    "type" : "ruin-talltentacle",
+    "offset" : [ 0, 5.375 ]
+  },
+
+  "scripts" : [ "ruin-talltentacletele.lua" ],
+  "scriptDelta" : 1
+}

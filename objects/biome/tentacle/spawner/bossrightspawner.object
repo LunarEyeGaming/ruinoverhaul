@@ -31,6 +31,7 @@
   "monsterQueryRange" : 150,
 
   "objectWidth" : 21,
+  "minionCap" : 4,
   "spawnPoints" : {
     "blob1" : {
       "offset" : [1.0, 1.75],

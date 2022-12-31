@@ -1,0 +1,16 @@
+{  
+  "ruin_correctPosition": {
+    "type": "action",
+    "name": "ruin_correctPosition",
+    "title": "ruin_correctPosition",
+    "properties": {
+      "fromPos": {"type": "position", "value": null},
+      "toPos": {"type": "position", "value": null}
+    },
+    "category": "ruin-cultistbossend",
+    "script": "/scripts/actions/boss/ruin-cultistbossend.lua",
+    "output": {
+      "position": {"type": "position", "key": null}
+    }
+  }
+}

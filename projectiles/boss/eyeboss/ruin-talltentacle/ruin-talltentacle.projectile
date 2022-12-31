@@ -1,6 +1,6 @@
 {
   "projectileName" : "ruin-talltentacle",
-  "image" : "ruin-talltentacle.png",
+  "image" : "talltentacle.png",
   "animationCycle" : 0.3,
   "frameNumber" : 8,
   "power" : 300,

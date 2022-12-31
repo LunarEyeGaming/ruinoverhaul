@@ -7,7 +7,7 @@
       [ "jungle", "desert", "alien", "midnight", "alpine", "giantflower", "geode", "prism" ],
       [ "steamspring", "bioluminescence", "colourful", "tar", "oasis", "flesh", "mushroompatch", "bones" ],
       [ "scorchedcity", "tundra", "volcanic", "swamp", "rust", "hive", "eyepatch", null ],
-      [ "hellscape", "void", "vacuum", "invisible", null, null, null, null ]
+      [ "hellscape", "void", "vacuum", "invisible", "void2", null, null, null ]
     ]
   }
 }

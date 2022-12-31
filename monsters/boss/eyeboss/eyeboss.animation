@@ -505,7 +505,7 @@
       "tentaclespacing" : {
         "properties" : {
           "zLevel" : 110,
-          "offset" : [-8.9375, 12.25],
+          "offset" : [-8.75, 13.25],
           "image" : "<partImage>"
         }
       },
@@ -731,7 +731,7 @@
         },
         // Need to set sizes individually because of a bug where the "shrink" destruction action uses the base size
         // rather than the size picked due to variance.
-        // I just wanted some wedges of varying sizes shrinking into one point.
+        // I just wanted some particles of varying sizes shrinking into one point.
         {
           "particle" : {
             "type" : "animated",

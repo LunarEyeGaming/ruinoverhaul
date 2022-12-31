@@ -50,7 +50,8 @@
     "title": "spawnMonsterGroup",
     "properties": {
       "offsetRegion": {"type": "list", "value": [-4, -14, 4, -4]},
-      "windup": {"type": "number", "value": 1.5}
+      "windup": {"type": "number", "value": 1.5},
+      "defaultTargetOffsetRegion": {"type": "list", "value": [-54, -29, 54, -29]}
     },
     "category": "eyeboss",
     "script": "/scripts/actions/boss/eyeboss.lua",
@@ -111,9 +112,7 @@
     },
     "category": "eyeboss",
     "script": "/scripts/actions/boss/eyeboss.lua",
-    "output": {
-      "projectiles": {"type": "list", "key": null}
-    }
+    "output": {}
   },
   "ruin_elementalShieldEffect": {
     "type": "action",
@@ -121,6 +120,74 @@
     "title": "ruin_elementalShieldEffect",
     "properties": {
       "shieldState": {"type": "string", "value": null}
+    },
+    "category": "eyeboss",
+    "script": "/scripts/actions/boss/eyeboss.lua",
+    "output": {}
+  },
+  "ruin_spawnPlasmaOrb": {
+    "type": "action",
+    "name": "ruin_spawnPlasmaOrb",
+    "title": "ruin_spawnPlasmaOrb",
+    "properties": {
+      "spawnDistance": {"type": "number", "value": null},
+      "speed": {"type": "number", "value": null},
+      "center": {"type": "position", "key": "self"},
+      "projectileType": {"type": "string", "value": null},
+      "projectileParameters": {"type": "json", "value": {}}
+    },
+    "category": "eyeboss",
+    "script": "/scripts/actions/boss/eyeboss.lua",
+    "output": {}
+  },
+  "ruin_spawnCultistBoss": {
+    "type": "action",
+    "name": "ruin_spawnCultistBoss",
+    "title": "ruin_spawnCultistBoss",
+    "properties": {
+      "biome": {"type": "string", "value": "vacuum"},
+      "spawnOffset": {"type": "vec2", "value": [0, -8]},
+      "targetOffset": {"type": "vec2", "value": [0, -29]},
+      "monsterType": {"type": "string", "value": "cultistbossend"},
+      "windup": {"type": "number", "value": 1.5}
+    },
+    "category": "eyeboss",
+    "script": "/scripts/actions/boss/eyeboss.lua",
+    "output": {}
+  },
+  "ruin_retrieveCultistBoss": {
+    "type": "action",
+    "name": "ruin_retrieveCultistBoss",
+    "title": "ruin_retrieveCultistBoss",
+    "properties": {
+      "target": {"type": "entity", "value": null},
+      "finishedNotification": {"type": "string", "value": "ruin-finish"},
+      "biomeTag": {"type": "string", "value": "void2"},
+      "cultistDespawnDelay": {"type": "number", "value": 1.5},
+      "cultistDespawnNotification": {"type": "string", "value": "ruin-finish"},
+      "despawnerProjectileType": {"type": "string", "value": "ruin-spacemonsterdespawner"},
+      "despawnerProjectileParams": {"type": "json", "value": {}},
+      "portalCenter": {"type": "position", "value": null},
+      "despawnerTravelDelay": {"type": "number", "value": 0.5},
+      "despawnerTravelTime": {"type": "number", "value": 1.0}
+    },
+    "category": "eyeboss",
+    "script": "/scripts/actions/boss/eyeboss.lua",
+    "output": {}
+  },
+  "ruin_ceilingTentacles": {
+    "type": "action",
+    "name": "ruin_ceilingTentacles",
+    "title": "ruin_ceilingTentacles",
+    "properties": {
+      "arenaWidth": {"type": "number", "value": 105},
+      "tentacleWidth": {"type": "number", "value": 4},
+      "maxSpawnHeight": {"type": "number", "value": 37},
+      "projectileType": {"type": "string", "value": "ruin-ceilingtentacletele"},
+      "projectileParameters": {"type": "json", "value": {}},
+      "tentacleInterval": {"type": "number", "value": 0.07},
+      "tentacleDirection": {"type": "vec2", "value": [1, 0]},
+      "tentacleCooldown": {"type": "number", "value": 1.0}
     },
     "category": "eyeboss",
     "script": "/scripts/actions/boss/eyeboss.lua",

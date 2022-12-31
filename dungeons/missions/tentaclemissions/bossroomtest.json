@@ -552,7 +552,7 @@
          "objects":[
                 {
                  "height":32,
-                 "id":1091,
+                 "id":1224,
                  "name":"",
                  "properties":
                     {
@@ -571,7 +571,7 @@
                 }, 
                 {
                  "height":32,
-                 "id":1092,
+                 "id":1225,
                  "name":"",
                  "properties":
                     {
@@ -590,7 +590,7 @@
                 }, 
                 {
                  "height":32,
-                 "id":1093,
+                 "id":1226,
                  "name":"",
                  "properties":
                     {
@@ -609,7 +609,7 @@
                 }, 
                 {
                  "height":32,
-                 "id":1094,
+                 "id":1227,
                  "name":"",
                  "properties":
                     {
@@ -623,12 +623,12 @@
                  "type":"",
                  "visible":true,
                  "width":32,
-                 "x":1568,
+                 "x":1560,
                  "y":968
                 }, 
                 {
                  "height":32,
-                 "id":1095,
+                 "id":1228,
                  "name":"",
                  "properties":
                     {
@@ -647,7 +647,7 @@
                 }, 
                 {
                  "height":32,
-                 "id":1096,
+                 "id":1229,
                  "name":"",
                  "properties":
                     {
@@ -661,73 +661,12 @@
                  "type":"",
                  "visible":true,
                  "width":32,
-                 "x":1824,
+                 "x":1576,
                  "y":968
                 }, 
                 {
                  "height":32,
-                 "id":1097,
-                 "name":"",
-                 "properties":
-                    {
-                     "stagehand":"cultistflyingslashposition"
-                    },
-                 "propertytypes":
-                    {
-                     "stagehand":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":32,
-                 "x":1320,
-                 "y":968
-                }, 
-                {
-                 "height":120,
-                 "id":1206,
-                 "name":"",
-                 "properties":
-                    {
-                     "parameters":"{ \"music\": [\"\/music\/the-eternal-tide.ogg\"], \"uniqueId\": \"bossmusicleft\"}",
-                     "stagehand":"bossmusic"
-                    },
-                 "propertytypes":
-                    {
-                     "parameters":"string",
-                     "stagehand":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":176.66666666667,
-                 "x":968,
-                 "y":771
-                }, 
-                {
-                 "height":120,
-                 "id":1207,
-                 "name":"",
-                 "properties":
-                    {
-                     "parameters":"{ \"music\": [\"\/music\/the-eternal-tide.ogg\"], \"uniqueId\": \"bossmusicright\"}",
-                     "stagehand":"bossmusic"
-                    },
-                 "propertytypes":
-                    {
-                     "parameters":"string",
-                     "stagehand":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":175.5,
-                 "x":2032.5,
-                 "y":775.5
-                }, 
-                {
-                 "height":32,
-                 "id":1218,
+                 "id":1230,
                  "name":"",
                  "properties":
                     {
@@ -746,7 +685,7 @@
                 }, 
                 {
                  "height":32,
-                 "id":1219,
+                 "id":1231,
                  "name":"",
                  "properties":
                     {
@@ -762,6 +701,238 @@
                  "width":32,
                  "x":1960,
                  "y":944
+                }, 
+                {
+                 "height":32,
+                 "id":1232,
+                 "name":"",
+                 "properties":
+                    {
+                     "stagehand":"cultistflyingslashposition"
+                    },
+                 "propertytypes":
+                    {
+                     "stagehand":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":1288,
+                 "y":968
+                }, 
+                {
+                 "height":32,
+                 "id":1233,
+                 "name":"",
+                 "properties":
+                    {
+                     "stagehand":"cultistflyingslashposition"
+                    },
+                 "propertytypes":
+                    {
+                     "stagehand":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":1856,
+                 "y":968
+                }, 
+                {
+                 "height":32,
+                 "id":1234,
+                 "name":"",
+                 "properties":
+                    {
+                     "stagehand":"ruin-cultistexhaustposition"
+                    },
+                 "propertytypes":
+                    {
+                     "stagehand":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":1568,
+                 "y":968
+                }, 
+                {
+                 "height":32,
+                 "id":1235,
+                 "name":"",
+                 "properties":
+                    {
+                     "stagehand":"cultistbeamposition"
+                    },
+                 "propertytypes":
+                    {
+                     "stagehand":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":1408,
+                 "y":968
+                }, 
+                {
+                 "height":32,
+                 "id":1236,
+                 "name":"",
+                 "properties":
+                    {
+                     "stagehand":"cultistbeamposition"
+                    },
+                 "propertytypes":
+                    {
+                     "stagehand":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":1968,
+                 "y":968
+                }, 
+                {
+                 "height":32,
+                 "id":1237,
+                 "name":"",
+                 "properties":
+                    {
+                     "stagehand":"cultistbeamposition"
+                    },
+                 "propertytypes":
+                    {
+                     "stagehand":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":1176,
+                 "y":968
+                }, 
+                {
+                 "height":32,
+                 "id":1238,
+                 "name":"",
+                 "properties":
+                    {
+                     "stagehand":"cultistidleslashposition"
+                    },
+                 "propertytypes":
+                    {
+                     "stagehand":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":1792,
+                 "y":968.5
+                }, 
+                {
+                 "height":32,
+                 "id":1239,
+                 "name":"",
+                 "properties":
+                    {
+                     "stagehand":"cultistidleslashposition"
+                    },
+                 "propertytypes":
+                    {
+                     "stagehand":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":1336,
+                 "y":968
+                }, 
+                {
+                 "height":32,
+                 "id":1240,
+                 "name":"",
+                 "properties":
+                    {
+                     "stagehand":"cultistidleslashposition"
+                    },
+                 "propertytypes":
+                    {
+                     "stagehand":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":1904,
+                 "y":968.5
+                }, 
+                {
+                 "height":32,
+                 "id":1241,
+                 "name":"",
+                 "properties":
+                    {
+                     "stagehand":"cultistidleslashposition"
+                    },
+                 "propertytypes":
+                    {
+                     "stagehand":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":1240,
+                 "y":968
+                }, 
+                {
+                 "height":120,
+                 "id":1242,
+                 "name":"",
+                 "properties":
+                    {
+                     "parameters":"{ \"music\": [\"\/music\/the-eternal-tide.ogg\"], \"uniqueId\": \"bossmusicleft\"}",
+                     "stagehand":"bossmusic"
+                    },
+                 "propertytypes":
+                    {
+                     "parameters":"string",
+                     "stagehand":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":176.667,
+                 "x":968,
+                 "y":768
+                }, 
+                {
+                 "height":120,
+                 "id":1243,
+                 "name":"",
+                 "properties":
+                    {
+                     "parameters":"{ \"music\": [\"\/music\/the-eternal-tide.ogg\"], \"uniqueId\": \"bossmusicright\"}",
+                     "stagehand":"bossmusic"
+                    },
+                 "propertytypes":
+                    {
+                     "parameters":"string",
+                     "stagehand":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":175.5,
+                 "x":2032.5,
+                 "y":772.5
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -858,7 +1029,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":1224,
+ "nextobjectid":1244,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.1.6",

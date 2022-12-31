@@ -1,0 +1,73 @@
+{
+  "projectileName" : "ruin-laserjet",
+  "image" : "laserjet.png",
+  "animationCycle" : 1.0,
+  "timeToLive" : 1.0,
+  "lightColor" : [150, 100, 100],
+  "frameNumber" : 10,
+  "fullbright" : true,
+  "onlyHitTerrain" : true,
+  "physics" : "illusion",
+  "emitters" : [ ],
+
+  "speed" : 0,
+  
+  "scripts" : ["/projectiles/ruin-killableextension2.lua"],
+  
+  "actionOnExpire" : {
+    "action" : "actions",
+    "list" : [
+      {
+        "action" : "projectile",
+        "type" : "ruin-plasmashotlarge",
+        "inheritDamageFactor" : 1,
+        "angle" : 90,
+        "config" : {
+          "speed" : 25
+        }
+      },
+      {
+        "action" : "projectile",
+        "type" : "ruin-plasmashotlarge",
+        "inheritDamageFactor" : 1,
+        "angle" : 90,
+        "config" : {
+          "speed" : 50
+        }
+      },
+      {
+        "action" : "projectile",
+        "type" : "ruin-plasmashotlarge",
+        "inheritDamageFactor" : 1,
+        "angle" : 90,
+        "config" : {
+          "speed" : 75
+        }
+      },
+      {
+        "action" : "projectile",
+        "type" : "ruin-plasmashotlarge",
+        "inheritDamageFactor" : 1,
+        "angle" : 90,
+        "config" : {
+          "speed" : 100
+        }
+      },
+      {
+        "action" : "projectile",
+        "type" : "orbitalup",
+        "config" : {
+          "timeToLive" : 0,
+          "onlyHitTerrain" : true,
+          "speed" : 0,
+          "actionOnReap" : [
+            {
+              "action" : "sound",
+              "options" : ["/sfx/gun/pulsecannon_blast1.ogg"]
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

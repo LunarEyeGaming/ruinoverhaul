@@ -551,15 +551,6 @@
                               "resource": {"value": "health"}
                             }
                           },
-                          /*{
-                            "title": "eyeboss-messaging",
-                            "type": "module",
-                            "name": "eyeboss-messaging",
-                            "parameters": {
-                              "phase1": {"key": "<phase1>"},
-                              "phase2": {"key": "<phase2>"}
-                            }
-                          },*/
                           {
                             "title": "eyeboss-animate",
                             "type": "module",
@@ -1097,18 +1088,18 @@
                                               "parameters": {}
                                             },
                                             {
+                                              "title": "eyeboss-spawnsequencecultist2",
+                                              "type": "module",
+                                              "name": "eyeboss-spawnsequencecultist2",
+                                              "parameters": {}
+                                            },
+                                            {
                                               "title": "eyeboss-shadowtentacles",
                                               "type": "module",
                                               "name": "eyeboss-shadowtentacles",
                                               "parameters": {
                                                 "attackTime": {"value": 15}
                                               }
-                                            },
-                                            {
-                                              "title": "eyeboss-spawnsequence",
-                                              "type": "module",
-                                              "name": "eyeboss-spawnsequence",
-                                              "parameters": {}
                                             },
                                             {
                                               "title": "eyeboss-tentacle",

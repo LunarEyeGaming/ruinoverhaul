@@ -1,0 +1,29 @@
+--[[
+  Performs two corrections to the targetPos to prevent Asra Nox from getting stuck in a wall during a dash attack.
+  param fromPos
+  param toPos
+  output position
+]]
+function ruin_correctPosition(args, board)
+  if not args.fromPos then
+    sb.logInfo("Argument fromPos not defined")
+    return false
+  end
+  
+  if not args.toPos then
+    sb.logInfo("Argument targetPos not defined")
+    return false
+  end
+  
+  local position = args.toPos
+  position = world.lineCollision(args.fromPos, position) or position
+
+  -- Worst-case scenario, we end up having to correct the poly by a distance equivalent to that of the farthest point
+  -- from the center. Using the distance from the center to a corner of the bound box as the maximum correction
+  -- (hopefully) guarantees that collision resolution succeeds.
+  local boundBox = mcontroller.boundBox()
+  local maxCorrection = vec2.mag({boundBox[1], boundBox[2]})  -- Distance from center to a corner of the bound box
+  position = world.resolvePolyCollision(mcontroller.collisionPoly(), position, maxCorrection)
+  
+  return true, {position = position}
+end

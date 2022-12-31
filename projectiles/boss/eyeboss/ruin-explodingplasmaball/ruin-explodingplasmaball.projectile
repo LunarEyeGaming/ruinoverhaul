@@ -124,7 +124,26 @@
     }
   ],
   
-  "scripts" : ["/projectiles/ruin-killableextension2.lua"],
+  "scripts" : ["ruin-explodingplasmaball.lua", "/projectiles/ruin-killableextension2.lua"],
+  
+  "projectileType" : "ruin-plasmaballfragment",
+  "projectileDamageFactor" : 0.5,
+  
+  "projectileRings" : [
+    {
+      "count" : 10,
+      "radialSpeed" : 85,
+      "radialAcceleration" : -40,
+      "angularVelocity" : 45,
+      "timeToLive" : 4.5
+    },
+    {
+      "count" : 10,
+      "radialSpeed" : 60,
+      "radialAcceleration" : -40,
+      "angularVelocity" : 22.5
+    }
+  ],
   
   "actionOnExpire" : {
     "action" : "projectile",

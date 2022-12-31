@@ -18,8 +18,5 @@
     "ruin-portaldamage.lua"
   ],
   
-  "animationConfig" : "ruin-portaldamage.animation",
-
-  "label" : "Spontaneous relocation imminent!",
-  "icon" : "/interface/statuses/stop.png"
+  "animationConfig" : "ruin-portaldamage.animation"
 }

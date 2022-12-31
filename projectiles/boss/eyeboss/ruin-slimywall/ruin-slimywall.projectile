@@ -1,0 +1,40 @@
+{
+  "projectileName" : "ruin-slimywall",
+  "image" : "slimywall.png",
+  "renderLayer" : "ForegroundEntity+10",
+  "flippable" : true,
+  "timeToLive" : 16,
+  "animationCycle" : 0.1875,
+  "frameNumber" : 1,
+  "winddownFrames" : 7,
+  "speed" : 0,
+  "piercing" : true,
+  "bounces" : -1,
+  "onlyHitTerrain" : true,
+  "knockback" : 10,
+  "damageKind" : "default",
+  "physics" : "illusion",
+  
+  "damagePoly" : [[2, 136], [2, -136], [-8, -136], [-8, 136]],
+  
+  "scripts" : ["/projectiles/killable.lua"],
+
+  "boundBox" : [-2, -17, 2, 17],
+  "physicsForces" : {
+    // Bidirectional force regions so that two projectile types are not used to accomplish the same task.
+    "pushright" : {
+      "type" : "DirectionalForceRegion",
+      "rectRegion" : [0.125, -17, 1, 17],
+      "xTargetVelocity" : 10,
+      "controlForce" : 3000,
+      "categoryWhitelist" : ["player"]
+    },
+    "pushleft" : {
+      "type" : "DirectionalForceRegion",
+      "rectRegion" : [-1, -17, -0.125, 17],
+      "xTargetVelocity" : -10,
+      "controlForce" : 3000,
+      "categoryWhitelist" : ["player"]
+    }
+  }
+}

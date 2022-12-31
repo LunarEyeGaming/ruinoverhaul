@@ -63,23 +63,15 @@ function tentacleMovement(args, board, _, dt)
       local angle = util.easeInOutSin(timers[i] / times[i], oldAngles[i], angles[i] - oldAngles[i])
       
       animator.resetTransformationGroup("tentacle"..i)
-      animator.scaleTransformationGroup(
-        "tentacle"..i,
-        {1, scale},
-        args.tentaclePivots[i]
-      )
-      animator.rotateTransformationGroup(
-        "tentacle"..i,
-        angle,
-        args.tentaclePivots[i]
-      )
+      animator.scaleTransformationGroup("tentacle"..i, {1, scale}, args.tentaclePivots[i])
+      animator.rotateTransformationGroup("tentacle"..i, angle, args.tentaclePivots[i])
       
       table.insert(intermediateScales, scale)
       table.insert(intermediateAngles, angle)
     end
     
-    dt = coroutine.yield(nil, {scales = intermediateScales,
-                               angles = util.map(intermediateAngles, function(angle) return util.toDegrees(angle) end)})
+    dt = coroutine.yield(nil, {scales = intermediateScales, angles = util.map(intermediateAngles, function(angle)
+        return util.toDegrees(angle) end)})
   end
 end
 
@@ -131,27 +123,80 @@ function spawnMonsterGroup(args, board, _, dt)
   end
 
   for _, monsterGroup in pairs(spawnGroup.monsters) do
-    for i = 1, monsterGroup.count do
-      -- TODO: Allow for old monster group selection
+    if type(monsterGroup) == "table" then
+      for i = 1, monsterGroup.count do
+        -- TODO: Allow for old monster group selection
+        local spawnOffset = rect.randomPoint(args.offsetRegion)
+        local targetOffset = rect.randomPoint(monsterGroup.offsetRegion)
+
+        local spawnPosition = vec2.add(mcontroller.position(), spawnOffset)
+        local targetPosition = vec2.add(mcontroller.position(), targetOffset)
+
+        world.spawnProjectile("spacemonsterspawner", spawnPosition, entity.id(), world.distance(targetPosition,
+              spawnPosition), false, {
+          monsterType = monsterGroup.type,
+          monsterLevel = monster.level(),
+          targetPosition = targetPosition,
+          onGround = monsterGroup.onGround,
+          instantAggro = monsterGroup.instantAggro,
+          keepTargetInSight = monsterGroup.keepTargetInSight
+        })
+
+        coroutine.yield()  -- So that the spawners burst one by one
+      end
+    else
       local spawnOffset = rect.randomPoint(args.offsetRegion)
-      local targetOffset = rect.randomPoint(monsterGroup.offsetRegion)
+      local targetOffset = rect.randomPoint(args.defaultTargetOffsetRegion)
 
       local spawnPosition = vec2.add(mcontroller.position(), spawnOffset)
       local targetPosition = vec2.add(mcontroller.position(), targetOffset)
+      
 
       world.spawnProjectile("spacemonsterspawner", spawnPosition, entity.id(), world.distance(targetPosition,
             spawnPosition), false, {
-        monsterType = monsterGroup.type,
+        monsterType = monsterGroup,
         monsterLevel = monster.level(),
         targetPosition = targetPosition,
-        onGround = monsterGroup.onGround,
-        instantAggro = monsterGroup.instantAggro,
-        keepTargetInSight = monsterGroup.keepTargetInSight
+        onGround = true,
+        instantAggro = true,
+        keepTargetInSight = false
       })
 
       coroutine.yield()  -- So that the spawners burst one by one
     end
   end
+
+  return true
+end
+
+--[[
+  Variant of the spawnMonsterGroup node that spawns Asra Nox.
+  
+  param biome
+  param monsterType
+  param windup
+  param spawnOffset
+  param targetOffset
+]]
+function ruin_spawnCultistBoss(args, board, _, dt)
+  animator.setGlobalTag("biome", args.biome)
+
+  local timer = args.windup
+  while timer > 0 do
+    timer = timer - dt
+    dt = coroutine.yield()
+  end
+
+  local spawnPosition = vec2.add(mcontroller.position(), args.spawnOffset)
+  local targetPosition = vec2.add(mcontroller.position(), args.targetOffset)
+
+  world.spawnProjectile("spacemonsterspawner", spawnPosition, entity.id(), world.distance(targetPosition,
+        spawnPosition), false, {
+    monsterType = args.monsterType,
+    monsterLevel = monster.level(),
+    targetPosition = targetPosition,
+    onGround = true
+  })
 
   return true
 end
@@ -184,91 +229,29 @@ function spawnLightShaft(args, board)
   return true
 end
 
--- param center
--- param areaWidth
--- param segmentWidth
--- param projectileCount
--- param power
--- param projectileCount
--- param spawnHeight
--- param teleDuration
--- param postTeleDelay
--- output projectiles
-function ruin_spawnFloorProjectiles(args, board)
-  local power = args.power * root.evalFunction("monsterLevelPowerMultiplier", monster.level())
-
-  local segmentCount = math.floor(args.areaWidth / args.segmentWidth)
-  local segments = {}
-  for i = 1, args.projectileCount do
-    table.insert(segments, true)
-  end
-  for i = 1, segmentCount - args.projectileCount do
-    table.insert(segments, false)
-  end
-  shuffle(segments)
-
-  -- Randomize positions
-  local spawnPositions = {}
-  local start = vec2.add(args.center, {-args.areaWidth / 2, 0})
-  local groundLevel = world.collisionBlocksAlongLine(args.center, vec2.add(args.center, {0, -50}))[1][2] + 1.0
-  for i, spawnProjectile in ipairs(segments) do
-    if spawnProjectile then
-      local spawnPosition = vec2.add(start, {i * args.segmentWidth - (args.segmentWidth / 2), 0})
-      spawnPosition[2] = groundLevel + args.spawnHeight
-      
-      table.insert(spawnPositions, spawnPosition)
-    end
-  end
-  shuffle(spawnPositions)
-
-  -- Spawn the projectiles
-  local ttl = args.teleDuration + args.postTeleDelay
-  local interval = args.teleDuration / args.projectileCount
-  local projectiles = {}
-  for _, spawnPosition in ipairs(spawnPositions) do
-    local params = {
-      power = power,
-      timeToLive = ttl
-    }
-    local projectileId = world.spawnProjectile(args.projectileType, spawnPosition, entity.id(), {0, 0}, false, params)
-    table.insert(projectiles, projectileId)
-    ttl = ttl - interval
-    util.run(interval, function() end)
-  end
-
-  return true, {projectiles = projectiles}
-end
-
--- An attack that makes giant tentacles drill through sectors of the arena. In phase 1, one tentacle drills. In phase 2,
--- the tentacle re-emerges to drill a larger sector. In phase 3, another tentacle appears on the other side. In phase 4,
--- the other tentacle re-emerges in the same manner as previously described. In addition, the tentacles will complete
--- their attacks faster. All time-based parameters are measured in seconds.
--- param phase1 - The minimum health percentage of phase 1
--- param phase2 - The minimum health percentage of phase 2
--- param phase3 - The minimum health percentage of phase 3
--- param tentacle1 - The unique ID of the tentacle
--- param tentacle2 - The unique ID of the re-emerging component of the tentacle
--- param otherTentacle1 - The unique ID of the tentacle on the other side
--- param otherTentacle2 - The unique ID of the re-emerging component of the tentacle on the other side
--- param windupTime - The windup time of the tentacle
--- param attackTime - The attack time of the tentacle and the re-emerging segment of it
--- param windupSoundPool - The windup sound pool of the tentacle
--- param reEmergeWindupTime - The windup time of the re-emerging segment of the tentacle
--- param reEmergeDelay - The amount of time to wait after emerging the first segment of the tentacle to activate the 
---                       second segment of the tentacle
--- param reEmergeWindupSoundPool - The windup sound pool of the re-emerging segment of the tentacle
--- param retractDelay - The amount of time to wait after drilling before retracting the tentacle
--- param otherTentacleDelay - The amount of time to wait before activating the other tentacle
+--[[
+  An attack that makes giant tentacles drill through sectors of the arena. In phase 1, one tentacle drills. In phase 2,
+  the tentacle re-emerges to drill a larger sector. In phase 3, another tentacle appears on the other side. In phase 4,
+  the other tentacle re-emerges in the same manner as previously described. In addition, the tentacles will complete
+  their attacks faster. All time-based parameters are measured in seconds.
+  param phase1 - The minimum health percentage of phase 1
+  param phase2 - The minimum health percentage of phase 2
+  param phase3 - The minimum health percentage of phase 3
+  param tentacle1 - The unique ID of the tentacle
+  param tentacle2 - The unique ID of the re-emerging component of the tentacle
+  param otherTentacle1 - The unique ID of the tentacle on the other side
+  param otherTentacle2 - The unique ID of the re-emerging component of the tentacle on the other side
+  param windupTime - The windup time of the tentacle
+  param attackTime - The attack time of the tentacle and the re-emerging segment of it
+  param windupSoundPool - The windup sound pool of the tentacle
+  param reEmergeWindupTime - The windup time of the re-emerging segment of the tentacle
+  param reEmergeDelay - The amount of time to wait after emerging the first segment of the tentacle to activate the 
+                        second segment of the tentacle
+  param reEmergeWindupSoundPool - The windup sound pool of the re-emerging segment of the tentacle
+  param retractDelay - The amount of time to wait after drilling before retracting the tentacle
+  param otherTentacleDelay - The amount of time to wait before activating the other tentacle
+]]
 function ruin_tentacleAttack(args, board)
-  -- TODO: Make this not hardcoded
-  -- local windupTime = 4.0
-  -- local attackTime = 3.0
-  -- local windupSoundPool = {"/sfx/npc/boss/tentacleboss_tentacle_windup.ogg"}
-  
-  -- local reEmergeWindupTime = 2.0
-  -- local reEmergeDelay = 0.75
-  -- local reEmergeWindupSoundPool = {"/sfx/npc/boss/ruin-tentacleboss_tentacle_windup2.ogg"}
-  -- local retractDelay = 1.0
 
   if status.resourcePercentage("health") >= args.phase1 then
     world.sendEntityMessage(args.tentacle1, "attack")
@@ -324,4 +307,152 @@ function ruin_elementalShieldEffect(args, board)
     listener:update()
     coroutine.yield()
   end
+end
+
+--[[
+  Spawns a projectile that flies toward the center from a distance at a random angle.
+  param spawnDistance - The distance from the center to spawn the projectile
+  param speed - The speed of the projectile
+  param center - The center toward which the projectile flies
+  param projectileType - The type of projectile to spawn
+  param projectileParameters - The parameters of the projectile to spawn
+]]
+function ruin_spawnPlasmaOrb(args, board)
+  local angle = util.randomInRange({0, 2 * math.pi})
+  local timeToLive = args.spawnDistance / args.speed
+  local pos = vec2.add(args.center, vec2.withAngle(angle, args.spawnDistance))
+  local aimVec = vec2.withAngle(angle + math.pi)  -- Point toward the center relative to spawn location
+  
+  local params = copy(args.projectileParameters)
+  params.power = (params.power or 10) * root.evalFunction("monsterLevelPowerMultiplier", monster.level())
+  params.timeToLive = timeToLive
+  params.speed = args.speed
+  
+  world.spawnProjectile(args.projectileType, pos, entity.id(), aimVec, false, params)
+  
+  return true
+end
+
+--[[
+  Plays the Ruin's part of the Asra Nox despawn animation. The Ruin opens up a portal, notifies Asra Nox to begin her
+  disappear animation, waits for Asra Nox to send a notification back, and then spawns a projectile at her place that 
+  moves toward the center of the Ruin's portal. The Ruin then closes the portal at the end.
+  
+  param target - The entity ID of Asra Nox
+  param finishedNotification - The name of the notification to receive
+  param biomeTag - The global tag to use for the biome part during the portal animation
+  param cultistDespawnDelay - How long to wait after opening the portal to notify Asra Nox to disappear
+  param cultistDespawnNotification - The name of the notification to send to Asra Nox
+  param despawnerProjectileType - The type of projectile to spawn at Asra Nox's position
+  param despawnerProjectileParams - The parameters to override for the projectile to spawn at Asra Nox's position
+  param portalCenter - The position of the portal's center
+  param despawnerTravelDelay - The amount of time to wait before moving the projectile
+  param despawnerTravelTime - The amount of time it takes for the projectile to move to the destination
+]]
+function ruin_retrieveCultistBoss(args, board)
+  animator.setAnimationState("eye", "spawnwindup")
+  animator.setGlobalTag("biome", args.biomeTag)
+  
+  util.run(args.cultistDespawnDelay, function() end)
+
+  world.sendEntityMessage(args.target, "notify", {type = args.cultistDespawnNotification, sourceId = entity.id()})
+  
+  -- Placed here b/c Asra Nox will die before we can spawn the projectile.
+  local targetPos = world.entityPosition(args.target)
+  
+  _ruin_awaitNotification(args.finishedNotification)
+  
+  local portalCloseDelay = args.despawnerTravelDelay + args.despawnerTravelTime
+  
+  local params = copy(args.despawnerProjectileParams)
+  params.targetPosition = args.portalCenter
+  params.timeToLive = portalCloseDelay
+  params.travelDelay = args.despawnerTravelDelay
+  params.travelTime = args.despawnerTravelTime
+  
+  world.spawnProjectile(args.despawnerProjectileType, targetPos, entity.id(), world.distance(targetPos,
+      args.portalCenter), false, params)
+  
+  util.run(portalCloseDelay, function() end)
+  
+  animator.setAnimationState("eye", "spawnwinddown")
+  
+  return true
+end
+
+--[[
+  Spawns tentacles along the ceiling of the arena. This node would be used to act against using the spike sphere to
+  cheese certain sections of the fight.
+
+  param arenaWidth - The width of the entire arena
+  param tentacleWidth - The spacing between each projectile
+  param maxSpawnHeight - The maximum height at which to spawn the projectiles relative to the center of the boss
+  param projectileType - The type of projectile to spawn
+  param projectileParameters - The parameters to use for the projectiles
+  param tentacleInterval - The time interval between each projectile
+  param tentacleDirection - The aim vector of the projectile
+  param tentacleCooldown - The amount of time to wait after spawning all the tentacles.
+]]
+function ruin_ceilingTentacles(args, board)
+  local ownPosition = mcontroller.position()
+  local halfArenaWidth = args.arenaWidth / 2
+  local numTentacles = math.floor(halfArenaWidth / args.tentacleWidth)
+  
+  local params = copy(args.projectileParameters)
+  params.power = (params.power or 10) * root.evalFunction("monsterLevelPowerMultiplier", monster.level())
+
+  for i = 0, numTentacles do
+    local leftXPos = (-halfArenaWidth + i * args.tentacleWidth) + ownPosition[1]
+
+    local leftPos = world.lineCollision({leftXPos, ownPosition[2]}, {leftXPos, ownPosition[2] + args.maxSpawnHeight})
+    if not leftPos then
+      leftPos = {leftXPos, ownPosition[2] + args.maxSpawnHeight}
+    end
+    
+    world.spawnProjectile(args.projectileType, leftPos, entity.id(), args.tentacleDirection, false, params)
+
+    local rightXPos = halfArenaWidth - i * args.tentacleWidth + ownPosition[1]
+
+    local rightPos = world.lineCollision({rightXPos, ownPosition[2]}, {rightXPos, ownPosition[2] +
+        args.maxSpawnHeight})
+    if not rightPos then
+      rightPos = {rightXPos, ownPosition[2] + args.maxSpawnHeight}
+    end
+    
+    world.spawnProjectile(args.projectileType, rightPos, entity.id(), args.tentacleDirection, false,
+        params)
+    
+    util.run(args.tentacleInterval, function() end)
+  end
+  
+  util.run(args.tentacleCooldown, function() end)
+  
+  return true
+end
+
+-- Coroutine function that waits until it receives <count> notifications of the specified type <type_> (default count is
+-- 1).
+-- Borrowed from the Prison's code in Voided.
+function _ruin_awaitNotification(type_, count)
+  count = count or 1
+  local notifications = {}
+  while count > 0 do
+    -- Collect notifications
+    local i = 1
+    while i <= #self.notifications do
+      local notification = self.notifications[i]
+      if notification.type == type_ then
+        --sb.logInfo("self.notifications = %s, i = %s", self.notifications, i)
+        table.remove(self.notifications, i)
+        table.insert(notifications, notification)
+
+        count = count - 1
+      else
+        i = i + 1
+      end
+    end
+    coroutine.yield()
+  end
+
+  return notifications
 end

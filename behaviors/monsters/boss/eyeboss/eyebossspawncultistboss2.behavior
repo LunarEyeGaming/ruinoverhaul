@@ -1,0 +1,53 @@
+{
+  "name": "eyeboss-spawncultistboss2",
+  "description": "",
+  "scripts": [
+    "/scripts/actions/position.lua",
+    "/scripts/actions/world.lua"
+  ],
+  "parameters": {},
+  "root": {
+    "title": "sequence",
+    "type": "composite",
+    "name": "sequence",
+    "parameters": {},
+    "children": [
+      {
+        "title": "offsetPosition",
+        "type": "action",
+        "name": "offsetPosition",
+        "parameters": {
+          "offset": {"value": [0, -28]},
+          "position": {"key": "self"}
+        },
+        "output": {
+          "position": "spawnPosition"
+        }
+      },
+      {
+        "title": "spawnMonster",
+        "type": "action",
+        "name": "spawnMonster",
+        "parameters": {
+          "type": {"value": "ruin-cultistbossend"},
+          "position": {"key": "spawnPosition"}
+        },
+        "output": {
+          "entityId": "monster"
+        }
+      },
+      {
+        "title": "listPush",
+        "type": "action",
+        "name": "listPush",
+        "parameters": {
+          "list": {"key": "monsters"},
+          "entity": {"key": "monster"}
+        },
+        "output": {
+          "list": "monsters"
+        }
+      }
+    ]
+  }
+}

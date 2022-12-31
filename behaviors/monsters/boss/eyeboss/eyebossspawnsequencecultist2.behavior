@@ -1,0 +1,92 @@
+{
+  "name": "eyeboss-spawnsequencecultist2",
+  "description": "",
+  "scripts": [
+    "/scripts/actions/animator.lua",
+    "/scripts/actions/time.lua"
+  ],
+  "parameters": {
+    "portalCenterOffset": [-0.3125, -8.375]
+  },
+  "root": {
+    "title": "sequence",
+    "type": "composite",
+    "name": "sequence",
+    "parameters": {},
+    "children": [
+      {
+        "title": "eyeboss-spawncultistboss2",
+        "type": "module",
+        "name": "eyeboss-spawncultistboss2",
+        "parameters": {}
+      },
+      {
+        "title": "timer",
+        "type": "action",
+        "name": "timer",
+        "parameters": {
+          "time": {"value": 1}
+        }
+      },
+      {
+        "title": "succeeder",
+        "type": "decorator",
+        "name": "succeeder",
+        "parameters": {},
+        "child": {
+          "title": "parallel",
+          "type": "composite",
+          "name": "parallel",
+          "parameters": {
+            "fail": {"value": 1},
+            "success": {"value": -1}
+          },
+          "children": [
+            {
+              "title": "listGet",
+              "type": "action",
+              "name": "listGet",
+              "parameters": {
+                "list": {"key": "monsters"}
+              }
+            },
+            {
+              "title": "addEphemeralEffect",
+              "type": "action",
+              "name": "addEphemeralEffect",
+              "parameters": {
+                "name": {"value": "invulnerable"}
+              }
+            },
+            {
+              "title": "animate",
+              "type": "action",
+              "name": "animate",
+              "parameters": {
+                "state": {"value": "close"},
+                "type": {"value": "blink"},
+                "fallback": {"value": "opennoroar"}
+              }
+            }
+          ]
+        }
+      },
+      {
+        "title": "timer",
+        "type": "action",
+        "name": "timer",
+        "parameters": {
+          "time": {"value": 1.0}
+        }
+      },
+      {
+        "title": "removeEphemeralEffect",
+        "type": "action",
+        "name": "removeEphemeralEffect",
+        "parameters": {
+          "name": {"value": "invulnerable"}
+        }
+      }
+    ]
+  }
+}

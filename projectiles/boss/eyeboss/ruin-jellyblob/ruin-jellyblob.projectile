@@ -1,0 +1,49 @@
+{
+  "projectileName" : "ruin-jellyblob",
+  "image" : "jellyblob.png",
+  "animationCycle" : 0.1,
+  "frameNumber" : 1,
+  "flippable" : false,
+  "damageKindImage" : "icon.png",
+  "physics" : "grenade",
+  "emitters" : [ ],
+  "damagePoly" : [ [-8, 0], [2, 3], [8, 0], [2, -3] ],
+  "damageKind" : "lash",
+  
+  "actionOnReap" : [
+    {
+      "action" : "loop",
+      "count" : 5,
+      "body" : [
+        {
+          "action" : "particle",
+          "specification" : {
+            "type" : "animated",
+            "animation" : "/animations/shards/jellyshard.animation",
+            "initialVelocity" : [0.0, 0.0],
+            "finalVelocity" : [0.0, -80],
+            "approach" : [0.0, 80],
+            "timeToLive" : 0.5,
+            "layer" : "middle",
+            "collidesForeground" : false,
+            "variance" : {
+              "position" : [0.5, 0.5],
+              "initialVelocity" : [5, 5],
+              "finalVelocity" : [0, 0],
+              "rotation" : 180,
+              "angularVelocity" : 180
+            }
+          }
+        }
+      ]
+    },
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/objects/meat_break1.ogg", "/sfx/objects/meat_break2.ogg", "/sfx/objects/meat_break3.ogg" ]
+    }
+  ],
+
+  "speed" : 25,
+  
+  "scripts" : ["/projectiles/killable.lua"]
+}

@@ -1,0 +1,34 @@
+{
+  "projectileName" : "ruin-plasmaorb",
+  "image" : "plasmaorb.png",
+  "renderLayer" : "ForegroundEntity+10",
+  "animationCycle" : 0.2,
+  "lightColor" : [200, 200, 250],
+  "frameNumber" : 4,
+  "flippable" : false,
+  "fullbright" : true,
+  "physics" : "illusion",
+  "emitters" : [ ],
+  "damagePoly" : [ [3, 3], [3, -3], [-3, -3], [-3, 3] ],
+  "damageKind" : "plasma",
+
+  "speed" : 50,
+  
+  "actionOnTimeout" : [
+    {
+      "action" : "particle",
+      "rotate" : true,
+      "specification" : {
+        "type" : "textured",
+        "image" : "/projectiles/boss/eyeboss/ruin-plasmaorb/plasmaorb.png:0",
+        "timeToLive" : 0.0,
+        "fullbright" : true,
+        "layer" : "middle",
+        "destructionAction" : "shrink",
+        "destructionTime" : 0.1
+      }
+    }
+  ],
+  
+  "scripts" : ["/projectiles/killable.lua"]
+}

@@ -1,0 +1,9 @@
+{
+  "name" : "cultistboss",
+  "category" : "cultistboss",
+  "type" : "ruin-beam2",
+
+  "frames" : {
+    "beam" : "ruin-beam2.png"
+  }
+}

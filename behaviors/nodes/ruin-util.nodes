@@ -1,8 +1,8 @@
 {  
-  "randomFromList": {
+  "ruin_randomFromList": {
     "type": "action",
-    "name": "randomFromList",
-    "title": "randomFromList",
+    "name": "ruin_randomFromList",
+    "title": "ruin_randomFromList",
     "properties": {
       "list": {"type": "list", "value": null}
     },

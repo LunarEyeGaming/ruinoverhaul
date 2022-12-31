@@ -1,13 +1,15 @@
 {
   "projectileName" : "ruin-plasmaballfragment",
   "image" : "plasmaballfragment.png",
-  "animationCycle" : 0.2,
+  "animationCycle" : 0.3,
   "lightColor" : [150, 100, 100],
-  "frameNumber" : 2,
+  "frameNumber" : 3,
   "flippable" : false,
   "fullbright" : true,
+  "orientationLocked" : true,
   "damageKindImage" : "icon.png",
-  "physics" : "boomerang",
+  "physics" : "illusion",
+  "bounces" : -1,
   "emitters" : [ ],
   "actionOnReap" : [
     {
@@ -26,7 +28,7 @@
         "color" : [255, 112, 89, 255],
         "initialVelocity" : [0.0, 0.0],
         "finalVelocity" : [0.0, 0.0],
-        "approach" : [4, 4],
+        "approach" : [8, 8],
         "timeToLive" : 0.5,
         "fullbright" : true,
         "destructionAction" : "fade",
@@ -35,17 +37,17 @@
         "layer" : "middle",
         "collidesForeground" : false,
         "variance" : {
-          "position" : [0.5, 0.5],
-          "initialVelocity" : [5, 5],
+          "position" : [1.0, 1.0],
+          "initialVelocity" : [10, 10],
           "finalVelocity" : [0, 0]
         }
       }
     }
   ],
-  "damagePoly" : [ [-8, 0], [2, 3], [8, 0], [2, -3] ],
+  "damagePoly" : [ [-16, 0], [4, 6], [16, 0], [4, -6] ],
   "damageKind" : "plasma",
 
-  "speed" : 25,
+  "speed" : 0,
   
-  "scripts" : ["/projectiles/killable.lua"]
+  "scripts" : ["ruin-plasmaballfragment.lua", "/projectiles/ruin-killableextension.lua"]
 }

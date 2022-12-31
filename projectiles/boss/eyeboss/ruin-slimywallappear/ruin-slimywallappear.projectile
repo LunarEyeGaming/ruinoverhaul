@@ -1,0 +1,48 @@
+{
+  "projectileName" : "ruin-slimywallappear",
+  "image" : "slimywallappear.png",
+  "renderLayer" : "ForegroundEntity+10",
+  "flippable" : true,
+  "timeToLive" : 1.5,
+  "animationCycle" : 1.5,
+  "frameNumber" : 8,
+  "speed" : 0,
+  "piercing" : true,
+  "bounces" : -1,
+  "onlyHitTerrain" : true,
+  "damageKind" : "default",
+  "physics" : "illusion",
+  
+  "periodicActions" : [
+    {
+      "time" : 0.01,
+      "action" : "particle",
+      "specification" : {
+        "type" : "animated",
+        "animation" : "/animations/shards/jellyshard.animation",
+        "initialVelocity" : [0.0, 0],
+        "finalVelocity" : [0.0, -80],
+        "approach" : [0.0, 80],
+        "timeToLive" : 0.5,
+        "layer" : "front",
+        "collidesForeground" : false,
+        "variance" : {
+          "position" : [0, 17],
+          "initialVelocity" : [0.0, 0.0],
+          "finalVelocity" : [0, 0],
+          "rotation" : 180,
+          "angularVelocity" : 180
+        }
+      }
+    }
+  ],
+  
+  "persistentAudio" : "/sfx/npc/boss/ruin-tentacleboss_tentacle_loop.ogg",
+  
+  "scripts" : ["/projectiles/ruin-killableextension2.lua"],
+  
+  "actionOnExpire" : {
+    "action" : "projectile",
+    "type" : "ruin-slimywall"
+  }
+}

@@ -15,15 +15,14 @@
     "floorAltitude": -30,
     "portalRadius": 3,
     "portalCenterOffset": [-0.3125, -8.375],
-    "startTentacleInterval": 1.0,
-    "minTentacleInterval": 0.15,
-    "tentacleIntervalDelta": 0.12,
-    "tentacleMinX": -54,
-    "tentacleMaxX": 54,
+    "orbSpawnDistance": 150,
+    "orbSpeed" : 50,
+    "startOrbInterval": 1.0,
+    "minOrbInterval": 0.05,
+    "orbIntervalDelta": 0.12,
     "attackTime": 13,
-    "portalCloseDelay": 2,
-    "radialVacuumConfig": {"timeToLive": 15},
-    "rotateRate": 0.5
+    "portalCloseDelay": 3.0,
+    "radialVacuumConfig": {"timeToLive": 16}
   },
   "root": {
     "title": "sequence",
@@ -65,6 +64,34 @@
         "name": "playSound",
         "parameters": {
           "sound": {"value": "vacuumwindup"}
+        }
+      },
+      {
+        "title": "spawnProjectile",
+        "type": "action",
+        "name": "spawnProjectile",
+        "parameters": {
+          "aimVector": {"value": [1, 0]},
+          "offset": {"value": [51, -30]},
+          "position": {"key": "self"},
+          "projectileConfig": {"value": {}},
+          "projectileType": {"value": "ruin-slimywalltentacleteleright"},
+          "sourceEntity": {"key": "self"},
+          "trackSource": {"value": false}
+        }
+      },
+      {
+        "title": "spawnProjectile",
+        "type": "action",
+        "name": "spawnProjectile",
+        "parameters": {
+          "aimVector": {"value": [1, 0]},
+          "offset": {"value": [-50, -30]},
+          "position": {"key": "self"},
+          "projectileConfig": {"value": {}},
+          "projectileType": {"value": "ruin-slimywalltentacleteleleft"},
+          "sourceEntity": {"key": "self"},
+          "trackSource": {"value": false}
         }
       },
       {
@@ -122,7 +149,7 @@
                 "type": "action",
                 "name": "setNumber",
                 "parameters": {
-                  "number": {"value": "<startTentacleInterval>"}
+                  "number": {"value": "<startOrbInterval>"}
                 },
                 "output": {
                   "number": "interval"
@@ -157,6 +184,18 @@
                     "name": "emitParticles",
                     "parameters": {
                       "emitter": {"value": "wind"}
+                    }
+                  },
+                  {
+                    "title": "failer",
+                    "type": "decorator",
+                    "name": "failer",
+                    "parameters": {},
+                    "child": {
+                      "title": "ruin_ceilingTentacles",
+                      "type": "action",
+                      "name": "ruin_ceilingTentacles",
+                      "parameters": {}
                     }
                   },
                   {
@@ -297,30 +336,15 @@
                               "parameters": {},
                               "children": [
                                 {
-                                  "title": "random",
+                                  "title": "ruin_spawnPlasmaOrb",
                                   "type": "action",
-                                  "name": "random",
+                                  "name": "ruin_spawnPlasmaOrb",
                                   "parameters": {
-                                    "min": {"value": "<tentacleMinX>"},
-                                    "max": {"value": "<tentacleMaxX>"}
-                                  },
-                                  "output": {
-                                    "number": "xOffset"
-                                  }
-                                },
-                                {
-                                  "title": "spawnProjectile",
-                                  "type": "action",
-                                  "name": "spawnProjectile",
-                                  "parameters": {
-                                    "aimVector": {"value": [0, 0]},
-                                    "offset": {"value": ["xOffset", -30]},
-                                    "position": {"key": "self"},
-                                    "projectileConfig": {"value": {"power": 20}},
-                                    "projectileType": {"value": "ruin-talltentacletele"},
-                                    "scalePower": {"value": true},
-                                    "sourceEntity": {"key": "self"},
-                                    "trackSource": {"value": false}
+                                    "spawnDistance": {"value": "<orbSpawnDistance>"},
+                                    "speed": {"value": "<orbSpeed>"},
+                                    "center": {"key": "portalCenter"},
+                                    "projectileParameters": {"value": {"power": 20}},
+                                    "projectileType": {"value": "ruin-plasmaorb"}
                                   }
                                 },
                                 {
@@ -349,7 +373,7 @@
                                           "name": "greaterThan",
                                           "parameters": {
                                             "first": {"key": "interval"},
-                                            "second": {"value": "<minTentacleInterval>"}
+                                            "second": {"value": "<minOrbInterval>"}
                                           }
                                         },
                                         {
@@ -358,7 +382,7 @@
                                           "name": "sub",
                                           "parameters": {
                                             "first": {"key": "interval"},
-                                            "second": {"value": "<tentacleIntervalDelta>"}
+                                            "second": {"value": "<orbIntervalDelta>"}
                                           },
                                           "output": {
                                             "result": "interval"
@@ -371,7 +395,7 @@
                                       "type": "action",
                                       "name": "setNumber",
                                       "parameters": {
-                                        "number": {"value": "<minTentacleInterval>"}
+                                        "number": {"value": "<minOrbInterval>"}
                                       },
                                       "output": {
                                         "number": "interval"
