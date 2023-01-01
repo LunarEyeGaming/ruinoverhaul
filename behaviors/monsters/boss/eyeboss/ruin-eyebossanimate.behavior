@@ -1,5 +1,5 @@
 {
-  "name": "eyeboss-animate",
+  "name": "ruin-eyeboss-animate",
   "description": "",
   "scripts": [
     "/scripts/actions/status.lua",
@@ -70,9 +70,9 @@
             }
           },
           {
-            "title": "tentacleMovement",
+            "title": "ruin_tentacleMovement",
             "type": "action",
-            "name": "tentacleMovement",
+            "name": "ruin_tentacleMovement",
             "parameters": {
               "initialScales": {"key": "tentacleScales"},
               "initialAngles": {"key": "tentacleAngles"},
@@ -137,9 +137,9 @@
             }
           },
           {
-            "title": "tentacleMovement",
+            "title": "ruin_tentacleMovement",
             "type": "action",
-            "name": "tentacleMovement",
+            "name": "ruin_tentacleMovement",
             "parameters": {
               "initialScales": {"key": "tentacleScales"},
               "initialAngles": {"key": "tentacleAngles"},
@@ -207,9 +207,9 @@
             }
           },
           {
-            "title": "tentacleMovement",
+            "title": "ruin_tentacleMovement",
             "type": "action",
-            "name": "tentacleMovement",
+            "name": "ruin_tentacleMovement",
             "parameters": {
               "initialScales": {"key": "tentacleScales"},
               "initialAngles": {"key": "tentacleAngles"},
@@ -277,9 +277,9 @@
             }
           },
           {
-            "title": "tentacleMovement",
+            "title": "ruin_tentacleMovement",
             "type": "action",
-            "name": "tentacleMovement",
+            "name": "ruin_tentacleMovement",
             "parameters": {
               "initialScales": {"key": "tentacleScales"},
               "initialAngles": {"key": "tentacleAngles"},

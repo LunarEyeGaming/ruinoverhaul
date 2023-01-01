@@ -229,9 +229,9 @@
                                           "cooldown": {"value": 7}
                                         },
                                         "child": {
-                                          "title": "cultistboss-sphereattack",
+                                          "title": "ruin-cultistbossend-sphereattack",
                                           "type": "module",
-                                          "name": "cultistboss-sphereattack",
+                                          "name": "ruin-cultistbossend-sphereattack",
                                           "parameters": {
                                             "sphereDashForce": {"value": 500},
                                             "sphereCentripetalForce": {"value": 500},
@@ -283,6 +283,7 @@
                                 "time": {"value": 0.5}
                               }
                             },
+                            // Bigger teleporting range.
                             {
                               "title": "ruin-cultistbossend-teleport",
                               "type": "module",
@@ -353,85 +354,6 @@
                       "type": {"value": "body"}
                     }
                   },
-                  /* {
-                    "title": "timer",
-                    "type": "action",
-                    "name": "timer",
-                    "parameters": {
-                      "time": {"value": 0.5}
-                    }
-                  },
-                  {
-                    "title": "broadcastNotification",
-                    "type": "action",
-                    "name": "broadcastNotification",
-                    "parameters": {
-                      "type": {"value": "ruin-recallCultist"},
-                      "position": {"key": "self"},
-                      "range": {"value": 80},
-                      "target": {"key": "self"}
-                    }
-                  },
-                  {
-                    "title": "repeater",
-                    "type": "decorator",
-                    "name": "repeater",
-                    "parameters": {
-                      "untilSuccess": {"value": true}
-                    },
-                    "child": {
-                      "title": "sequence",
-                      "type": "composite",
-                      "name": "sequence",
-                      "parameters": {},
-                      "children": [
-                        {
-                          "title": "timer",
-                          "type": "action",
-                          "name": "timer",
-                          "parameters": {
-                            "time": {"value": 0.01}
-                          }
-                        },
-                        {
-                          "title": "receivedNotification",
-                          "type": "action",
-                          "name": "receivedNotification",
-                          "parameters": {
-                            "type": {"value": "ruin-finish"}
-                          },
-                          "output": {
-                            "source": "sourceId"
-                          }
-                        }
-                      ]
-                    }
-                  },
-                  {
-                    "title": "addEphemeralEffect",
-                    "type": "action",
-                    "name": "addEphemeralEffect",
-                    "parameters": {
-                      "name": {"value": "ruin-portaldisappear"}
-                    }
-                  },
-                  {
-                    "title": "timer",
-                    "type": "action",
-                    "name": "timer",
-                    "parameters": {
-                      "time": {"value": 0.2}
-                    }
-                  },
-                  {
-                    "title": "sendNotification",
-                    "type": "action",
-                    "name": "sendNotification",
-                    "parameters": {
-                      "type": {"value": "ruin-finish"},
-                      "entity": {"key": "sourceId"}
-                    }
-                  }, */
                   {
                     "title": "timer",
                     "type": "action",

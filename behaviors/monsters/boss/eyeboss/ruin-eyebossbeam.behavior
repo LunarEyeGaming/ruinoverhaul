@@ -1,5 +1,5 @@
 {
-  "name": "eyeboss-beam",
+  "name": "ruin-eyeboss-beam",
   "description": "",
   "scripts": [
     "/scripts/actions/animator.lua",
@@ -158,10 +158,10 @@
                                       "name": "spawnProjectile",
                                       "parameters": {
                                         "aimVector": {"value": [1, 0]},
-                                        "offset": {"value": [0, -28.5]},
+                                        "offset": {"value": [0, -27.5]},
                                         "position": {"key": "self"},
                                         "projectileConfig": {"value": {"power": 20}},
-                                        "projectileType": {"value": "ruin-lasershockwavenew2"},
+                                        "projectileType": {"value": "ruin-lasershockwave2"},
                                         "scalePower": {"value": true},
                                         "sourceEntity": {"key": "self"},
                                         "trackSource": {"value": false}
@@ -173,10 +173,10 @@
                                       "name": "spawnProjectile",
                                       "parameters": {
                                         "aimVector": {"value": [-1, 0]},
-                                        "offset": {"value": [0, -28.5]},
+                                        "offset": {"value": [0, -27.5]},
                                         "position": {"key": "self"},
                                         "projectileConfig": {"value": {"power": 20}},
-                                        "projectileType": {"value": "ruin-lasershockwavenew2"},
+                                        "projectileType": {"value": "ruin-lasershockwave2"},
                                         "scalePower": {"value": true},
                                         "sourceEntity": {"key": "self"},
                                         "trackSource": {"value": false}
@@ -204,10 +204,10 @@
                                       "name": "spawnProjectile",
                                       "parameters": {
                                         "aimVector": {"value": [1, 0]},
-                                        "offset": {"value": [0, -28.5]},
+                                        "offset": {"value": [0, -27.5]},
                                         "position": {"key": "self"},
                                         "projectileConfig": {"value": {"power": 20}},
-                                        "projectileType": {"value": "ruin-lasershockwavenew"},
+                                        "projectileType": {"value": "ruin-lasershockwave"},
                                         "scalePower": {"value": true},
                                         "sourceEntity": {"key": "self"},
                                         "trackSource": {"value": false}
@@ -219,10 +219,10 @@
                                       "name": "spawnProjectile",
                                       "parameters": {
                                         "aimVector": {"value": [-1, 0]},
-                                        "offset": {"value": [0, -28.5]},
+                                        "offset": {"value": [0, -27.5]},
                                         "position": {"key": "self"},
                                         "projectileConfig": {"value": {"power": 20}},
-                                        "projectileType": {"value": "ruin-lasershockwavenew"},
+                                        "projectileType": {"value": "ruin-lasershockwave"},
                                         "scalePower": {"value": true},
                                         "sourceEntity": {"key": "self"},
                                         "trackSource": {"value": false}

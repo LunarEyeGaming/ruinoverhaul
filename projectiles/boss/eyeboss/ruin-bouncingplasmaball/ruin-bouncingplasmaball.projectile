@@ -129,8 +129,8 @@
   "scriptDelta" : 1,
   
   "bounceMargin" : 1,
-  "shockwaveSpawnHeight" : 1.5,
-  "shockwaveType" : "ruin-lasershockwavenew",
+  "shockwaveSpawnHeight" : 2.5,
+  "shockwaveType" : "ruin-lasershockwave",
   "shockwaveParams" : {
     "speed" : 1,
     "acceleration" : 50

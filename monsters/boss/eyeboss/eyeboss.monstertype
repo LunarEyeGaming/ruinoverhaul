@@ -2,7 +2,7 @@
   "type" : "eyeboss",
   "shortdescription" : "Heart of Ruin",
   "categories" : [ "eyeboss" ],
-  "parts" : [ "back", "biome", "eye", "eyelit", "heartleft", "heartmiddle", "heartright", "eyelid", "backleft", "backright", "middleleft", "middleright", "tentaclespacing", "frontright", "frontleft", "beam", "elementalshield" ],
+  "parts" : [ "back", "biome", "eye", "eyelit", "heartleft", "heartmiddle", "heartright", "eyelid", "backleft", "backright", "middleleft", "middleright", "tentaclespacing", "frontright", "frontleft", "beam"],
 
   "animation" : "eyeboss.animation",
   "dropPools" : [ ],

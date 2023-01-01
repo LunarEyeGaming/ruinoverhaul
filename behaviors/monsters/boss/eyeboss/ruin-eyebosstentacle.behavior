@@ -1,10 +1,11 @@
 {
-  "name": "eyeboss-tentacle",
+  "name": "ruin-eyeboss-tentacle",
   "description": "",
   "scripts": [
     "/scripts/actions/world.lua",
     "/scripts/actions/time.lua",
-    "/scripts/actions/status.lua"
+    "/scripts/actions/status.lua",
+    "/scripts/actions/boss/ruin-eyeboss.lua"
   ],
   "parameters": {
     "phase1": 0.875,
@@ -165,9 +166,9 @@
                     }
                   },
                   {
-                    "title": "eyeboss-talltentacles",
+                    "title": "ruin-eyeboss-talltentacles",
                     "type": "module",
-                    "name": "eyeboss-talltentacles",
+                    "name": "ruin-eyeboss-talltentacles",
                     "parameters": {
                       "attackTime": {"value": 2147483647},
                       "volleyWaitTime": {"value": 1.5},
@@ -177,9 +178,9 @@
                 ]
               },
               {
-                "title": "eyeboss-talltentacles",
+                "title": "ruin-eyeboss-talltentacles",
                 "type": "module",
-                "name": "eyeboss-talltentacles",
+                "name": "ruin-eyeboss-talltentacles",
                 "parameters": {
                   "attackTime": {"value": 2147483647}
                 }

@@ -1,5 +1,5 @@
 {
-  "name": "eyeboss-portal3",
+  "name": "ruin-eyeboss-portal3",
   "description": "",
   "scripts": [
     "/scripts/actions/animator.lua",
@@ -9,14 +9,15 @@
     "/scripts/actions/projectiles.lua",
     "/scripts/actions/query.lua",
     "/scripts/actions/time.lua",
-    "/scripts/actions/world.lua"
+    "/scripts/actions/world.lua",
+    "/scripts/actions/boss/ruin-eyeboss.lua"
   ],
   "parameters": {
     "floorAltitude": -30,
     "portalRadius": 3,
     "portalCenterOffset": [-0.3125, -8.375],
     "orbSpawnDistance": 150,
-    "orbSpeed" : 50,
+    "orbSpeed": 50,
     "startOrbInterval": 1.0,
     "minOrbInterval": 0.05,
     "orbIntervalDelta": 0.12,

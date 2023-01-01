@@ -1,5 +1,5 @@
 {
-  "name": "eyeboss-spawnertelegraphs",
+  "name": "ruin-eyeboss-spawnertelegraphs",
   "description": "",
   "scripts": [
     "/scripts/actions/status.lua",

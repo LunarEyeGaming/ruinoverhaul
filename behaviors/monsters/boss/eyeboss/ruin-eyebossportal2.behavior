@@ -1,5 +1,5 @@
 {
-  "name": "eyeboss-portal2",
+  "name": "ruin-eyeboss-portal2",
   "description": "",
   "scripts": [
     "/scripts/actions/time.lua",

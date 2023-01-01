@@ -1,5 +1,5 @@
 {
-  "name": "eyeboss-portalvoidstars",
+  "name": "ruin-eyeboss-portalvoidstars",
   "description": "",
   "scripts": [
     "/scripts/actions/time.lua",

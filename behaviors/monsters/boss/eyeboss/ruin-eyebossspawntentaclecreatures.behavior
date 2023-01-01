@@ -1,5 +1,5 @@
 {
-  "name": "eyeboss-spawntentaclecreatures",
+  "name": "ruin-eyeboss-spawntentaclecreatures",
   "description": "",
   "scripts": [
     "/scripts/actions/time.lua",

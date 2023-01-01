@@ -1,5 +1,5 @@
 {
-  "name": "eyeboss-spawncultistboss2",
+  "name": "ruin-eyeboss-spawncultistboss",
   "description": "",
   "scripts": [
     "/scripts/actions/position.lua",

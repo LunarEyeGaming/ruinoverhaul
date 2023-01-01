@@ -1,5 +1,5 @@
 {
-  "name": "eyeboss-plasmaball",
+  "name": "ruin-eyeboss-plasmaball",
   "description": "",
   "scripts": [
     "/scripts/actions/animator.lua",

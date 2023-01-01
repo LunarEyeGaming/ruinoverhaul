@@ -1,26 +1,27 @@
 {
   "projectileName" : "ruin-lasershockwave",
   "image" : "lasershockwave.png",
-  "animationCycle" : 0.15,
-  "animationLoops" : false,
-  "timeToLive" : 0.15,
+  "animationCycle" : 0.1,
   "frameNumber" : 3,
-  "power" : 50,
-  "speed" : 0,
-  "orientationLocked" : true,
-  "piercing" : true,
-  "flippable" : true,
-  "knockback" : 20,
-  "knockbackDirectional" : true,
-  "damagePoly" : [ [-4, 11], [4, 11], [4, -11], [-4, -11] ],
-  "lightColor" : [255, 150, 150],
-  "damageKind" : "plasma",
+  "lightColor" : [150, 100, 100],
+  "fullbright" : true,
+
+  "damageKindImage" : "icon.png",
+  "physics" : "boomerang",
   "emitters" : [ ],
   "actionOnReap" : [
     {
-      "action" : "projectile",
-      "type" : "ruin-lasershockwave2",
-      "inheritDamageFactor" : 1
+      "action" : "config",
+      "file" : "/projectiles/explosions/pulsecannonexplosion/redpulsecannonexplosion.config"
     }
-  ]
+  ],
+  "damagePoly" : [ [28, -20], [24, 8], [2, 0], [-12, -20] ],
+  "damageKind" : "plasma",
+
+  "flippable" : true,
+  "piercing" : true,
+  "speed" : 100,
+
+  "scripts" : [ "/projectiles/tracksourcestatus.lua" ],
+  "scriptDelta" : 1
 }

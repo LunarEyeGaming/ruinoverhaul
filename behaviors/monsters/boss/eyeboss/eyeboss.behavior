@@ -10,6 +10,7 @@
     "/scripts/actions/query.lua",
     "/scripts/actions/time.lua",
     "/scripts/actions/boss/eyeboss.lua",
+    "/scripts/actions/boss/ruin-eyeboss.lua",
     "/scripts/actions/notification.lua",
     "/scripts/behavior.lua",
     "/scripts/actions/world.lua",
@@ -127,9 +128,9 @@
                     }
                   },
                   {
-                    "title": "tentacleMovement",
+                    "title": "ruin_tentacleMovement",
                     "type": "action",
-                    "name": "tentacleMovement",
+                    "name": "ruin_tentacleMovement",
                     "parameters": {
                       "initialScales": {"key": "tentacleScales"},
                       "initialAngles": {"key": "tentacleAngles"},
@@ -224,9 +225,9 @@
                     }
                   },
                   {
-                    "title": "tentacleMovement",
+                    "title": "ruin_tentacleMovement",
                     "type": "action",
-                    "name": "tentacleMovement",
+                    "name": "ruin_tentacleMovement",
                     "parameters": {
                       "initialScales": {"key": "tentacleScales"},
                       "initialAngles": {"key": "tentacleAngles"},
@@ -552,9 +553,9 @@
                             }
                           },
                           {
-                            "title": "eyeboss-animate",
+                            "title": "ruin-eyeboss-animate",
                             "type": "module",
-                            "name": "eyeboss-animate",
+                            "name": "ruin-eyeboss-animate",
                             "parameters": {
                               "phase1": {"value": "<phase2>"},
                               "phase2": {"value": "<phase3>"},
@@ -608,24 +609,24 @@
                                       "parameters": {},
                                       "children": [
                                         {
-                                          "title": "eyeboss-beam",
+                                          "title": "ruin-eyeboss-beam",
                                           "type": "module",
-                                          "name": "eyeboss-beam",
+                                          "name": "ruin-eyeboss-beam",
                                           "parameters": {}
                                         },
                                         {
-                                          "title": "eyeboss-tentacle",
+                                          "title": "ruin-eyeboss-tentacle",
                                           "type": "module",
-                                          "name": "eyeboss-tentacle",
+                                          "name": "ruin-eyeboss-tentacle",
                                           "parameters": {
                                             "phase1": {"value": "<phase1>"},
                                             "phase2": {"value": "<phase2>"}
                                           }
                                         },
                                         {
-                                          "title": "eyeboss-spawnsequence",
+                                          "title": "ruin-eyeboss-spawnsequence",
                                           "type": "module",
-                                          "name": "eyeboss-spawnsequence",
+                                          "name": "ruin-eyeboss-spawnsequence",
                                           "parameters": {}
                                         },
                                         {
@@ -693,17 +694,17 @@
                                                     "parameters": {},
                                                     "children": [
                                                       {
-                                                        "title": "eyeboss-talltentacles",
+                                                        "title": "ruin-eyeboss-talltentacles",
                                                         "type": "module",
-                                                        "name": "eyeboss-talltentacles",
+                                                        "name": "ruin-eyeboss-talltentacles",
                                                         "parameters": {
                                                           "attackTime": {"value": 10}
                                                         }
                                                       },
                                                       {
-                                                        "title": "eyeboss-beam",
+                                                        "title": "ruin-eyeboss-beam",
                                                         "type": "module",
-                                                        "name": "eyeboss-beam",
+                                                        "name": "ruin-eyeboss-beam",
                                                         "parameters": {}
                                                       }
                                                     ]
@@ -711,9 +712,9 @@
                                                 ]
                                               },
                                               {
-                                                "title": "eyeboss-talltentacles",
+                                                "title": "ruin-eyeboss-talltentacles",
                                                 "type": "module",
-                                                "name": "eyeboss-talltentacles",
+                                                "name": "ruin-eyeboss-talltentacles",
                                                 "parameters": {
                                                   "attackTime": {"value": 12}
                                                 }
@@ -760,17 +761,17 @@
                                                     "parameters": {},
                                                     "children": [
                                                       {
-                                                        "title": "eyeboss-portal2",
+                                                        "title": "ruin-eyeboss-portal2",
                                                         "type": "module",
-                                                        "name": "eyeboss-portal2",
+                                                        "name": "ruin-eyeboss-portal2",
                                                         "parameters": {
                                                           "attackTime": {"value": 6}
                                                         }
                                                       },
                                                       {
-                                                        "title": "eyeboss-portal",
+                                                        "title": "ruin-eyeboss-portal",
                                                         "type": "module",
-                                                        "name": "eyeboss-portal",
+                                                        "name": "ruin-eyeboss-portal",
                                                         "parameters": {
                                                           "sweepCount": {"value": 1}
                                                         }
@@ -786,17 +787,17 @@
                                                 "parameters": {},
                                                 "children": [
                                                   {
-                                                    "title": "eyeboss-portal2",
+                                                    "title": "ruin-eyeboss-portal2",
                                                     "type": "module",
-                                                    "name": "eyeboss-portal2",
+                                                    "name": "ruin-eyeboss-portal2",
                                                     "parameters": {
                                                       "attackTime": {"value": 12}
                                                     }
                                                   },
                                                   {
-                                                    "title": "eyeboss-portal",
+                                                    "title": "ruin-eyeboss-portal",
                                                     "type": "module",
-                                                    "name": "eyeboss-portal",
+                                                    "name": "ruin-eyeboss-portal",
                                                     "parameters": {
                                                       "sweepCount": {"value": 2}
                                                     }
@@ -836,15 +837,15 @@
                                     "parameters": {},
                                     "children": [
                                       {
-                                        "title": "eyeboss-reset",
+                                        "title": "ruin-eyeboss-reset",
                                         "type": "module",
-                                        "name": "eyeboss-reset",
+                                        "name": "ruin-eyeboss-reset",
                                         "parameters": { }
                                       },
                                       {
-                                        "title": "eyeboss-roar",
+                                        "title": "ruin-eyeboss-roar",
                                         "type": "module",
-                                        "name": "eyeboss-roar",
+                                        "name": "ruin-eyeboss-roar",
                                         "parameters": { }
                                       },
                                       {
@@ -862,39 +863,39 @@
                                           "parameters": {},
                                           "children": [
                                             {
-                                              "title": "eyeboss-portal2",
+                                              "title": "ruin-eyeboss-portal2",
                                               "type": "module",
-                                              "name": "eyeboss-portal2",
+                                              "name": "ruin-eyeboss-portal2",
                                               "parameters": {
                                                 "attackTime": {"value": 12}
                                               }
                                             },
                                             {
-                                              "title": "eyeboss-portal",
+                                              "title": "ruin-eyeboss-portal",
                                               "type": "module",
-                                              "name": "eyeboss-portal",
+                                              "name": "ruin-eyeboss-portal",
                                               "parameters": {
                                                 "sweepCount": {"value": 2}
                                               }
                                             },
                                             {
-                                              "title": "eyeboss-beam",
+                                              "title": "ruin-eyeboss-beam",
                                               "type": "module",
-                                              "name": "eyeboss-beam",
+                                              "name": "ruin-eyeboss-beam",
                                               "parameters": {}
                                             },
                                             {
-                                              "title": "eyeboss-shadowtentacles",
+                                              "title": "ruin-eyeboss-shadowtentacles",
                                               "type": "module",
-                                              "name": "eyeboss-shadowtentacles",
+                                              "name": "ruin-eyeboss-shadowtentacles",
                                               "parameters": {
                                                 "attackTime": {"value": 10}
                                               }
                                             },
                                             {
-                                              "title": "eyeboss-spawnsequence",
+                                              "title": "ruin-eyeboss-spawnsequence",
                                               "type": "module",
-                                              "name": "eyeboss-spawnsequence",
+                                              "name": "ruin-eyeboss-spawnsequence",
                                               "parameters": {}
                                             },
                                             {
@@ -924,31 +925,31 @@
                                               ]
                                             },
                                             {
-                                              "title": "eyeboss-talltentacles",
+                                              "title": "ruin-eyeboss-talltentacles",
                                               "type": "module",
-                                              "name": "eyeboss-talltentacles",
+                                              "name": "ruin-eyeboss-talltentacles",
                                               "parameters": {
                                                 "attackTime": {"value": 10}
                                               }
                                             },
                                             {
-                                              "title": "eyeboss-beam",
+                                              "title": "ruin-eyeboss-beam",
                                               "type": "module",
-                                              "name": "eyeboss-beam",
+                                              "name": "ruin-eyeboss-beam",
                                               "parameters": {}
                                             },
                                             {
-                                              "title": "eyeboss-shadowtentacles",
+                                              "title": "ruin-eyeboss-shadowtentacles",
                                               "type": "module",
-                                              "name": "eyeboss-shadowtentacles",
+                                              "name": "ruin-eyeboss-shadowtentacles",
                                               "parameters": {
                                                 "attackTime": {"value": 10}
                                               }
                                             },
                                             {
-                                              "title": "eyeboss-tentacle",
+                                              "title": "ruin-eyeboss-tentacle",
                                               "type": "module",
-                                              "name": "eyeboss-tentacle",
+                                              "name": "ruin-eyeboss-tentacle",
                                               "parameters": {
                                                 "phase1": {"value": "<phase1>"},
                                                 "phase2": {"value": "<phase2>"}
@@ -986,15 +987,15 @@
                                     "parameters": {},
                                     "children": [
                                       {
-                                        "title": "eyeboss-reset",
+                                        "title": "ruin-eyeboss-reset",
                                         "type": "module",
-                                        "name": "eyeboss-reset",
+                                        "name": "ruin-eyeboss-reset",
                                         "parameters": { }
                                       },
                                       {
-                                        "title": "eyeboss-roar",
+                                        "title": "ruin-eyeboss-roar",
                                         "type": "module",
-                                        "name": "eyeboss-roar",
+                                        "name": "ruin-eyeboss-roar",
                                         "parameters": { }
                                       },
                                       {
@@ -1012,9 +1013,9 @@
                                           "parameters": {},
                                           "children": [
                                             {
-                                              "title": "eyeboss-portal3",
+                                              "title": "ruin-eyeboss-portal3",
                                               "type": "module",
-                                              "name": "eyeboss-portal3",
+                                              "name": "ruin-eyeboss-portal3",
                                               "parameters": {
                                                 "attackTime": {"value": 13}
                                               }
@@ -1050,9 +1051,9 @@
                                               ]
                                             },
                                             {
-                                              "title": "eyeboss-talltentacles",
+                                              "title": "ruin-eyeboss-talltentacles",
                                               "type": "module",
-                                              "name": "eyeboss-talltentacles",
+                                              "name": "ruin-eyeboss-talltentacles",
                                               "parameters": {
                                                 "attackTime": {"value": 9},
                                                 "volleyWaitTime": {"value": 1.5},
@@ -1060,51 +1061,51 @@
                                               }
                                             },
                                             {
-                                              "title": "eyeboss-beam",
+                                              "title": "ruin-eyeboss-beam",
                                               "type": "module",
-                                              "name": "eyeboss-beam",
+                                              "name": "ruin-eyeboss-beam",
                                               "parameters": {}
                                             },
                                             {
-                                              "title": "eyeboss-shadowtentacles",
+                                              "title": "ruin-eyeboss-shadowtentacles",
                                               "type": "module",
-                                              "name": "eyeboss-shadowtentacles",
+                                              "name": "ruin-eyeboss-shadowtentacles",
                                               "parameters": {
                                                 "attackTime": {"value": 15}
                                               }
                                             },
                                             {
-                                              "title": "eyeboss-portal4",
+                                              "title": "ruin-eyeboss-portal4",
                                               "type": "module",
-                                              "name": "eyeboss-portal4",
+                                              "name": "ruin-eyeboss-portal4",
                                               "parameters": {
                                                 "sweepCount": {"value": 3}
                                               }
                                             },
                                             {
-                                              "title": "eyeboss-plasmaball",
+                                              "title": "ruin-eyeboss-plasmaball",
                                               "type": "module",
-                                              "name": "eyeboss-plasmaball",
+                                              "name": "ruin-eyeboss-plasmaball",
                                               "parameters": {}
                                             },
                                             {
-                                              "title": "eyeboss-spawnsequencecultist2",
+                                              "title": "ruin-eyeboss-spawnsequencecultist",
                                               "type": "module",
-                                              "name": "eyeboss-spawnsequencecultist2",
+                                              "name": "ruin-eyeboss-spawnsequencecultist",
                                               "parameters": {}
                                             },
                                             {
-                                              "title": "eyeboss-shadowtentacles",
+                                              "title": "ruin-eyeboss-shadowtentacles",
                                               "type": "module",
-                                              "name": "eyeboss-shadowtentacles",
+                                              "name": "ruin-eyeboss-shadowtentacles",
                                               "parameters": {
                                                 "attackTime": {"value": 15}
                                               }
                                             },
                                             {
-                                              "title": "eyeboss-tentacle",
+                                              "title": "ruin-eyeboss-tentacle",
                                               "type": "module",
-                                              "name": "eyeboss-tentacle",
+                                              "name": "ruin-eyeboss-tentacle",
                                               "parameters": {
                                                 "phase1": {"value": "<phase1>"},
                                                 "phase2": {"value": "<phase2>"}
@@ -1147,27 +1148,10 @@
                     }
                   },
                   {
-                    "title": "eyeboss-reset",
+                    "title": "ruin-eyeboss-reset",
                     "type": "module",
-                    "name": "eyeboss-reset",
+                    "name": "ruin-eyeboss-reset",
                     "parameters": { }
-                  },
-                  {
-                    "title": "clearPersistentEffects",
-                    "type": "action",
-                    "name": "clearPersistentEffects",
-                    "parameters": {
-                      "category": {"value": "ruinResistance"}
-                    }
-                  },
-                  {
-                    "title": "setAnimationState",
-                    "type": "action",
-                    "name": "setAnimationState",
-                    "parameters": {
-                      "state": {"value": "invisible"},
-                      "type": {"value": "shield"}
-                    }
                   },
                   {
                     "title": "setAnimationState",
@@ -1376,9 +1360,9 @@
                                 "parameters": {}
                               },
                               {
-                                "title": "tentacleMovement",
+                                "title": "ruin_tentacleMovement",
                                 "type": "action",
-                                "name": "tentacleMovement",
+                                "name": "ruin_tentacleMovement",
                                 "parameters": {
                                   "initialScales": {"key": "tentacleScales"},
                                   "initialAngles": {"key": "tentacleAngles"},
@@ -1493,9 +1477,9 @@
                         }
                       },
                       {
-                        "title": "tentacleMovement",
+                        "title": "ruin_tentacleMovement",
                         "type": "action",
-                        "name": "tentacleMovement",
+                        "name": "ruin_tentacleMovement",
                         "parameters": {
                           "initialScales": {"key": "tentacleScales"},
                           "initialAngles": {"key": "tentacleAngles"},
@@ -1540,27 +1524,10 @@
                             }
                           },
                           {
-                            "title": "eyeboss-reset",
+                            "title": "ruin-eyeboss-reset",
                             "type": "module",
-                            "name": "eyeboss-reset",
+                            "name": "ruin-eyeboss-reset",
                             "parameters": { }
-                          },
-                          {
-                            "title": "clearPersistentEffects",
-                            "type": "action",
-                            "name": "clearPersistentEffects",
-                            "parameters": {
-                              "category": {"value": "ruinResistance"}
-                            }
-                          },
-                          {
-                            "title": "setAnimationState",
-                            "type": "action",
-                            "name": "setAnimationState",
-                            "parameters": {
-                              "state": {"value": "invisible"},
-                              "type": {"value": "shield"}
-                            }
                           },
                           {
                             "title": "runner",

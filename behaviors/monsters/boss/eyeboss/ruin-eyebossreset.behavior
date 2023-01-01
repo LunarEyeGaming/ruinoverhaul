@@ -1,5 +1,5 @@
 {
-  "name": "eyeboss-reset",
+  "name": "ruin-eyeboss-reset",
   "description": "",
   "scripts": [
     "/scripts/actions/query.lua",

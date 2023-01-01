@@ -210,41 +210,6 @@
           }
         }
       },
-      "shield" : {
-        "priority" : 1,
-        "default" : "invisible",
-        "states" : {
-          "invisible" : {},
-          "electric" : {},
-          "fire" : {},
-          "ice" : {},
-          "poison" : {},
-          "electricFlash" : {
-            "frames" : 4,
-            "cycle" : 0.2,
-            "mode" : "transition",
-            "transition" : "electric"
-          },
-          "fireFlash" : {
-            "frames" : 4,
-            "cycle" : 0.2,
-            "mode" : "transition",
-            "transition" : "fire"
-          },
-          "iceFlash" : {
-            "frames" : 4,
-            "cycle" : 0.2,
-            "mode" : "transition",
-            "transition" : "ice"
-          },
-          "poisonFlash" : {
-            "frames" : 4,
-            "cycle" : 0.2,
-            "mode" : "transition",
-            "transition" : "poison"
-          }
-        }
-      },
       "damage" : {
         "priority" : 2,
         "default" : "none",
@@ -547,57 +512,6 @@
             "winddown" : {
               "properties" : {
                 "image" : "<partImage>:winddown.<frame>"
-              }
-            }
-          }
-        }
-      },
-      "shield" : {
-        "properties" : {
-          "zLevel" : 150,
-          "offset" : [-0.3125, -8.375],
-          "fullbright" : true
-        },
-        "partStates" : {
-          "shield" : {
-            "electric" : {
-              "properties" : {
-                "image" : "<partImage>:electric.<frame>"
-              }
-            },
-            "electricFlash" : {
-              "properties" : {
-                "image" : "<partImage>:electricFlash.<frame>"
-              }
-            },
-            "fire" : {
-              "properties" : {
-                "image" : "<partImage>:fire.<frame>"
-              }
-            },
-            "fireFlash" : {
-              "properties" : {
-                "image" : "<partImage>:fireFlash.<frame>"
-              }
-            },
-            "ice" : {
-              "properties" : {
-                "image" : "<partImage>:ice.<frame>"
-              }
-            },
-            "iceFlash" : {
-              "properties" : {
-                "image" : "<partImage>:iceFlash.<frame>"
-              }
-            },
-            "poison" : {
-              "properties" : {
-                "image" : "<partImage>:poison.<frame>"
-              }
-            },
-            "poisonFlash" : {
-              "properties" : {
-                "image" : "<partImage>:poisonFlash.<frame>"
               }
             }
           }

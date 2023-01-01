@@ -1,8 +1,9 @@
 {
-  "name": "eyeboss-spawnsequence",
+  "name": "ruin-eyeboss-spawnsequence",
   "description": "",
   "scripts": [
     "/scripts/actions/animator.lua",
+    "/scripts/actions/status.lua",
     "/scripts/actions/time.lua"
   ],
   "parameters": {},
@@ -13,9 +14,9 @@
     "parameters": {},
     "children": [
       {
-        "title": "eyeboss-spawn",
+        "title": "ruin-eyeboss-spawn",
         "type": "module",
-        "name": "eyeboss-spawn",
+        "name": "ruin-eyeboss-spawn",
         "parameters": {}
       },
       {
@@ -27,9 +28,9 @@
         }
       },
       {
-        "title": "eyeboss-spawnertelegraphs",
+        "title": "ruin-eyeboss-spawnertelegraphs",
         "type": "module",
-        "name": "eyeboss-spawnertelegraphs",
+        "name": "ruin-eyeboss-spawnertelegraphs",
         "parameters": {}
       },
       {
@@ -55,9 +56,9 @@
               }
             },
             {
-              "title": "eyeboss-spawntentaclecreatures",
+              "title": "ruin-eyeboss-spawntentaclecreatures",
               "type": "module",
-              "name": "eyeboss-spawntentaclecreatures",
+              "name": "ruin-eyeboss-spawntentaclecreatures",
               "parameters": {}
             },
             {
@@ -78,14 +79,6 @@
                 "fallback": {"value": "opennoroar"}
               }
             }
-            /* {
-              "title": "eyeboss-idle",
-              "type": "module",
-              "name": "eyeboss-idle",
-              "parameters": {
-                "idleTime": {"value": 99999}
-              }
-            } */
           ]
         }
       },

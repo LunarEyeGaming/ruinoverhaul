@@ -1,5 +1,5 @@
 {
-  "name": "eyeboss-shadowtentacles",
+  "name": "ruin-eyeboss-shadowtentacles",
   "description": "",
   "scripts": [
     "/scripts/actions/math.lua",

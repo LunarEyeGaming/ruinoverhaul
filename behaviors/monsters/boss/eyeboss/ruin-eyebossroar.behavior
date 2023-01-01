@@ -1,5 +1,5 @@
 {
-  "name": "eyeboss-roar",
+  "name": "ruin-eyeboss-roar",
   "description": "",
   "scripts": [
     "/scripts/actions/animator.lua",
@@ -40,9 +40,9 @@
         },
         "children": [
           {
-            "title": "tentacleMovement",
+            "title": "ruin_tentacleMovement",
             "type": "action",
-            "name": "tentacleMovement",
+            "name": "ruin_tentacleMovement",
             "parameters": {
               "initialScales": {"key": "tentacleScales"},
               "initialAngles": {"key": "tentacleAngles"},

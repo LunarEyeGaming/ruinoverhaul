@@ -1,11 +1,11 @@
 {
-  "name": "eyeboss-spawn",
+  "name": "ruin-eyeboss-spawn",
   "description": "",
   "scripts": [
     "/scripts/actions/time.lua",
     "/scripts/actions/animator.lua",
     "/scripts/actions/math.lua",
-    "/scripts/actions/boss/eyeboss.lua"
+    "/scripts/actions/boss/ruin-eyeboss.lua"
   ],
   "parameters": {
     "biomeStart": [-4.5625, 0],
@@ -124,9 +124,9 @@
                 "parameters": {},
                 "children": [
                   {
-                    "title": "spawnMonsterGroup",
+                    "title": "ruin_spawnMonsterGroup",
                     "type": "action",
-                    "name": "spawnMonsterGroup",
+                    "name": "ruin_spawnMonsterGroup",
                     "parameters": {
                       "windup": {"value": 1.5}
                     }

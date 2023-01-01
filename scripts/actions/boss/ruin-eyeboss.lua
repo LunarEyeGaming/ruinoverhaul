@@ -2,22 +2,23 @@ require "/scripts/vec2.lua"
 require "/scripts/util.lua"
 require "/scripts/interp.lua"
 require "/scripts/status.lua"
-
--- The tentacleMovement node has been overridden to make the Ruin's tentacles move more organically, utilizing rotations
--- and scales in lieu of pure vertical translations. It also applies sine easing to the transformations. The tentacles
--- move independently of each other.
--- param initialScales - The initial scales to use for the tentacles
--- param initialAngles - The initial angles to use for the tentacles in degrees
--- param timeRange - The range of time to complete each movement of each tentacle
--- param angleRange - The range of angles to use for each tentacle in degrees
--- param scaleRange - The range of scaling to use for each tentacle
--- param tentaclePivots - The relative positions to use for rotation and scaling for each tentacle
--- output scales - A list of the scales used for each tentacle as of the current tick. Use in conjunction with the
---    initialScales parameter to prevent sudden changes in movement between calls of this function (e.g. when changing 
---    phases).
--- output angles - A list of the angles used for each tentacle as of the current tick (in degrees). Use in conjunction
---    with the initialAngles parameter for the aforementioned reason.
-function tentacleMovement(args, board, _, dt)
+--[[
+  The tentacleMovement node has been overridden to make the Ruin's tentacles move more organically, utilizing rotations
+  and scales in lieu of pure vertical translations. It also applies sine easing to the transformations. The tentacles
+  move independently of each other.
+  param initialScales - The initial scales to use for the tentacles
+  param initialAngles - The initial angles to use for the tentacles in degrees
+  param timeRange - The range of time to complete each movement of each tentacle
+  param angleRange - The range of angles to use for each tentacle in degrees
+  param scaleRange - The range of scaling to use for each tentacle
+  param tentaclePivots - The relative positions to use for rotation and scaling for each tentacle
+  output scales - A list of the scales used for each tentacle as of the current tick. Use in conjunction with the
+     initialScales parameter to prevent sudden changes in movement between calls of this function (e.g. when changing 
+     phases).
+  output angles - A list of the angles used for each tentacle as of the current tick (in degrees). Use in conjunction
+     with the initialAngles parameter for the aforementioned reason.
+]]
+function ruin_tentacleMovement(args, board, _, dt)
   -- Convert angles to radians.
   local angleRange = util.map(args.angleRange, function(angle) return util.toRadians(angle) end)
 
@@ -75,43 +76,8 @@ function tentacleMovement(args, board, _, dt)
   end
 end
 
-function heartBeat(args, board, _, dt)
-  local moveTime = args.moveTime + args.moveDelays.right
-  local movement = {
-    left = {0.375, -0.375},
-    middle = {0.0, -0.375},
-    right = {-0.375, -0.375}
-  }
-
-  animator.playSound("heartin")
-  local timer = 0
-  while timer <= (moveTime + args.moveDelays.right) do
-    timer = timer + dt
-
-    for tentacle,offset in pairs(movement) do
-      animator.resetTransformationGroup("heart"..tentacle)
-
-      local delay = args.moveDelays[tentacle]
-      if timer > delay then
-        local ratio = math.min(1.0, (timer - delay) / moveTime)
-        local multiply = interp.ranges(ratio, {
-          {0.5, interp.linear, 0, 1},
-          {1.0, interp.linear, 1, 0}
-        })
-
-        animator.translateTransformationGroup("heart"..tentacle, vec2.mul(offset, multiply))
-      end
-    end
-
-    coroutine.yield()
-  end
-  animator.playSound("heartout")
-
-  return true
-end
-
 -- Overridden to allow for more orderly spawning of monster groups.
-function spawnMonsterGroup(args, board, _, dt)
+function ruin_spawnMonsterGroup(args, board, _, dt)
   local spawnGroup = util.randomFromList(config.getParameter("monsterSpawnGroups"))
 
   animator.setGlobalTag("biome", spawnGroup.biome)
@@ -125,7 +91,6 @@ function spawnMonsterGroup(args, board, _, dt)
   for _, monsterGroup in pairs(spawnGroup.monsters) do
     if type(monsterGroup) == "table" then
       for i = 1, monsterGroup.count do
-        -- TODO: Allow for old monster group selection
         local spawnOffset = rect.randomPoint(args.offsetRegion)
         local targetOffset = rect.randomPoint(monsterGroup.offsetRegion)
 
@@ -166,66 +131,6 @@ function spawnMonsterGroup(args, board, _, dt)
     end
   end
 
-  return true
-end
-
---[[
-  Variant of the spawnMonsterGroup node that spawns Asra Nox.
-  
-  param biome
-  param monsterType
-  param windup
-  param spawnOffset
-  param targetOffset
-]]
-function ruin_spawnCultistBoss(args, board, _, dt)
-  animator.setGlobalTag("biome", args.biome)
-
-  local timer = args.windup
-  while timer > 0 do
-    timer = timer - dt
-    dt = coroutine.yield()
-  end
-
-  local spawnPosition = vec2.add(mcontroller.position(), args.spawnOffset)
-  local targetPosition = vec2.add(mcontroller.position(), args.targetOffset)
-
-  world.spawnProjectile("spacemonsterspawner", spawnPosition, entity.id(), world.distance(targetPosition,
-        spawnPosition), false, {
-    monsterType = args.monsterType,
-    monsterLevel = monster.level(),
-    targetPosition = targetPosition,
-    onGround = true
-  })
-
-  return true
-end
-
-function eyeWiggle(args, board, _, dt)
-  while true do
-    local timer = 0
-    while timer < args.time do
-      timer = timer + dt
-      local ratio = (args.time - timer) / args.time
-      local rotation = interp.ranges(ratio, {
-        {0.25, interp.linear, 0, args.rotation},
-        {0.75, interp.linear, args.rotation, -args.rotation},
-        {1.0, interp.linear, -args.rotation, 0}
-      })
-      animator.resetTransformationGroup("eye")
-      animator.rotateTransformationGroup("eye", rotation, animator.partPoint("eye", "rotationCenter"))
-
-      dt = coroutine.yield()
-    end
-  end
-end
-
-function spawnLightShaft(args, board)
-  local rotation = math.random() * math.pi*2
-  animator.resetTransformationGroup("shaftemitter")
-  animator.rotateTransformationGroup("shaftemitter", rotation)
-  animator.translateTransformationGroup("shaftemitter", config.getParameter("eyeCenterOffset"))
-  animator.burstParticleEmitter("shaftemitter")
   return true
 end
 
@@ -289,27 +194,6 @@ function ruin_tentacleAttack(args, board)
 end
 
 --[[
-  Makes the shield flash upon taking a weak hit (in other words damage of the element to which the Ruin is resistant).
-  This node is an infinite loop.
-  param shieldState - the state to which to set the shield upon taking a weak hit
-]]
-function ruin_elementalShieldEffect(args, board)
-  local listener = damageListener("damageTaken", function(notifications)
-    for _, notification in ipairs(notifications) do
-      if notification.hitType == "WeakHit" then  -- WeakHit = resistant
-        animator.setAnimationState("shield", args.shieldState)  -- startNew being true hurts my eyes
-        animator.playSound("shieldblock")
-      end
-    end
-  end)
-  
-  while true do
-    listener:update()
-    coroutine.yield()
-  end
-end
-
---[[
   Spawns a projectile that flies toward the center from a distance at a random angle.
   param spawnDistance - The distance from the center to spawn the projectile
   param speed - The speed of the projectile
@@ -329,53 +213,6 @@ function ruin_spawnPlasmaOrb(args, board)
   params.speed = args.speed
   
   world.spawnProjectile(args.projectileType, pos, entity.id(), aimVec, false, params)
-  
-  return true
-end
-
---[[
-  Plays the Ruin's part of the Asra Nox despawn animation. The Ruin opens up a portal, notifies Asra Nox to begin her
-  disappear animation, waits for Asra Nox to send a notification back, and then spawns a projectile at her place that 
-  moves toward the center of the Ruin's portal. The Ruin then closes the portal at the end.
-  
-  param target - The entity ID of Asra Nox
-  param finishedNotification - The name of the notification to receive
-  param biomeTag - The global tag to use for the biome part during the portal animation
-  param cultistDespawnDelay - How long to wait after opening the portal to notify Asra Nox to disappear
-  param cultistDespawnNotification - The name of the notification to send to Asra Nox
-  param despawnerProjectileType - The type of projectile to spawn at Asra Nox's position
-  param despawnerProjectileParams - The parameters to override for the projectile to spawn at Asra Nox's position
-  param portalCenter - The position of the portal's center
-  param despawnerTravelDelay - The amount of time to wait before moving the projectile
-  param despawnerTravelTime - The amount of time it takes for the projectile to move to the destination
-]]
-function ruin_retrieveCultistBoss(args, board)
-  animator.setAnimationState("eye", "spawnwindup")
-  animator.setGlobalTag("biome", args.biomeTag)
-  
-  util.run(args.cultistDespawnDelay, function() end)
-
-  world.sendEntityMessage(args.target, "notify", {type = args.cultistDespawnNotification, sourceId = entity.id()})
-  
-  -- Placed here b/c Asra Nox will die before we can spawn the projectile.
-  local targetPos = world.entityPosition(args.target)
-  
-  _ruin_awaitNotification(args.finishedNotification)
-  
-  local portalCloseDelay = args.despawnerTravelDelay + args.despawnerTravelTime
-  
-  local params = copy(args.despawnerProjectileParams)
-  params.targetPosition = args.portalCenter
-  params.timeToLive = portalCloseDelay
-  params.travelDelay = args.despawnerTravelDelay
-  params.travelTime = args.despawnerTravelTime
-  
-  world.spawnProjectile(args.despawnerProjectileType, targetPos, entity.id(), world.distance(targetPos,
-      args.portalCenter), false, params)
-  
-  util.run(portalCloseDelay, function() end)
-  
-  animator.setAnimationState("eye", "spawnwinddown")
   
   return true
 end
@@ -428,31 +265,4 @@ function ruin_ceilingTentacles(args, board)
   util.run(args.tentacleCooldown, function() end)
   
   return true
-end
-
--- Coroutine function that waits until it receives <count> notifications of the specified type <type_> (default count is
--- 1).
--- Borrowed from the Prison's code in Voided.
-function _ruin_awaitNotification(type_, count)
-  count = count or 1
-  local notifications = {}
-  while count > 0 do
-    -- Collect notifications
-    local i = 1
-    while i <= #self.notifications do
-      local notification = self.notifications[i]
-      if notification.type == type_ then
-        --sb.logInfo("self.notifications = %s, i = %s", self.notifications, i)
-        table.remove(self.notifications, i)
-        table.insert(notifications, notification)
-
-        count = count - 1
-      else
-        i = i + 1
-      end
-    end
-    coroutine.yield()
-  end
-
-  return notifications
 end

@@ -1,8 +1,9 @@
 {
-  "name": "eyeboss-spawnsequencecultist2",
+  "name": "ruin-eyeboss-spawnsequencecultist",
   "description": "",
   "scripts": [
     "/scripts/actions/animator.lua",
+    "/scripts/actions/status.lua",
     "/scripts/actions/time.lua"
   ],
   "parameters": {
@@ -15,9 +16,9 @@
     "parameters": {},
     "children": [
       {
-        "title": "eyeboss-spawncultistboss2",
+        "title": "ruin-eyeboss-spawncultistboss",
         "type": "module",
-        "name": "eyeboss-spawncultistboss2",
+        "name": "ruin-eyeboss-spawncultistboss",
         "parameters": {}
       },
       {
