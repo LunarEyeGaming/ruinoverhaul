@@ -1,0 +1,22 @@
+[
+  {
+    "op": "replace",
+    "path": "/baseParameters/behaviorConfig/hostileActions/0/parameters/fireSound",
+    "value": "fire"
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/movementSettings/collisionPoly",
+    "value": [[1.25, 1.5], [-1.25, 1.5], [-1.25, -1.5], [1.25, -1.5]]
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/touchDamage/poly",
+    "value": [[1.25, 1.5], [-1.25, 1.5], [-1.25, -1.5], [1.25, -1.5]]
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/statusSettings/stats/maxHealth/baseValue",
+    "value": 40
+  }
+]

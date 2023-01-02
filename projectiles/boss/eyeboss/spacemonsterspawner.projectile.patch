@@ -1,0 +1,36 @@
+[
+  {
+    "op": "remove",
+    "path": "/bounces"
+  },
+  {
+    "op": "add",
+    "path": "/travelTime",
+    "value": 1.5
+  },
+  {
+    "op": "add",
+    "path": "/onGround",
+    "value": false
+  },
+  {
+    "op": "replace",
+    "path": "/physics",
+    "value": "illusion"
+  },
+  {
+    "op": "replace",
+    "path": "/timeToLive",
+    "value": 3
+  },
+  {
+    "op": "add",
+    "path": "/scripts/-",
+    "value": "ruin-spacemonsterspawnerplugin.lua"
+  },
+  {
+    "op": "add",
+    "path": "/scripts/-",
+    "value": "/scripts/projectiles/ruin-movetoposition.lua"
+  }
+]

@@ -42,7 +42,7 @@
   "speed" : 0,
   "timeToLive" : 3.0,
 
-  "scripts" : [ "ruin-voidprojectile.lua", "/projectiles/ruin-killableextension2.lua" ],
+  "scripts" : [ "/scripts/projectiles/ruin-movetoposition.lua", "/projectiles/ruin-killableextension2.lua" ],
   "scriptDelta" : 1,
 
   "travelTime" : 1.5,

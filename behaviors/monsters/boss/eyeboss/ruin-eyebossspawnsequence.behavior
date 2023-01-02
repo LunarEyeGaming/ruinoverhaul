@@ -28,9 +28,9 @@
         }
       },
       {
-        "title": "ruin-eyeboss-spawnertelegraphs",
+        "title": "ruin-eyeboss-spawntentaclecreatures",
         "type": "module",
-        "name": "ruin-eyeboss-spawnertelegraphs",
+        "name": "ruin-eyeboss-spawntentaclecreatures",
         "parameters": {}
       },
       {
@@ -54,12 +54,6 @@
               "parameters": {
                 "list": {"key": "monsters"}
               }
-            },
-            {
-              "title": "ruin-eyeboss-spawntentaclecreatures",
-              "type": "module",
-              "name": "ruin-eyeboss-spawntentaclecreatures",
-              "parameters": {}
             },
             {
               "title": "addEphemeralEffect",

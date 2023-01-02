@@ -162,13 +162,13 @@ function ruin_tentacleAttack(args, board)
     world.sendEntityMessage(args.tentacle1, "attack")
   else
     -- -1440 = 2 * -720 (b/c it attacks for about two times longer)
-    world.sendEntityMessage(args.tentacle1, "attack", args.windupTime, args.attackTime + args.reEmergeWindupTime 
-        + args.reEmergeDelay, args.retractDelay, -1440, args.windupSoundPool)
+    world.sendEntityMessage(args.tentacle1, "attackParameterized", args.windupTime, args.attackTime 
+        + args.reEmergeWindupTime + args.reEmergeDelay, args.retractDelay, -1440, args.windupSoundPool)
 
     util.run(args.windupTime + args.reEmergeDelay, function() end)
     
-    world.sendEntityMessage(args.tentacle2, "attack", args.reEmergeWindupTime, args.attackTime, args.retractDelay, nil,
-        args.reEmergeWindupSoundPool)
+    world.sendEntityMessage(args.tentacle2, "attackParameterized", args.reEmergeWindupTime, args.attackTime,
+        args.retractDelay, nil, args.reEmergeWindupSoundPool)
     
     if status.resourcePercentage("health") < args.phase2 then
       util.run(args.otherTentacleDelay, function() end)
@@ -177,12 +177,12 @@ function ruin_tentacleAttack(args, board)
         world.sendEntityMessage(args.otherTentacle1, "attack")
       else
         -- -1440 = 2 * -720 (b/c it attacks for about two times longer)
-        world.sendEntityMessage(args.otherTentacle1, "attack", args.windupTime, args.attackTime 
+        world.sendEntityMessage(args.otherTentacle1, "attackParameterized", args.windupTime, args.attackTime 
             + args.reEmergeWindupTime + args.reEmergeDelay, nil, -1440, args.windupSoundPool)
 
         util.run(args.windupTime + args.reEmergeDelay, function() end)
         
-        world.sendEntityMessage(args.otherTentacle2, "attack", args.reEmergeWindupTime, args.attackTime,
+        world.sendEntityMessage(args.otherTentacle2, "attackParameterized", args.reEmergeWindupTime, args.attackTime,
             args.retractDelay, nil, args.reEmergeWindupSoundPool)
       end
     end

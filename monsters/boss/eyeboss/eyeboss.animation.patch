@@ -1,0 +1,412 @@
+[
+  {
+    "op" : "add",
+    "path" : "/animatedParts/stateTypes/blink/states/opennoroar",
+    "value" : {
+      "frames" : 1,
+      "cycle" : 0.1,
+      "mode" : "transition",
+      "transition" : "idle",
+      "properties" : {
+        "immediateSound" : "/sfx/npc/boss/tentacleboss_wakeup1.ogg",
+        "immediateSoundRangeMultiplier" : 5,
+        "lightsOn" : ["glow"]
+      }
+    }
+  },
+  {
+    "op" : "add",
+    "path" : "/animatedParts/stateTypes/blink/states/open/properties/lightsOn",
+    "value" : ["glow"]
+  },
+  {
+    "op" : "add",
+    "path" : "/animatedParts/stateTypes/blink/states/close/properties",
+    "value" : {
+      "immediateSound" : "/sfx/npc/boss/tentacleboss_wakeup1.ogg",
+      "immediateSoundRangeMultiplier" : 5
+    }
+  },
+  {
+    "op" : "replace",
+    "path" : "/animatedParts/stateTypes/blink/states/close/transition",
+    "value" : "closed"
+  },
+  {
+    "op" : "add",
+    "path" : "/animatedParts/stateTypes/blink/states/closed/properties",
+    "value" : {
+      "lightsOff" : ["glow"]
+    }
+  },
+  {
+    "op" : "add",
+    "path" : "/animatedParts/stateTypes/eye/states/windup2",
+    "value" : {
+      "frames" : 4,
+      "cycle" : 0.4,
+      "mode" : "transition",
+      "transition" : "fire2",
+      "properties" : {
+        "immediateSound" : "/sfx/npc/boss/ruin-tentacleboss_beam_charge_fast.ogg",
+        "immediateSoundRangeMultiplier" : 5,
+        "lightsOn" : ["redglow"],
+        "lightsOff" : ["glow"]
+      }
+    }
+  },
+  {
+    "op" : "add",
+    "path" : "/animatedParts/stateTypes/eye/states/fire2",
+    "value" : {
+      "frames" : 2,
+      "cycle" : 0.1,
+      "mode" : "loop"
+    }
+  },
+  {
+    "op" : "add",
+    "path" : "/animatedParts/stateTypes/eye/states/winddown2",
+    "value" : {
+      "frames" : 4,
+      "cycle" : 0.4,
+      "mode" : "transition",
+      "transition" : "idle",
+      "properties" : {
+        "lightsOn" : ["glow"],
+        "lightsOff" : ["redglow"]
+      }
+    }
+  },
+  {
+    "op" : "add",
+    "path" : "/animatedParts/stateTypes/eye/states/dying/properties/lightsOn",
+    "value" : ["redglow"]
+  },
+  {
+    "op" : "add",
+    "path" : "/animatedParts/stateTypes/eye/states/dying/properties/lightsOff",
+    "value" : ["glow"]
+  },
+  {
+    "op" : "add",
+    "path" : "/animatedParts/stateTypes/eye/states/windup/properties/lightsOn",
+    "value" : ["redglow"]
+  },
+  {
+    "op" : "add",
+    "path" : "/animatedParts/stateTypes/eye/states/windup/properties/lightsOff",
+    "value" : ["glow"]
+  },
+  {
+    "op" : "replace",
+    "path" : "/animatedParts/stateTypes/eye/states/windup/properties/immediateSound",
+    "value" : "/sfx/npc/boss/ruin-tentacleboss_beam_charge_fast.ogg"
+  },
+  {
+    "op" : "add",
+    "path" : "/animatedParts/stateTypes/eye/states/winddown/properties",
+    "value" : {
+      "lightsOn" : ["glow"],
+      "lightsOff" : ["redglow"]
+    }
+  },
+  {
+    "op" : "replace",
+    "path" : "/animatedParts/stateTypes/eye/states/spawnwindup/properties/immediateSound",
+    "value" : "/sfx/npc/boss/ruin-tentacleboss_portal_open.ogg"
+  },
+  {
+    "op" : "replace",
+    "path" : "/animatedParts/stateTypes/eye/states/spawnwinddown/properties/immediateSound",
+    "value" : "/sfx/npc/boss/ruin-tentacleboss_portal_close.ogg"
+  },
+  {
+    "op" : "add",
+    "path" : "/animatedParts/parts/eye/partStates/eye/windup2",
+    "value" : {
+      "properties" : {
+        "image" : "<partImage>:windup2.<frame>"
+      }
+    }
+  },
+  {
+    "op" : "add",
+    "path" : "/animatedParts/parts/eye/partStates/eye/fire2",
+    "value" : {
+      "properties" : {
+        "image" : "<partImage>:fire2.<frame>"
+      }
+    }
+  },
+  {
+    "op" : "add",
+    "path" : "/animatedParts/parts/eye/partStates/eye/winddown2",
+    "value" : {
+      "properties" : {
+        "image" : "<partImage>:winddown2.<frame>"
+      }
+    }
+  },
+  {
+    "op" : "add",
+    "path" : "/animatedParts/parts/eyelit/partStates/eye/windup2",
+    "value" : {
+      "properties" : {
+        "image" : "<partImage>:windup2.<frame>"
+      }
+    }
+  },
+  {
+    "op" : "add",
+    "path" : "/animatedParts/parts/eyelit/partStates/eye/fire2",
+    "value" : {
+      "properties" : {
+        "image" : "<partImage>:fire2.<frame>"
+      }
+    }
+  },
+  {
+    "op" : "add",
+    "path" : "/animatedParts/parts/eyelit/partStates/eye/winddown2",
+    "value" : {
+      "properties" : {
+        "image" : "<partImage>:winddown2.<frame>"
+      }
+    }
+  },
+  {
+    "op" : "add",
+    "path" : "/animatedParts/parts/eyelid/partStates/blink/opennoroar",
+    "value" : {
+      "properties" : {
+        "image" : "<partImage>:open.<frame>"
+      }
+    }
+  },
+  {
+    "op" : "replace",
+    "path" : "/animatedParts/parts/tentaclespacing/properties/offset/0",
+    "value" : -8.75
+  },
+  {
+    "op" : "replace",
+    "path" : "/animatedParts/parts/tentaclespacing/properties/offset/1",
+    "value" : 13.25
+  },
+  {
+    "op" : "add",
+    "path" : "/particleEmitters/wind",
+    "value" : {
+      "emissionRate" : 400,
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/ruin-windstreak/ruin-windstreak.animation",
+            "size" : 1,
+            "position" : [-0.3125, -8.3125],
+            "timeToLive" : 0,
+            "destructionAction" : "shrink",
+            "destructionTime" : 0.5,
+            "layer" : "middle",
+            "variance" : {
+              "rotation" : 180
+            }
+          },
+          "count" : 3
+        }
+      ]
+    }
+  },
+  {
+    "op" : "add",
+    "path" : "/particleEmitters/vacuumTelegraph",
+    "value" : {
+      "burstCount" : 1,
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "textured",
+            "image" : "/particles/images/ruin-vacuumtelegraph.png",
+            "size" : 1.2,
+            "position" : [-0.3125, -8.3125],
+            "timeToLive" : 0,
+            "destructionAction" : "shrink",
+            "destructionTime" : 2.5,
+            "layer" : "middle",
+            "fullbright" : true,
+            "angularVelocity" : 720
+          }
+        },
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/ruin-vacuumtelegraph2/ruin-vacuumtelegraph2.animation",
+            "size" : 0.16,
+            "position" : [-0.3125, -8.3125],
+            "timeToLive" : 0,
+            "destructionAction" : "shrink",
+            "destructionTime" : 2.5,
+            "layer" : "middle",
+            "fullbright" : true,
+            "variance" : {
+              "rotation" : 180,
+              "angularVelocity" : 180
+            }
+          },
+          "count" : 16
+        },
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/ruin-vacuumtelegraph2/ruin-vacuumtelegraph2.animation",
+            "size" : 0.32,
+            "position" : [-0.3125, -8.3125],
+            "timeToLive" : 0,
+            "destructionAction" : "shrink",
+            "destructionTime" : 2.5,
+            "layer" : "middle",
+            "fullbright" : true,
+            "variance" : {
+              "rotation" : 180,
+              "angularVelocity" : 180
+            }
+          },
+          "count" : 16
+        },
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/ruin-vacuumtelegraph2/ruin-vacuumtelegraph2.animation",
+            "size" : 0.48,
+            "position" : [-0.3125, -8.3125],
+            "timeToLive" : 0,
+            "destructionAction" : "shrink",
+            "destructionTime" : 2.5,
+            "layer" : "middle",
+            "fullbright" : true,
+            "variance" : {
+              "rotation" : 180,
+              "angularVelocity" : 180
+            }
+          },
+          "count" : 16
+        },
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/ruin-vacuumtelegraph2/ruin-vacuumtelegraph2.animation",
+            "size" : 0.64,
+            "position" : [-0.3125, -8.3125],
+            "timeToLive" : 0,
+            "destructionAction" : "shrink",
+            "destructionTime" : 2.5,
+            "layer" : "middle",
+            "fullbright" : true,
+            "variance" : {
+              "rotation" : 180,
+              "angularVelocity" : 180
+            }
+          },
+          "count" : 16
+        },
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/ruin-vacuumtelegraph2/ruin-vacuumtelegraph2.animation",
+            "size" : 0.8,
+            "position" : [-0.3125, -8.3125],
+            "timeToLive" : 0,
+            "destructionAction" : "shrink",
+            "destructionTime" : 2.5,
+            "layer" : "middle",
+            "fullbright" : true,
+            "variance" : {
+              "rotation" : 180,
+              "angularVelocity" : 180
+            }
+          },
+          "count" : 16
+        },
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/ruin-vacuumtelegraph2/ruin-vacuumtelegraph2.animation",
+            "size" : 0.96,
+            "position" : [-0.3125, -8.3125],
+            "timeToLive" : 0,
+            "destructionAction" : "shrink",
+            "destructionTime" : 2.5,
+            "layer" : "middle",
+            "fullbright" : true,
+            "variance" : {
+              "rotation" : 180,
+              "angularVelocity" : 180
+            }
+          },
+          "count" : 16
+        }
+      ]
+    }
+  },
+  {
+    "op" : "remove",
+    "path" : "/particleEmitters/shaftemitter/particles/0/offset"
+  },
+  {
+    "op" : "add",
+    "path" : "/lights/redglow",
+    "value" : {
+      "active" : false,
+      "position" : [0, -10],
+      "color" : [255, 220, 220],
+      "pointLight" : false
+    }
+  },
+  {
+    "op" : "replace",
+    "path" : "/lights/glow/color/2",
+    "value" : 180
+  },
+  {
+    "op" : "add",
+    "path" : "/sounds/roar",
+    "value" : {
+      "pool" : [ "/sfx/npc/boss/tentacleboss_roar.ogg" ],
+      "rangeMultiplier" : 5
+    }
+  },
+  {
+    "op" : "add",
+    "path" : "/sounds/plasmaballfire",
+    "value" : {
+      "pool" : [ "/sfx/npc/boss/crystalboss_death.ogg" ],
+      "rangeMultiplier" : 5
+    }
+  },
+  {
+    "op" : "add",
+    "path" : "/sounds/vacuumwindup",
+    "value" : {
+      "pool" : [ "/sfx/npc/boss/ruin-tentacleboss_vacuum_windup.ogg" ],
+      "rangeMultiplier" : 5
+    }
+  },
+  {
+    "op" : "add",
+    "path" : "/sounds/vacuum",
+    "value" : {
+      "pool" : [ "/sfx/npc/boss/ruin-tentacleboss_vacuum_loop.ogg" ],
+      "rangeMultiplier" : 5
+    }
+  },
+  {
+    "op" : "add",
+    "path" : "/sounds/shieldblock",
+    "value" : {
+      "pool" : [ "/sfx/npc/boss/cultistboss_shield.ogg" ],
+      "rangeMultiplier" : 5
+    }
+  }
+]

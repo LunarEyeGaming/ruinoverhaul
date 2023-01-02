@@ -50,7 +50,26 @@
         "type": "action",
         "name": "timer",
         "parameters": {
-          "time": {"value": 2}
+          "time": {"value": 0.5}
+        }
+      },
+      {
+        "title": "ruin_spawnBeamProjectiles",
+        "type": "action",
+        "name": "ruin_spawnBeamProjectiles",
+        "parameters": {
+          "direction": {"key": "facingDirection"},
+          "gapWidth": {"value": 10},
+          "projectileCount": {"value": 10},
+          "projectileParameters": {"value": {"power": 20}}
+        }
+      },
+      {
+        "title": "timer",
+        "type": "action",
+        "name": "timer",
+        "parameters": {
+          "time": {"value": 1.5}
         }
       },
       {

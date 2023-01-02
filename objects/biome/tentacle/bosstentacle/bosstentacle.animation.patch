@@ -1,0 +1,7 @@
+[
+  {
+    "op": "add",
+    "path": "/sounds/moveloop/pool/-",
+    "value": "/sfx/npc/boss/ruin-tentacleboss_tentacle_loop.ogg"
+  }
+]

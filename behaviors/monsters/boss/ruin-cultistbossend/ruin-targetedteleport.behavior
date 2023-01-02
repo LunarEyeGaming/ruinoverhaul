@@ -11,7 +11,8 @@
     "/scripts/actions/time.lua"
   ],
   "parameters": {
-    "positionType": ""
+    "positionType": "",
+    "useFarthestStagehand": false
   },
   "root": {
     "title": "sequence",
@@ -43,6 +44,31 @@
         "output": {
           "entity": "teleportStagehand",
           "list": "teleportPositions"
+        }
+      },
+      {
+        "title": "succeeder",
+        "type": "decorator",
+        "name": "succeeder",
+        "parameters": {},
+        "child": {
+          "title": "optional",
+          "type": "decorator",
+          "name": "optional",
+          "parameters": {
+            "shouldRun": {"key": "<useFarthestStagehand>"}
+          },
+          "child": {
+            "title": "listGet",
+            "type": "action",
+            "name": "listGet",
+            "parameters": {
+              "list": {"key": "teleportPositions"}
+            },
+            "output": {
+              "entity": "teleportStagehand"
+            }
+          }
         }
       },
       {

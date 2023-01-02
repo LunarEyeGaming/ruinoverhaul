@@ -1,15 +1,13 @@
+--[[
+  Script plugin that adds an init() function to do nothing on destruction if the projectile was forcibly killed via an
+  entity message. It also overrides the destroy() function to add more configuration options.
+]]
+
 require "/scripts/interp.lua"
-require "/scripts/util.lua"
-require "/scripts/vec2.lua"
 
 local shouldSpawn
 
 function init()
-  self.travelTime = config.getParameter("travelTime")
-  self.travelTimer = self.travelTime
-
-  self.initialPosition = mcontroller.position()
-  self.targetPosition = config.getParameter("targetPosition")
   shouldSpawn = true
   
   message.setHandler("kill", function()
@@ -18,29 +16,12 @@ function init()
   end)
 end
 
-function sourceEntityAlive()
-  return world.entityExists(projectile.sourceEntity()) and world.entityHealth(projectile.sourceEntity())[1] > 0
-end
-
-function update(dt)
-  if not sourceEntityAlive() then
-    projectile.die()
-    return
-  end
-  
-  if self.travelTimer > 0 then
-    self.travelTimer = math.max(0, self.travelTimer - dt)
-    local ratio = 1 - (self.travelTimer / self.travelTime)
-
-    mcontroller.setPosition(
-      {
-        interp.sin(ratio, self.initialPosition[1], self.targetPosition[1]),
-        interp.sin(ratio, self.initialPosition[2], self.targetPosition[2])
-      }
-    )
-  end
-end
-
+--[[
+  Overridden to add the following functionality:
+    * Increased aggro range is only set when instantAggro is true
+    * onGround defaults to false instead of true
+    * keepTargetInSight can be set to true with the keepTargetInSight configuration parameter
+]]
 function destroy()
   if not sourceEntityAlive() or not shouldSpawn then
     return
@@ -49,14 +30,15 @@ function destroy()
   local monsterType = config.getParameter("monsterType")
   local damageTeam = entity.damageTeam()
   local parameters = {
-    level = config.getParameter("monsterLevel", 1),
+    -- Might as well fix this since I'm overriding the function
+    level = config.getParameter("monsterLevel", world.threatLevel()),
     aggressive = true,
-    level = world.threatLevel(),
     damageTeam = damageTeam.team,
     damageTeamType = damageTeam.type,
     initialStatus = "blackmonsterrelease",
     behaviorConfig = {}
   }
+
   if config.getParameter("instantAggro", true) then
     parameters.behaviorConfig.targetQueryRange = 150
     parameters.behaviorConfig.keepTargetInRange = 200

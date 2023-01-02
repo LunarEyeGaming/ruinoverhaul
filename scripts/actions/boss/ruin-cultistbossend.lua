@@ -1,3 +1,5 @@
+require "/scripts/vec2.lua"
+
 --[[
   Performs two corrections to the targetPos to prevent Asra Nox from getting stuck in a wall during a dash attack.
   param fromPos
@@ -26,4 +28,17 @@ function ruin_correctPosition(args, board)
   position = world.resolvePolyCollision(mcontroller.collisionPoly(), position, maxCorrection)
   
   return true, {position = position}
+end
+
+function ruin_spawnBeamProjectiles(args, board)
+  for i = 1, args.projectileCount do
+    local params = copy(args.projectileParameters)
+    params.power = (params.power or 10) * root.evalFunction("monsterLevelPowerMultiplier", monster.level())
+    params.targetPosition = vec2.add(args.center, {i * args.gapWidth * args.direction, 0})
+    world.spawnProjectile(args.projectileType, args.center, entity.id(), {args.direction, 0}, false, params)
+
+    util.run(args.projectileInterval, function() end)
+  end
+  
+  return true
 end

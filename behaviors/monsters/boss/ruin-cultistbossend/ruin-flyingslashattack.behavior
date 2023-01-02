@@ -17,7 +17,13 @@
     "projectileAngleStep": 0.2,
     "projectileCount": 5,
     "projectileInterval": 0.05,
-    "startAngle": -0.5
+    "startAngle": -0.5,
+
+    "blockerStartAngle": 1.5,
+    "blockerEndAngle": 0.5,
+    "blockerFireDuration": 0.65,
+    "blockerInterval": 0.05,
+    "blockerAimVector": [0, -1]
   },
   "root": {
     "title": "Reset",
@@ -154,6 +160,165 @@
                 }
               },
               {
+                "title": "parallel",
+                "type": "composite",
+                "name": "parallel",
+                "parameters": {
+                  "fail": {"value": -1},
+                  "success": {"value": 1}
+                },
+                "children": [
+                  {
+                    "title": "timer",
+                    "type": "action",
+                    "name": "timer",
+                    "parameters": {
+                      "time": {"key": "<blockerFireDuration>"}
+                    },
+                    "output": {
+                      "ratio": "blockerProgress"
+                    }
+                  },
+                  {
+                    "title": "sequence",
+                    "type": "composite",
+                    "name": "sequence",
+                    "parameters": {},
+                    "children": [
+                      {
+                        "title": "repeater",
+                        "type": "decorator",
+                        "name": "repeater",
+                        "parameters": {
+                          "maxLoops": {"value": -1}
+                        },
+                        "child": {
+                          "title": "sequence",
+                          "type": "composite",
+                          "name": "sequence",
+                          "parameters": {},
+                          "children": [
+                            {
+                              "title": "timer",
+                              "type": "action",
+                              "name": "timer",
+                              "parameters": {
+                                "time": {"key": "<blockerInterval>"}
+                              }
+                            },
+                            {
+                              "title": "lerp",
+                              "type": "action",
+                              "name": "lerp",
+                              "parameters": {
+                                "max": {"key": "<blockerEndAngle>"},
+                                "min": {"key": "<blockerStartAngle>"},
+                                "ratio": {"key": "blockerProgress"}
+                              },
+                              "output": {
+                                "number": "offsetAngle1"
+                              }
+                            },
+                            {
+                              "title": "vecRotate",
+                              "type": "action",
+                              "name": "vecRotate",
+                              "parameters": {
+                                "vector": {"value": "<blockerAimVector>"},
+                                "angle": {"key": "offsetAngle1"}
+                              },
+                              "output": {
+                                "vector": "aimVector1"
+                              }
+                            },
+                            {
+                              "title": "vecMultiply",
+                              "type": "action",
+                              "name": "vecMultiply",
+                              "parameters": {
+                                "first": {"key": "aimVector1"},
+                                "second": {"value": [2, 2]}
+                              },
+                              "output": {
+                                "vector": "spawnOffset1"
+                              }
+                            },
+                            {
+                              "title": "spawnProjectile",
+                              "type": "action",
+                              "name": "spawnProjectile",
+                              "parameters": {
+                                "aimVector": {"key": "aimVector1"},
+                                "offset": {"key": "spawnOffset1"},
+                                "projectileConfig": {"value": {"speed": 125, "power": 40}},
+                                "projectileType": {"value": "ruin-energyshardred"},
+                                "scalePower": {"value": true}
+                              }
+                            },
+                            {
+                              "title": "multiply",
+                              "type": "action",
+                              "name": "multiply",
+                              "parameters": {
+                                "number": {"key": "offsetAngle1"},
+                                "factor": {"value": -1}
+                              },
+                              "output": {
+                                "result": "offsetAngle2"
+                              }
+                            },
+                            {
+                              "title": "vecRotate",
+                              "type": "action",
+                              "name": "vecRotate",
+                              "parameters": {
+                                "vector": {"value": "<blockerAimVector>"},
+                                "angle": {"key": "offsetAngle2"}
+                              },
+                              "output": {
+                                "vector": "aimVector2"
+                              }
+                            },
+                            {
+                              "title": "vecMultiply",
+                              "type": "action",
+                              "name": "vecMultiply",
+                              "parameters": {
+                                "first": {"key": "aimVector2"},
+                                "second": {"value": [2, 2]}
+                              },
+                              "output": {
+                                "vector": "spawnOffset2"
+                              }
+                            },
+                            {
+                              "title": "spawnProjectile",
+                              "type": "action",
+                              "name": "spawnProjectile",
+                              "parameters": {
+                                "aimVector": {"key": "aimVector2"},
+                                "offset": {"key": "spawnOffset2"},
+                                "projectileConfig": {"value": {"speed": 125, "power": 40}},
+                                "projectileType": {"value": "ruin-energyshardred"},
+                                "scalePower": {"value": true}
+                              }
+                            },
+                            {
+                              "title": "playSound",
+                              "type": "action",
+                              "name": "playSound",
+                              "parameters": {
+                                "sound": {"value": "fire"}
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
                 "title": "sequence",
                 "type": "composite",
                 "name": "sequence",
@@ -275,7 +440,7 @@
                             "offset": {"value": [0, 0]},
                             "position": {"key": "spawnPosition"},
                             "projectileConfig": {"value": {"power": 25}},
-                            "projectileType": {"value": "energyshard"},
+                            "projectileType": {"value": "ruin-energyshardlite"},
                             "scalePower": {"value": true},
                             "sourceEntity": {"key": "self"},
                             "trackSource": {"value": false}
@@ -372,7 +537,7 @@
                             "offset": {"value": [0, 0]},
                             "position": {"key": "spawnPosition"},
                             "projectileConfig": {"value": {"speed": 75, "power": 25}},
-                            "projectileType": {"value": "energyshard"},
+                            "projectileType": {"value": "ruin-energyshardlite"},
                             "scalePower": {"value": true},
                             "sourceEntity": {"key": "self"},
                             "trackSource": {"value": false}

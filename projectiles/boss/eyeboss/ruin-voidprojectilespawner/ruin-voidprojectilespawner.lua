@@ -1,18 +1,20 @@
-require "/scripts/util.lua"
+require "/scripts/rect.lua"
 require "/scripts/vec2.lua"
 
+--[[
+  Script that spawns a void projectile at a random starting position and a random ending position and immediately causes
+  the current projectile to die.
+]]
+
+local targetOffsetRange
+local spawnOffsetRange
+
 function init()
-  self.targetOffsetRange = config.getParameter("targetOffsetRange")
-  self.spawnOffsetRange = config.getParameter("spawnOffsetRange")
+  targetOffsetRange = config.getParameter("targetOffsetRange")
+  spawnOffsetRange = config.getParameter("spawnOffsetRange")
   
-  local targetOffset = {
-    util.randomIntInRange({self.targetOffsetRange[1], self.targetOffsetRange[3]}), 
-    util.randomIntInRange({self.targetOffsetRange[2], self.targetOffsetRange[4]})
-  }
-  local spawnOffset = {
-    util.randomIntInRange({self.spawnOffsetRange[1], self.spawnOffsetRange[3]}), 
-    util.randomIntInRange({self.spawnOffsetRange[2], self.spawnOffsetRange[4]})
-  }
+  local targetOffset = rect.randomPoint(targetOffsetRange)
+  local spawnOffset = rect.randomPoint(spawnOffsetRange)
   local targetPosition = vec2.add(mcontroller.position(), targetOffset)
   local spawnPosition = vec2.add(mcontroller.position(), spawnOffset)
 

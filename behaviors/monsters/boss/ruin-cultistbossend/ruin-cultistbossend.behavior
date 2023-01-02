@@ -179,82 +179,90 @@
                                 "parameters": {},
                                 "children": [
                                   {
-                                    "title": "randomize",
-                                    "type": "composite",
-                                    "name": "randomize",
-                                    "parameters": {},
-                                    "children": [
-                                      {
-                                        "title": "cooldown",
-                                        "type": "decorator",
-                                        "name": "cooldown",
-                                        "parameters": {
-                                          "cooldown": {"value": 7}
-                                        },
-                                        "child": {
-                                          "title": "ruin-cultistbossend-flyingslash",
-                                          "type": "module",
-                                          "name": "ruin-cultistbossend-flyingslash",
+                                    "title": "repeater",
+                                    "type": "decorator",
+                                    "name": "repeater",
+                                    "parameters": {
+                                      "untilSuccess": {"value": true}  // Repeat until we find an attack.
+                                    },
+                                    "child": {
+                                      "title": "randomize",
+                                      "type": "composite",
+                                      "name": "randomize",
+                                      "parameters": {},
+                                      "children": [
+                                        {
+                                          "title": "cooldown",
+                                          "type": "decorator",
+                                          "name": "cooldown",
                                           "parameters": {
-                                            "projectileAngleStep": {"value": 0.14},
-                                            "projectileCount": {"value": 12},
-                                            "stopTime": {"value": 0.5},
-                                            "stopForce": {"value": 60},
-                                            "jumpVelocity": {"value": 80}
+                                            "cooldown": {"value": 7}
+                                          },
+                                          "child": {
+                                            "title": "ruin-cultistbossend-flyingslash",
+                                            "type": "module",
+                                            "name": "ruin-cultistbossend-flyingslash",
+                                            "parameters": {
+                                              "projectileAngleStep": {"value": 0.14},
+                                              "projectileCount": {"value": 12},
+                                              "stopTime": {"value": 0.5},
+                                              "stopForce": {"value": 60},
+                                              "jumpVelocity": {"value": 80}
+                                            }
+                                          }
+                                        },
+                                        {
+                                          "title": "cooldown",
+                                          "type": "decorator",
+                                          "name": "cooldown",
+                                          "parameters": {
+                                            "cooldown": {"value": 7}
+                                          },
+                                          "child": {
+                                            "title": "ruin-cultistbossend-dashattack",
+                                            "type": "module",
+                                            "name": "ruin-cultistbossend-dashattack",
+                                            "parameters": {
+                                              "dashSpeed": {"value": 75},
+                                              "dashTime": {"value": 0.8}
+                                            }
+                                          }
+                                        },
+                                        {
+                                          "title": "cooldown",
+                                          "type": "decorator",
+                                          "name": "cooldown",
+                                          "parameters": {
+                                            "cooldown": {"value": 7}
+                                          },
+                                          "child": {
+                                            "title": "ruin-cultistbossend-sphereattack",
+                                            "type": "module",
+                                            "name": "ruin-cultistbossend-sphereattack",
+                                            "parameters": {
+                                              "sphereDashForce": {"value": 500},
+                                              "sphereCentripetalForce": {"value": 500},
+                                              "bounceTime": {"value": 0.3},
+                                              "repeats": {"value": 3}
+                                            }
+                                          }
+                                        },
+                                        {
+                                          "title": "cooldown",
+                                          "type": "decorator",
+                                          "name": "cooldown",
+                                          "parameters": {
+                                            "cooldown": {"value": 7}
+                                          },
+                                          "child": {
+                                            "title": "ruin-cultistbossend-beamattack",
+                                            "type": "module",
+                                            "name": "ruin-cultistbossend-beamattack",
+                                            "parameters": {}
                                           }
                                         }
-                                      },
-                                      {
-                                        "title": "cooldown",
-                                        "type": "decorator",
-                                        "name": "cooldown",
-                                        "parameters": {
-                                          "cooldown": {"value": 7}
-                                        },
-                                        "child": {
-                                          "title": "ruin-cultistbossend-dashattack",
-                                          "type": "module",
-                                          "name": "ruin-cultistbossend-dashattack",
-                                          "parameters": {
-                                            "dashSpeed": {"value": 75},
-                                            "dashTime": {"value": 0.8}
-                                          }
-                                        }
-                                      },
-                                      {
-                                        "title": "cooldown",
-                                        "type": "decorator",
-                                        "name": "cooldown",
-                                        "parameters": {
-                                          "cooldown": {"value": 7}
-                                        },
-                                        "child": {
-                                          "title": "ruin-cultistbossend-sphereattack",
-                                          "type": "module",
-                                          "name": "ruin-cultistbossend-sphereattack",
-                                          "parameters": {
-                                            "sphereDashForce": {"value": 500},
-                                            "sphereCentripetalForce": {"value": 500},
-                                            "bounceTime": {"value": 0.3},
-                                            "repeats": {"value": 3}
-                                          }
-                                        }
-                                      },
-                                      {
-                                        "title": "cooldown",
-                                        "type": "decorator",
-                                        "name": "cooldown",
-                                        "parameters": {
-                                          "cooldown": {"value": 7}
-                                        },
-                                        "child": {
-                                          "title": "ruin-cultistbossend-beamattack",
-                                          "type": "module",
-                                          "name": "ruin-cultistbossend-beamattack",
-                                          "parameters": {}
-                                        }
-                                      }
-                                    ]
+                                      ]
+                                    }
                                   },
                                   {
                                     "title": "unsetFlag",
@@ -273,14 +281,6 @@
                                     }
                                   }
                                 ]
-                              }
-                            },
-                            {
-                              "title": "timer",
-                              "type": "action",
-                              "name": "timer",
-                              "parameters": {
-                                "time": {"value": 0.5}
                               }
                             },
                             // Bigger teleporting range.

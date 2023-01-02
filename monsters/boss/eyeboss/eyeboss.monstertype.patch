@@ -1,0 +1,538 @@
+[
+  {
+    "op" : "add",
+    "path" : "/baseParameters/damageSources",
+    "value" : {
+      "windswept" : {
+        "poly" : [[-54, -30], [-54, 36], [54, 36], [54, -30]],
+        "damage" : 0,
+        "teamType" : "enemy",
+        "damageSourceKind" : "hidden",
+        "statusEffects" : ["windswept"],
+        "damageRepeatTimeout" : 0.5
+      }
+    }
+  },
+  {
+    "op" : "add",
+    "path" : "/baseParameters/forceRegions",
+    "value" : {
+      "left" : {
+        "type" : "DirectionalForceRegion",
+        "rectRegion" : [-54, -30, -10, 36],
+        "xTargetVelocity" : 100,
+        "controlForce" : 80,
+        "categoryWhitelist" : ["player"]
+      },
+      "right" : {
+        "type" : "DirectionalForceRegion",
+        "rectRegion" : [10, -30, 54, 36],
+        "xTargetVelocity" : -100,
+        "controlForce" : 80,
+        "categoryWhitelist" : ["player"]
+      },
+      "top" : {
+        "type" : "DirectionalForceRegion",
+        "rectRegion" : [-54, 10, 54, 36],
+        "yTargetVelocity" : -100,
+        "controlForce" : 500,
+        "categoryWhitelist" : ["player"]
+      },
+      "bottom" : {
+        "type" : "DirectionalForceRegion",
+        "rectRegion" : [-10, -30, 10, -10],
+        "yTargetVelocity" : 100,
+        "controlForce" : 500,
+        "categoryWhitelist" : ["player"]
+      }
+    }
+  },
+  // New monster spawn groups.
+  {
+    "op" : "replace",
+    "path" : "/baseParameters/monsterSpawnGroups/0/monsters/0",
+    "value" : {"type" : "gleap", "count" : 3, "offsetRegion" : [-50, -29, 50, -29], "onGround" : true}
+  },
+  {
+    "op" : "replace",
+    "path" : "/baseParameters/monsterSpawnGroups/0/monsters/1",
+    "value" : {"type" : "nutmidge", "count" : 2, "offsetRegion" : [-50, -29, 50, -29], "onGround" : true}
+  },
+  {
+    "op" : "replace",
+    "path" : "/baseParameters/monsterSpawnGroups/0/monsters/2",
+    "value" : {"type" : "poptop", "count" : 3, "offsetRegion" : [-50, -29, 50, -29], "onGround" : true}
+  },
+  {
+    "op" : "replace",
+    "path" : "/baseParameters/monsterSpawnGroups/1/monsters/0",
+    "value" : {"type" : "snaunt", "count" : 3, "offsetRegion" : [-50, -29, -30, -29], "onGround" : true}
+  },
+  {
+    "op" : "replace",
+    "path" : "/baseParameters/monsterSpawnGroups/1/monsters/1",
+    "value" : {"type" : "snaunt", "count" : 3, "offsetRegion" : [30, -29, 50, -29], "onGround" : true}
+  },
+  {
+    "op" : "replace",
+    "path" : "/baseParameters/monsterSpawnGroups/2/monsters/0",
+    "value" : {"type" : "pulpin", "count" : 5, "offsetRegion" : [-50, -29, 50, -29], "onGround" : true}
+  },
+  {
+    "op" : "replace",
+    "path" : "/baseParameters/monsterSpawnGroups/2/monsters/1",
+    "value" : {"type" : "skimbus", "count" : 3, "offsetRegion" : [-40, -20, 40, -10] }
+  },
+  {
+    "op" : "remove",
+    "path" : "/baseParameters/monsterSpawnGroups/2/monsters/2"
+  },
+  {
+    "op" : "replace",
+    "path" : "/baseParameters/monsterSpawnGroups/3/monsters/0",
+    "value" : {"type" : "pulpin", "count" : 5, "offsetRegion" : [-50, -29, 50, -29], "onGround" : true}
+  },
+  {
+    "op" : "replace",
+    "path" : "/baseParameters/monsterSpawnGroups/3/monsters/1",
+    "value" : {"type" : "wisper", "count" : 3, "offsetRegion" : [-40, -20, 40, 10] }
+  },
+  {
+    "op" : "remove",
+    "path" : "/baseParameters/monsterSpawnGroups/3/monsters/2"
+  },
+  {
+    "op" : "replace",
+    "path" : "/baseParameters/monsterSpawnGroups/4/monsters/0",
+    "value" : {"type" : "capricoat", "count" : 3, "offsetRegion" : [-50, -29, 50, -29], "onGround" : true}
+  },
+  {
+    "op" : "replace",
+    "path" : "/baseParameters/monsterSpawnGroups/4/monsters/1",
+    "value" : {"type" : "monopus", "count" : 3, "offsetRegion" : [-40, -20, 40, -10] }
+  },
+  {
+    "op" : "remove",
+    "path" : "/baseParameters/monsterSpawnGroups/4/monsters/2"
+  },
+  {
+    "op" : "replace",
+    "path" : "/baseParameters/monsterSpawnGroups/5/monsters/0",
+    "value" : {"type" : "peblit", "count" : 2, "offsetRegion" : [-50, -29, 50, -29], "onGround" : true}
+  },
+  {
+    "op" : "replace",
+    "path" : "/baseParameters/monsterSpawnGroups/5/monsters/1",
+    "value" : {"type" : "smoglin", "count" : 3, "offsetRegion" : [-50, -29, 50, -29], "onGround" : true}
+  },
+  {
+    "op" : "remove",
+    "path" : "/baseParameters/monsterSpawnGroups/5/monsters/2"
+  },
+  {
+    "op" : "replace",
+    "path" : "/baseParameters/monsterSpawnGroups/6/monsters/0",
+    "value" : {"type" : "lilodon", "count" : 8, "offsetRegion" : [-50, -29, 50, -29], "onGround" : true}
+  },
+  {
+    "op" : "remove",
+    "path" : "/baseParameters/monsterSpawnGroups/6/monsters/1"
+  },
+  {
+    "op" : "remove",
+    "path" : "/baseParameters/monsterSpawnGroups/6/monsters/1"
+  },
+  {
+    "op" : "replace",
+    "path" : "/baseParameters/monsterSpawnGroups/7/monsters/0",
+    "value" : {"type" : "oculob", "count" : 5, "offsetRegion" : [-50, -29, 50, -29], "onGround" : true}
+  },
+  {
+    "op" : "replace",
+    "path" : "/baseParameters/monsterSpawnGroups/7/monsters/1",
+    "value" : {"type" : "pteropod", "count" : 3, "offsetRegion" : [-40, -20, 40, 10] }
+  },
+  {
+    "op" : "remove",
+    "path" : "/baseParameters/monsterSpawnGroups/7/monsters/2"
+  },
+  {
+    "op" : "replace",
+    "path" : "/baseParameters/monsterSpawnGroups/8/monsters/0",
+    "value" : {"type" : "scaveran", "count" : 3, "offsetRegion" : [-30, -29, 30, -29], "onGround" : true}
+  },
+  {
+    "op" : "replace",
+    "path" : "/baseParameters/monsterSpawnGroups/8/monsters/1",
+    "value" : {"type" : "crutter", "count" : 2, "offsetRegion" : [-50, -29, -30, -29], "onGround" : true}
+  },
+  {
+    "op" : "replace",
+    "path" : "/baseParameters/monsterSpawnGroups/8/monsters/2",
+    "value" : {"type" : "crutter", "count" : 2, "offsetRegion" : [30, -29, 50, -29], "onGround" : true}
+  },
+  {
+    "op" : "replace",
+    "path" : "/baseParameters/monsterSpawnGroups/9/monsters/0",
+    "value" : {"type" : "voltip", "count" : 5, "offsetRegion" : [-30, -29, 30, -29], "onGround" : true}
+  },
+  {
+    "op" : "replace",
+    "path" : "/baseParameters/monsterSpawnGroups/9/monsters/1",
+    "value" : {"type" : "iguarmor", "count" : 3, "offsetRegion" : [-30, -29, 30, -29], "onGround" : true}
+  },
+  {
+    "op" : "remove",
+    "path" : "/baseParameters/monsterSpawnGroups/9/monsters/2"
+  },
+  {
+    "op" : "replace",
+    "path" : "/baseParameters/monsterSpawnGroups/10/monsters/0",
+    "value" : {"type" : "paratail", "count" : 8, "offsetRegion" : [-40, -20, 40, -10] }
+  },
+  {
+    "op" : "replace",
+    "path" : "/baseParameters/monsterSpawnGroups/10/monsters/1",
+    "value" : {"type" : "petricub", "count" : 3, "offsetRegion" : [-30, -29, 30, -29], "onGround" : true}
+  },
+  {
+    "op" : "remove",
+    "path" : "/baseParameters/monsterSpawnGroups/10/monsters/2"
+  },
+  {
+    "op" : "replace",
+    "path" : "/baseParameters/monsterSpawnGroups/11/monsters/0",
+    "value" : {"type" : "spookit", "count" : 2, "offsetRegion" : [-40, -20, 40, -10] }
+  },
+  {
+    "op" : "replace",
+    "path" : "/baseParameters/monsterSpawnGroups/11/monsters/1",
+    "value" : {"type" : "smoglin", "count" : 3, "offsetRegion" : [-50, -29, 50, -29], "onGround" : true}
+  },
+  {
+    "op" : "remove",
+    "path" : "/baseParameters/monsterSpawnGroups/11/monsters/2"
+  },
+  {
+    "op" : "replace",
+    "path" : "/baseParameters/monsterSpawnGroups/12/monsters/0",
+    "value" : {"type" : "ringram", "count" : 3, "offsetRegion" : [-40, -29, 40, -29], "onGround" : true}
+  },
+  {
+    "op" : "replace",
+    "path" : "/baseParameters/monsterSpawnGroups/12/monsters/1",
+    "value" : {"type" : "capricoat", "count" : 3, "offsetRegion" : [-50, -29, 50, -29], "onGround" : true}
+  },
+  {
+    "op" : "remove",
+    "path" : "/baseParameters/monsterSpawnGroups/12/monsters/2"
+  },
+  {
+    "op" : "replace",
+    "path" : "/baseParameters/monsterSpawnGroups/13/monsters/0",
+    "value" : {"type" : "bulbop", "count" : 7, "offsetRegion" : [-50, -29, 50, -29], "onGround" : true}
+  },
+  {
+    "op" : "replace",
+    "path" : "/baseParameters/monsterSpawnGroups/13/monsters/1",
+    "value" : {"type" : "mandraflora", "count" : 3, "offsetRegion" : [-50, -29, 50, -29], "onGround" : true}
+  },
+  {
+    "op" : "remove",
+    "path" : "/baseParameters/monsterSpawnGroups/13/monsters/2"
+  },
+  {
+    "op" : "remove",
+    "path" : "/baseParameters/monsterSpawnGroups/13/monsters/2"
+  },
+  {
+    "op" : "replace",
+    "path" : "/baseParameters/monsterSpawnGroups/14/monsters/0",
+    "value" : {"type" : "squeem", "count" : 5, "offsetRegion" : [-40, -20, 40, -10] }
+  },
+  {
+    "op" : "replace",
+    "path" : "/baseParameters/monsterSpawnGroups/14/monsters/1",
+    "value" : {"type" : "oculob", "count" : 5, "offsetRegion" : [-50, -29, 50, -29], "onGround" : true}
+  },
+  {
+    "op" : "remove",
+    "path" : "/baseParameters/monsterSpawnGroups/14/monsters/2"
+  },
+  {
+    "op" : "replace",
+    "path" : "/baseParameters/monsterSpawnGroups/15/monsters/0",
+    "value" : {"type" : "narfin", "count" : 2, "offsetRegion" : [-50, -29, -30, -29], "onGround" : true}
+  },
+  {
+    "op" : "replace",
+    "path" : "/baseParameters/monsterSpawnGroups/15/monsters/1",
+    "value" : {"type" : "narfin", "count" : 2, "offsetRegion" : [-30, -29, 30, -29], "onGround" : true}
+  },
+  {
+    "op" : "replace",
+    "path" : "/baseParameters/monsterSpawnGroups/15/monsters/2",
+    "value" : {"type" : "narfin", "count" : 2, "offsetRegion" : [30, -29, 50, -29], "onGround" : true}
+  },
+  {
+    "op" : "replace",
+    "path" : "/baseParameters/monsterSpawnGroups/16/monsters/0",
+    "value" : {"type" : "pipkin", "count" : 5, "offsetRegion" : [-50, -29, 50, -29], "onGround" : true}
+  },
+  // Screw you, Lumoths! You have caused enough trouble!
+  {
+    "op" : "remove",
+    "path" : "/baseParameters/monsterSpawnGroups/16/monsters/1"
+  },
+  {
+    "op" : "remove",
+    "path" : "/baseParameters/monsterSpawnGroups/16/monsters/1"
+  },
+  {
+    "op" : "replace",
+    "path" : "/baseParameters/monsterSpawnGroups/17/monsters/0",
+    "value" : {"type" : "anglure", "count" : 2, "offsetRegion" : [-50, -29, -30, -29], "onGround" : true}
+  },
+  {
+    "op" : "add",
+    "path" : "/baseParameters/monsterSpawnGroups/17/monsters/-",
+    "value" : {"type" : "anglure", "count" : 2, "offsetRegion" : [-30, -29, 30, -29], "onGround" : true}
+  },
+  {
+    "op" : "add",
+    "path" : "/baseParameters/monsterSpawnGroups/17/monsters/-",
+    "value" : {"type" : "anglure", "count" : 2, "offsetRegion" : [30, -29, 50, -29], "onGround" : true}
+  },
+  {
+    "op" : "replace",
+    "path" : "/baseParameters/monsterSpawnGroups/18/monsters/0",
+    "value" : {"type" : "trictus", "count" : 2, "offsetRegion" : [-50, -29, -30, -29], "onGround" : true,
+        "instantAggro" : false}
+  },
+  {
+    "op" : "replace",
+    "path" : "/baseParameters/monsterSpawnGroups/18/monsters/1",
+    "value" : {"type" : "trictus", "count" : 2, "offsetRegion" : [-30, -29, 30, -29], "onGround" : true,
+        "instantAggro" : false}
+  },
+  {
+    "op" : "add",
+    "path" : "/baseParameters/monsterSpawnGroups/18/monsters/-",
+    "value" : {"type" : "trictus", "count" : 2, "offsetRegion" : [30, -29, 50, -29], "onGround" : true,
+        "instantAggro" : false}
+  },
+  {
+    "op" : "replace",
+    "path" : "/baseParameters/monsterSpawnGroups/19/monsters/0",
+    "value" : {"type" : "taroni", "count" : 1, "offsetRegion" : [-50, -29, -30, -29], "onGround" : true}
+  },
+  {
+    "op" : "replace",
+    "path" : "/baseParameters/monsterSpawnGroups/19/monsters/1",
+    "value" : {"type" : "taroni", "count" : 2, "offsetRegion" : [-30, -29, 30, -29], "onGround" : true}
+  },
+  {
+    "op" : "add",
+    "path" : "/baseParameters/monsterSpawnGroups/19/monsters/-",
+    "value" : {"type" : "taroni", "count" : 1, "offsetRegion" : [30, -29, 50, -29], "onGround" : true}
+  },
+  {
+    "op" : "replace",
+    "path" : "/baseParameters/monsterSpawnGroups/20/monsters/0",
+    "value" : {"type" : "toumingo", "count" : 2, "offsetRegion" : [-50, -29, -30, -29], "onGround" : true}
+  },
+  {
+    "op" : "replace",
+    "path" : "/baseParameters/monsterSpawnGroups/20/monsters/1",
+    "value" : {"type" : "toumingo", "count" : 2, "offsetRegion" : [-30, -29, 30, -29], "onGround" : true}
+  },
+  {
+    "op" : "add",
+    "path" : "/baseParameters/monsterSpawnGroups/20/monsters/-",
+    "value" : {"type" : "toumingo", "count" : 2, "offsetRegion" : [30, -29, 50, -29], "onGround" : true}
+  },
+  {
+    "op" : "replace",
+    "path" : "/baseParameters/monsterSpawnGroups/21/monsters/0",
+    "value" : {"type" : "hemogoblin", "count" : 4, "offsetRegion" : [-50, -29, 50, -29], "onGround" : true}
+  },
+  {
+    "op" : "remove",
+    "path" : "/baseParameters/monsterSpawnGroups/21/monsters/1"
+  },
+  {
+    "op" : "replace",
+    "path" : "/baseParameters/monsterSpawnGroups/22/monsters/0",
+    "value" : {"type" : "sporgus", "count" : 2, "offsetRegion" : [-50, -29, -30, -29], "onGround" : true}
+  },
+  {
+    "op" : "replace",
+    "path" : "/baseParameters/monsterSpawnGroups/22/monsters/1",
+    "value" : {"type" : "sporgus", "count" : 2, "offsetRegion" : [-30, -29, 30, -29], "onGround" : true}
+  },
+  {
+    "op" : "add",
+    "path" : "/baseParameters/monsterSpawnGroups/22/monsters/-",
+    "value" : {"type" : "sporgus", "count" : 2, "offsetRegion" : [30, -29, 50, -29], "onGround" : true}
+  },
+  {
+    "op" : "replace",
+    "path" : "/baseParameters/monsterSpawnGroups/23/monsters/0",
+    "value" : {"type" : "oogler", "count" : 2, "offsetRegion" : [-50, -29, -30, -29], "onGround" : true}
+  },
+  {
+    "op" : "add",
+    "path" : "/baseParameters/monsterSpawnGroups/23/monsters/-",
+    "value" : {"type" : "oogler", "count" : 2, "offsetRegion" : [-30, -29, 30, -29], "onGround" : true}
+  },
+  {
+    "op" : "add",
+    "path" : "/baseParameters/monsterSpawnGroups/23/monsters/-",
+    "value" : {"type" : "oogler", "count" : 2, "offsetRegion" : [30, -29, 50, -29], "onGround" : true}
+  },
+  {
+    "op" : "replace",
+    "path" : "/baseParameters/monsterSpawnGroups/24/monsters/0",
+    "value" : {"type" : "scandroid", "count" : 3, "offsetRegion" : [-40, -20, 40, -10] }
+  },
+  {
+    "op" : "replace",
+    "path" : "/baseParameters/monsterSpawnGroups/24/monsters/1",
+    "value" : {"type" : "fennix", "count" : 5, "offsetRegion" : [-50, -29, 50, -29], "onGround" : true}
+  },
+  {
+    "op" : "remove",
+    "path" : "/baseParameters/monsterSpawnGroups/24/monsters/2"
+  },
+  {
+    "op" : "replace",
+    "path" : "/baseParameters/monsterSpawnGroups/25/monsters/0",
+    "value" : {"type" : "bobot", "count" : 1, "offsetRegion" : [-50, -29, -30, -29], "onGround" : true}
+  },
+  {
+    "op" : "replace",
+    "path" : "/baseParameters/monsterSpawnGroups/25/monsters/1",
+    "value" : {"type" : "bobot", "count" : 1, "offsetRegion" : [-30, -29, 30, -29], "onGround" : true}
+  },
+  {
+    "op" : "replace",
+    "path" : "/baseParameters/monsterSpawnGroups/25/monsters/2",
+    "value" : {"type" : "bobot", "count" : 1, "offsetRegion" : [30, -29, 50, -29], "onGround" : true}
+  },
+  {
+    "op" : "add",
+    "path" : "/baseParameters/monsterSpawnGroups/25/monsters/-",
+    "value" : {"type" : "skimbus", "count" : 3, "offsetRegion" : [-40, -20, 40, -10] }
+  },
+  {
+    "op" : "replace",
+    "path" : "/baseParameters/monsterSpawnGroups/26/monsters/0",
+    "value" : {"type" : "pyromantle", "count" : 3, "offsetRegion" : [-40, -20, 40, -10] }
+  },
+  {
+    "op" : "replace",
+    "path" : "/baseParameters/monsterSpawnGroups/26/monsters/1",
+    "value" : {"type" : "crabcano", "count" : 3, "offsetRegion" : [-50, -29, 50, -29], "onGround" : true}
+  },
+  {
+    "op" : "remove",
+    "path" : "/baseParameters/monsterSpawnGroups/26/monsters/2"
+  },
+  {
+    "op" : "replace",
+    "path" : "/baseParameters/monsterSpawnGroups/27/monsters/0",
+    "value" : {"type" : "quagmutt", "count" : 5, "offsetRegion" : [-50, -29, 50, -29], "onGround" : true}
+  },
+  {
+    "op" : "replace",
+    "path" : "/baseParameters/monsterSpawnGroups/27/monsters/1",
+    "value" : {"type" : "pteropod", "count" : 3, "offsetRegion" : [-40, -20, 40, 10] }
+  },
+  {
+    "op" : "remove",
+    "path" : "/baseParameters/monsterSpawnGroups/27/monsters/2"
+  },
+  {
+    "op" : "replace",
+    "path" : "/baseParameters/monsterSpawnGroups/28/monsters/0",
+    "value" : {"type" : "scandroid", "count" : 3, "offsetRegion" : [-40, -20, 40, -10] }
+  },
+  {
+    "op" : "replace",
+    "path" : "/baseParameters/monsterSpawnGroups/28/monsters/1",
+    "value" : {"type" : "bobot", "count" : 1, "offsetRegion" : [-50, -29, -30, -29], "onGround" : true}
+  },
+  {
+    "op" : "add",
+    "path" : "/baseParameters/monsterSpawnGroups/28/monsters/-",
+    "value" : {"type" : "bobot", "count" : 1, "offsetRegion" : [-30, -29, 30, -29], "onGround" : true}
+  },
+  {
+    "op" : "add",
+    "path" : "/baseParameters/monsterSpawnGroups/28/monsters/-",
+    "value" : {"type" : "bobot", "count" : 1, "offsetRegion" : [30, -29, 50, -29], "onGround" : true}
+  },
+  {
+    "op" : "replace",
+    "path" : "/baseParameters/monsterSpawnGroups/29/monsters/0",
+    "value" : {"type" : "orbide", "count" : 2, "offsetRegion" : [-50, -29, -30, -29], "onGround" : true,
+        "instantAggro" : false}
+  },
+  {
+    "op" : "add",
+    "path" : "/baseParameters/monsterSpawnGroups/29/monsters/-",
+    "value" : {"type" : "orbide", "count" : 2, "offsetRegion" : [-30, -29, 30, -29], "onGround" : true,
+        "instantAggro" : false}
+  },
+  {
+    "op" : "add",
+    "path" : "/baseParameters/monsterSpawnGroups/29/monsters/-",
+    "value" : {"type" : "orbide", "count" : 2, "offsetRegion" : [30, -29, 50, -29], "onGround" : true,
+        "instantAggro" : false}
+  },
+  {
+    "op" : "replace",
+    "path" : "/baseParameters/monsterSpawnGroups/30/monsters/0",
+    "value" : {"type" : "yokat", "count" : 9, "offsetRegion" : [-50, -29, 50, -29], "onGround" : true}
+  },
+  {
+    "op" : "remove",
+    "path" : "/baseParameters/monsterSpawnGroups/30/monsters/1"
+  },
+  {
+    "op" : "replace",
+    "path" : "/baseParameters/monsterSpawnGroups/31/monsters/0",
+    "value" : {"type" : "bobfae", "count" : 6, "offsetRegion" : [-50, -29, 50, -29], "onGround" : true}
+  },
+  {
+    "op" : "remove",
+    "path" : "/baseParameters/monsterSpawnGroups/31/monsters/1"
+  },
+  {
+    "op" : "remove",
+    "path" : "/baseParameters/monsterSpawnGroups/31/monsters/1"
+  },
+  {
+    "op" : "remove",
+    "path" : "/baseParameters/monsterSpawnGroups/31/monsters/1"
+  },
+  {
+    "op" : "remove",
+    "path" : "/baseParameters/monsterSpawnGroups/31/monsters/1"
+  },
+  {
+    "op" : "replace",
+    "path" : "/baseParameters/damageParts/beam/damage",
+    "value" : 40
+  },
+  {
+    "op" : "replace",
+    "path" : "/baseParameters/metaBoundBox",
+    "value" : [-54, -30, 55, 36]
+  },
+  {
+    "op" : "replace",
+    "path" : "/baseParameters/statusSettings/stats/maxHealth/baseValue",
+    "value" : 4000
+  }
+]

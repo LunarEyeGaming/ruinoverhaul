@@ -803,25 +803,6 @@
                 }, 
                 {
                  "height":32,
-                 "id":1230,
-                 "name":"",
-                 "properties":
-                    {
-                     "stagehand":"cultistbeamposition"
-                    },
-                 "propertytypes":
-                    {
-                     "stagehand":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":32,
-                 "x":1408,
-                 "y":968
-                }, 
-                {
-                 "height":32,
                  "id":1232,
                  "name":"",
                  "properties":

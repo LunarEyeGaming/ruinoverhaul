@@ -1,0 +1,14 @@
+[
+  {
+    "op": "add",
+    "path": "/animatedParts/stateTypes/body/states/firewindup/properties",
+    "value": {
+      "persistentSound": "/sfx/npc/boss/crystalboss_spawncharge.ogg"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/sounds/fire",
+    "value": ["/sfx/gun/pulsecannon1.ogg"]
+  }
+]
