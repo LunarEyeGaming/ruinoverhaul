@@ -3,17 +3,19 @@
   "physics" : "laser",
   "image" : "cultistbeam.png",
   "animationCycle" : 0.25,
-  "frameNumber" : 2,
+  "animationLoops" : false,
+  "frameNumber" : 5,
   "bounces" : 1,
   "timeToLive" : 0.25,
   "speed" : 0,
   "lightColor" : [150, 130, 100],
   "fullbright" : true,
   "power" : 50,
-  "damageType" : "NoDamage",
   "damageKind" : "plasma",
   
   "piercing" : true,
   
-  "damagePoly" : [[0, 3], [356, 3], [356, -3], [0, -3]]
+  "damagePoly" : [[0, 3], [356, 3], [356, -3], [0, -3]],
+  
+  "scripts" : ["/projectiles/ruin-killableextension.lua"]
 }

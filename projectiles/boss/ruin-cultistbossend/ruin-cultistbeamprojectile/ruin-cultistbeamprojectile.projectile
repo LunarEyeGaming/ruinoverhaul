@@ -4,6 +4,7 @@
   "image" : "cultistbeamprojectile.png",
   "animationCycle" : 0.5,
   "frameNumber" : 6,
+  "winddownFrames" : 6,
   "bounces" : 1,
   "timeToLive" : 2.25,
   "speed" : 0,
@@ -35,8 +36,13 @@
           "action" : "projectile",
           "type" : "ruin-cultistbeam",
           "direction" : [0, 1],
-          "offset" : [0, 22.1875],
+          "offset" : [0, 21.0],
           "inheritDamageFactor" : 1
+        },
+        {
+          "action" : "projectile",
+          "type" : "ruin-cultistbeamlight",
+          "offset" : [0, 0]
         },
         {
           "action" : "sound",

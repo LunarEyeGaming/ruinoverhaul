@@ -173,6 +173,21 @@
           }
         }
       },
+      "noshield" : {
+        "default" : "invisible",
+        "states" : {
+          "invisible" : {},
+          "flash" : {
+            "frames" : 2,
+            "cycle" : 0.2,
+            "mode" : "transition",
+            "transition" : "invisible",
+            "properties" : {
+              "immediateSound" : "/sfx/npc/boss/guardian_shield_drop1.ogg"
+            }
+          }
+        }
+      },
       "damage" : {
         "priority" : 3,
         "default" : "none",
@@ -460,6 +475,23 @@
             }
           }
         }
+      },
+      "noshield" : {
+        "properties" : {
+          "zLevel" : 4,
+          "fullbright" : true,
+          "offset" : [0.0, 0.0]
+        },
+
+        "partStates" : {
+          "noshield" : {
+            "flash" : {
+              "properties" : {
+                "image" : "<partImage>:flash.<frame>"
+              }
+            }
+          }
+        }
       }
     }
   },
@@ -533,6 +565,18 @@
         { "particle" : "cultistjetboots", "offset" : [0.15, 0.0] },
         { "particle" : "cultistjetboots3", "offset" : [0.15, 0.0] }
       ]
+    }
+  },
+
+  "lights" : {
+    "glow" : {
+      "active" : true,
+      "position" : [0, 0],
+      "color" : [200, 180, 150],
+      "pointLight" : false,
+      "flickerPeriod" : 0.4,
+      "flickerMinIntensity" : 1.0,
+      "flickerMaxIntensity" : 0.95
     }
   },
 

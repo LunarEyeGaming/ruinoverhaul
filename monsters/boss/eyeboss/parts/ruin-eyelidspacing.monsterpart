@@ -1,0 +1,9 @@
+{
+  "name" : "ruin-eyelidspacing",
+  "category" : "eyeboss",
+  "type" : "ruin-eyelidspacing",
+
+  "frames" : {
+    "ruin-eyelidspacing" : "ruin-eyelidspacing.png"
+  }
+}

@@ -13,7 +13,7 @@
   "physics" : "illusion",
   "timeToLive" : 0.5,
   "knockback" : 25,
-  "damagePoly" : [ [ 72, 10 ], [ -72, 10 ], [ -72, -10 ], [ 72, -10 ] ],
+  "damagePoly" : [ [ -72, 10 ], [ -72, -10 ], [ 72, 0 ] ],
   "actionOnReap" : [
     {
       "action" : "projectile",

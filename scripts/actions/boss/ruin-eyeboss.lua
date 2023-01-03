@@ -3,9 +3,8 @@ require "/scripts/util.lua"
 require "/scripts/interp.lua"
 require "/scripts/status.lua"
 --[[
-  The tentacleMovement node has been overridden to make the Ruin's tentacles move more organically, utilizing rotations
-  and scales in lieu of pure vertical translations. It also applies sine easing to the transformations. The tentacles
-  move independently of each other.
+  A node that makes the Ruin's tentacles move more organically, utilizing rotations and scales in lieu of pure vertical
+  translations. It also applies sine easing to the transformations. The tentacles move independently of each other.
   param initialScales - The initial scales to use for the tentacles
   param initialAngles - The initial angles to use for the tentacles in degrees
   param timeRange - The range of time to complete each movement of each tentacle
@@ -35,11 +34,13 @@ function ruin_tentacleMovement(args, board, _, dt)
     oldAngles = util.rep(function() return 0 end, args.tentacleCount)
   end
 
-  local angles = util.rep(function() return util.randomInRange(angleRange) end, 6)  -- Target angles
+  -- Target angles
+  local angles = util.rep(function() return util.randomInRange(angleRange) end, args.tentacleCount)
 
   -- Scales from previous movement
   local oldScales = args.initialScales or util.rep(function() return 1 end, args.tentacleCount)
-  local scales = util.rep(function() return util.randomInRange(args.scaleRange) end, 6)  -- Target scales
+  -- Target scales
+  local scales = util.rep(function() return util.randomInRange(args.scaleRange) end, args.tentacleCount)
   
   while true do
     local intermediateScales = {}
@@ -47,7 +48,7 @@ function ruin_tentacleMovement(args, board, _, dt)
   
     for i = 1, args.tentacleCount do
       if timers[i] >= times[i] then
-        -- Reset timers, randomize times and angles, and save old angles.
+        -- Reset timers; randomize times, angles and scales; and save old angles and scales.
         times[i] = util.randomInRange(args.timeRange)
         timers[i] = 0
 

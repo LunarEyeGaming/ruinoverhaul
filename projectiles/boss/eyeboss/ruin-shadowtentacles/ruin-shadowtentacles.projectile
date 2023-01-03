@@ -17,7 +17,7 @@
     "offset" : [10, 0],
     "count" : 8
   },
-  "scripts" : ["ruin-shadowtentacles.lua"],
+  "scripts" : ["ruin-shadowtentacles.lua", "/projectiles/ruin-killableextension.lua"],
   "scriptDelta" : 1,
   
   "periodicActions" : [

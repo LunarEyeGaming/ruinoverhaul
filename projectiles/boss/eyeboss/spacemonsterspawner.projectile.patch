@@ -1,36 +1,59 @@
 [
-  {
-    "op": "remove",
-    "path": "/bounces"
-  },
-  {
-    "op": "add",
-    "path": "/travelTime",
-    "value": 1.5
-  },
-  {
-    "op": "add",
-    "path": "/onGround",
-    "value": false
-  },
-  {
-    "op": "replace",
-    "path": "/physics",
-    "value": "illusion"
-  },
-  {
-    "op": "replace",
-    "path": "/timeToLive",
-    "value": 3
-  },
-  {
-    "op": "add",
-    "path": "/scripts/-",
-    "value": "ruin-spacemonsterspawnerplugin.lua"
-  },
-  {
-    "op": "add",
-    "path": "/scripts/-",
-    "value": "/scripts/projectiles/ruin-movetoposition.lua"
-  }
+  // Add the appliedPatchSets object if it doesn't exist
+  [
+    {
+      "op": "test",
+      "path": "/appliedPatchSets",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/appliedPatchSets",
+      "value": {}
+    }
+  ],
+  [
+    // Add to the appliedPatchSets object (which should exist)
+    {
+      "op": "add",
+      "path": "/appliedPatchSets/RuinOverhaul_v1",
+      "value": true
+    }
+  ],
+  [
+    {
+      "op": "remove",
+      "path": "/bounces"
+    },
+    {
+      "op": "add",
+      "path": "/travelTime",
+      "value": 1.5
+    },
+    {
+      "op": "add",
+      "path": "/onGround",
+      "value": false
+    },
+    {
+      "op": "replace",
+      "path": "/physics",
+      "value": "illusion"
+    },
+    {
+      "op": "replace",
+      "path": "/timeToLive",
+      "value": 3
+    },
+    {
+      "op": "add",
+      "path": "/scripts/-",
+      "value": "ruin-spacemonsterspawnerplugin.lua"
+    },
+    {
+      "op": "add",
+      "path": "/scripts/-",
+      "value": "/scripts/projectiles/ruin-movetoposition.lua"
+    }
+  ]
 ]

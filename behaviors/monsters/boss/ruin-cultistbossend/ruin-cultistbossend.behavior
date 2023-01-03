@@ -57,31 +57,6 @@
             }
           },
           {
-            "title": "selector",
-            "type": "composite",
-            "name": "selector",
-            "parameters": {},
-            "children": [
-              {
-                "title": "hasFlag",
-                "type": "action",
-                "name": "hasFlag",
-                "parameters": {
-                  "name": {"key": "exhausted"}
-                }
-              },
-              {
-                "title": "addEphemeralEffect",
-                "type": "action",
-                "name": "addEphemeralEffect",
-                "parameters": {
-                  "duration": {"value": 10},
-                  "name": {"value": "cultistshield"}
-                }
-              }
-            ]
-          },
-          {
             "title": "Spiderboss",
             "type": "composite",
             "name": "dynamic",
@@ -140,6 +115,23 @@
                         "type": "action",
                         "name": "timer",
                         "parameters": {
+                          "time": {"value": 0.5}
+                        }
+                      },
+                      {
+                        "title": "setAnimationState",
+                        "type": "action",
+                        "name": "setAnimationState",
+                        "parameters": {
+                          "state": {"value": "flash"},
+                          "type": {"value": "noshield"}
+                        }
+                      },
+                      {
+                        "title": "timer",
+                        "type": "action",
+                        "name": "timer",
+                        "parameters": {
                           "time": {"value": 1.5}
                         }
                       },
@@ -160,7 +152,7 @@
                           "untilSuccess": {"value": false}
                         },
                         "child": {
-                          "title": "Reset",
+                          "title": "sequence",
                           "type": "composite",
                           "name": "sequence",
                           "parameters": {},
@@ -170,144 +162,94 @@
                               "type": "decorator",
                               "name": "repeater",
                               "parameters": {
-                                "maxLoops": {"value": 5}
+                                "untilSuccess": {"value": true}  // Repeat until we find an attack.
                               },
                               "child": {
-                                "title": "sequence",
+                                "title": "randomize",
                                 "type": "composite",
-                                "name": "sequence",
+                                "name": "randomize",
                                 "parameters": {},
                                 "children": [
                                   {
-                                    "title": "repeater",
+                                    "title": "cooldown",
                                     "type": "decorator",
-                                    "name": "repeater",
+                                    "name": "cooldown",
                                     "parameters": {
-                                      "untilSuccess": {"value": true}  // Repeat until we find an attack.
+                                      "cooldown": {"value": 7}
                                     },
                                     "child": {
-                                      "title": "randomize",
-                                      "type": "composite",
-                                      "name": "randomize",
-                                      "parameters": {},
-                                      "children": [
-                                        {
-                                          "title": "cooldown",
-                                          "type": "decorator",
-                                          "name": "cooldown",
-                                          "parameters": {
-                                            "cooldown": {"value": 7}
-                                          },
-                                          "child": {
-                                            "title": "ruin-cultistbossend-flyingslash",
-                                            "type": "module",
-                                            "name": "ruin-cultistbossend-flyingslash",
-                                            "parameters": {
-                                              "projectileAngleStep": {"value": 0.14},
-                                              "projectileCount": {"value": 12},
-                                              "stopTime": {"value": 0.5},
-                                              "stopForce": {"value": 60},
-                                              "jumpVelocity": {"value": 80}
-                                            }
-                                          }
-                                        },
-                                        {
-                                          "title": "cooldown",
-                                          "type": "decorator",
-                                          "name": "cooldown",
-                                          "parameters": {
-                                            "cooldown": {"value": 7}
-                                          },
-                                          "child": {
-                                            "title": "ruin-cultistbossend-dashattack",
-                                            "type": "module",
-                                            "name": "ruin-cultistbossend-dashattack",
-                                            "parameters": {
-                                              "dashSpeed": {"value": 75},
-                                              "dashTime": {"value": 0.8}
-                                            }
-                                          }
-                                        },
-                                        {
-                                          "title": "cooldown",
-                                          "type": "decorator",
-                                          "name": "cooldown",
-                                          "parameters": {
-                                            "cooldown": {"value": 7}
-                                          },
-                                          "child": {
-                                            "title": "ruin-cultistbossend-sphereattack",
-                                            "type": "module",
-                                            "name": "ruin-cultistbossend-sphereattack",
-                                            "parameters": {
-                                              "sphereDashForce": {"value": 500},
-                                              "sphereCentripetalForce": {"value": 500},
-                                              "bounceTime": {"value": 0.3},
-                                              "repeats": {"value": 3}
-                                            }
-                                          }
-                                        },
-                                        {
-                                          "title": "cooldown",
-                                          "type": "decorator",
-                                          "name": "cooldown",
-                                          "parameters": {
-                                            "cooldown": {"value": 7}
-                                          },
-                                          "child": {
-                                            "title": "ruin-cultistbossend-beamattack",
-                                            "type": "module",
-                                            "name": "ruin-cultistbossend-beamattack",
-                                            "parameters": {}
-                                          }
-                                        }
-                                      ]
+                                      "title": "ruin-cultistbossend-flyingslash",
+                                      "type": "module",
+                                      "name": "ruin-cultistbossend-flyingslash",
+                                      "parameters": {
+                                        "projectileAngleStep": {"value": 0.14},
+                                        "projectileCount": {"value": 12},
+                                        "stopTime": {"value": 0.5},
+                                        "stopForce": {"value": 60},
+                                        "jumpVelocity": {"value": 80}
+                                      }
                                     }
                                   },
                                   {
-                                    "title": "unsetFlag",
-                                    "type": "action",
-                                    "name": "unsetFlag",
+                                    "title": "cooldown",
+                                    "type": "decorator",
+                                    "name": "cooldown",
                                     "parameters": {
-                                      "name": {"value": "intro"}
+                                      "cooldown": {"value": 7}
+                                    },
+                                    "child": {
+                                      "title": "ruin-cultistbossend-dashattack",
+                                      "type": "module",
+                                      "name": "ruin-cultistbossend-dashattack",
+                                      "parameters": {
+                                        "dashSpeed": {"value": 75},
+                                        "dashTime": {"value": 0.8}
+                                      }
                                     }
                                   },
                                   {
-                                    "title": "cultistboss-slash",
-                                    "type": "module",
-                                    "name": "cultistboss-slash",
+                                    "title": "cooldown",
+                                    "type": "decorator",
+                                    "name": "cooldown",
                                     "parameters": {
-                                      "idleTime": {"value": 0.25}
+                                      "cooldown": {"value": 7}
+                                    },
+                                    "child": {
+                                      "title": "ruin-cultistbossend-sphereattack",
+                                      "type": "module",
+                                      "name": "ruin-cultistbossend-sphereattack",
+                                      "parameters": {
+                                        "sphereDashForce": {"value": 500},
+                                        "sphereCentripetalForce": {"value": 500},
+                                        "bounceTime": {"value": 0.3},
+                                        "repeats": {"value": 3}
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "title": "cooldown",
+                                    "type": "decorator",
+                                    "name": "cooldown",
+                                    "parameters": {
+                                      "cooldown": {"value": 7}
+                                    },
+                                    "child": {
+                                      "title": "ruin-cultistbossend-beamattack",
+                                      "type": "module",
+                                      "name": "ruin-cultistbossend-beamattack",
+                                      "parameters": {}
                                     }
                                   }
                                 ]
                               }
                             },
-                            // Bigger teleporting range.
                             {
-                              "title": "ruin-cultistbossend-teleport",
-                              "type": "module",
-                              "name": "ruin-cultistbossend-teleport",
-                              "parameters": {
-                                "positionType": {"value": "ruin-cultistexhaustposition"},
-                                "shufflePositions": {"value": true},
-                                "reverseOrder": {"value": false},
-                                "positionIndex": {"value": 1}
-                              }
-                            },
-                            {
-                              "title": "timer",
+                              "title": "unsetFlag",
                               "type": "action",
-                              "name": "timer",
+                              "name": "unsetFlag",
                               "parameters": {
-                                "time": {"value": 0.5}
+                                "name": {"value": "intro"}
                               }
-                            },
-                            {
-                              "title": "cultistboss-exhaust",
-                              "type": "module",
-                              "name": "cultistboss-exhaust",
-                              "parameters": {}
                             },
                             {
                               "title": "cultistboss-slash",
@@ -343,6 +285,59 @@
                         "percentage": {"value": 0},
                         "resource": {"value": "health"}
                       }
+                    }
+                  },
+                  {
+                    "title": "succeeder",
+                    "type": "decorator",
+                    "name": "succeeder",
+                    "parameters": {},
+                    "child": {
+                      "title": "sequence",
+                      "type": "composite",
+                      "name": "sequence",
+                      "parameters": {},
+                      "children": [
+                        {
+                          "title": "queryEntity",
+                          "type": "action",
+                          "name": "queryEntity",
+                          "parameters": {
+                            "orderBy": {"value": "nearest"},
+                            "position": {"key": "self"},
+                            "range": {"value": 200},
+                            "withoutEntity": {"key": "self"},
+                            "entityTypes": {"value": ["projectile"]}
+                          },
+                          "output": {
+                            "list": "projectiles"
+                          }
+                        },
+                        {
+                          "title": "each",
+                          "type": "decorator",
+                          "name": "each",
+                          "parameters": {
+                            "list": {"key": "projectiles"},
+                            "type": {"value": "entity"}
+                          },
+                          "child": {
+                            "title": "succeeder",
+                            "type": "decorator",
+                            "name": "succeeder",
+                            "parameters": {},
+                            "child": {
+                              "title": "sendEntityMessage",
+                              "type": "action",
+                              "name": "sendEntityMessage",
+                              "parameters": {
+                                "entity": {"key": "eachItem"},
+                                "message": {"value": "kill"}
+                              }
+                            }
+                          }
+                        }
+                      ]
                     }
                   },
                   {

@@ -1,52 +1,75 @@
 [
-  {
-    "op": "add",
-    "path": "/minionCap",
-    "value": 4
-  },
-  {
-    "op": "add",
-    "path": "/scripts/-",
-    "value": "ruin-bossrightspawnerplugin.lua"
-  },
-  {
-    "op": "replace",
-    "path": "/spawnPoints/blob1/interval",
-    "value": 30
-  },
-  {
-    "op": "replace",
-    "path": "/spawnPoints/blob2/interval",
-    "value": 30
-  },
-  {
-    "op": "replace",
-    "path": "/spawnPoints/blob3/interval",
-    "value": 30
-  },
-  {
-    "op": "replace",
-    "path": "/spawnPoints/blob4/interval",
-    "value": 20
-  },
-  {
-    "op": "replace",
-    "path": "/spawnPoints/blob5/interval",
-    "value": 20
-  },
-  {
-    "op": "replace",
-    "path": "/spawnPoints/blob6/interval",
-    "value": 60
-  },
-  {
-    "op": "replace",
-    "path": "/spawnPoints/blob7/interval",
-    "value": 60
-  },
-  {
-    "op": "replace",
-    "path": "/spawnPoints/blob8/interval",
-    "value": 60
-  }
+  // Add the appliedPatchSets object if it doesn't exist
+  [
+    {
+      "op": "test",
+      "path": "/appliedPatchSets",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/appliedPatchSets",
+      "value": {}
+    }
+  ],
+  [
+    // Add to the appliedPatchSets object (which should exist)
+    {
+      "op": "add",
+      "path": "/appliedPatchSets/RuinOverhaul_v1",
+      "value": true
+    }
+  ],
+  [
+    {
+      "op": "add",
+      "path": "/minionCap",
+      "value": 4
+    },
+    {
+      "op": "add",
+      "path": "/scripts/-",
+      "value": "ruin-bossrightspawnerplugin.lua"
+    },
+    {
+      "op": "replace",
+      "path": "/spawnPoints/blob1/interval",
+      "value": 30
+    },
+    {
+      "op": "replace",
+      "path": "/spawnPoints/blob2/interval",
+      "value": 30
+    },
+    {
+      "op": "replace",
+      "path": "/spawnPoints/blob3/interval",
+      "value": 30
+    },
+    {
+      "op": "replace",
+      "path": "/spawnPoints/blob4/interval",
+      "value": 20
+    },
+    {
+      "op": "replace",
+      "path": "/spawnPoints/blob5/interval",
+      "value": 20
+    },
+    {
+      "op": "replace",
+      "path": "/spawnPoints/blob6/interval",
+      "value": 60
+    },
+    {
+      "op": "replace",
+      "path": "/spawnPoints/blob7/interval",
+      "value": 60
+    },
+    {
+      "op": "replace",
+      "path": "/spawnPoints/blob8/interval",
+      "value": 60
+    }
+  ]
 ]

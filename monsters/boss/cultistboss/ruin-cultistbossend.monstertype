@@ -3,7 +3,7 @@
   "shortdescription" : "cultistbossend",
 
   "categories" : [ "cultistboss" ],
-  "parts" : [ "body", "bodylit", "ruin-beam2" ],
+  "parts" : [ "body", "bodylit", "ruin-beam2", "ruin-noshield" ],
 
   "animation" : "ruin-cultistbossend.animation",
   "reversed" : false,
@@ -28,15 +28,22 @@
       "intro" : {
         "default" : {
           "default" : [
-            "Hhnn... You're ridiculously stubborn, aren't you? Esther's really tuned your head... I think I'll cut it off."
+            ""
+          ]
+        }
+      },
+      "intro2" : {
+        "default" : {
+          "default" : [
+            "You will not destroy the Ruin!"
           ]
         }
       },
       "death" : {
         "default" : {
           "default" : [
-            "You don't understand do you? You still haven't won!",
-            "The Ruin will still awaken, and soon cleanse this universe of ALL BUT HUMANS!"
+            "Your foolish endeavors shall not stop the Ruin.",
+            "I will be back."
           ]
         }
       }
@@ -45,7 +52,7 @@
     "damageSources" : {
       "dash" : {
         "poly" : [ [-0.75, -2.0], [-0.35, -2.5], [0.35, -2.5], [0.75, -2.0], [0.75, 0.65], [0.35, 1.22], [-0.35, 1.22], [-0.75, 0.65] ],
-        "damage" : 30.0,
+        "damage" : 20.0,
 
         "teamType" : "enemy",
         "damageSourceKind" : "broadsword",
@@ -53,7 +60,7 @@
       },
       "sphere" : {
         "poly" : [ [-0.875, -1.5], [-0.5, -1.875], [0.5, -1.875], [1.0, -1.5], [1.0, -0.5], [0.5, -0.0], [-0.5, -0.0], [-0.875, -0.5] ],
-        "damage" : 10.0,
+        "damage" : 20.0,
 
         "teamType" : "enemy",
         "damageSourceKind" : "hammer",
@@ -72,7 +79,7 @@
         "damageRepeatTimeout" : 0.5
       },
       "body" : {
-        "damage" : 40,
+        "damage" : 30,
 
         "teamType" : "enemy",
         "damageSourceKind" : "broadsword",
@@ -132,7 +139,7 @@
           "baseValue" : 1.0
         },
         "maxHealth" : {
-          "baseValue" : 250
+          "baseValue" : 500
         },
         "protection" : {
           "baseValue" : 0.0

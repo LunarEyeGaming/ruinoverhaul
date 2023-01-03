@@ -1,0 +1,9 @@
+{
+  "frameGrid" : {
+    "size" : [45, 45],
+    "dimensions" : [2, 1],
+    "names" : [
+      [ "flash.1", "flash.2" ]
+    ]
+  }
+}

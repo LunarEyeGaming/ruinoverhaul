@@ -1,0 +1,9 @@
+{
+  "name" : "ruin-noshield",
+  "category" : "cultistboss",
+  "type" : "ruin-noshield",
+
+  "frames" : {
+    "noshield" : "ruin-noshield.png"
+  }
+}

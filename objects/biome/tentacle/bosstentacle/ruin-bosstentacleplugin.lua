@@ -62,9 +62,9 @@ end
 ]]
 function attackParameterized(windupTimeParam, attackTimeParam, retractDelayParam, attackRotationParam,
     windupSoundPoolParam)
-  animator.setSoundPool("windupstart", windupSoundPoolParam)
+  animator.setSoundPool("windupstartParam", windupSoundPoolParam)
   animator.setParticleEmitterActive("windup", true)
-  animator.playSound("windupstart")
+  animator.playSound("windupstartParam")
   animator.playSound("winduploop", -1)
 
   util.wait(windupTimeParam)
@@ -107,6 +107,7 @@ end
 
 function reset()
   animator.stopAllSounds("windupstart")
+  animator.stopAllSounds("windupstartParam")
   animator.stopAllSounds("winduploop")
   animator.stopAllSounds("movestart")
   animator.stopAllSounds("moveloop")

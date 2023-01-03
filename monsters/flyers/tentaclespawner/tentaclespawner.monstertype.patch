@@ -1,14 +1,47 @@
 [
-  {
-    "op": "replace",
-    "path": "/baseParameters/movementSettings/collisionPoly",
-    "value": [ [2.26, 1.625], [2.625, 1.26], [2.625, -1.26], [2.26, -1.625], [-1.26, -1.625], [-1.625, -1.26], [-1.625,
-        1.26], [-1.26, 1.625] ]
-  },
-  {
-    "op": "replace",
-    "path": "/baseParameters/touchDamage/poly",
-    "value": [ [2.26, 1.625], [2.625, 1.26], [2.625, -1.26], [2.26, -1.625], [-1.26, -1.625], [-1.625, -1.26], [-1.625,
-        1.26], [-1.26, 1.625] ]
-  }
+  // Add the appliedPatchSets object if it doesn't exist
+  [
+    {
+      "op": "test",
+      "path": "/appliedPatchSets",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/appliedPatchSets",
+      "value": {}
+    }
+  ],
+  [
+    // Add to the appliedPatchSets object (which should exist)
+    {
+      "op": "add",
+      "path": "/appliedPatchSets/RuinOverhaul_v1",
+      "value": true
+    }
+  ],
+  [
+    {
+      "op": "replace",
+      "path": "/baseParameters/movementSettings/collisionPoly",
+      "value": [ [2.26, 1.625], [2.625, 1.26], [2.625, -1.26], [2.26, -1.625], [-1.26, -1.625], [-1.625, -1.26], [-1.625,
+          1.26], [-1.26, 1.625] ]
+    },
+    {
+      "op": "replace",
+      "path": "/baseParameters/touchDamage/poly",
+      "value": [ [2.26, 1.625], [2.625, 1.26], [2.625, -1.26], [2.26, -1.625], [-1.26, -1.625], [-1.625, -1.26], [-1.625,
+          1.26], [-1.26, 1.625] ]
+    },
+    {
+      "op": "replace",
+      "path": "/shortdescription",
+      "value": "Ruin Hive"
+    },
+    {
+      "op": "replace",
+      "path": "/description",
+      "value": "A hideous amalgamation of Tentagnats held together by the jelly making up the Ruin."
+    }
+  ]
 ]

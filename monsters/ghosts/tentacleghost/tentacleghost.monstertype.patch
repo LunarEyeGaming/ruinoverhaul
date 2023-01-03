@@ -1,22 +1,55 @@
 [
-  {
-    "op": "replace",
-    "path": "/baseParameters/behaviorConfig/hostileActions/0/parameters/fireSound",
-    "value": "fire"
-  },
-  {
-    "op": "replace",
-    "path": "/baseParameters/movementSettings/collisionPoly",
-    "value": [[1.25, 1.5], [-1.25, 1.5], [-1.25, -1.5], [1.25, -1.5]]
-  },
-  {
-    "op": "replace",
-    "path": "/baseParameters/touchDamage/poly",
-    "value": [[1.25, 1.5], [-1.25, 1.5], [-1.25, -1.5], [1.25, -1.5]]
-  },
-  {
-    "op": "replace",
-    "path": "/baseParameters/statusSettings/stats/maxHealth/baseValue",
-    "value": 40
-  }
+  // Add the appliedPatchSets object if it doesn't exist
+  [
+    {
+      "op": "test",
+      "path": "/appliedPatchSets",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/appliedPatchSets",
+      "value": {}
+    }
+  ],
+  [
+    // Add to the appliedPatchSets object (which should exist)
+    {
+      "op": "add",
+      "path": "/appliedPatchSets/RuinOverhaul_v1",
+      "value": true
+    }
+  ],
+  [
+    {
+      "op": "replace",
+      "path": "/baseParameters/behaviorConfig/hostileActions/0/parameters/fireSound",
+      "value": "fire"
+    },
+    {
+      "op": "replace",
+      "path": "/baseParameters/movementSettings/collisionPoly",
+      "value": [[1.25, 1.5], [-1.25, 1.5], [-1.25, -1.5], [1.25, -1.5]]
+    },
+    {
+      "op": "replace",
+      "path": "/baseParameters/touchDamage/poly",
+      "value": [[1.25, 1.5], [-1.25, 1.5], [-1.25, -1.5], [1.25, -1.5]]
+    },
+    {
+      "op": "replace",
+      "path": "/baseParameters/statusSettings/stats/maxHealth/baseValue",
+      "value": 40
+    },
+    {
+      "op": "replace",
+      "path": "/shortdescription",
+      "value": "Ruin Ghost"
+    },
+    {
+      "op": "replace",
+      "path": "/description",
+      "value": "A strange creature so powerful that it can phase through any material with its mind."
+    }
+  ]
 ]

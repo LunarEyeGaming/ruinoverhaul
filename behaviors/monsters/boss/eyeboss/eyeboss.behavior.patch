@@ -1,18 +1,6 @@
 [
+  // Add the appliedPatchSets object if it doesn't exist
   [
-    // Add to the appliedPatchSets list if it exists
-    {
-      "op": "test",
-      "path": "/appliedPatchSets"
-    },
-    {
-      "op": "add",
-      "path": "/appliedPatchSets/-",
-      "value": "ruinoverhaul-1.0.0"
-    }
-  ],
-  [
-    // If the appliedPatchSets list doesn't exist, add it with ruinoverhaul-1.0.0 as an entry.
     {
       "op": "test",
       "path": "/appliedPatchSets",
@@ -21,7 +9,15 @@
     {
       "op": "add",
       "path": "/appliedPatchSets",
-      "value": ["ruinoverhaul-1.0.0"]
+      "value": {}
+    }
+  ],
+  [
+    // Add to the appliedPatchSets object (which should exist)
+    {
+      "op": "add",
+      "path": "/appliedPatchSets/RuinOverhaul_v1",
+      "value": true
     }
   ],
   [

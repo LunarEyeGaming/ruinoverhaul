@@ -69,8 +69,8 @@
                     "type": "action",
                     "name": "random",
                     "parameters": {
-                      "min": {"value": -18},
-                      "max": {"value": 18}
+                      "min": {"value": -8},
+                      "max": {"value": 8}
                     },
                     "output": {
                       "number": "xOffset"
