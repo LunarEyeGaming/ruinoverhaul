@@ -222,13 +222,13 @@ end
   Spawns tentacles along the ceiling of the arena. This node would be used to act against using the spike sphere to
   cheese certain sections of the fight.
 
+  param center - The center of the arena; the position to which to aim the tentacles
   param arenaWidth - The width of the entire arena
   param tentacleWidth - The spacing between each projectile
-  param maxSpawnHeight - The maximum height at which to spawn the projectiles relative to the center of the boss
+  param maxSpawnHeight - The maximum height at which to spawn the projectiles relative to the center
   param projectileType - The type of projectile to spawn
   param projectileParameters - The parameters to use for the projectiles
   param tentacleInterval - The time interval between each projectile
-  param tentacleDirection - The aim vector of the projectile
   param tentacleCooldown - The amount of time to wait after spawning all the tentacles.
 ]]
 function ruin_ceilingTentacles(args, board)
@@ -240,24 +240,28 @@ function ruin_ceilingTentacles(args, board)
   params.power = (params.power or 10) * root.evalFunction("monsterLevelPowerMultiplier", monster.level())
 
   for i = 0, numTentacles do
-    local leftXPos = (-halfArenaWidth + i * args.tentacleWidth) + ownPosition[1]
+    local leftXPos = (-halfArenaWidth + i * args.tentacleWidth) + args.center[1]
 
-    local leftPos = world.lineCollision({leftXPos, ownPosition[2]}, {leftXPos, ownPosition[2] + args.maxSpawnHeight})
+    local leftPos = world.lineCollision({leftXPos, args.center[2]}, {leftXPos, args.center[2] + args.maxSpawnHeight})
     if not leftPos then
-      leftPos = {leftXPos, ownPosition[2] + args.maxSpawnHeight}
+      leftPos = {leftXPos, args.center[2] + args.maxSpawnHeight}
     end
     
-    world.spawnProjectile(args.projectileType, leftPos, entity.id(), args.tentacleDirection, false, params)
+    local aimVectorLeft = world.distance(ownPosition, leftPos)
+    
+    world.spawnProjectile(args.projectileType, leftPos, entity.id(), aimVectorLeft, false, params)
 
-    local rightXPos = halfArenaWidth - i * args.tentacleWidth + ownPosition[1]
+    local rightXPos = halfArenaWidth - i * args.tentacleWidth + args.center[1]
 
-    local rightPos = world.lineCollision({rightXPos, ownPosition[2]}, {rightXPos, ownPosition[2] +
+    local rightPos = world.lineCollision({rightXPos, args.center[2]}, {rightXPos, args.center[2] +
         args.maxSpawnHeight})
     if not rightPos then
-      rightPos = {rightXPos, ownPosition[2] + args.maxSpawnHeight}
+      rightPos = {rightXPos, args.center[2] + args.maxSpawnHeight}
     end
     
-    world.spawnProjectile(args.projectileType, rightPos, entity.id(), args.tentacleDirection, false,
+    local aimVectorRight = world.distance(ownPosition, rightPos)
+    
+    world.spawnProjectile(args.projectileType, rightPos, entity.id(), aimVectorRight, false,
         params)
     
     util.run(args.tentacleInterval, function() end)
@@ -266,4 +270,23 @@ function ruin_ceilingTentacles(args, board)
   util.run(args.tentacleCooldown, function() end)
   
   return true
+end
+
+--[[
+  Rotates a transformation group at a constant rate.
+  
+  param transformationGroup - The name of the transformation group to rotate
+  param rotateRate - How many full rotations the portal image completes in one second
+  param rotationCenter - The rotation pivot to use
+]]
+function ruin_rotatePortalImage(args, board, _, dt)
+  local angularVelocity = args.rotateRate * 2 * math.pi
+  local timer = 0
+  
+  while true do
+    animator.resetTransformationGroup(args.transformationGroup)
+    animator.rotateTransformationGroup(args.transformationGroup, angularVelocity * timer, args.rotationCenter)
+    timer = timer + dt
+    coroutine.yield()
+  end
 end

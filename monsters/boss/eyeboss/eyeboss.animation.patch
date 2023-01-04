@@ -23,6 +23,18 @@
   [
     {
       "op" : "add",
+      "path" : "/animatedParts/stateTypes/ruin-portalimage",
+      "value" : {
+        "defaultState" : "invisible",
+        "states" : {
+          "invisible" : {},
+          "void" : {},
+          "vacuum" : {}
+        }
+      }
+    },
+    {
+      "op" : "add",
       "path" : "/animatedParts/stateTypes/blink/states/opennoroar",
       "value" : {
         "frames" : 1,
@@ -226,6 +238,37 @@
           "image" : "<partImage>"
         }
       }
+    },
+    {
+      "op" : "add",
+      "path" : "/animatedParts/parts/ruin-portalimage",
+      "value" : {
+        "properties" : {
+          "offset" : [-0.3125, -8.375],
+          "fullbright" : true,
+          "zLevel" : 18,
+          "transformationGroups" : ["ruin-portalimage"]
+        },
+        "partStates" : {
+          "ruin-portalimage" : {
+            "void" : {
+              "properties" : {
+                "image" : "<partImage>:void"
+              }
+            },
+            "vacuum" : {
+              "properties" : {
+                "image" : "<partImage>:vacuum"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "op" : "add",
+      "path" : "/transformationGroups/ruin-portalimage",
+      "value" : {"interpolated" : true}
     },
     {
       "op" : "add",

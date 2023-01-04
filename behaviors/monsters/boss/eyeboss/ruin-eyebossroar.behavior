@@ -78,6 +78,15 @@
         "parameters": {
           "transformationGroup": {"value": "eye"}
         }
+      },
+      {
+        "title": "setAnimationState",
+        "type": "action",
+        "name": "setAnimationState",
+        "parameters": {
+          "state": {"value": "invisible"},
+          "type": {"value": "ruin-portalimage"}
+        }
       }
     ]
   }

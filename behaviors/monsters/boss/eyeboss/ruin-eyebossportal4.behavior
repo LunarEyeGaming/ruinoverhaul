@@ -9,7 +9,7 @@
   ],
   "parameters": {
     "sweepCount": 2,
-    "endAngle": 12.56
+    "rotateRate": 0.5
   },
   "root": {
     "title": "parallel",
@@ -21,64 +21,13 @@
     },
     "children": [
       {
-        "title": "failer",
-        "type": "decorator",
-        "name": "failer",
-        "parameters": {},
-        "child": {
-          "title": "timer",
-          "type": "action",
-          "name": "timer",
-          "parameters": {
-            "time": {"value": 4.5}
-          },
-          "output": {
-            "ratio": "rotateRatio"
-          }
-        }
-      },
-      {
-        "title": "failer",
-        "type": "decorator",
-        "name": "failer",
-        "parameters": {},
-        "child": {
-          "title": "sequence",
-          "type": "composite",
-          "name": "sequence",
-          "parameters": {},
-          "children": [
-            {
-              "title": "resetTransformationGroup",
-              "type": "action",
-              "name": "resetTransformationGroup",
-              "parameters": {
-                "transformationGroup": {"value": "biome"}
-              }
-            },
-            {
-              "title": "multiply",
-              "type": "action",
-              "name": "multiply",
-              "parameters": {
-                "factor": {"key": "<endAngle>"},
-                "number": {"key": "rotateRatio"}
-              },
-              "output": {
-                "result": "rotateAngle"
-              }
-            },
-            {
-              "title": "rotateTransformationGroup",
-              "type": "action",
-              "name": "rotateTransformationGroup",
-              "parameters": {
-                "angle": {"key": "rotateAngle"},
-                "transformationGroup": {"value": "biome"},
-                "rotationCenter": {"value": [-0.3125, -8.375]}
-              }
-            }
-          ]
+        "title": "ruin_rotatePortalImage",
+        "type": "action",
+        "name": "ruin_rotatePortalImage",
+        "parameters": {
+          "rotateRate": {"value": "<rotateRate>"},
+          "transformationGroup": {"value": "ruin-portalimage"},
+          "rotationCenter": {"value": [-0.25, -8.3125]}
         }
       },
       {
@@ -113,12 +62,12 @@
                 "parameters": {},
                 "children": [
                   {
-                    "title": "setGlobalTag",
+                    "title": "setAnimationState",
                     "type": "action",
-                    "name": "setGlobalTag",
+                    "name": "setAnimationState",
                     "parameters": {
-                      "tag": {"value": "void"},
-                      "type": {"value": "biome"}
+                      "state": {"value": "void"},
+                      "type": {"value": "ruin-portalimage"}
                     }
                   },
                   {
@@ -267,6 +216,15 @@
             "name": "timer",
             "parameters": {
               "time": {"value": 2.7}
+            }
+          },
+          {
+            "title": "setAnimationState",
+            "type": "action",
+            "name": "setAnimationState",
+            "parameters": {
+              "state": {"value": "invisible"},
+              "type": {"value": "ruin-portalimage"}
             }
           }
         ]

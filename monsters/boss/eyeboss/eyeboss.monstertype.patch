@@ -28,6 +28,11 @@
     },
     {
       "op" : "add",
+      "path" : "/parts/-",
+      "value" : "ruin-portalimage"
+    },
+    {
+      "op" : "add",
       "path" : "/baseParameters/damageSources",
       "value" : {
         "windswept" : {

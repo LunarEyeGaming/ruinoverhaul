@@ -95,6 +95,15 @@
                     "parameters": {},
                     "children": [
                       {
+                        "title": "addEphemeralEffect",
+                        "type": "action",
+                        "name": "addEphemeralEffect",
+                        "parameters": {
+                          "name": {"value": "cultistshield"},
+                          "duration": {"value": 10}
+                        }
+                      },
+                      {
                         "title": "setFlag",
                         "type": "action",
                         "name": "setFlag",
@@ -125,6 +134,14 @@
                         "parameters": {
                           "state": {"value": "flash"},
                           "type": {"value": "noshield"}
+                        }
+                      },
+                      {
+                        "title": "removeEphemeralEffect",
+                        "type": "action",
+                        "name": "removeEphemeralEffect",
+                        "parameters": {
+                          "name": {"value": "cultistshield"}
                         }
                       },
                       {
@@ -338,6 +355,24 @@
                           }
                         }
                       ]
+                    }
+                  },
+                  {
+                    "title": "setParticleEmitterActive",
+                    "type": "action",
+                    "name": "setParticleEmitterActive",
+                    "parameters": {
+                      "active": {"value": false},
+                      "emitter": {"value": "dash"}
+                    }
+                  },
+                  {
+                    "title": "setParticleEmitterActive",
+                    "type": "action",
+                    "name": "setParticleEmitterActive",
+                    "parameters": {
+                      "active": {"value": false},
+                      "emitter": {"value": "spheredash"}
                     }
                   },
                   {

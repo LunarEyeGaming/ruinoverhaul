@@ -152,12 +152,20 @@
             }
           },
           {
-            "title": "setGlobalTag",
+            "title": "resetTransformationGroup",
             "type": "action",
-            "name": "setGlobalTag",
+            "name": "resetTransformationGroup",
             "parameters": {
-              "tag": {"value": "invisible"},
-              "type": {"value": "biome"}
+              "transformationGroup": {"value": "biome"}
+            }
+          },
+          {
+            "title": "scaleTransformationGroup",
+            "type": "action",
+            "name": "scaleTransformationGroup",
+            "parameters": {
+              "scale": {"value": [0, 0]},
+              "transformationGroup": {"value": "biome"}
             }
           }
         ]

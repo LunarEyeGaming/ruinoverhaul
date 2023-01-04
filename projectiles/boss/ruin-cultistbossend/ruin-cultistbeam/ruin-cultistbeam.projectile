@@ -15,7 +15,7 @@
   
   "piercing" : true,
   
-  "damagePoly" : [[0, 3], [356, 3], [356, -3], [0, -3]],
+  "damagePoly" : [[-178, 3], [178, 3], [178, -3], [-178, -3]],
   
   "scripts" : ["/projectiles/ruin-killableextension.lua"]
 }

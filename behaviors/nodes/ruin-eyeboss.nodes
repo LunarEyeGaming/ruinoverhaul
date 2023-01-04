@@ -80,14 +80,27 @@
     "name": "ruin_ceilingTentacles",
     "title": "ruin_ceilingTentacles",
     "properties": {
+      "center": {"type": "position", "key": "self"},
       "arenaWidth": {"type": "number", "value": 105},
       "tentacleWidth": {"type": "number", "value": 4},
       "maxSpawnHeight": {"type": "number", "value": 37},
       "projectileType": {"type": "string", "value": "ruin-ceilingtentacletele"},
       "projectileParameters": {"type": "json", "value": {}},
       "tentacleInterval": {"type": "number", "value": 0.07},
-      "tentacleDirection": {"type": "vec2", "value": [1, 0]},
       "tentacleCooldown": {"type": "number", "value": 1.0}
+    },
+    "category": "ruin-eyeboss",
+    "script": "/scripts/actions/boss/ruin-eyeboss.lua",
+    "output": {}
+  },
+  "ruin_rotatePortalImage": {
+    "type": "action",
+    "name": "ruin_rotatePortalImage",
+    "title": "ruin_rotatePortalImage",
+    "properties": {
+      "transformationGroup": {"type": "string", "value": "ruin-portalimage"},
+      "rotateRate": {"type": "number", "value": 0.5},
+      "rotationCenter": {"type": "vec2", "value": [-0.25, -8.3125]}
     },
     "category": "ruin-eyeboss",
     "script": "/scripts/actions/boss/ruin-eyeboss.lua",

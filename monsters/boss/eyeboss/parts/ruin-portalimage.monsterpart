@@ -1,0 +1,9 @@
+{
+  "name" : "ruin-portalimage",
+  "category" : "eyeboss",
+  "type" : "ruin-portalimage",
+
+  "frames" : {
+    "ruin-portalimage" : "ruin-portalimage.png"
+  }
+}

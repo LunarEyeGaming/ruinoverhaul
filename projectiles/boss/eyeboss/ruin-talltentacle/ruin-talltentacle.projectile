@@ -2,7 +2,7 @@
   "projectileName" : "ruin-talltentacle",
   "image" : "talltentacle.png",
   "animationCycle" : 0.3,
-  "frameNumber" : 8,
+  "frameNumber" : 9,
   "power" : 300,
   "movementSettings" : {
     "collisionEnabled" : false
