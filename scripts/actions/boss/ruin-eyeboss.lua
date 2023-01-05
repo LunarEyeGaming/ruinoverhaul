@@ -77,7 +77,13 @@ function ruin_tentacleMovement(args, board, _, dt)
   end
 end
 
--- Overridden to allow for more orderly spawning of monster groups.
+--[[
+  A variant of the spawnMonsterGroup node that allows for a more controlled method of spawning monsters.
+  param offsetRegion - The area relative to the boss to spawn the projectiles
+  param defaultTargetOffsetRegion - The offset region to which the projectiles will move as a failsafe for a monster
+      group being a string
+  param windup - The amount of time to wait before spawning the monsters
+]]
 function ruin_spawnMonsterGroup(args, board, _, dt)
   local spawnGroup = util.randomFromList(config.getParameter("monsterSpawnGroups"))
 
@@ -152,7 +158,7 @@ end
   param windupSoundPool - The windup sound pool of the tentacle
   param reEmergeWindupTime - The windup time of the re-emerging segment of the tentacle
   param reEmergeDelay - The amount of time to wait after emerging the first segment of the tentacle to activate the 
-                        second segment of the tentacle
+      second segment of the tentacle
   param reEmergeWindupSoundPool - The windup sound pool of the re-emerging segment of the tentacle
   param retractDelay - The amount of time to wait after drilling before retracting the tentacle
   param otherTentacleDelay - The amount of time to wait before activating the other tentacle

@@ -16,7 +16,7 @@
     // Add to the appliedPatchSets object (which should exist)
     {
       "op": "add",
-      "path": "/appliedPatchSets/RuinOverhaul_v1",
+      "path": "/appliedPatchSets/RuinOverhaul_v2",
       "value": true
     }
   ],
@@ -229,15 +229,28 @@
         }
       }
     },
+    {
+      "op": "add",
+      "path": "/root/children/6/children/2/children/0/children/1/children/1",
+      "value": {
+        "title": "setAnimationState",
+        "type": "action",
+        "name": "setAnimationState",
+        "parameters": {
+          "state": {"value": "invisible"},
+          "type": {"value": "ruin-portalimage"}
+        }
+      }
+    },
     // Remove eyeboss-messaging module so that the Ruin only spawns minions during one of its attacks.
     {
       "op": "remove",
-      "path": "/root/children/6/children/2/children/0/children/1/children/2/children/1"
+      "path": "/root/children/6/children/2/children/0/children/1/children/3/children/1"
     },
     // Replace the eyeboss-animate node with ruin-eyeboss-animate.
     {
       "op": "replace",
-      "path": "/root/children/6/children/2/children/0/children/1/children/2/children/1",
+      "path": "/root/children/6/children/2/children/0/children/1/children/3/children/1",
       "value": {
         "title": "ruin-eyeboss-animate",
         "type": "module",
@@ -252,7 +265,7 @@
     // Add in multi-phase system along with the other two phases.
     {
       "op": "add",
-      "path": "/root/children/6/children/2/children/0/children/1/children/2/children/-",
+      "path": "/root/children/6/children/2/children/0/children/1/children/3/children/-",
       "value": {
         "title": "dynamic",
         "type": "composite",
@@ -595,18 +608,18 @@
       // Reworked beam attack.
     {
       "op": "replace",
-      "path": "/root/children/6/children/2/children/0/children/1/children/2/children/3/child/children/0/title",
+      "path": "/root/children/6/children/2/children/0/children/1/children/3/children/3/child/children/0/title",
       "value": "ruin-eyeboss-beam"
     },
     {
       "op": "replace",
-      "path": "/root/children/6/children/2/children/0/children/1/children/2/children/3/child/children/0/name",
+      "path": "/root/children/6/children/2/children/0/children/1/children/3/children/3/child/children/0/name",
       "value": "ruin-eyeboss-beam"
     },
       // Reworked tentacle attack.
     {
       "op": "replace",
-      "path": "/root/children/6/children/2/children/0/children/1/children/2/children/3/child/children/1",
+      "path": "/root/children/6/children/2/children/0/children/1/children/3/children/3/child/children/1",
       "value": {
         "title": "ruin-eyeboss-tentacle",
         "type": "module",
@@ -620,18 +633,18 @@
       // Remove eyeboss-idle node.
     {
       "op": "remove",
-      "path": "/root/children/6/children/2/children/0/children/1/children/2/children/3/child/children/2"
+      "path": "/root/children/6/children/2/children/0/children/1/children/3/children/3/child/children/2"
     },
       // This node contains the rest of the attacks, but the way phase 1 works has been significantly overhauled, so I 
       // decided to delete it despite the potentially large amount of compatibility it could kill.
     {
       "op": "remove",
-      "path": "/root/children/6/children/2/children/0/children/1/children/2/children/3/child/children/2"
+      "path": "/root/children/6/children/2/children/0/children/1/children/3/children/3/child/children/2"
     },
       // New portal attack
     {
       "op": "add",
-      "path": "/root/children/6/children/2/children/0/children/1/children/2/children/3/child/children/-",
+      "path": "/root/children/6/children/2/children/0/children/1/children/3/children/3/child/children/-",
       "value": {
         "title": "ruin-eyeboss-spawnsequence",
         "type": "module",
@@ -642,7 +655,7 @@
       // Activate tentacles from both sides.
     {
       "op": "add",
-      "path": "/root/children/6/children/2/children/0/children/1/children/2/children/3/child/children/-",
+      "path": "/root/children/6/children/2/children/0/children/1/children/3/children/3/child/children/-",
       "value": {
         "title": "sequence",
         "type": "composite",
@@ -673,7 +686,7 @@
       // In phase 1.5, the Ruin fires a laser just before the tentacles finish retracting.
     {
       "op": "add",
-      "path": "/root/children/6/children/2/children/0/children/1/children/2/children/3/child/children/-",
+      "path": "/root/children/6/children/2/children/0/children/1/children/3/children/3/child/children/-",
       "value": {
         "title": "succeeder",
         "type": "decorator",
@@ -746,7 +759,7 @@
       // In phase 1.5, the Ruin instead uses both at half length.
     {
       "op": "add",
-      "path": "/root/children/6/children/2/children/0/children/1/children/2/children/3/child/children/-",
+      "path": "/root/children/6/children/2/children/0/children/1/children/3/children/3/child/children/-",
       "value": {
         "title": "succeeder",
         "type": "decorator",
@@ -837,8 +850,8 @@
     // Plug the first phase into the newly-added multi-phase system.
     {
       "op": "move",
-      "from": "/root/children/6/children/2/children/0/children/1/children/2/children/3",
-      "path": "/root/children/6/children/2/children/0/children/1/children/2/children/3/children/0/children/-"
+      "from": "/root/children/6/children/2/children/0/children/1/children/3/children/3",
+      "path": "/root/children/6/children/2/children/0/children/1/children/3/children/3/children/0/children/-"
     },
     
     // Add the ruin-eyeboss-reset node (which does more in addition to resetting the spawners and despawning the
