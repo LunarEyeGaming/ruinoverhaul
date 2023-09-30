@@ -16,7 +16,7 @@
     // Add to the appliedPatchSets object (which should exist)
     {
       "op": "add",
-      "path": "/appliedPatchSets/RuinOverhaul_v1",
+      "path": "/appliedPatchSets/RuinOverhaul_v2",
       "value": true
     }
   ],
@@ -561,6 +561,13 @@
       "op" : "replace",
       "path" : "/baseParameters/metaBoundBox",
       "value" : [-54, -30, 55, 36]
+    }
+  ],
+  [
+    {
+      "op" : "test",
+      "path" : "/baseParameters/statusSettings/stats/maxHealth/baseValue",
+      "value" : 5000
     },
     {
       "op" : "replace",
